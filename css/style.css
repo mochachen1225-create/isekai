@@ -310,3 +310,14 @@ h2 { margin: 0 0 18px; font-size: 22px; line-height: 1.6; letter-spacing: .04em;
 .card-preview { width: min(340px, 88%); text-align: center; color: #fff; }
 .card-preview img { width: 100%; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.4); }
 .card-preview p { margin: 10px 0 0; font-size: 14px; }
+
+/* 選項文字放大 */
+.gut-q { font-size: 20px; }
+.gut-opt { font-size: 18px; padding: 16px 14px; }
+.opt { font-size: 17px; }
+.opt .voice { font-size: 15px; }
+.panel.shrine .back-voice { font-size: 16px; }
+.panel-head .q { font-size: 18px; }
+.legend { font-size: 15px; }
+.legend-q { font-size: 17px; }
+.dialog-text { font-size: 18px; }

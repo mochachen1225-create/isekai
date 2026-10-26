@@ -46,14 +46,15 @@
 | 對話頭像：喵導員 | `portrait_guide.jpg` | ✅ 已完成 |
 | 對話頭像：國王 | `portrait_king.jpg` | ⬜ |
 | 對話頭像：魔王 | `portrait_demon.jpg` | ⬜ |
-| 對話頭像：阿麥（戰士） | `portrait_mai.jpg` | ⬜ |
-| 對話頭像：小星（魔法師） | `portrait_xing.jpg` | ⬜ |
-| 對話頭像：櫃檯小姐 | `portrait_clerk.jpg` | ⬜ |
-| 對話頭像：女神 | `portrait_goddess.jpg` | ⬜ |
-| 對話頭像：咖啡館奶奶 | `portrait_granny.jpg` | ⬜ |
-| 對話頭像：小三花（紙箱貓） | `portrait_calico.jpg` | ⬜ |
+| 對話頭像：阿麥・男（女生玩家看到的版本） | `portrait_mai_m.jpg` | ⬜ |
+| 對話頭像：阿麥・女（男生玩家看到的版本） | `portrait_mai_f.jpg` | ⬜ |
+| 對話頭像：小星（魔法師） | `portrait_xing.jpg` | ✅ 已完成 |
+| 對話頭像：櫃檯小姐 | `portrait_clerk.jpg` | ✅ 已完成 |
+| 對話頭像：女神 | `portrait_goddess.jpg` | ✅ 已完成 |
+| 對話頭像：咖啡館奶奶 | `portrait_granny.jpg` | ✅ 已完成 |
+| 對話頭像：小三花（紙箱貓） | `portrait_calico.jpg` | ✅ 已完成 |
 
-共 37 張：14 個職業 × 男女 = 28 張（手遊立繪風），對話頭像 9 張（點陣風，跟地圖同一套畫風）。職業插畫已完成 26/28，對話頭像已完成 1/9。
+共 37 張：14 個職業 × 男女 = 28 張（手遊立繪風），對話頭像 10 張（點陣風，跟地圖同一套畫風）。職業插畫已完成 26/28，對話頭像已完成 6/10。
 
 ## 配色總覽
 
@@ -577,10 +578,16 @@ High-quality pixel art character portrait, bust shot, like a visual novel dialog
 High-quality pixel art character portrait, bust shot, like a visual novel dialogue portrait in a modern pixel-art RPG, detailed hand-placed pixels, soft shading with clean outlines, warm bright colors. A young Demon Lord around 18 with long black hair with crimson streaks, small black horns, crimson eyes, a black high-collared cape with crimson lining and gold trim; looks imposing but the eyes are lonely, with one small tear. A black cat peeks over the shoulder. Not scary. Plain soft light-blue background with a few small sparkles. Square 1:1. No text.
 ```
 
-### 阿麥（戰士） → `portrait_mai.jpg`
+### 阿麥・男（女生玩家看到的版本） → `portrait_mai_m.jpg`
 
 ```
-High-quality pixel art character portrait, bust shot, like a visual novel dialogue portrait in a modern pixel-art RPG, detailed hand-placed pixels, soft shading with clean outlines, warm bright colors. A big, friendly young warrior around 17 with messy short red hair, simple grey iron armor with a few scratches, slightly downcast eyes and an embarrassed little smile, a bandage on the cheek. Plain soft light-blue background with a few small sparkles. Square 1:1. No text.
+High-quality pixel art character portrait, bust shot, like a visual novel dialogue portrait in a modern pixel-art RPG, detailed hand-placed pixels, soft shading with clean outlines, warm bright colors. A tall, handsome young warrior around 17 with messy short red hair, simple grey iron armor with a few scratches, slightly downcast eyes and an embarrassed little smile, a bandage on the cheek. Plain soft light-blue background with a few small sparkles. Square 1:1. No text.
+```
+
+### 阿麥・女（男生玩家看到的版本） → `portrait_mai_f.jpg`
+
+```
+High-quality pixel art character portrait, bust shot, like a visual novel dialogue portrait in a modern pixel-art RPG, detailed hand-placed pixels, soft shading with clean outlines, warm bright colors. A pretty, sporty young female warrior around 17 with long red hair in a high ponytail, simple grey iron armor with a few scratches, modest and fully covered, slightly downcast eyes and an embarrassed little smile, a bandage on the cheek. Plain soft light-blue background with a few small sparkles. Square 1:1. No text.
 ```
 
 ### 小星（魔法師） → `portrait_xing.jpg`
@@ -598,7 +605,7 @@ High-quality pixel art character portrait, bust shot, like a visual novel dialog
 ### 女神 → `portrait_goddess.jpg`
 
 ```
-High-quality pixel art character portrait, bust shot, like a visual novel dialogue portrait in a modern pixel-art RPG, detailed hand-placed pixels, soft shading with clean outlines, warm bright colors. A gentle goddess with long flowing pale-gold hair, a white and gold dress, a soft glowing halo, kind eyes, looking slightly flustered and apologetic, one hand on her cheek. Plain soft light-blue background with a few small sparkles. Square 1:1. No text.
+High-quality pixel art character portrait, bust shot, like a visual novel dialogue portrait in a modern pixel-art RPG, detailed hand-placed pixels, soft shading with clean outlines, warm bright colors. A gentle goddess with long flowing pale-gold hair, a modest white and gold dress with a high neckline and long sleeves, a soft glowing halo, kind eyes, looking slightly flustered and apologetic, one hand on her cheek. Plain soft light-blue background with a few small sparkles. Square 1:1. No text.
 ```
 
 ### 咖啡館奶奶 → `portrait_granny.jpg`

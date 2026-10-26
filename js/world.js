@@ -66,6 +66,13 @@ const AMBIENT = {
 };
 const BLOCKING = new Set(['#', 'G', 'c', 'w', 'S', 'U', 'H', 'K']);
 
+// 在村子裡走來走去的小動物（純裝飾，不能互動）
+const CRITTERS = [
+  { look: { body: '#E8D2B0', stripe: '#C8A27A', belly: '#FFF6E9', eye: '#2A2333' }, at: [4, 12] },   // 小狗
+  { look: { body: '#FFFFFF', stripe: '#F2D8DC', belly: '#FFFFFF', eye: '#C8555A' }, at: [9, 17] },   // 兔子
+  { look: { body: '#8A8F9A', stripe: '#6A6F7A', belly: '#D8DCE4', eye: '#2A2333' }, at: [3, 4] },    // 灰貓
+];
+
 export function createWorld(canvas, opts) {
   const ctx = canvas.getContext('2d');
   NPCS.mai.look = LOOKS.mai;
@@ -85,6 +92,8 @@ export function createWorld(canvas, opts) {
   // 進場效果：mosaic = 馬賽克格子大小（1 就是清楚的畫面）
   let mosaic = 1;
   const tmp = document.createElement('canvas');
+  const critters = CRITTERS.map(c => ({ ...c, x: c.at[0], y: c.at[1], px: c.at[0] * TILE, py: c.at[1] * TILE, tx: c.at[0], ty: c.at[1], dir: 'down', wait: Math.random() * 2 }));
+  const butterflies = [[6, 14], [11, 11], [2, 6]].map(([x, y], i) => ({ x: x * TILE, y: y * TILE, seed: i * 1.7 }));
   const dark = document.createElement('canvas');
   dark.width = W * TILE; dark.height = H * TILE;
 
@@ -284,6 +293,21 @@ export function createWorld(canvas, opts) {
       if (state.history.length > 80) state.history.pop();
     }
     p.frame = Math.floor(state.t / 160);
+    // 小動物：停一下、走一格、再停一下
+    for (const c of critters) {
+      if (c.wait > 0) { c.wait -= dt; continue; }
+      const gx = c.tx * TILE, gy = c.ty * TILE;
+      const dx = gx - c.px, dy = gy - c.py, dist = Math.hypot(dx, dy), step = 1.6 * TILE * dt;
+      if (dist <= step) {
+        c.px = gx; c.py = gy; c.x = c.tx; c.y = c.ty; c.moving = false;
+        c.wait = 0.8 + Math.random() * 2.5;
+        const opts2 = [[1, 0], [-1, 0], [0, 1], [0, -1]].map(([ax, ay]) => [c.x + ax, c.y + ay])
+          .filter(([nx, ny]) => !blocked(nx, ny) && Math.abs(nx - c.at[0]) <= 3 && Math.abs(ny - c.at[1]) <= 3 && !(nx === p.x && ny === p.y));
+        if (opts2.length) { [c.tx, c.ty] = opts2[Math.floor(Math.random() * opts2.length)]; c.dir = dirOf(c.tx - c.x, c.ty - c.y); }
+      } else {
+        c.moving = true; c.px += dx / dist * step; c.py += dy / dist * step;
+      }
+    }
     const ty = p.py + TILE / 2 - state.viewH / 2, tx = p.px + TILE / 2 - state.viewW / 2;
     state.camY = Math.max(0, Math.min(H * TILE - state.viewH, ty));
     state.camX = Math.max(0, Math.min(W * TILE - state.viewW, tx));
@@ -360,6 +384,7 @@ export function createWorld(canvas, opts) {
         sprites.push([it.at[1], () => drawItem(ctx, it.at[0] * TILE, it.at[1] * TILE, it.kind, t)]);
       });
     }
+    critters.forEach((c, i) => sprites.push([c.py / TILE, () => cat(c.look, `critter${i}`, c.px, c.py, c.dir, Math.floor(t / 200), c.moving)]));
     const followers = []; // 喵導員先去城堡準備了，只有路上收服的貓會跟著
     const extra = [[CATS.calico, 'calico'], [CATS.black, 'black'], [CATS.orange, 'orange'], [CATS.calico, 'calico']];
     for (let i = 0; i < Math.min(4, state.cats); i++) followers.push(extra[i]);
@@ -371,6 +396,14 @@ export function createWorld(canvas, opts) {
     });
     sprites.push([p.py / TILE + 0.01, () => person(LOOKS[state.gender], state.gender, p.px, p.py, p.dir, p.frame, p.moving)]);
     sprites.sort((a, b) => a[0] - b[0]).forEach(s => s[1]());
+
+    // 蝴蝶
+    for (const b of butterflies) {
+      const bx = b.x + Math.sin(t / 900 + b.seed) * 40, by = b.y + Math.cos(t / 700 + b.seed) * 20;
+      const flap = Math.floor(t / 120 + b.seed) % 2;
+      ctx.fillStyle = '#FFB3C7'; ctx.fillRect(bx - (flap ? 3 : 2), by, flap ? 3 : 2, 3); ctx.fillRect(bx + 1, by, flap ? 3 : 2, 3);
+      ctx.fillStyle = '#5A3A4A'; ctx.fillRect(bx, by, 1, 3);
+    }
 
     // 事件地點上方的箭頭（往下指）
     const arrow = (cx, top, col) => {

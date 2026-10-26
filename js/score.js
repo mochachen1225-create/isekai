@@ -87,6 +87,12 @@ export function catCount(profile) {
   return flagItems(profile, 'cat').length;
 }
 
+// 城堡裡等的是誰：只用城堡之前的選擇決定，所以遊戲中和結果頁一定一樣
+export function rulerOf(profile) {
+  const n = profile.choices.slice(0, 5).reduce((a, c) => a + c, 0) + (profile.gut || []).slice(0, 5).reduce((a, c) => a + c, 0);
+  return n % 2 ? 'king' : 'demon';
+}
+
 export function computeResult(profile) {
   const { dims, ranked } = rankJobs(profile);
   const pct = percentages(ranked);
@@ -96,12 +102,13 @@ export function computeResult(profile) {
   const topDims = [...DIMS].sort((a, b) => dims[b] - dims[a]);
   return {
     profile, dims, mix, main, hidden, topDims,
-    journey: journeyLines(profile, ranked, mix, hidden).map(l => maiText(l, profile.gender)),
-    titles: chosenOptions(profile).sort((a, b) => a.pos - b.pos).map(c => c.opt.title),
-    description: describe(main, hidden),
+    ruler: rulerOf(profile),
+    journey: journeyLines(profile, ranked, mix, hidden).map(l => maiText(l, profile.gender, rulerOf(profile))),
+    titles: chosenOptions(profile).sort((a, b) => a.pos - b.pos).map(c => maiText(c.opt.title, profile.gender, rulerOf(profile))),
+    description: maiText(describe(main, hidden), profile.gender, rulerOf(profile)),
     type: personaType(profile, topDims),
     code: rebirthCode(profile),
-    analysis: profile.choices.map((c, e) => ({ event: e, theme: THEMES[EVENTS[e].id], ...VOICES[EVENTS[e].id][c] })),
+    analysis: profile.choices.map((c, e) => { const v = VOICES[EVENTS[e].id][c]; const t = x => maiText(x, profile.gender, rulerOf(profile)); return { event: e, theme: THEMES[EVENTS[e].id], voice: t(v.voice), short: t(v.short), long: t(v.long) }; }),
   };
 }
 

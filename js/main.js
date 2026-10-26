@@ -1,7 +1,7 @@
 // 遊戲流程：開場 → 地圖 → 事件 → 揭曉 → 結果 → 組隊
 import { maiText, EVENTS, SECRETS, SPEAKERS, OPENINGS, GUIDE_INTRO, GUIDE_REUNION, CHATTER, JOBS, DIM_INFO, DIMS } from './data.js';
 import { VOICES, THEMES, GUT, QUESTIONS } from './persona.js';
-import { computeResult, encodeParty, decodeParty, teamInfo } from './score.js';
+import { rulerOf, computeResult, encodeParty, decodeParty, teamInfo } from './score.js';
 import { createWorld, WALK_ITEMS } from './world.js';
 import { drawPerson, drawCat, drawSlime, LOOKS, CATS, spriteCanvas, faceCanvas } from './pixel.js';
 
@@ -10,9 +10,10 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 const EVENT_INDEX = Object.fromEntries(EVENTS.map((e, i) => [e.id, i]));
 
 // 對話頭像：有畫好的插畫就用插畫，沒有就用點陣小人
-const PORTRAITS = { guide: 'guide', king: 'king', demon: 'demon', mai: 'mai', xing: 'xing', clerk: 'clerk', goddess: 'goddess', granny: 'granny', cat: 'calico' };
-const READY = new Set(['guide']); // 已經放進 assets/portraits/ 的頭像
+const PORTRAITS = { guide: 'guide', king: 'king', demon: 'demon', mai_m: 'mai_m', mai_f: 'mai_f', xing: 'xing', clerk: 'clerk', goddess: 'goddess', granny: 'granny', cat: 'calico' };
+const READY = new Set(['guide', 'calico', 'granny', 'goddess', 'clerk', 'xing']); // 已經放進 assets/portraits/ 的頭像
 function faceElement(face) {
+  if (face === 'mai') face = game.profile && game.profile.gender === 'm' ? 'mai_f' : 'mai_m';
   const fallback = () => faceCanvas(face);
   if (!READY.has(PORTRAITS[face])) return fallback();
   const img = new Image();
@@ -44,6 +45,7 @@ async function say(lines) {
   box.hidden = false;
   tap.hidden = false;
   for (let [who, line] of lines) {
+    who = maiText(who, game.profile.gender, game.ruler);
     const sp = SPEAKERS[who] || SPEAKERS.narr;
     face.innerHTML = '';
     if (who === 'me') face.append(spriteCanvas(c => drawPerson(c, 0, 0, LOOKS[game.profile.gender]), 3));
@@ -52,7 +54,8 @@ async function say(lines) {
     else if (sp.face) { const el = faceElement(sp.face); if (el) face.append(el); }
     name.textContent = sp.name;
     text.textContent = '';
-    line = maiText(line, game.profile.gender);
+    line = maiText(line, game.profile.gender, game.ruler);
+    who = maiText(who, game.profile.gender, game.ruler);
     let skip = false;
     const onTap = () => { skip = true; };
     tap.addEventListener('click', onTap);
@@ -208,7 +211,7 @@ async function handleTrigger(a) {
 
 async function runEvent(id) {
   const ev = EVENTS[EVENT_INDEX[id]];
-  if (ev.final) await say(GUIDE_REUNION);
+  if (ev.final) { game.ruler = rulerOf(game.profile); await say(GUIDE_REUNION); }
   await say(ev.intro);
   await askGut(ev);
   if (ev.kind === 'panel') {
@@ -241,7 +244,7 @@ function choosePanel(ev) {
     shrine: [faceElement('goddess')],
     guild: [faceElement('clerk')],
     camp: [faceElement('mai')],
-    castle: [spriteCanvas(c => drawPerson(c, 0, 0, LOOKS.demon), 4), spriteCanvas(c => drawCat(c, 0, 0, CATS.black), 2)],
+    castle: [faceElement(game.ruler === 'king' ? 'king' : 'demon'), spriteCanvas(c => drawCat(c, 0, 0, CATS.black), 2)],
   }[ev.id] || [];
   cards.forEach(c => cast.append(c));
   return new Promise(resolve => {
@@ -254,8 +257,8 @@ function choosePanel(ev) {
         b.innerHTML = '<span class="art"></span><span class="lbl"></span><span class="voice"></span>';
       }
       b.querySelector('.art').append(optionArt(o.art));
-      b.querySelector('.lbl').textContent = o.label;
-      b.querySelector('.voice').textContent = `「${VOICES[ev.id][i].voice}」`;
+      b.querySelector('.lbl').textContent = maiText(o.label, game.profile.gender, game.ruler);
+      b.querySelector('.voice').textContent = `「${maiText(VOICES[ev.id][i].voice, game.profile.gender, game.ruler)}」`;
       b.onclick = async () => {
         grid.querySelectorAll('.opt').forEach(x => { x.onclick = null; });
         if (ev.id === 'shrine') { b.classList.add('flipped'); await sleep(900); }
@@ -281,7 +284,7 @@ function askGut(ev) {
   const g = GUT[ev.id];
   if (!g) return Promise.resolve();
   const box = $('#gut');
-  box.innerHTML = `<div class="gut-card"><div class="gut-q">${g.q}</div><div class="gut-opts"></div></div>`;
+  box.innerHTML = `<div class="gut-card"><div class="gut-q">${maiText(g.q, game.profile.gender, game.ruler)}</div><div class="gut-opts"></div></div>`;
   const opts = box.querySelector('.gut-opts');
   box.hidden = false;
   return new Promise(resolve => {
@@ -331,7 +334,7 @@ async function finishEvent(ev, idx) {
   const w = game.world;
   w.complete(ev.id);
   await say([[opt.reactBy || 'me', opt.react]]);
-  toast(`獲得稱號「${opt.title}」`);
+  toast(`獲得稱號「${maiText(opt.title, game.profile.gender, game.ruler)}」`);
   w.setCats(catsSoFar());
   renderStamps();
   w.setTimeOfDay(Math.min(5, p.order.length + (ev.final ? 1 : 0)));
@@ -449,7 +452,7 @@ function showResult(profile, party) {
   const partner = JOBS[job.partner];
   const journeyStamps = [...profile.order, 5].map(e => EVENTS[e].icon).join('<span class="arrow">→</span>');
   root.innerHTML = `
-    <p class="epilogue">後來，國王被女神罰去村子裡洗了一個月的碗。</p>
+    <p class="epilogue">${maiText('{尾聲}', profile.gender, r.ruler)}</p>
     <p class="eyebrow">新手教學・職業分配完成</p>
     <div class="hero-card"></div>
     <div class="job-title"><div class="name">${job.icon} ${job.name}</div><div class="tag">「${job.tagline}」</div></div>
