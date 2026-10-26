@@ -1,5 +1,6 @@
 // 計分與代碼：純函式，不碰畫面。瀏覽器和 node 都能直接 import。
 import { DIMS, JOBS, JOB_ORDER, EVENTS, SECRETS, VERSION, TEAM_PREFIX, TEAM_TYPE } from './data.js';
+import { THEMES, VOICES, TYPE } from './persona.js';
 
 const SIG_BONUS = 3;
 const FLOOR_RATIO = 0.8;
@@ -98,6 +99,19 @@ export function computeResult(profile) {
     journey: journeyLines(profile, ranked, mix, hidden),
     titles: chosenOptions(profile).sort((a, b) => a.pos - b.pos).map(c => c.opt.title),
     description: describe(main, hidden),
+    type: personaType(profile, topDims),
+    analysis: profile.choices.map((c, e) => ({ event: e, theme: THEMES[EVENTS[e].id], ...VOICES[EVENTS[e].id][c] })),
+  };
+}
+
+// 像 MBTI 一樣的類型名稱：最高兩個面向＋三個標籤
+function personaType(profile, topDims) {
+  const [a, b] = topDims;
+  const h = profile.choices.reduce((x, c) => x * 4 + c, 7);
+  return {
+    name: `${TYPE[a].adj}・${TYPE[b].adj}型`,
+    tags: [TYPE[a].tags[h % 3], TYPE[a].tags[(h + 1) % 3], TYPE[b].tags[h % 3]],
+    line: `${TYPE[a].core}，${TYPE[b].sub}。`,
   };
 }
 

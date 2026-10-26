@@ -1,5 +1,6 @@
 // 遊戲流程：開場 → 地圖 → 事件 → 揭曉 → 結果 → 組隊
 import { EVENTS, SECRETS, SPEAKERS, OPENINGS, SUMMON, CHATTER, JOBS, DIM_INFO, DIMS } from './data.js';
+import { VOICES, THEMES } from './persona.js';
 import { computeResult, encodeParty, decodeParty, teamInfo } from './score.js';
 import { createWorld } from './world.js';
 import { drawPerson, drawCat, drawSlime, LOOKS, CATS, spriteCanvas, faceCanvas } from './pixel.js';
@@ -193,7 +194,7 @@ async function runEvent(id) {
     await finishEvent(ev, idx);
   } else {
     game.world.setActive(id);
-    toast(ev.kind === 'dark' ? '在黑暗中走走看，走到想選的東西上' : '走到想選的東西旁邊');
+    showLegend(ev);
   }
 }
 
@@ -210,7 +211,7 @@ function choosePanel(ev) {
   panel.className = `panel ${ev.id}`;
   panel.hidden = false;
   panel.innerHTML = `<div class="panel-sheet"><div class="panel-cast"></div><div class="panel-head"><div class="place">${ev.icon} ${ev.name}</div>
-    <div class="play">${ev.id === 'shrine' ? '點一張卡片翻開它' : ev.id === 'guild' ? '撕下一張委託單' : '點一樣東西'}</div></div>
+    <div class="play">${ev.id === 'shrine' ? '選一個你最想要的願望，翻開看看是什麼特典' : ev.id === 'guild' ? '撕下一張委託單' : '點一樣東西'}</div></div>
     <div class="options"></div></div>`;
   const grid = panel.querySelector('.options');
   const cast = panel.querySelector('.panel-cast');
@@ -226,12 +227,13 @@ function choosePanel(ev) {
       const b = document.createElement('button');
       b.className = 'opt';
       if (ev.id === 'shrine') {
-        b.innerHTML = '<span class="back">✦</span><span class="face"><span class="art"></span><span class="lbl"></span></span>';
+        b.innerHTML = `<span class="back"><span class="back-star">✦</span><span class="back-voice">「${VOICES[ev.id][i].voice}」</span></span><span class="face"><span class="art"></span><span class="lbl"></span><span class="voice"></span></span>`;
       } else {
-        b.innerHTML = '<span class="art"></span><span class="lbl"></span>';
+        b.innerHTML = '<span class="art"></span><span class="lbl"></span><span class="voice"></span>';
       }
       b.querySelector('.art').append(optionArt(o.art));
       b.querySelector('.lbl').textContent = o.label;
+      b.querySelector('.voice').textContent = `「${VOICES[ev.id][i].voice}」`;
       b.onclick = async () => {
         grid.querySelectorAll('.opt').forEach(x => { x.onclick = null; });
         if (ev.id === 'shrine') { b.classList.add('flipped'); await sleep(900); }
@@ -252,7 +254,25 @@ function catsSoFar() {
   return n;
 }
 
+// 走過去選的事件：畫面上方列出四個選項和內心話
+function showLegend(ev) {
+  const box = $('#legend');
+  box.innerHTML = `<div class="legend-q">${THEMES[ev.id]}？</div><div class="legend-hint">${ev.kind === 'dark' ? '在黑暗中走走看，找到後走過去' : '走到想選的東西旁邊'}</div>`;
+  ev.options.forEach((o, i) => {
+    const row = document.createElement('div');
+    row.className = 'legend-row';
+    const art = document.createElement('span');
+    art.className = 'legend-art';
+    art.append(optionArt(o.art));
+    row.append(art);
+    row.insertAdjacentHTML('beforeend', `<span><b>${o.label}</b><br>「${VOICES[ev.id][i].voice}」</span>`);
+    box.append(row);
+  });
+  box.hidden = false;
+}
+
 async function finishEvent(ev, idx) {
+  $('#legend').hidden = true;
   const p = game.profile, e = EVENT_INDEX[ev.id];
   const opt = ev.options[idx];
   p.choices[e] = idx;
@@ -382,9 +402,13 @@ function showResult(profile, party) {
     <p class="eyebrow">新手教學・職業分配完成</p>
     <div class="hero-card"></div>
     <div class="job-title"><div class="name">${job.icon} ${job.name}</div><div class="tag">「${job.tagline}」</div></div>
+    <div class="card type-card"><div class="type-label">你的性格類型</div><div class="type-name">${r.type.name}</div>
+      <div class="type-tags">${r.type.tags.map(t => `<span>${t}</span>`).join('')}</div><p>${r.type.line}</p></div>
     <div class="card"><h3>職業成分表</h3><div class="mix"></div></div>
     <div class="card"><h3>你的旅程</h3><div class="journey-stamps">${journeyStamps}</div>${r.journey.map(l => `<p>${l}</p>`).join('')}</div>
     <div class="card"><h3>職業描述</h3><p>${r.description}</p></div>
+    <div class="card"><h3>選擇解析</h3>${r.analysis.map(a => `<div class="ana"><div class="ana-q">${'①②③④⑤⑥'[a.event]} ${a.theme}</div><div class="ana-a">「${a.voice}」</div><p>${a.short}</p></div>`).join('')}
+      <div class="btn-col"><button class="btn small" data-act="full">看完整解析</button></div></div>
     <div class="card"><h3>你在隊伍中的位置｜${job.role}</h3><p>${job.roleText}</p></div>
     <div class="card"><h3>最佳拍檔</h3><div class="partner"><span class="ico">${partner.icon}</span><p><b>${partner.name}</b><br>${job.partnerText}</p></div></div>
     <div class="card"><h3>旅途小提醒</h3><p>${job.tip}</p></div>
@@ -428,7 +452,8 @@ function showResult(profile, party) {
     <p>${left ? `你的好朋友，跟你是<b>互相搭配</b>的屬性，還是<b>一模一樣</b>呢？把連結傳給朋友，測完就會加入你的隊伍。湊滿四人，隊名和你們的隊伍屬性就會揭曉！（還差 ${left} 位）` : '四個人到齊了，來看看你們的隊名吧！'}</p>
     <div class="btn-col">${left ? '<button class="btn primary" data-act="invite">邀請夥伴組隊</button>' : '<button class="btn primary" data-act="team">揭曉我們的隊伍</button>'}</div>`;
   root.querySelector('[data-act="invite"]')?.addEventListener('click', () =>
-    share(shareLink(party, r.main), `我轉生成了「${job.name}」！你會是什麼職業？測完就能加入我的隊伍（${party.length}/4）`));
+    share(shareLink(party, r.main), `我轉生成了「${job.name}」！那你呢？四個人就可以組隊！（${party.length}/4）`));
+  root.querySelector('[data-act="full"]').addEventListener('click', () => showAnalysis(r));
   root.querySelector('[data-act="team"]')?.addEventListener('click', () => showTeam(party, true));
   root.querySelector('[data-act="again"]').addEventListener('click', () => {
     const others = party.slice(0, -1);
@@ -455,6 +480,26 @@ function radarSvg(avg) {
   return `<svg class="radar" viewBox="0 0 240 224" role="img" aria-label="隊伍面向圖">
     ${[0.33, 0.66, 1].map(v => `<polygon points="${ring(v)}" fill="none" stroke="#D8E4EE"/>`).join('')}
     <polygon points="${shape}" fill="rgba(126,200,242,.45)" stroke="#3A6EA5" stroke-width="2"/>${labels}</svg>`;
+}
+
+// 完整解析頁
+function showAnalysis(r) {
+  const el = $('#screen-analysis');
+  el.innerHTML = '';
+  el.scrollTop = 0;
+  const root = document.createElement('div');
+  root.className = 'result';
+  root.innerHTML = `
+    <p class="eyebrow">完整解析</p>
+    <div class="card type-card"><div class="type-label">你的性格類型</div><div class="type-name">${r.type.name}</div>
+      <div class="type-tags">${r.type.tags.map(t => `<span>${t}</span>`).join('')}</div><p>${r.type.line}</p></div>
+    <div class="card"><h3>你的六個面向</h3>${radarSvg(r.dims)}</div>
+    ${r.analysis.map(a => `<div class="card"><h3>${'①②③④⑤⑥'[a.event]} ${a.theme}</h3><div class="ana-a">你選了「${a.voice}」</div><p>${a.long}</p></div>`).join('')}
+    <div class="btn-col"><button class="btn primary" data-act="back">回到我的結果</button></div>
+    <p class="disclaimer">本測驗純屬娛樂，不代表任何心理評估。</p>`;
+  el.append(root);
+  root.querySelector('[data-act="back"]').onclick = () => show('result');
+  show('analysis');
 }
 
 function showTeam(party, fromResult) {
