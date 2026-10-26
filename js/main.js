@@ -1,5 +1,5 @@
 // 遊戲流程：開場 → 地圖 → 事件 → 揭曉 → 結果 → 組隊
-import { EVENTS, SECRETS, SPEAKERS, OPENINGS, GUIDE_INTRO, CHATTER, JOBS, DIM_INFO, DIMS } from './data.js';
+import { EVENTS, SECRETS, SPEAKERS, OPENINGS, GUIDE_INTRO, GUIDE_REUNION, CHATTER, JOBS, DIM_INFO, DIMS } from './data.js';
 import { VOICES, THEMES, GUT } from './persona.js';
 import { computeResult, encodeParty, decodeParty, teamInfo } from './score.js';
 import { createWorld, WALK_ITEMS } from './world.js';
@@ -178,9 +178,9 @@ async function handleTrigger(a) {
     else if (a.type === 'secret') await runSecret(a.id);
     else if (a.type === 'chat') await say(CHATTER[a.id]);
     else if (a.type === 'locked' && a.id === 'castle') {
-      await say([['guide', `城門還鎖著。先把村子裡的五個地方都逛完吧（${game.profile.order.length}/5）。`]]);
+      await say([['narr', `城門上貼著一張紙：「最終關卡準備中，請先去村子裡逛逛（${game.profile.order.length}/5）」——署名是一個貓掌印。`]]);
     } else if (a.type === 'locked' && a.id === 'home') {
-      await say([['guide', '王城的大門關著。守衛說國王正忙著「召喚儀式」，閒雜人等不准進去。']]);
+      await say([['narr', '王城的大門緊閉。守衛瞪了你一眼：「國王正在進行召喚儀式，閒雜人等不得進入！」']]);
     }
   } finally {
     busy = false;
@@ -190,6 +190,7 @@ async function handleTrigger(a) {
 
 async function runEvent(id) {
   const ev = EVENTS[EVENT_INDEX[id]];
+  if (ev.final) await say(GUIDE_REUNION);
   await say(ev.intro);
   await askGut(ev);
   if (ev.kind === 'panel') {
@@ -327,7 +328,7 @@ async function finishEvent(ev, idx) {
     await sleep(600);
     w.unlock();
     renderStamps();
-    await say([['narr', '遠方響起了鐘聲。'], ['guide', '魔王城的門打開了！往北走，過了橋就是了。']]);
+    await say([['narr', '遠方響起了鐘聲。北邊城堡的大門，緩緩打開了。'], ['sys', '【任務更新】前往北邊的城堡大門，和喵導員會合。']]);
   }
 }
 

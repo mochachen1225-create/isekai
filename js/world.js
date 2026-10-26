@@ -334,12 +334,12 @@ export function createWorld(canvas, opts) {
         sprites.push([it.at[1], () => drawItem(ctx, it.at[0] * TILE, it.at[1] * TILE, it.kind, t)]);
       });
     }
-    const followers = [[CATS.guide, 'guide']];
+    const followers = []; // 喵導員先去城堡準備了，只有路上收服的貓會跟著
     const extra = [[CATS.calico, 'calico'], [CATS.black, 'black'], [CATS.orange, 'orange'], [CATS.calico, 'calico']];
     for (let i = 0; i < Math.min(4, state.cats); i++) followers.push(extra[i]);
     followers.forEach(([look, name], i) => {
       const h = state.history[Math.min(state.history.length - 1, (i + 1) * 9)];
-      if (!h && i > 0) return;
+      if (!h) return;
       const [fx, fy, fd] = h || [p.px + 18, p.py + 6, 'left'];
       sprites.push([fy / TILE, () => cat(look, name, fx, fy, fd, p.frame, p.moving)]);
     });
