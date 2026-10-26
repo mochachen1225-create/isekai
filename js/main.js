@@ -425,7 +425,7 @@ function showResult(profile, party) {
       const pr = computeResult(p);
       return `<span class="party-chip${i === party.length - 1 ? ' me' : ''}">${JOBS[pr.main].icon} ${i === party.length - 1 ? '你' : `旅人 ${i + 1}`}・${JOBS[pr.main].name}</span>`;
     }).join('')}</div>
-    <p>${left ? `還差 ${left} 位，隊名尚未解鎖。把連結傳給朋友，讓他們測完加入你的隊伍吧！` : '四個人到齊了，來看看你們的隊名吧！'}</p>
+    <p>${left ? `你的好朋友，跟你是<b>互相搭配</b>的屬性，還是<b>一模一樣</b>呢？把連結傳給朋友，測完就會加入你的隊伍。湊滿四人，隊名和你們的隊伍屬性就會揭曉！（還差 ${left} 位）` : '四個人到齊了，來看看你們的隊名吧！'}</p>
     <div class="btn-col">${left ? '<button class="btn primary" data-act="invite">邀請夥伴組隊</button>' : '<button class="btn primary" data-act="team">揭曉我們的隊伍</button>'}</div>`;
   root.querySelector('[data-act="invite"]')?.addEventListener('click', () =>
     share(shareLink(party, r.main), `我轉生成了「${job.name}」！你會是什麼職業？測完就能加入我的隊伍（${party.length}/4）`));
