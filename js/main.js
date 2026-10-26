@@ -12,7 +12,7 @@ const EVENT_INDEX = Object.fromEntries(EVENTS.map((e, i) => [e.id, i]));
 
 // 對話頭像：有畫好的插畫就用插畫，沒有就用點陣小人
 const PORTRAITS = { guide: 'guide', king: 'king', demon: 'demon', mai_m: 'mai_m', mai_f: 'mai_f', xing: 'xing', clerk: 'clerk', goddess: 'goddess', granny: 'granny', cat: 'calico' };
-const READY = new Set(['guide', 'calico', 'granny', 'goddess', 'clerk', 'xing', 'mai_m', 'king', 'demon']); // 已經放進 assets/portraits/ 的頭像
+const READY = new Set(['guide', 'calico', 'granny', 'goddess', 'clerk', 'xing', 'mai_m', 'mai_f', 'king', 'demon']); // 已經放進 assets/portraits/ 的頭像
 function faceElement(face) {
   if (face === 'mai') face = game.profile && game.profile.gender === 'm' ? 'mai_f' : 'mai_m';
   const fallback = () => faceCanvas(face);
