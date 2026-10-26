@@ -177,6 +177,7 @@ h2 { margin: 0 0 18px; font-size: 22px; line-height: 1.6; letter-spacing: .04em;
 .legend-row:active { background: #FFE9B8; }
 .legend-art { flex: none; width: 32px; text-align: center; font-size: 22px; }
 .legend-art canvas { width: 32px; height: 32px; image-rendering: pixelated; }
+.legend-art .opt-sprite { width: 32px; height: 32px; }
 
 /* ---- 直覺反應（二選一） ---- */
 .gut { position: absolute; inset: 0; z-index: 18; display: grid; place-items: center; background: rgba(20,24,48,.45); animation: fadein .2s; }
@@ -334,3 +335,5 @@ h2 { margin: 0 0 18px; font-size: 22px; line-height: 1.6; letter-spacing: .04em;
 .tone-card b { font-size: 20px; }
 .tone-card.light { background: linear-gradient(180deg, #FFF8E0, #FFE9B8); color: #6A4A20; }
 .tone-card.dark { background: linear-gradient(180deg, #3A3058, #1E1A30); color: #E8E0FF; }
+.opt .art { flex: none; width: 52px; text-align: center; }
+.opt-sprite { width: 48px; height: 48px; object-fit: contain; }

@@ -234,6 +234,15 @@ async function runEvent(id) {
 }
 
 function optionArt(art) {
+  const file = { slime: 'slime', blackcat: 'blackcat' }[art];
+  if (file) {
+    // 有 Gemini 圖就用圖，載入失敗退回程式畫的
+    const img = new Image();
+    img.className = 'opt-sprite';
+    img.src = `assets/sprites/${file}.png`;
+    img.onerror = () => img.replaceWith(file === 'slime' ? spriteCanvas(c => drawSlime(c, 0, 0), 2) : spriteCanvas(c => drawCat(c, 0, 0, CATS.black), 2));
+    return img;
+  }
   if (art === 'slime') return spriteCanvas(c => drawSlime(c, 0, 0), 2);
   if (art === 'blackcat') return spriteCanvas(c => drawCat(c, 0, 0, CATS.black), 2);
   const s = document.createElement('span');

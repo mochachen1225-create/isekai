@@ -399,7 +399,9 @@ export function createWorld(canvas, opts) {
     }
     if (!state.done.has('meadow')) {
       const f = Math.floor(t / 300) % 2;
-      sprites.push([slimeAt[1], () => ctx.drawImage(sprite(`slime|${f}`, c => drawSlime(c, 0, 0, f)), slimeAt[0] * TILE, slimeAt[1] * TILE)]);
+      sprites.push([slimeAt[1], () => SPRITE_IMG.slime
+        ? drawImgSprite(SPRITE_IMG.slime, slimeAt[0] * TILE, slimeAt[1] * TILE, 'down', f, true, 24)
+        : ctx.drawImage(sprite(`slime|${f}`, c => drawSlime(c, 0, 0, f)), slimeAt[0] * TILE, slimeAt[1] * TILE)]);
     }
     if (!state.secrets.has('box')) {
       const [bx, by] = SECRET_TILES.box[0];
