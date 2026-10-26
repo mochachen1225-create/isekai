@@ -1,6 +1,7 @@
 // 遊戲流程：開場 → 地圖 → 事件 → 揭曉 → 結果 → 組隊
 import { maiText, EVENTS, SECRETS, SPEAKERS, OPENINGS, GUIDE_INTRO, GUIDE_REUNION, CHATTER, JOBS, DIM_INFO, DIMS } from './data.js';
 import { VOICES, THEMES, GUT, QUESTIONS } from './persona.js';
+import { toned, tipFor } from './tone.js';
 import { rulerOf, computeResult, encodeParty, decodeParty, teamInfo } from './score.js';
 import { createWorld, WALK_ITEMS } from './world.js';
 import { drawPerson, drawCat, drawSlime, LOOKS, CATS, spriteCanvas, faceCanvas } from './pixel.js';
@@ -54,7 +55,7 @@ async function say(lines) {
     else if (sp.face) { const el = faceElement(sp.face); if (el) face.append(el); }
     name.textContent = sp.name;
     text.textContent = '';
-    line = maiText(line, game.profile.gender, game.ruler);
+    line = maiText(toned(line, game.profile.tone), game.profile.gender, game.ruler);
     who = maiText(who, game.profile.gender, game.ruler);
     let skip = false;
     const onTap = () => { skip = true; };
@@ -89,7 +90,16 @@ function initTitle() {
   guide.className = 'title-guide';
   row.append(guide);
   row.append(spriteCanvas(c => drawPerson(c, 0, 0, LOOKS.f), 3));
-  document.querySelectorAll('[data-action="start"]').forEach(b => b.addEventListener('click', chooseAvatar));
+  document.querySelectorAll('[data-action="start"]').forEach(b => b.addEventListener('click', chooseTone));
+}
+
+// 介紹頁：說明這是什麼遊戲，並選光明版或暗黑版
+async function chooseTone() {
+  show('intro');
+  game.tone = await new Promise(resolve => {
+    document.querySelectorAll('.tone-card').forEach(b => { b.onclick = () => resolve(b.dataset.tone); });
+  });
+  chooseAvatar();
 }
 
 async function chooseAvatar() {
@@ -102,7 +112,7 @@ async function chooseAvatar() {
     document.querySelectorAll('.avatar-card').forEach(b => { b.onclick = () => resolve(b.dataset.gender); });
   });
   LOOKS.mai = gender === 'm' ? LOOKS.maiF : LOOKS.maiM;
-  game.profile = { gender, choices: [-1, -1, -1, -1, -1, -1], gut: [0, 0, 0, 0, 0, 0], order: [], secrets: 0 };
+  game.profile = { tone: game.tone || 'l', gender, choices: [-1, -1, -1, -1, -1, -1], gut: [0, 0, 0, 0, 0, 0], order: [], secrets: 0 };
   chooseSituation();
 }
 
@@ -236,7 +246,7 @@ function choosePanel(ev) {
   panel.className = `panel ${ev.id}`;
   panel.hidden = false;
   panel.innerHTML = `<div class="panel-sheet"><div class="panel-cast"></div><div class="panel-head"><div class="place">${ev.icon} ${ev.name}</div>
-    <div class="q">${QUESTIONS[ev.id]}</div><div class="play">${ev.id === 'shrine' ? '選一個你最想要的願望，翻開看看是什麼特典' : ev.id === 'guild' ? '撕下一張委託單' : '選一個最像你的'}</div></div>
+    <div class="q">${maiText(QUESTIONS[ev.id], game.profile.gender, game.ruler)}</div><div class="play">${ev.id === 'shrine' ? '選一個你最想要的願望，翻開看看是什麼特典' : ev.id === 'guild' ? '撕下一張委託單' : '選一個最像你的'}</div></div>
     <div class="options"></div></div>`;
   const grid = panel.querySelector('.options');
   const cast = panel.querySelector('.panel-cast');
@@ -309,7 +319,7 @@ function askGut(ev) {
 // 走過去選的事件：畫面上方列出四個選項和內心話
 function showLegend(ev) {
   const box = $('#legend');
-  box.innerHTML = `<div class="legend-q">${QUESTIONS[ev.id]}</div><div class="legend-hint">${ev.kind === 'dark' ? '在黑暗中走走看，或直接點下面的選項' : '點下面的選項，或走到地圖上的東西旁邊'}</div>`;
+  box.innerHTML = `<div class="legend-q">${maiText(QUESTIONS[ev.id], game.profile.gender, game.ruler)}</div><div class="legend-hint">${ev.kind === 'dark' ? '在黑暗中走走看，或直接點下面的選項' : '點下面的選項，或走到地圖上的東西旁邊'}</div>`;
   ev.options.forEach((o, i) => {
     const row = document.createElement('div');
     row.className = 'legend-row';
@@ -460,13 +470,13 @@ function showResult(profile, party) {
     <div class="card type-card"><div class="type-label">你的性格類型</div><div class="type-name">${r.type.name}</div>
       <div class="type-tags">${r.type.tags.map(t => `<span>${t}</span>`).join('')}</div><p>${r.type.line}</p><div class="code"><div class="code-label">你的四種傾向（來自每一題的第一直覺）</div><div class="code-chips">${r.code.letters.map(l => `<span>${l.icon} ${l.word}</span>`).join('')}</div></div></div>
     <div class="card"><h3>職業成分表</h3><div class="mix"></div></div>
-    <div class="card"><h3>你的旅程</h3><div class="journey-stamps">${journeyStamps}</div>${r.journey.map(l => `<p>${l}</p>`).join('')}</div>
+    <div class="card"><h3>你的旅程</h3><div class="journey-stamps">${journeyStamps}</div>${r.journey.map(l => `<p>${toned(l, profile.tone)}</p>`).join('')}</div>
     <div class="card"><h3>職業描述</h3><p>${r.description}</p></div>
     <div class="card"><h3>你的個性</h3>${r.analysis.map(a => `<div class="ana"><div class="ana-q">${'①②③④⑤⑥'[a.event]} ${a.theme}</div><div class="ana-a">「${a.voice}」</div><p>${a.short}</p></div>`).join('')}
       <div class="btn-col"><button class="btn small" data-act="full">看完整解析</button></div></div>
     <div class="card"><h3>你在隊伍中的位置｜${job.role}</h3><p>${job.roleText}</p></div>
     <div class="card"><h3>最佳拍檔</h3><div class="partner"><span class="ico">${partner.icon}</span><p><b>${partner.name}</b><br>${job.partnerText}</p></div></div>
-    <div class="card"><h3>旅途小提醒</h3><p>${job.tip}</p></div>
+    <div class="card"><h3>${profile.tone === 'd' ? '毒舌小提醒' : '旅途小提醒'}</h3><p>${tipFor(r.main, job.tip, profile.tone)}</p></div>
     <div class="card"><h3>這趟旅程獲得的稱號</h3><div class="titles">${r.titles.map(t => `<span>${t}</span>`).join('')}</div></div>
     <div class="card party"></div>
     <div class="btn-col"><button class="btn small" data-act="again">再轉生一次</button></div>

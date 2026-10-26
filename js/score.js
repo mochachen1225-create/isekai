@@ -183,15 +183,15 @@ function journeyLines(profile, ranked, mix, hidden) {
 // ---- 代碼：外觀1 + 選擇6 + 順序5 + 祕密1 = 13 碼 ----
 
 export function encodeProfile(p) {
-  return p.gender + p.choices.join('') + (p.gut || [0, 0, 0, 0, 0, 0]).join('') + p.order.join('') + p.secrets;
+  return p.gender + p.choices.join('') + (p.gut || [0, 0, 0, 0, 0, 0]).join('') + p.order.join('') + p.secrets + (p.tone === 'd' ? 'd' : '');
 }
 
 export function decodeProfile(code) {
-  const m = /^([mf])([0-3]{6})([01]{6})([0-4]{5})([0-3])$/.exec(code || '');
+  const m = /^([mf])([0-3]{6})([01]{6})([0-4]{5})([0-3])(d?)$/.exec(code || '');
   if (!m) return null;
   const order = m[4].split('').map(Number);
   if (new Set(order).size !== 5) return null;
-  return { gender: m[1], choices: m[2].split('').map(Number), gut: m[3].split('').map(Number), order, secrets: Number(m[5]) };
+  return { gender: m[1], choices: m[2].split('').map(Number), gut: m[3].split('').map(Number), order, secrets: Number(m[5]), tone: m[6] || 'l' };
 }
 
 export function encodeParty(profiles) {
