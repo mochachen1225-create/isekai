@@ -49,7 +49,7 @@ async function say(lines) {
     who = maiText(who, game.profile.gender, game.ruler);
     const sp = SPEAKERS[who] || SPEAKERS.narr;
     face.innerHTML = '';
-    if (who === 'me') face.append(spriteCanvas(c => drawPerson(c, 0, 0, LOOKS[game.profile.gender]), 3));
+    if (who === 'me') { const g = game.profile.gender; const img = gSprite(`player_${g}`, () => spriteCanvas(c => drawPerson(c, 0, 0, LOOKS[g]), 3)); img.classList.add('me-face'); face.append(img); }
     else if (who === 'sys') face.textContent = '⚙️';
     else if (who === 'sign') face.textContent = '🪧';
     else if (sp.face) { const el = faceElement(sp.face); if (el) face.append(el); }
@@ -81,15 +81,25 @@ function toast(msg) {
 }
 
 // ---- 開場 ----
+// Gemini 畫的小人；圖片載入失敗就退回程式畫的
+function gSprite(name, fallback) {
+  const img = new Image();
+  img.className = 'gsprite';
+  img.alt = '';
+  img.src = `assets/sprites/${name}.png`;
+  img.onerror = () => img.replaceWith(fallback());
+  return img;
+}
+
 function initTitle() {
   // 先在背景下載地圖，進入異世界時就不用等太久
   new Image().src = 'assets/map/village.webp';
   const row = $('#title-sprites');
-  row.append(spriteCanvas(c => drawPerson(c, 0, 0, LOOKS.m), 3));
+  row.append(gSprite('player_m', () => spriteCanvas(c => drawPerson(c, 0, 0, LOOKS.m), 3)));
   const guide = faceElement('guide');
   guide.className = 'title-guide';
   row.append(guide);
-  row.append(spriteCanvas(c => drawPerson(c, 0, 0, LOOKS.f), 3));
+  row.append(gSprite('player_f', () => spriteCanvas(c => drawPerson(c, 0, 0, LOOKS.f), 3)));
   document.querySelectorAll('[data-action="start"]').forEach(b => b.addEventListener('click', chooseTone));
 }
 
@@ -106,7 +116,7 @@ async function chooseAvatar() {
   show('avatar');
   document.querySelectorAll('.avatar-sprite').forEach(el => {
     el.innerHTML = '';
-    el.append(spriteCanvas(c => drawPerson(c, 0, 0, LOOKS[el.dataset.look]), 4));
+    el.append(gSprite(`player_${el.dataset.look}`, () => spriteCanvas(c => drawPerson(c, 0, 0, LOOKS[el.dataset.look]), 4)));
   });
   const gender = await new Promise(resolve => {
     document.querySelectorAll('.avatar-card').forEach(b => { b.onclick = () => resolve(b.dataset.gender); });
@@ -263,7 +273,7 @@ function choosePanel(ev) {
     shrine: [faceElement('goddess')],
     guild: [faceElement('clerk')],
     camp: [faceElement('mai')],
-    castle: [faceElement(game.ruler === 'king' ? 'king' : 'demon'), spriteCanvas(c => drawCat(c, 0, 0, CATS.black), 2)],
+    castle: [faceElement(game.ruler === 'king' ? 'king' : 'demon'), gSprite('blackcat', () => spriteCanvas(c => drawCat(c, 0, 0, CATS.black), 2))],
   }[ev.id] || [];
   cards.forEach(c => cast.append(c));
   return new Promise(resolve => {

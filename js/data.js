@@ -287,7 +287,7 @@ export const EVENTS = [
     ],
   },
   {
-    id: 'castle', name: '魔王城', icon: '🏰', kind: 'panel', play: '面對魔王', final: true,
+    id: 'castle', name: '神祕城堡', icon: '🏰', kind: 'panel', play: '最終關卡', final: true,
     intro: [
       ['narr', '{王登場}'],
       ['{王講話}', '{王台詞}'],

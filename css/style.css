@@ -5,7 +5,7 @@
 }
 
 :root {
-  --bg: #F7FBFF;
+  --bg: #FFF8EC;
   --sky: #7EC8F2;
   --mint: #9EE2C8;
   --lemon: #FFE58A;
@@ -18,12 +18,12 @@
 }
 
 * { box-sizing: border-box; }
-html, body { margin: 0; height: 100%; background: #DDEFFA; color: var(--ink);
+html, body { margin: 0; height: 100%; background: #F3E6CF; color: var(--ink);
   font-family: "Huninn", -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
   -webkit-tap-highlight-color: transparent; }
 button { font: inherit; color: inherit; }
 #app { position: relative; max-width: 430px; height: 100dvh; margin: 0 auto; overflow: hidden;
-  background: linear-gradient(180deg, #CDEBFF 0%, var(--bg) 60%); }
+  background: linear-gradient(180deg, #FFDDB8 0%, #FFEBD2 30%, var(--bg) 65%); }
 
 .screen { position: absolute; inset: 0; display: none; flex-direction: column; }
 .screen.on { display: flex; }
@@ -41,6 +41,7 @@ h2 { margin: 0 0 18px; font-size: 22px; line-height: 1.6; letter-spacing: .04em;
 .sprite-row { display: flex; justify-content: center; gap: 8px; margin: 8px 0 22px; image-rendering: pixelated; }
 .sprite-row { align-items: flex-end; }
 .sprite-row canvas { width: 96px; height: 96px; image-rendering: pixelated; }
+.sprite-row .gsprite { height: 104px; width: auto; }
 .title-guide { width: 132px; height: 132px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 4px #fff, 0 6px 18px rgba(42,77,122,.25); }
 
 .btn { border: 0; border-radius: 999px; padding: 14px 28px; font-size: 17px; font-weight: 700; cursor: pointer;
@@ -59,6 +60,7 @@ h2 { margin: 0 0 18px; font-size: 22px; line-height: 1.6; letter-spacing: .04em;
 .avatar-card { border: 0; background: #fff; border-radius: var(--radius); padding: 14px 18px 12px; cursor: pointer;
   display: flex; flex-direction: column; align-items: center; gap: 6px; font-weight: 700; font-size: 17px;
   box-shadow: 0 3px 0 #B8C8D8; }
+.avatar-sprite .gsprite { height: 120px; width: auto; display: block; margin: 0 auto; }
 .avatar-sprite canvas { width: 112px; height: 112px; image-rendering: pixelated; display: block; }
 
 .situation-list { display: flex; flex-direction: column; gap: 12px; }
@@ -114,6 +116,9 @@ h2 { margin: 0 0 18px; font-size: 22px; line-height: 1.6; letter-spacing: .04em;
 .dialog-face:empty { display: none; }
 .dialog-face canvas { width: 60px; height: 60px; image-rendering: pixelated; }
 .dialog-face img { width: 68px; height: 68px; object-fit: cover; }
+.dialog-face { overflow: hidden; }
+.dialog-face img.me-face { width: 84px; height: auto; max-width: none; object-fit: fill; align-self: start; margin-top: 5px; }
+.panel-cast .gsprite { width: auto; height: 64px; border-radius: 0; }
 .dialog-body { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; text-align: center; }
 .dialog-name { position: absolute; top: -12px; left: 22px; font-size: 13px; color: #fff; background: #C08A52; border-radius: 999px;
   padding: 2px 12px; font-weight: 700; box-shadow: 0 2px 4px rgba(70,40,20,.2); }
