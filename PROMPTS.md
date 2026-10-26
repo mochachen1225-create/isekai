@@ -624,3 +624,25 @@ High-quality anime gacha game character splash art, refined and highly detailed,
 
 Character: a middle-aged King with a neat curled mustache and a round friendly face, smiling widely with open arms, but the smile looks a little fake and the eyes are scheming; slightly comical, not scary. Outfit: a heavy crimson-and-gold royal robe with white fur trim, a jeweled crown slightly too big, many rings, gold chains and medals, a scepter topped with a large gem. Pose: standing in front of a golden throne, arms wide open in welcome. Background: a glittering golden summoning hall with a glowing magic circle on the floor. Colors: crimson and gold. Vertical 3:4 portrait. No text, no letters, no logo, no watermark, no UI elements, no frame.
 ```
+
+---
+
+## 地圖（已完成）→ `assets/map/village.webp`
+
+由 Gemini 畫好，已經放進遊戲。如果之後要換一張，用同一段指令重畫；換圖後要重新標記能走的格子（`js/world.js` 的 `ROWS`）。
+
+```
+High-quality pixel art, top-down view of a small cozy fantasy village map for a mobile RPG,
+like a hand-crafted 16-bit JRPG map, vibrant bright colors, soft shading, detailed hand-placed pixels.
+Layout from top to bottom:
+- Top center: a dark purple demon lord castle with two pointed towers and a big wooden gate, trees on both sides.
+- Below it: a dirt road, then a blue river running left to right with a small wooden bridge in the middle.
+- Middle left: a dark misty forest with a wooden signpost.
+- Middle right: a small campfire by the river bank.
+- Center: a small plaza with a stone fountain where dirt paths cross.
+- Lower left: a small shrine with a red roof and a glowing goddess statue inside.
+- Lower right: a two-story timber adventurers' guild with a sword-and-shield sign, and a tiny cafe with a pink-and-white striped awning next to it.
+- Bottom center: a meadow with tall grass and wildflowers.
+- Very bottom: a white royal castle wall with blue banners and a closed gate.
+No characters, no animals, no text, no UI. Vertical 3:4.
+```
