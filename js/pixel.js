@@ -1,6 +1,12 @@
 // 點陣圖：所有角色都在 32×32 的格子裡用矩形畫出來，放大後就是點陣風。
 
-const OUTLINE = '#3a2f3a';
+// 外框不用黑色：每個部位用自己顏色的深色版，再混一點暖褐色，跟地圖的線條比較搭
+const WARM = [92, 58, 40];
+function outlineOf(hex) {
+  const n = parseInt(hex.slice(1), 16);
+  const rgb = [n >> 16, (n >> 8) & 255, n & 255].map((v, i) => Math.round(v * 0.45 * 0.6 + WARM[i] * 0.4));
+  return `#${rgb.map(v => v.toString(16).padStart(2, '0')).join('')}`;
+}
 
 // 收集一個角色的所有色塊，先畫外框再畫填色，外框就不會蓋到別的部位。
 // round = 圓角（四個角各少一格），看起來比較圓潤
@@ -16,8 +22,9 @@ function painter(ctx, ox, oy, flip) {
     };
     for (const p of parts) {
       if (!p.outline) continue;
-      if (p.round) { put(p.x, p.y - 1, p.w, p.h + 2, OUTLINE); put(p.x - 1, p.y, p.w + 2, p.h, OUTLINE); }
-      else put(p.x - 1, p.y - 1, p.w + 2, p.h + 2, OUTLINE);
+      const line = outlineOf(p.col);
+      if (p.round) { put(p.x, p.y - 1, p.w, p.h + 2, line); put(p.x - 1, p.y, p.w + 2, p.h, line); }
+      else put(p.x - 1, p.y - 1, p.w + 2, p.h + 2, line);
     }
     for (const p of parts) {
       if (p.round) { put(p.x + 1, p.y, p.w - 2, p.h, p.col); put(p.x, p.y + 1, p.w, p.h - 2, p.col); }
