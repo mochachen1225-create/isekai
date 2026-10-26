@@ -1,7 +1,7 @@
 // 遊戲內容資料：面向、職業、事件、文字。
 // 計分規則見 DESIGN.md 第 5 章。
 
-export const VERSION = 'v1';
+export const VERSION = 'v2';
 
 export const DIMS = ['c', 'w', 'i', 'j', 's', 'f'];
 export const DIM_INFO = {

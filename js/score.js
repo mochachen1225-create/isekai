@@ -1,6 +1,6 @@
 // 計分與代碼：純函式，不碰畫面。瀏覽器和 node 都能直接 import。
 import { DIMS, JOBS, JOB_ORDER, EVENTS, SECRETS, VERSION, TEAM_PREFIX, TEAM_TYPE } from './data.js';
-import { THEMES, VOICES, TYPE } from './persona.js';
+import { THEMES, VOICES, TYPE, GUT, AXES } from './persona.js';
 
 const SIG_BONUS = 3;
 const FLOOR_RATIO = 0.8;
@@ -100,11 +100,38 @@ export function computeResult(profile) {
     titles: chosenOptions(profile).sort((a, b) => a.pos - b.pos).map(c => c.opt.title),
     description: describe(main, hidden),
     type: personaType(profile, topDims),
+    code: rebirthCode(profile),
     analysis: profile.choices.map((c, e) => ({ event: e, theme: THEMES[EVENTS[e].id], ...VOICES[EVENTS[e].id][c] })),
   };
 }
 
-// 像 MBTI 一樣的類型名稱：最高兩個面向＋三個標籤
+// 性格類型名稱：最高兩個面向＋三個標籤
+// 轉生代碼：每個直覺反應投票給一個字，同票時以比較晚回答的那一題為準
+function rebirthCode(profile) {
+  const gut = profile.gut || [];
+  const votes = {};
+  EVENTS.forEach((ev, e) => {
+    const g = GUT[ev.id];
+    if (!g || gut[e] == null) return;
+    const letter = (gut[e] ? g.b : g.a).letter;
+    const pos = e === 5 ? 5 : profile.order.indexOf(e);
+    (votes[g.axis] ||= []).push({ letter, pos });
+  });
+  const letters = Object.entries(AXES).map(([axis, a]) => {
+    const v = votes[axis] || [];
+    const count = l => v.filter(x => x.letter === l).length;
+    const [x, y] = a.pair;
+    if (count(x) !== count(y)) return count(x) > count(y) ? x : y;
+    return v.length ? v.sort((p, q) => q.pos - p.pos)[0].letter : x;
+  });
+  const [en, inf, ju, li] = letters;
+  return {
+    code: letters.join('・'),
+    letters: Object.keys(AXES).map((axis, i) => ({ axis, name: AXES[axis].name, letter: letters[i], text: AXES[axis].text[letters[i]] })),
+    line: `${AXES.energy.text[en]}；${AXES.info.text[inf]}；${AXES.judge.text[ju]}；${AXES.life.text[li]}。`,
+  };
+}
+
 function personaType(profile, topDims) {
   const [a, b] = topDims;
   const h = profile.choices.reduce((x, c) => x * 4 + c, 7);
@@ -149,15 +176,15 @@ function journeyLines(profile, ranked, mix, hidden) {
 // ---- 代碼：外觀1 + 選擇6 + 順序5 + 祕密1 = 13 碼 ----
 
 export function encodeProfile(p) {
-  return p.gender + p.choices.join('') + p.order.join('') + p.secrets;
+  return p.gender + p.choices.join('') + (p.gut || [0, 0, 0, 0, 0, 0]).join('') + p.order.join('') + p.secrets;
 }
 
 export function decodeProfile(code) {
-  const m = /^([mf])([0-3]{6})([0-4]{5})([0-3])$/.exec(code || '');
+  const m = /^([mf])([0-3]{6})([01]{6})([0-4]{5})([0-3])$/.exec(code || '');
   if (!m) return null;
-  const order = m[3].split('').map(Number);
+  const order = m[4].split('').map(Number);
   if (new Set(order).size !== 5) return null;
-  return { gender: m[1], choices: m[2].split('').map(Number), order, secrets: Number(m[4]) };
+  return { gender: m[1], choices: m[2].split('').map(Number), gut: m[3].split('').map(Number), order, secrets: Number(m[5]) };
 }
 
 export function encodeParty(profiles) {

@@ -1,6 +1,6 @@
 // 遊戲流程：開場 → 地圖 → 事件 → 揭曉 → 結果 → 組隊
 import { EVENTS, SECRETS, SPEAKERS, OPENINGS, SUMMON, CHATTER, JOBS, DIM_INFO, DIMS } from './data.js';
-import { VOICES, THEMES } from './persona.js';
+import { VOICES, THEMES, GUT } from './persona.js';
 import { computeResult, encodeParty, decodeParty, teamInfo } from './score.js';
 import { createWorld } from './world.js';
 import { drawPerson, drawCat, drawSlime, LOOKS, CATS, spriteCanvas, faceCanvas } from './pixel.js';
@@ -95,7 +95,7 @@ async function chooseAvatar() {
   const gender = await new Promise(resolve => {
     document.querySelectorAll('.avatar-card').forEach(b => { b.onclick = () => resolve(b.dataset.gender); });
   });
-  game.profile = { gender, choices: [-1, -1, -1, -1, -1, -1], order: [], secrets: 0 };
+  game.profile = { gender, choices: [-1, -1, -1, -1, -1, -1], gut: [0, 0, 0, 0, 0, 0], order: [], secrets: 0 };
   chooseSituation();
 }
 
@@ -192,6 +192,7 @@ async function handleTrigger(a) {
 async function runEvent(id) {
   const ev = EVENTS[EVENT_INDEX[id]];
   await say(ev.intro);
+  await askGut(ev);
   if (ev.kind === 'panel') {
     const idx = await choosePanel(ev);
     await finishEvent(ev, idx);
@@ -214,7 +215,7 @@ function choosePanel(ev) {
   panel.className = `panel ${ev.id}`;
   panel.hidden = false;
   panel.innerHTML = `<div class="panel-sheet"><div class="panel-cast"></div><div class="panel-head"><div class="place">${ev.icon} ${ev.name}</div>
-    <div class="play">${ev.id === 'shrine' ? '選一個你最想要的願望，翻開看看是什麼特典' : ev.id === 'guild' ? '撕下一張委託單' : '點一樣東西'}</div></div>
+    <div class="q">${THEMES[ev.id]}？</div><div class="play">${ev.id === 'shrine' ? '選一個你最想要的願望，翻開看看是什麼特典' : ev.id === 'guild' ? '撕下一張委託單' : '選一個最像你的'}</div></div>
     <div class="options"></div></div>`;
   const grid = panel.querySelector('.options');
   const cast = panel.querySelector('.panel-cast');
@@ -255,6 +256,33 @@ function catsSoFar() {
   let n = p.choices.filter((c, e) => c >= 0 && EVENTS[e].options[c].flag === 'cat').length;
   if (p.secrets & SECRETS.box.bit) n++;
   return n;
+}
+
+// 第一層：直覺反應（二選一）
+function askGut(ev) {
+  const g = GUT[ev.id];
+  if (!g) return Promise.resolve();
+  const box = $('#gut');
+  box.innerHTML = `<div class="gut-card"><div class="gut-q">${g.q}</div><div class="gut-opts"></div></div>`;
+  const opts = box.querySelector('.gut-opts');
+  box.hidden = false;
+  return new Promise(resolve => {
+    [g.a, g.b].forEach((o, i) => {
+      const b = document.createElement('button');
+      b.className = 'gut-opt';
+      b.textContent = o.label;
+      b.onclick = async () => {
+        opts.querySelectorAll('button').forEach(x => { x.onclick = null; });
+        b.classList.add('chosen');
+        game.profile.gut[EVENT_INDEX[ev.id]] = i;
+        await sleep(350);
+        box.hidden = true;
+        await say([['narr', o.react]]);
+        resolve();
+      };
+      opts.append(b);
+    });
+  });
 }
 
 // 走過去選的事件：畫面上方列出四個選項和內心話
@@ -406,7 +434,7 @@ function showResult(profile, party) {
     <div class="hero-card"></div>
     <div class="job-title"><div class="name">${job.icon} ${job.name}</div><div class="tag">「${job.tagline}」</div></div>
     <div class="card type-card"><div class="type-label">你的性格類型</div><div class="type-name">${r.type.name}</div>
-      <div class="type-tags">${r.type.tags.map(t => `<span>${t}</span>`).join('')}</div><p>${r.type.line}</p></div>
+      <div class="type-tags">${r.type.tags.map(t => `<span>${t}</span>`).join('')}</div><p>${r.type.line}</p><div class="code">轉生代碼　<b>${r.code.code}</b></div></div>
     <div class="card"><h3>職業成分表</h3><div class="mix"></div></div>
     <div class="card"><h3>你的旅程</h3><div class="journey-stamps">${journeyStamps}</div>${r.journey.map(l => `<p>${l}</p>`).join('')}</div>
     <div class="card"><h3>職業描述</h3><p>${r.description}</p></div>
@@ -495,7 +523,8 @@ function showAnalysis(r) {
   root.innerHTML = `
     <p class="eyebrow">完整解析</p>
     <div class="card type-card"><div class="type-label">你的性格類型</div><div class="type-name">${r.type.name}</div>
-      <div class="type-tags">${r.type.tags.map(t => `<span>${t}</span>`).join('')}</div><p>${r.type.line}</p></div>
+      <div class="type-tags">${r.type.tags.map(t => `<span>${t}</span>`).join('')}</div><p>${r.type.line}</p><div class="code">轉生代碼　<b>${r.code.code}</b></div></div>
+    <div class="card"><h3>你的轉生代碼：${r.code.code}</h3>${r.code.letters.map(l => `<div class="ana"><div class="ana-q">${l.name}</div><div class="ana-a">${l.letter}</div><p>${l.text}。</p></div>`).join('')}</div>
     <div class="card"><h3>你的六個面向</h3>${radarSvg(r.dims)}</div>
     ${r.analysis.map(a => `<div class="card"><h3>${'①②③④⑤⑥'[a.event]} ${a.theme}</h3><div class="ana-a">你選了「${a.voice}」</div><p>${a.long}</p></div>`).join('')}
     <div class="btn-col"><button class="btn primary" data-act="back">回到我的結果</button></div>
