@@ -58,16 +58,23 @@ const NPCS = {
   mai: { at: [12, 8], look: LOOKS.mai, event: 'camp', dir: 'left' },
 };
 const SECRET_TILES = { box: [[12, 16]], shop: [[13, 15], [14, 15]] };
+// 隱藏的小互動：走到這些格子就會自言自語（每個只會出現一次，地圖上沒有箭頭）
+const AMBIENT = {
+  magicforest: [[12, 17]],
+  palace: [[1, 16]],
+  river: [[0, 5], [1, 5], [2, 5], [3, 5], [4, 5], [5, 5], [10, 5], [11, 5], [12, 5], [13, 5], [14, 5], [9, 7], [12, 7]],
+};
 const BLOCKING = new Set(['#', 'G', 'c', 'w', 'S', 'U', 'H', 'K']);
 
 export function createWorld(canvas, opts) {
   const ctx = canvas.getContext('2d');
+  NPCS.mai.look = LOOKS.mai;
   const state = {
     gender: opts.gender,
     player: { x: START.x, y: START.y, px: START.x * TILE, py: START.y * TILE, dir: 'up', frame: 0, moving: false },
     path: [], pending: null,
     done: new Set(), active: null, unlocked: false, cats: 0,
-    secrets: new Set(), paused: true,
+    secrets: new Set(), ambient: new Set(), paused: true,
     history: [], camX: 0, camY: 0, scale: 1, dpr: 1, viewW: W * TILE, viewH: H * TILE,
     lastInput: performance.now(), t: 0, darkSince: 0,
     timeOfDay: 0,
@@ -130,6 +137,12 @@ export function createWorld(canvas, opts) {
         let cost = 1;
         for (const z of ['meadow', 'forest']) {
           if (!state.done.has(z) && z !== targetZone && inZone(z, nx, ny)) cost += 30;
+        }
+        // 路過還沒完成的事件門口也繞開，免得不小心觸發
+        if (!(nx === tx && ny === ty)) {
+          for (const [id, pl] of Object.entries(PLACES)) {
+            if (pl.triggers && !state.done.has(id) && pl.triggers.some(t => t[0] === nx && t[1] === ny)) cost += 30;
+          }
         }
         const nd = d + cost;
         if (nd < (dist.get(key(nx, ny)) ?? Infinity)) {
@@ -197,6 +210,15 @@ export function createWorld(canvas, opts) {
     }
     for (const [id, tiles] of Object.entries(SECRET_TILES)) {
       if (!state.secrets.has(id) && tiles.some(t => t[0] === x && t[1] === y)) return emit({ type: 'secret', id });
+    }
+    for (const [id, tiles] of Object.entries(AMBIENT)) {
+      if (!state.ambient.has(id) && tiles.some(t => t[0] === x && t[1] === y)) {
+        state.ambient.add(id);
+        // 自言自語完，繼續走向原本點的地方
+        state.resumePath = [...state.path];
+        state.resumePending = state.pending;
+        return emit({ type: 'chat', id });
+      }
     }
     if (!state.path.length && state.pending) {
       const a = state.pending; state.pending = null; opts.onTrigger(a);
@@ -477,7 +499,15 @@ export function createWorld(canvas, opts) {
     state,
     resize,
     walkTo,
-    pause(v) { state.paused = v; if (v) state.path = []; else state.lastInput = performance.now(); },
+    pause(v) {
+      state.paused = v;
+      if (v) { state.path = []; return; }
+      state.lastInput = performance.now();
+      if (state.resumePath) {
+        state.path = state.resumePath; state.pending = state.resumePending;
+        state.resumePath = null; state.resumePending = null;
+      }
+    },
     setActive(id) { state.active = id; },
     complete(id) { state.done.add(id); if (state.active === id) state.active = null; },
     setTimeOfDay(n) { state.timeOfDay = n; },

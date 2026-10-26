@@ -1,6 +1,6 @@
 // 計分與代碼：純函式，不碰畫面。瀏覽器和 node 都能直接 import。
-import { DIMS, JOBS, JOB_ORDER, EVENTS, SECRETS, VERSION, TEAM_PREFIX, TEAM_TYPE } from './data.js';
-import { THEMES, VOICES, TYPE, GUT, AXES } from './persona.js';
+import { DIMS, JOBS, JOB_ORDER, EVENTS, SECRETS, VERSION, TEAM_PREFIX, TEAM_TYPE, maiText } from './data.js';
+import { THEMES, VOICES, TYPE, GUT, AXES, WORDS, AXIS_ICON } from './persona.js';
 
 const SIG_BONUS = 3;
 const FLOOR_RATIO = 0.8;
@@ -96,7 +96,7 @@ export function computeResult(profile) {
   const topDims = [...DIMS].sort((a, b) => dims[b] - dims[a]);
   return {
     profile, dims, mix, main, hidden, topDims,
-    journey: journeyLines(profile, ranked, mix, hidden),
+    journey: journeyLines(profile, ranked, mix, hidden).map(l => maiText(l, profile.gender)),
     titles: chosenOptions(profile).sort((a, b) => a.pos - b.pos).map(c => c.opt.title),
     description: describe(main, hidden),
     type: personaType(profile, topDims),
@@ -126,8 +126,8 @@ function rebirthCode(profile) {
   });
   const [en, inf, ju, li] = letters;
   return {
-    code: letters.join('・'),
-    letters: Object.keys(AXES).map((axis, i) => ({ axis, name: AXES[axis].name, letter: letters[i], text: AXES[axis].text[letters[i]] })),
+    code: letters.map(l => WORDS[l]).join('・'),
+    letters: Object.keys(AXES).map((axis, i) => ({ axis, icon: AXIS_ICON[axis], name: AXES[axis].name, letter: letters[i], word: WORDS[letters[i]], text: AXES[axis].text[letters[i]] })),
     line: `${AXES.energy.text[en]}；${AXES.info.text[inf]}；${AXES.judge.text[ju]}；${AXES.life.text[li]}。`,
   };
 }
@@ -169,7 +169,7 @@ function journeyLines(profile, ranked, mix, hidden) {
   lines.push(sig2
     ? `不過，${sig2.opt.memory}——你的靈魂裡，還住著一點${name2}（${second.pct}%）。`
     : `你的靈魂裡，還藏著 ${second.pct}% 的${name2}。`);
-  lines.push('這些選擇，系統都記住了。');
+  lines.push('這些選擇，異世界的神明都看在眼裡喔。');
   return lines;
 }
 

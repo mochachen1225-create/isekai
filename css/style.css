@@ -191,7 +191,9 @@ h2 { margin: 0 0 18px; font-size: 22px; line-height: 1.6; letter-spacing: .04em;
 .gut-opt.chosen { background: #FFE9B8; box-shadow: 0 0 0 3px #E8A33A; }
 .panel-head .q { font-size: 16px; font-weight: 800; margin-top: 6px; }
 .code { margin-top: 10px; font-size: 14px; color: #6A5A4A; }
-.code b { font-size: 20px; color: #A0604A; letter-spacing: .1em; }
+.code-label { font-size: 12px; color: #8A7A6A; margin-bottom: 6px; }
+.code-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.code-chips span { background: #FFF1DC; color: #8A4A2A; border-radius: 10px; padding: 5px 10px; font-size: 15px; font-weight: 700; }
 
 /* ---- 性格類型、選擇解析 ---- */
 .type-card { text-align: center; background: linear-gradient(160deg, #FFF8EC, #EEF6FF); }
@@ -303,3 +305,8 @@ h2 { margin: 0 0 18px; font-size: 22px; line-height: 1.6; letter-spacing: .04em;
 .eyes p { position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-50%); text-align: center; color: #fff; font-size: 16px;
   margin: 0; opacity: 1; transition: opacity .8s; text-shadow: 0 1px 4px rgba(0,0,0,.6); }
 .eyes.open p { opacity: 0; }
+
+.share-top { margin: 12px 0 4px; }
+.card-preview { width: min(340px, 88%); text-align: center; color: #fff; }
+.card-preview img { width: 100%; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.4); }
+.card-preview p { margin: 10px 0 0; font-size: 14px; }

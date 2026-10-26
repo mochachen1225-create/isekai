@@ -1,5 +1,5 @@
 // 遊戲流程：開場 → 地圖 → 事件 → 揭曉 → 結果 → 組隊
-import { EVENTS, SECRETS, SPEAKERS, OPENINGS, GUIDE_INTRO, GUIDE_REUNION, CHATTER, JOBS, DIM_INFO, DIMS } from './data.js';
+import { maiText, EVENTS, SECRETS, SPEAKERS, OPENINGS, GUIDE_INTRO, GUIDE_REUNION, CHATTER, JOBS, DIM_INFO, DIMS } from './data.js';
 import { VOICES, THEMES, GUT, QUESTIONS } from './persona.js';
 import { computeResult, encodeParty, decodeParty, teamInfo } from './score.js';
 import { createWorld, WALK_ITEMS } from './world.js';
@@ -43,7 +43,7 @@ async function say(lines) {
   const tap = $('#tapcatch');
   box.hidden = false;
   tap.hidden = false;
-  for (const [who, line] of lines) {
+  for (let [who, line] of lines) {
     const sp = SPEAKERS[who] || SPEAKERS.narr;
     face.innerHTML = '';
     if (who === 'me') face.append(spriteCanvas(c => drawPerson(c, 0, 0, LOOKS[game.profile.gender]), 3));
@@ -52,6 +52,7 @@ async function say(lines) {
     else if (sp.face) { const el = faceElement(sp.face); if (el) face.append(el); }
     name.textContent = sp.name;
     text.textContent = '';
+    line = maiText(line, game.profile.gender);
     let skip = false;
     const onTap = () => { skip = true; };
     tap.addEventListener('click', onTap);
@@ -97,6 +98,7 @@ async function chooseAvatar() {
   const gender = await new Promise(resolve => {
     document.querySelectorAll('.avatar-card').forEach(b => { b.onclick = () => resolve(b.dataset.gender); });
   });
+  LOOKS.mai = gender === 'm' ? LOOKS.maiF : LOOKS.maiM;
   game.profile = { gender, choices: [-1, -1, -1, -1, -1, -1], gut: [0, 0, 0, 0, 0, 0], order: [], secrets: 0 };
   chooseSituation();
 }
@@ -451,12 +453,13 @@ function showResult(profile, party) {
     <p class="eyebrow">新手教學・職業分配完成</p>
     <div class="hero-card"></div>
     <div class="job-title"><div class="name">${job.icon} ${job.name}</div><div class="tag">「${job.tagline}」</div></div>
+    <div class="btn-col share-top"><button class="btn primary" data-act="card">📸 分享我的職業卡給朋友</button></div>
     <div class="card type-card"><div class="type-label">你的性格類型</div><div class="type-name">${r.type.name}</div>
-      <div class="type-tags">${r.type.tags.map(t => `<span>${t}</span>`).join('')}</div><p>${r.type.line}</p><div class="code">轉生代碼　<b>${r.code.code}</b></div></div>
+      <div class="type-tags">${r.type.tags.map(t => `<span>${t}</span>`).join('')}</div><p>${r.type.line}</p><div class="code"><div class="code-label">你的四種傾向（來自每一題的第一直覺）</div><div class="code-chips">${r.code.letters.map(l => `<span>${l.icon} ${l.word}</span>`).join('')}</div></div></div>
     <div class="card"><h3>職業成分表</h3><div class="mix"></div></div>
     <div class="card"><h3>你的旅程</h3><div class="journey-stamps">${journeyStamps}</div>${r.journey.map(l => `<p>${l}</p>`).join('')}</div>
     <div class="card"><h3>職業描述</h3><p>${r.description}</p></div>
-    <div class="card"><h3>選擇解析</h3>${r.analysis.map(a => `<div class="ana"><div class="ana-q">${'①②③④⑤⑥'[a.event]} ${a.theme}</div><div class="ana-a">「${a.voice}」</div><p>${a.short}</p></div>`).join('')}
+    <div class="card"><h3>你的個性</h3>${r.analysis.map(a => `<div class="ana"><div class="ana-q">${'①②③④⑤⑥'[a.event]} ${a.theme}</div><div class="ana-a">「${a.voice}」</div><p>${a.short}</p></div>`).join('')}
       <div class="btn-col"><button class="btn small" data-act="full">看完整解析</button></div></div>
     <div class="card"><h3>你在隊伍中的位置｜${job.role}</h3><p>${job.roleText}</p></div>
     <div class="card"><h3>最佳拍檔</h3><div class="partner"><span class="ico">${partner.icon}</span><p><b>${partner.name}</b><br>${job.partnerText}</p></div></div>
@@ -503,6 +506,7 @@ function showResult(profile, party) {
   root.querySelector('[data-act="invite"]')?.addEventListener('click', () =>
     share(shareLink(party, r.main), `我轉生成了「${job.name}」！那你呢？四個人就可以組隊！（${party.length}/4）`));
   root.querySelector('[data-act="full"]').addEventListener('click', () => showAnalysis(r));
+  root.querySelector('[data-act="card"]').addEventListener('click', () => shareCard(r, gender, party));
   root.querySelector('[data-act="team"]')?.addEventListener('click', () => showTeam(party, true));
   root.querySelector('[data-act="again"]').addEventListener('click', () => {
     const others = party.slice(0, -1);
@@ -531,6 +535,67 @@ function radarSvg(avg) {
     <polygon points="${shape}" fill="rgba(126,200,242,.45)" stroke="#3A6EA5" stroke-width="2"/>${labels}</svg>`;
 }
 
+// 職業卡：把插畫、職業、性格類型畫成一張圖，分享到 LINE、IG
+function loadImage(src) {
+  return new Promise(resolve => { const i = new Image(); i.onload = () => resolve(i); i.onerror = () => resolve(null); i.src = src; });
+}
+
+async function makeCard(r, gender) {
+  const job = JOBS[r.main];
+  const W = 1080, H = 1720;
+  const c = document.createElement('canvas');
+  c.width = W; c.height = H;
+  const g = c.getContext('2d');
+  await document.fonts.ready;
+  const bg = g.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#FFF8EC'); bg.addColorStop(1, '#E6F2FF');
+  g.fillStyle = bg; g.fillRect(0, 0, W, H);
+  const img = await loadImage(`assets/illustrations/${r.main}_${gender}.jpg`);
+  const ix = 90, iy = 80, iw = 900, ih = 1120;
+  g.save();
+  g.beginPath(); g.roundRect(ix, iy, iw, ih, 40); g.clip();
+  if (img) {
+    const scale = iw / img.width;
+    g.drawImage(img, 0, 0, img.width, ih / scale, ix, iy, iw, ih);
+  } else {
+    g.fillStyle = job.color; g.fillRect(ix, iy, iw, ih);
+  }
+  g.restore();
+  const font = s => `${s}px Huninn, "PingFang TC", "Noto Sans TC", sans-serif`;
+  g.textAlign = 'center';
+  g.fillStyle = '#8A7A6A'; g.font = font(36);
+  g.fillText('我轉生成了', W / 2, 1290);
+  g.fillStyle = '#2A4D7A'; g.font = `900 ${font(92)}`;
+  g.fillText(`${job.icon} ${job.name}`, W / 2, 1400);
+  g.fillStyle = '#6A5A4A'; g.font = font(40);
+  g.fillText(`「${job.tagline}」`, W / 2, 1470);
+  g.fillStyle = '#A0604A'; g.font = `700 ${font(44)}`;
+  g.fillText(`${r.type.name}　${r.type.tags.slice(0, 2).join(' ')}`, W / 2, 1550);
+  g.fillStyle = '#8A9AAA'; g.font = font(34);
+  g.fillText('異世界轉生職業測驗　你會轉生成什麼？', W / 2, 1660);
+  return new Promise(resolve => c.toBlob(resolve, 'image/png'));
+}
+
+async function shareCard(r, gender, party) {
+  toast('職業卡製作中……');
+  const blob = await makeCard(r, gender);
+  const file = new File([blob], `isekai-${r.main}.png`, { type: 'image/png' });
+  const url = shareLink(party, r.main);
+  const text = `我轉生成了「${JOBS[r.main].name}」！那你呢？四個人就可以組隊！（${party.length}/4）`;
+  try {
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      await navigator.share({ files: [file], text: `${text}\n${url}` });
+      return;
+    }
+  } catch (e) { if (e.name === 'AbortError') return; }
+  // 不能直接分享圖片的瀏覽器：把圖片打開，讓玩家長按儲存
+  const href = URL.createObjectURL(blob);
+  const modal = $('#status');
+  modal.innerHTML = `<div class="card-preview"><img src="${href}" alt="職業卡"><p>長按圖片就可以儲存或分享</p></div>`;
+  modal.hidden = false;
+  modal.onclick = () => { modal.hidden = true; };
+}
+
 // 完整解析頁
 function showAnalysis(r) {
   const el = $('#screen-analysis');
@@ -541,8 +606,8 @@ function showAnalysis(r) {
   root.innerHTML = `
     <p class="eyebrow">完整解析</p>
     <div class="card type-card"><div class="type-label">你的性格類型</div><div class="type-name">${r.type.name}</div>
-      <div class="type-tags">${r.type.tags.map(t => `<span>${t}</span>`).join('')}</div><p>${r.type.line}</p><div class="code">轉生代碼　<b>${r.code.code}</b></div></div>
-    <div class="card"><h3>你的轉生代碼：${r.code.code}</h3>${r.code.letters.map(l => `<div class="ana"><div class="ana-q">${l.name}</div><div class="ana-a">${l.letter}</div><p>${l.text}。</p></div>`).join('')}</div>
+      <div class="type-tags">${r.type.tags.map(t => `<span>${t}</span>`).join('')}</div><p>${r.type.line}</p><div class="code"><div class="code-label">你的四種傾向（來自每一題的第一直覺）</div><div class="code-chips">${r.code.letters.map(l => `<span>${l.icon} ${l.word}</span>`).join('')}</div></div></div>
+    <div class="card"><h3>你的四種傾向</h3>${r.code.letters.map(l => `<div class="ana"><div class="ana-q">${l.icon} ${l.name}</div><div class="ana-a">${l.word}</div><p>${l.text}。</p></div>`).join('')}</div>
     <div class="card"><h3>你的六個面向</h3>${radarSvg(r.dims)}</div>
     ${r.analysis.map(a => `<div class="card"><h3>${'①②③④⑤⑥'[a.event]} ${a.theme}</h3><div class="ana-a">你選了「${a.voice}」</div><p>${a.long}</p></div>`).join('')}
     <div class="btn-col"><button class="btn primary" data-act="back">回到我的結果</button></div>

@@ -54,6 +54,8 @@ export const LOOKS = {
   clerk: { skin: '#FFE0C8', hair: '#5A3A2A', hairStyle: 'long', top: '#2F5D8A', top2: '#FFFFFF', accent: '#FFFFFF', legs: '#2F5D8A', boots: '#3B3550' },
   xing: { skin: '#FFE0C8', hair: '#7A5CC9', hairStyle: 'long', top: '#5A4A9E', top2: '#C9B8FF', accent: '#F2C94C', legs: '#3B3550', boots: '#3B3550', hat: 'witch' },
   mai: { skin: '#F2C8A0', hair: '#C84A2A', hairStyle: 'short', top: '#8A8F9A', top2: '#C8CDD8', accent: '#C84A2A', legs: '#4A4050', boots: '#5A3A2A' },
+  maiM: { skin: '#F2C8A0', hair: '#C84A2A', hairStyle: 'short', top: '#8A8F9A', top2: '#C8CDD8', accent: '#C84A2A', legs: '#4A4050', boots: '#5A3A2A' },
+  maiF: { skin: '#F7D6BC', hair: '#C84A2A', hairStyle: 'long', top: '#8A8F9A', top2: '#C8CDD8', accent: '#C84A2A', legs: '#4A4050', boots: '#5A3A2A', ribbon: '#F2C94C' },
   villager: { skin: '#FFE0C8', hair: '#6B4A3A', hairStyle: 'short', top: '#7FB069', top2: '#E8D8B0', accent: '#E8D8B0', legs: '#6B5A4A', boots: '#5A3A2A' },
   granny: { skin: '#FFE0C8', hair: '#E0E0E8', hairStyle: 'bun', top: '#A0704A', top2: '#FFF6E9', accent: '#FFF6E9', legs: '#A0704A', boots: '#5A3A2A' },
   demon: { skin: '#F0D8E0', hair: '#1E1A28', hairStyle: 'long', top: '#1E1A28', top2: '#B0233A', accent: '#F2C94C', legs: '#1E1A28', boots: '#1E1A28', hat: 'horns', cape: '#B0233A' },

@@ -140,11 +140,15 @@ export const GUT = {
     b: { label: '先往前走走看', react: '走了才知道嘛！', letter: '隨' } },
   camp: { axis: 'energy', q: '阿麥拍拍身邊的木頭：「要不要一起坐？」你覺得你會……',
     a: { label: '「好啊！」直接坐過去', react: '阿麥愣了一下，然後笑了。', letter: '外' },
-    b: { label: '有點害羞，先坐遠一點', react: '你坐在火堆的另一邊，偷偷看了他一眼。', letter: '內' } },
+    b: { label: '有點害羞，先坐遠一點', react: '你坐在火堆的另一邊，偷偷看了{他}一眼。……真是個{帥}。', letter: '內' } },
   castle: { axis: 'judge', q: '魔王出現了，你覺得你腦中第一個念頭會是……',
     a: { label: '他有多強？我們打得贏嗎？', react: '你迅速估算了一下距離和退路。', letter: '理' },
     b: { label: '他看起來……好寂寞', react: '你注意到他握劍的手，一直在發抖。', letter: '感' } },
 };
+
+// 轉生代碼顯示用的完整詞
+export const WORDS = { 外: '外向', 內: '內向', 實: '務實', 想: '想像', 理: '理性', 感: '感性', 計: '計畫', 隨: '隨興' };
+export const AXIS_ICON = { energy: '🔋', info: '👀', judge: '⚖️', life: '🧭' };
 
 export const AXES = {
   energy: { name: '能量來源', pair: ['外', '內'], text: { 外: '你會從人群裡得到能量，喜歡主動交朋友', 內: '你需要一點自己的時間充電，交朋友慢熱但很真心' } },
