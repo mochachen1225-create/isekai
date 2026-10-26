@@ -23,8 +23,8 @@
 | 守護騎士（女） | `knight_f.jpg` | ✅ 已完成 |
 | 結界師（男） | `barrier_m.jpg` | ✅ 已完成 |
 | 結界師（女） | `barrier_f.jpg` | ✅ 已完成 |
-| 聖職者（男） | `cleric_m.jpg` | ⬜ |
-| 聖職者（女） | `cleric_f.jpg` | ⬜ |
+| 聖職者（男） | `cleric_m.jpg` | ✅ 已完成 |
+| 聖職者（女） | `cleric_f.jpg` | ✅ 已完成 |
 | 伙食長（男） | `cook_m.jpg` | ✅ 已完成 |
 | 伙食長（女） | `cook_f.jpg` | ✅ 已完成 |
 | 吟遊詩人（男） | `bard_m.jpg` | ✅ 已完成 |
@@ -44,9 +44,9 @@
 | 【隱藏】貓之勇者（男） | `cathero_m.jpg` | ✅ 已完成 |
 | 【隱藏】貓之勇者（女） | `cathero_f.jpg` | ✅ 已完成 |
 | 對話頭像：喵導員 | `portrait_guide.jpg` | ✅ 已完成 |
-| 對話頭像：國王 | `portrait_king.jpg` | ⬜ |
-| 對話頭像：魔王 | `portrait_demon.jpg` | ⬜ |
-| 對話頭像：阿麥・男（女生玩家看到的版本） | `portrait_mai_m.jpg` | ⬜ |
+| 對話頭像：國王 | `portrait_king.jpg` | ✅ 已完成 |
+| 對話頭像：魔王 | `portrait_demon.jpg` | ✅ 已完成 |
+| 對話頭像：阿麥・男（女生玩家看到的版本） | `portrait_mai_m.jpg` | ✅ 已完成 |
 | 對話頭像：阿麥・女（男生玩家看到的版本） | `portrait_mai_f.jpg` | ⬜ |
 | 對話頭像：小星（魔法師） | `portrait_xing.jpg` | ✅ 已完成 |
 | 對話頭像：櫃檯小姐 | `portrait_clerk.jpg` | ✅ 已完成 |
@@ -54,7 +54,7 @@
 | 對話頭像：咖啡館奶奶 | `portrait_granny.jpg` | ✅ 已完成 |
 | 對話頭像：小三花（紙箱貓） | `portrait_calico.jpg` | ✅ 已完成 |
 
-共 37 張：14 個職業 × 男女 = 28 張（手遊立繪風），對話頭像 10 張（點陣風，跟地圖同一套畫風）。職業插畫已完成 26/28，對話頭像已完成 6/10。
+共 37 張：14 個職業 × 男女 = 28 張（手遊立繪風），對話頭像 10 張（點陣風，跟地圖同一套畫風）。職業插畫已完成 28/28，對話頭像已完成 9/10。
 
 ## 配色總覽
 
