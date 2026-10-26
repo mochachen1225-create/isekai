@@ -8,6 +8,19 @@ const $ = sel => document.querySelector(sel);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const EVENT_INDEX = Object.fromEntries(EVENTS.map((e, i) => [e.id, i]));
 
+// 對話頭像：有畫好的插畫就用插畫，沒有就用點陣小人
+const PORTRAITS = { guide: 'guide', king: 'king', demon: 'demon', mai: 'mai', xing: 'xing', clerk: 'clerk', goddess: 'goddess', granny: 'granny', cat: 'calico' };
+const READY = new Set(['guide']); // 已經放進 assets/portraits/ 的頭像
+function faceElement(face) {
+  const fallback = () => faceCanvas(face);
+  if (!READY.has(PORTRAITS[face])) return fallback();
+  const img = new Image();
+  img.src = `assets/portraits/${PORTRAITS[face]}.webp`;
+  img.alt = '';
+  img.onerror = () => { const c = fallback(); if (c) img.replaceWith(c); };
+  return img;
+}
+
 const game = {
   party: [],        // 邀請連結裡已經在隊伍中的人
   profile: null,
@@ -33,7 +46,7 @@ async function say(lines) {
     if (who === 'me') face.append(spriteCanvas(c => drawPerson(c, 0, 0, LOOKS[game.profile.gender]), 3));
     else if (who === 'sys') face.textContent = '⚙️';
     else if (who === 'sign') face.textContent = '🪧';
-    else if (sp.face) { const c = faceCanvas(sp.face); if (c) face.append(c); }
+    else if (sp.face) { const el = faceElement(sp.face); if (el) face.append(el); }
     name.textContent = sp.name;
     text.textContent = '';
     let skip = false;
@@ -62,7 +75,9 @@ function toast(msg) {
 function initTitle() {
   const row = $('#title-sprites');
   row.append(spriteCanvas(c => drawPerson(c, 0, 0, LOOKS.m), 3));
-  row.append(spriteCanvas(c => drawCat(c, 0, 0, CATS.guide), 3));
+  const guide = faceElement('guide');
+  guide.className = 'title-guide';
+  row.append(guide);
   row.append(spriteCanvas(c => drawPerson(c, 0, 0, LOOKS.f), 3));
   document.querySelectorAll('[data-action="start"]').forEach(b => b.addEventListener('click', chooseAvatar));
 }
@@ -199,11 +214,10 @@ function choosePanel(ev) {
     <div class="options"></div></div>`;
   const grid = panel.querySelector('.options');
   const cast = panel.querySelector('.panel-cast');
-  const goddess = faceCanvas('goddess', 3);
   const cards = {
-    shrine: [goddess],
-    guild: [faceCanvas('clerk', 3)],
-    camp: [faceCanvas('mai', 3)],
+    shrine: [faceElement('goddess')],
+    guild: [faceElement('clerk')],
+    camp: [faceElement('mai')],
     castle: [spriteCanvas(c => drawPerson(c, 0, 0, LOOKS.demon), 4), spriteCanvas(c => drawCat(c, 0, 0, CATS.black), 2)],
   }[ev.id] || [];
   cards.forEach(c => cast.append(c));

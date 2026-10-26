@@ -43,14 +43,17 @@
 | 【隱藏】異世界咖啡館店長（女） | `cafe_f.jpg` | ⬜ |
 | 【隱藏】貓之勇者（男） | `cathero_m.jpg` | ⬜ |
 | 【隱藏】貓之勇者（女） | `cathero_f.jpg` | ⬜ |
-| 喵導員（微笑） | `guide_smile.jpg` | ⬜ |
-| 喵導員（驚訝） | `guide_surprised.jpg` | ⬜ |
-| 喵導員（偷笑） | `guide_smirk.jpg` | ⬜ |
-| 喵導員（感動） | `guide_touched.jpg` | ⬜ |
-| 魔王 | `demon_lord.jpg` | ⬜ |
-| 國王（選畫） | `king.jpg` | ⬜ |
+| 對話頭像：喵導員 | `portrait_guide.jpg` | ✅ 已完成 |
+| 對話頭像：國王 | `portrait_king.jpg` | ⬜ |
+| 對話頭像：魔王 | `portrait_demon.jpg` | ⬜ |
+| 對話頭像：阿麥（戰士） | `portrait_mai.jpg` | ⬜ |
+| 對話頭像：小星（魔法師） | `portrait_xing.jpg` | ⬜ |
+| 對話頭像：櫃檯小姐 | `portrait_clerk.jpg` | ⬜ |
+| 對話頭像：女神 | `portrait_goddess.jpg` | ⬜ |
+| 對話頭像：咖啡館奶奶 | `portrait_granny.jpg` | ⬜ |
+| 對話頭像：小三花（紙箱貓） | `portrait_calico.jpg` | ⬜ |
 
-共 33 張必畫＋1 張選畫：14 個職業 × 男女 = 28 張，喵導員 4 張，魔王 1 張，國王 1 張（選畫）。勇者已完成 2 張。
+共 37 張：14 個職業 × 男女 = 28 張（手遊立繪風），對話頭像 9 張（點陣風，跟地圖同一套畫風）。已完成：勇者 2 張、喵導員頭像。
 
 ## 配色總覽
 
@@ -552,77 +555,62 @@ Full body, slight three-quarter view, hair and clothes flowing gently in the win
 
 ---
 
-## 15. 喵導員（4 種表情，對話框頭像用，正方形）
+## 15. 對話頭像（點陣風，正方形）
 
-上傳參考圖：`hero_f.jpg` 或 `hero_m.jpg` 擇一（只參考畫風）。喵導員是一隻**胖橘貓**。如果想照某一隻真實的貓來畫，可以**再多上傳一張貓的照片**，並在指令最後加上：`The cat's fur color and pattern are based on the cat in the second reference photo.`
-建議先畫「微笑」，滿意後把那張也一起上傳，再畫其他 3 種表情，貓才會長得一樣。
+對話框左邊的頭像，用跟地圖一樣的點陣風。喵導員已經畫好了，**之後每一張都把喵導員那張一起上傳當參考圖**，並在指令最前面加一句 `Match the pixel art style, outline and shading of the reference image, but draw a different character.`，整套頭像才會一致。
 
-### 微笑 → `guide_smile.jpg`
-
-```
-Use the attached image ONLY as a style reference: match its art style, line quality, shading, level of detail and body proportions. Do NOT copy its character, outfit, colors, pose or background.
-
-High-quality anime gacha game mascot illustration, refined and detailed, same style as the reference. A chubby, very round and fluffy orange tabby cat (ginger cat with darker orange stripes, white chin and white paws) working as a tour guide, sitting upright, wearing a tiny guide cap with a gold badge, a small leather satchel and a little scarf, holding a small flag with no text. Upper body framing, square 1:1, plain soft light-blue background with a few sparkles. No text, no letters, no logo, no watermark, no frame.
-
-Expression: a warm friendly smile.
-```
-
-### 驚訝 → `guide_surprised.jpg`
+### 喵導員（已完成） → `portrait_guide.jpg`
 
 ```
-Use the attached image ONLY as a style reference: match its art style, line quality, shading, level of detail and body proportions. Do NOT copy its character, outfit, colors, pose or background.
-
-High-quality anime gacha game mascot illustration, refined and detailed, same style as the reference. A chubby, very round and fluffy orange tabby cat (ginger cat with darker orange stripes, white chin and white paws) working as a tour guide, sitting upright, wearing a tiny guide cap with a gold badge, a small leather satchel and a little scarf, holding a small flag with no text. Upper body framing, square 1:1, plain soft light-blue background with a few sparkles. No text, no letters, no logo, no watermark, no frame.
-
-Expression: surprised, wide eyes, ears up.
+High-quality pixel art character portrait, bust shot, like a visual novel dialogue portrait in a modern pixel-art RPG, detailed hand-placed pixels, soft shading with clean outlines, warm bright colors. A chubby, round, fluffy orange tabby cat with white chin and white paws, wearing a tiny blue tour guide cap with a gold badge and a small leather satchel, friendly smile, big sparkling eyes. Plain soft light-blue background with a few small sparkles. Square 1:1. No text.
 ```
 
-### 偷笑 → `guide_smirk.jpg`
+### 國王 → `portrait_king.jpg`
 
 ```
-Use the attached image ONLY as a style reference: match its art style, line quality, shading, level of detail and body proportions. Do NOT copy its character, outfit, colors, pose or background.
-
-High-quality anime gacha game mascot illustration, refined and detailed, same style as the reference. A chubby, very round and fluffy orange tabby cat (ginger cat with darker orange stripes, white chin and white paws) working as a tour guide, sitting upright, wearing a tiny guide cap with a gold badge, a small leather satchel and a little scarf, holding a small flag with no text. Upper body framing, square 1:1, plain soft light-blue background with a few sparkles. No text, no letters, no logo, no watermark, no frame.
-
-Expression: a sly little smirk, one paw over the mouth.
+High-quality pixel art character portrait, bust shot, like a visual novel dialogue portrait in a modern pixel-art RPG, detailed hand-placed pixels, soft shading with clean outlines, warm bright colors. A middle-aged fantasy King with a curled mustache and a round face, a jeweled golden crown slightly too big, a crimson-and-gold royal robe with white fur trim; smiling widely, but the smile looks a little fake and the eyes are scheming. Slightly comical, not scary. Plain soft light-blue background with a few small sparkles. Square 1:1. No text.
 ```
 
-### 感動 → `guide_touched.jpg`
+### 魔王 → `portrait_demon.jpg`
 
 ```
-Use the attached image ONLY as a style reference: match its art style, line quality, shading, level of detail and body proportions. Do NOT copy its character, outfit, colors, pose or background.
-
-High-quality anime gacha game mascot illustration, refined and detailed, same style as the reference. A chubby, very round and fluffy orange tabby cat (ginger cat with darker orange stripes, white chin and white paws) working as a tour guide, sitting upright, wearing a tiny guide cap with a gold badge, a small leather satchel and a little scarf, holding a small flag with no text. Upper body framing, square 1:1, plain soft light-blue background with a few sparkles. No text, no letters, no logo, no watermark, no frame.
-
-Expression: touched, eyes shining with happy tears.
+High-quality pixel art character portrait, bust shot, like a visual novel dialogue portrait in a modern pixel-art RPG, detailed hand-placed pixels, soft shading with clean outlines, warm bright colors. A young Demon Lord around 18 with long black hair with crimson streaks, small black horns, crimson eyes, a black high-collared cape with crimson lining and gold trim; looks imposing but the eyes are lonely, with one small tear. A black cat peeks over the shoulder. Not scary. Plain soft light-blue background with a few small sparkles. Square 1:1. No text.
 ```
 
----
-
-## 16. 魔王 → `demon_lord.jpg`
-
-上傳參考圖：`hero_m.jpg`（只參考畫風）。魔王不見得是壞人，所以要「看起來很威風，但眼神寂寞」。
+### 阿麥（戰士） → `portrait_mai.jpg`
 
 ```
-Use the attached image ONLY as a style reference: match its art style, line quality, shading, level of detail and body proportions. Do NOT copy its character, outfit, colors, pose or background.
-
-High-quality anime gacha game character splash art, refined and highly detailed, in the style of modern mobile RPG character illustrations. Normal anime proportions, about 6.5 heads tall. Crisp clean line art, delicate hair strands with glossy highlights, soft cel shading with subtle gradients. Very intricate costume with many small accessories: hair ornaments, earrings, brooches, tassels, ribbons, small metal charms and thin chains, belts with little pouches, embroidered gold patterns.
-
-Character: a young Demon Lord, around 18, elegant and imposing but gentle at heart. Long black hair with crimson streaks, a pair of small black horns, crimson eyes with a lonely, slightly sad expression and one small tear. Outfit: a huge black cape with crimson lining and gold trim, black layered noble clothes, gold chains, ruby brooches. A small glowing wish-star floats above the head. A black cat peeks out from behind the cape. Pose: sitting on the steps of a dark throne, chin resting on one hand. Background: a dim grand throne hall at dusk, crimson light. Colors: black and crimson with gold. Vertical 3:4 portrait. Not scary. No text, no letters, no logo, no watermark, no UI elements, no frame.
+High-quality pixel art character portrait, bust shot, like a visual novel dialogue portrait in a modern pixel-art RPG, detailed hand-placed pixels, soft shading with clean outlines, warm bright colors. A big, friendly young warrior around 17 with messy short red hair, simple grey iron armor with a few scratches, slightly downcast eyes and an embarrassed little smile, a bandage on the cheek. Plain soft light-blue background with a few small sparkles. Square 1:1. No text.
 ```
 
----
-
-## 17. 國王（選畫）→ `king.jpg`
-
-上傳參考圖：`hero_m.jpg`（只參考畫風）。國王不是大壞蛋，只是很貪心：「表面上很親切，其實笑得有點假」。
+### 小星（魔法師） → `portrait_xing.jpg`
 
 ```
-Use the attached image ONLY as a style reference: match its art style, line quality, shading, level of detail and body proportions. Do NOT copy its character, outfit, colors, pose or background.
+High-quality pixel art character portrait, bust shot, like a visual novel dialogue portrait in a modern pixel-art RPG, detailed hand-placed pixels, soft shading with clean outlines, warm bright colors. A shy young girl mage around 15 with long lavender hair, a big purple witch hat with a gold band, a purple robe with star buttons, holding the brim of her hat nervously, blushing. Plain soft light-blue background with a few small sparkles. Square 1:1. No text.
+```
 
-High-quality anime gacha game character splash art, refined and highly detailed, in the style of modern mobile RPG character illustrations. Normal anime proportions, about 6.5 heads tall. Crisp clean line art, delicate hair strands with glossy highlights, soft cel shading with subtle gradients. Very intricate costume with many small accessories: hair ornaments, earrings, brooches, tassels, ribbons, small metal charms and thin chains, belts with little pouches, embroidered gold patterns.
+### 櫃檯小姐 → `portrait_clerk.jpg`
 
-Character: a middle-aged King with a neat curled mustache and a round friendly face, smiling widely with open arms, but the smile looks a little fake and the eyes are scheming; slightly comical, not scary. Outfit: a heavy crimson-and-gold royal robe with white fur trim, a jeweled crown slightly too big, many rings, gold chains and medals, a scepter topped with a large gem. Pose: standing in front of a golden throne, arms wide open in welcome. Background: a glittering golden summoning hall with a glowing magic circle on the floor. Colors: crimson and gold. Vertical 3:4 portrait. No text, no letters, no logo, no watermark, no UI elements, no frame.
+```
+High-quality pixel art character portrait, bust shot, like a visual novel dialogue portrait in a modern pixel-art RPG, detailed hand-placed pixels, soft shading with clean outlines, warm bright colors. A cheerful adventurers' guild receptionist around 20 with brown hair in a neat low ponytail, a navy blue uniform vest with a white blouse and a small guild badge, a bright professional smile, one finger raised as if explaining. Plain soft light-blue background with a few small sparkles. Square 1:1. No text.
+```
+
+### 女神 → `portrait_goddess.jpg`
+
+```
+High-quality pixel art character portrait, bust shot, like a visual novel dialogue portrait in a modern pixel-art RPG, detailed hand-placed pixels, soft shading with clean outlines, warm bright colors. A gentle goddess with long flowing pale-gold hair, a white and gold dress, a soft glowing halo, kind eyes, looking slightly flustered and apologetic, one hand on her cheek. Plain soft light-blue background with a few small sparkles. Square 1:1. No text.
+```
+
+### 咖啡館奶奶 → `portrait_granny.jpg`
+
+```
+High-quality pixel art character portrait, bust shot, like a visual novel dialogue portrait in a modern pixel-art RPG, detailed hand-placed pixels, soft shading with clean outlines, warm bright colors. A kind old lady who runs a small cafe, white hair in a bun, round glasses, a latte-brown apron over a cream blouse, holding a steaming coffee cup, warm smile. Plain soft light-blue background with a few small sparkles. Square 1:1. No text.
+```
+
+### 小三花（紙箱貓） → `portrait_calico.jpg`
+
+```
+High-quality pixel art character portrait, bust shot, like a visual novel dialogue portrait in a modern pixel-art RPG, detailed hand-placed pixels, soft shading with clean outlines, warm bright colors. A small calico kitten (white with orange and black patches) peeking out of a cardboard box, big curious eyes, one paw on the edge of the box. Plain soft light-blue background with a few small sparkles. Square 1:1. No text.
 ```
 
 ---
