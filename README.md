@@ -4,6 +4,7 @@
 
 - 設計稿：[`DESIGN.md`](DESIGN.md)
 - Gemini 插畫指令與進度：[`PROMPTS.md`](PROMPTS.md)
+- 地圖背景是 `assets/map/village.webp`（Gemini 繪製），可以走的格子和事件位置定義在 `js/world.js` 最上面的 `ROWS`
 - 插畫放在 `assets/illustrations/`，檔名照 `PROMPTS.md` 的表格（例如 `hero_f.jpg`），放進去就會自動顯示
 
 ## 本機試玩

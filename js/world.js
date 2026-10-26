@@ -1,63 +1,64 @@
-// 地圖：圖塊、移動、鏡頭、觸發。畫面上的對話和選單由 main.js 處理。
+// 地圖：背景是一張畫好的村莊圖，上面疊一層看不見的格子來決定哪裡能走、哪裡會觸發事件。
+// 畫面上的對話和選單由 main.js 處理。
 import { drawPerson, drawCat, drawSlime, drawItem, LOOKS, CATS } from './pixel.js';
-import { drawMap, grassPattern } from './tiles.js';
 
 export const TILE = 32;
-const W = 11, H = 15;
-const SPEED = 5; // 每秒幾格
-const VIEW_TILES = 8; // 手機畫面寬度大約看得到幾格
+const SPEED = 5;       // 每秒幾格
+const VIEW_TILES = 8;  // 手機畫面寬度大約看得到幾格
 
-// T 樹  F 森林地  C 魔王城  G 魔王城城門  ~ 河  = 橋  c 營火  w 噴水池  b 樹叢
-// S 女神祠堂  U 冒險者公會  H 打烊小店  M 草原  K 王城  f 花
+// 地圖圖片 assets/map/village.webp 切成 15×20 格
+// .  可以走   #  擋住   F 森林（走進去會變暗）  M 草原
+// G  魔王城城門（解鎖前擋住）  c 營火  w 噴水池  S 女神祠堂  U 冒險者公會  H 打烊小店  K 王城城牆
 const ROWS = [
-  'TTTCCCCCTTT',
-  'TT.CCCCC.TT',
-  'T..CCGCC..T',
-  'f.........f',
-  '~~~~~=~~~~~',
-  'TFFFF....c.',
-  'FFFFF......',
-  'TFFFF......',
-  'FFFFF..f...',
-  '.b...w.....',
-  '.SS.....UU.',
-  '.SS.....UUH',
-  '...MMMMM...',
-  'f..MMMMM..f',
-  'KKKKKKKKKKK',
+  '###############',
+  '###############',
+  '###############',
+  '#######GG######',
+  '...............',
+  '...............',
+  '#######.#######',
+  'FFFFFF.......##',
+  'FFFFFF.....c.##',
+  'FFFF.........##',
+  'FFF....w..UU.##',
+  '#.SS......UUU##',
+  '##SS#....UUUU##',
+  '##SS#....UUUUHH',
+  '##SS#....UUUUHH',
+  '##..#..#.......',
+  '#...#.MM#MMM.##',
+  '##....MMMMMM.##',
+  'KKKKKKKKKKKKKKK',
+  'KKKKKKKKKKKKKKK',
 ];
-const tileAt = (x, y) => (x < 0 || y < 0 || x >= W || y >= H) ? 'T' : ROWS[y][x];
-const PATH = new Set();
-for (let y = 3; y <= 13; y++) PATH.add(`5,${y}`);
-for (let x = 1; x <= 9; x++) PATH.add(`${x},9`);
-for (let x = 0; x <= 10; x++) PATH.add(`${x},3`);
+const W = ROWS[0].length, H = ROWS.length;
+const tileAt = (x, y) => (x < 0 || y < 0 || x >= W || y >= H) ? '#' : ROWS[y][x];
 
-export const START = { x: 5, y: 10 };
+export const START = { x: 7, y: 11 };
 
-// 事件地點：triggers = 走到這些格子就觸發；zone = 走進範圍就觸發
+// 事件地點：triggers = 走到這些格子就觸發；zone = 走進範圍就觸發；marker = 驚嘆號的位置
 export const PLACES = {
-  shrine: { triggers: [[2, 9], [3, 10], [3, 11], [1, 12], [2, 12]], marker: [1.5, 9.6], tiles: [[1, 10], [2, 10], [1, 11], [2, 11]] },
-  guild: { triggers: [[8, 9], [9, 9], [7, 10], [7, 11], [8, 12], [9, 12]], marker: [8.5, 9.6], tiles: [[8, 10], [9, 10], [8, 11], [9, 11]] },
-  meadow: { zone: [3, 12, 7, 13], marker: [5, 11.4] },
-  forest: { zone: [0, 5, 4, 8], marker: [2, 5.4] },
-  camp: { triggers: [[8, 5], [8, 6], [9, 6], [10, 6]], marker: [9, 4.4], tiles: [[9, 5], [10, 5]] },
-  castle: { triggers: [[5, 2]], marker: [5, 1.4], tiles: [[3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1], [3, 2], [4, 2], [6, 2], [7, 2]] },
+  shrine: { triggers: [[2, 15], [3, 15]], marker: [2.5, 10.6], tag: 'S' },
+  guild: { triggers: [[10, 15], [11, 15], [12, 15]], marker: [10.6, 9.5], tag: 'U' },
+  meadow: { zone: 'M', marker: [8, 16.3] },
+  forest: { zone: 'F', marker: [2.2, 7.2] },
+  camp: { triggers: [[10, 7], [10, 8], [10, 9], [11, 7], [11, 9], [12, 9]], marker: [11, 7.2], tag: 'c' },
+  castle: { triggers: [[7, 3], [8, 3]], marker: [7.5, 2.4], tag: 'G' },
 };
 
 // 走過去選的物件位置（草原、森林）
 export const WALK_ITEMS = {
-  meadow: [{ at: [3, 12], kind: 'gloves' }, { at: [4, 13], kind: 'stick' }, { at: [6, 13], kind: 'bottle' }, { at: [5, 12], kind: 'slime' }],
-  forest: [{ at: [1, 6], kind: 'sparkle' }, { at: [0, 8], kind: 'eyes' }, { at: [3, 8], kind: 'clearing' }, { at: [4, 5], kind: 'tallTree' }],
+  meadow: [{ at: [6, 17], kind: 'gloves' }, { at: [7, 16], kind: 'stick' }, { at: [10, 16], kind: 'bottle' }, { at: [8, 17], kind: 'slime' }],
+  forest: [{ at: [1, 7], kind: 'sparkle' }, { at: [0, 10], kind: 'eyes' }, { at: [3, 9], kind: 'clearing' }, { at: [5, 7], kind: 'tallTree' }],
 };
 
 const NPCS = {
-  villager: { at: [6, 8], look: LOOKS.villager, chat: 'villager' },
-  sign: { at: [3, 6], sign: true, chat: 'sign' },
-  mai: { at: [10, 5], look: LOOKS.mai, event: 'camp' },
+  villager: { at: [9, 9], look: LOOKS.villager, chat: 'villager' },
+  sign: { at: [4, 9], chat: 'sign' },
+  mai: { at: [12, 8], look: LOOKS.mai, event: 'camp', dir: 'left' },
 };
-const SECRET_TILES = { box: [[0, 9]], shop: [[10, 10], [10, 12]] };
-
-const BLOCKING = new Set(['T', 'C', 'G', '~', 'c', 'w', 'b', 'S', 'U', 'H', 'K']);
+const SECRET_TILES = { box: [[12, 16]], shop: [[13, 15], [14, 15]] };
+const BLOCKING = new Set(['#', 'G', 'c', 'w', 'S', 'U', 'H', 'K']);
 
 export function createWorld(canvas, opts) {
   const ctx = canvas.getContext('2d');
@@ -67,48 +68,44 @@ export function createWorld(canvas, opts) {
     path: [], pending: null,
     done: new Set(), active: null, unlocked: false, cats: 0,
     secrets: new Set(), paused: true,
-    history: [], camX: 0, camY: 0, scale: 1, viewW: W * TILE, viewH: H * TILE,
+    history: [], camX: 0, camY: 0, scale: 1, dpr: 1, viewW: W * TILE, viewH: H * TILE,
     lastInput: performance.now(), t: 0, darkSince: 0,
     timeOfDay: 0,
   };
-  const staticLayer = document.createElement('canvas');
-  staticLayer.width = W * TILE; staticLayer.height = H * TILE;
-  drawMap(staticLayer.getContext('2d'), ROWS, PATH);
-  canvas.parentElement.style.backgroundImage = `url(${grassPattern()})`;
+  const bg = new Image();
+  bg.src = 'assets/map/village.webp';
+  const dark = document.createElement('canvas');
+  dark.width = W * TILE; dark.height = H * TILE;
 
   // ---- 版面 ----
   function resize() {
     const box = canvas.parentElement.getBoundingClientRect();
     state.scale = box.width / (VIEW_TILES * TILE);
-    state.viewW = Math.min(W * TILE, Math.ceil(box.width / state.scale));
-    state.viewH = Math.min(H * TILE, Math.floor(box.height / state.scale));
-    canvas.width = state.viewW; canvas.height = state.viewH;
+    state.dpr = Math.min(3, window.devicePixelRatio || 1);
+    state.viewW = Math.min(W * TILE, box.width / state.scale);
+    state.viewH = Math.min(H * TILE, box.height / state.scale);
+    canvas.width = Math.round(state.viewW * state.scale * state.dpr);
+    canvas.height = Math.round(state.viewH * state.scale * state.dpr);
     canvas.style.width = `${state.viewW * state.scale}px`;
     canvas.style.height = `${state.viewH * state.scale}px`;
-    ctx.imageSmoothingEnabled = false;
-    canvas.parentElement.style.backgroundSize = `${TILE * state.scale}px`;
   }
   window.addEventListener('resize', resize);
   resize();
 
   // ---- 地形 ----
+  const inZone = (id, x, y) => PLACES[id].zone && tileAt(x, y) === PLACES[id].zone;
   function isItemTile(x, y) {
     if (!state.active || !WALK_ITEMS[state.active]) return -1;
     return WALK_ITEMS[state.active].findIndex(i => i.at[0] === x && i.at[1] === y);
   }
+  const slimeAt = WALK_ITEMS.meadow[3].at;
   function blocked(x, y) {
     const t = tileAt(x, y);
     if (t === 'G') return !state.unlocked;
     if (BLOCKING.has(t)) return true;
-    if (Object.values(NPCS).some(n => n && n.at[0] === x && n.at[1] === y)) return true;
-    if (x === 5 && y === 12 && !state.done.has('meadow')) {
-      return !(state.active === 'meadow'); // 史萊姆本身可以被「選」
-    }
+    if (Object.values(NPCS).some(n => n.at[0] === x && n.at[1] === y)) return true;
+    if (x === slimeAt[0] && y === slimeAt[1] && !state.done.has('meadow')) return state.active !== 'meadow';
     return false;
-  }
-  function inZone(id, x, y) {
-    const z = PLACES[id].zone;
-    return x >= z[0] && y >= z[1] && x <= z[2] && y <= z[3];
   }
 
   // Dijkstra：還沒完成的草原、森林代價比較高，路過時不會不小心踩進去
@@ -125,8 +122,7 @@ export function createWorld(canvas, opts) {
       if (d > (dist.get(key(x, y)) ?? Infinity)) continue;
       for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
         const nx = x + dx, ny = y + dy;
-        if (nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
-        if (blocked(nx, ny)) continue;
+        if (nx < 0 || ny < 0 || nx >= W || ny >= H || blocked(nx, ny)) continue;
         let cost = 1;
         for (const z of ['meadow', 'forest']) {
           if (!state.done.has(z) && z !== targetZone && inZone(z, nx, ny)) cost += 30;
@@ -143,32 +139,29 @@ export function createWorld(canvas, opts) {
     return out;
   }
 
+  function around(x, y) {
+    return [[x, y + 1], [x - 1, y], [x + 1, y], [x, y - 1]].filter(([a, b]) => !blocked(a, b));
+  }
+
   // 點到一格：決定要走去哪裡、到了要做什麼
   function interactionFor(x, y) {
-    for (const [id, n] of Object.entries(NPCS)) {
-      if (n && n.at[0] === x && n.at[1] === y) {
+    for (const n of Object.values(NPCS)) {
+      if (n.at[0] === x && n.at[1] === y) {
         return n.event ? { go: PLACES[n.event].triggers, act: { type: 'event', id: n.event } }
           : { go: around(x, y), act: { type: 'chat', id: n.chat } };
       }
     }
+    const t = tileAt(x, y);
     for (const [id, p] of Object.entries(PLACES)) {
-      if (p.tiles && p.tiles.some(t => t[0] === x && t[1] === y)) {
-        if (id === 'castle' && !state.unlocked) return { go: [[5, 3]], act: { type: 'locked', id: 'castle' } };
-        return { go: p.triggers, act: null };
-      }
+      if (p.tag !== t) continue;
+      if (id === 'castle' && !state.unlocked) return { go: [[7, 4], [8, 4]], act: { type: 'locked', id: 'castle' } };
+      return { go: p.triggers, act: null };
     }
-    if (tileAt(x, y) === 'G') {
-      return state.unlocked ? { go: [[5, 2]], act: null } : { go: [[5, 3]], act: { type: 'locked', id: 'castle' } };
-    }
-    if (tileAt(x, y) === 'K') return { go: [[5, 13]], act: { type: 'locked', id: 'home' } };
-    if (tileAt(x, y) === 'H') return { go: SECRET_TILES.shop, act: null };
-    if (tileAt(x, y) === 'b') return { go: SECRET_TILES.box, act: null };
-    if (x === 5 && y === 12 && !state.done.has('meadow') && state.active !== 'meadow') return { go: around(5, 12), act: null };
+    if (t === 'K') return { go: [[x, 17], [7, 15]], act: { type: 'locked', id: 'home' } };
+    if (t === 'H') return { go: SECRET_TILES.shop, act: null };
+    if (y <= 2 && x >= 4 && x <= 10) return state.unlocked ? { go: PLACES.castle.triggers, act: null } : { go: [[7, 4], [8, 4]], act: { type: 'locked', id: 'castle' } };
     if (blocked(x, y)) return { go: around(x, y), act: null };
     return { go: [[x, y]], act: null };
-  }
-  function around(x, y) {
-    return [[x, y + 1], [x - 1, y], [x + 1, y], [x, y - 1]].filter(([a, b]) => !blocked(a, b));
   }
 
   function walkTo(x, y) {
@@ -189,7 +182,6 @@ export function createWorld(canvas, opts) {
   function arrive() {
     const { x, y } = state.player;
     const emit = a => { state.path = []; opts.onTrigger(a); };
-    // 走過去選物件
     const item = isItemTile(x, y);
     if (item >= 0) return emit({ type: 'item', id: state.active, index: item });
     for (const [id, p] of Object.entries(PLACES)) {
@@ -270,67 +262,87 @@ export function createWorld(canvas, opts) {
     state.camX = Math.max(0, Math.min(W * TILE - state.viewW, tx));
   }
 
+  // ---- 點陣角色：先畫成 32×32 小圖再放大，邊緣才會銳利 ----
+  const spriteCache = new Map();
+  function sprite(key, draw) {
+    let c = spriteCache.get(key);
+    if (!c) {
+      c = document.createElement('canvas');
+      c.width = 32; c.height = 32;
+      draw(c.getContext('2d'));
+      spriteCache.set(key, c);
+    }
+    return c;
+  }
+  function person(look, name, x, y, dir, frame, moving) {
+    const f = moving ? frame % 2 : 0;
+    ctx.drawImage(sprite(`p|${name}|${dir}|${f}|${moving}`, c => drawPerson(c, 0, 0, look, dir, f, moving)), Math.round(x), Math.round(y));
+  }
+  function cat(look, name, x, y, dir, frame, moving) {
+    const f = moving ? frame % 2 : 0;
+    ctx.drawImage(sprite(`c|${name}|${dir}|${f}|${moving}`, c => drawCat(c, 0, 0, look, dir, f, moving)), Math.round(x), Math.round(y));
+  }
+
   // ---- 繪圖 ----
   function render() {
-    const t = state.t;
+    const t = state.t, p = state.player;
+    const k = state.scale * state.dpr;
     ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.translate(-Math.round(state.camX), -Math.round(state.camY));
-    ctx.drawImage(staticLayer, 0, 0);
-    // 河水閃光
-    ctx.fillStyle = 'rgba(255,255,255,.55)';
-    for (let x = 0; x < W; x++) {
-      if (x === 5) continue;
-      const o = (Math.floor(t / 250) + x * 3) % 6;
-      ctx.fillRect(x * TILE + 4 + o * 4, 4 * TILE + 10 + (x % 2) * 10, 6, 1);
+    ctx.fillStyle = '#4FAF3E';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.setTransform(k, 0, 0, k, -state.camX * k, -state.camY * k);
+    if (bg.complete && bg.naturalWidth) {
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      ctx.drawImage(bg, 0, 0, W * TILE, H * TILE);
     }
-    // 營火
-    const fl = Math.floor(t / 120) % 3;
-    ctx.fillStyle = ['#F2C94C', '#F28C3A', '#F25C3A'][fl];
-    ctx.fillRect(9 * TILE + 12, 5 * TILE + 10 - fl, 8, 10 + fl);
-    ctx.fillStyle = '#FFF2A0';
-    ctx.fillRect(9 * TILE + 14, 5 * TILE + 16, 4, 4);
-    // 城門
-    if (state.unlocked) { ctx.fillStyle = '#1A1424'; ctx.fillRect(5 * TILE + 6, 2 * TILE + 4, 20, 28); }
-    // 打烊小店的窗戶燈光
+    ctx.imageSmoothingEnabled = false;
+
+    // 打開的城門
+    if (state.unlocked) {
+      ctx.fillStyle = '#140E1E';
+      ctx.fillRect(6.78 * TILE, 2.62 * TILE, 1.46 * TILE, 1.08 * TILE);
+      ctx.fillRect(6.95 * TILE, 2.5 * TILE, 1.12 * TILE, 0.2 * TILE);
+    }
+    // 打烊小店的燈光（祕密地點的提示）
     if (!state.secrets.has('shop')) {
-      ctx.fillStyle = `rgba(255,220,120,${0.6 + 0.3 * Math.sin(t / 500)})`;
-      ctx.fillRect(10 * TILE + 6, 11 * TILE + 13, 10, 8);
+      ctx.fillStyle = `rgba(255,220,120,${0.25 + 0.2 * Math.sin(t / 500)})`;
+      ctx.fillRect(13 * TILE + 4, 13 * TILE + 26, 2 * TILE - 8, 14);
     }
 
     const sprites = [];
-    // NPC
-    for (const n of Object.values(NPCS)) {
-      if (!n) continue;
+    for (const [name, n] of Object.entries(NPCS)) {
+      if (!n.look) continue;
       const [x, y] = n.at;
-      if (n.look) sprites.push([y, () => drawPerson(ctx, x * TILE, y * TILE, n.look, n === NPCS.mai ? 'left' : 'down', 0, false)]);
-      if (n.sign) sprites.push([y, () => { ctx.fillStyle = '#7A4E2E'; ctx.fillRect(x * TILE + 14, y * TILE + 14, 4, 16); ctx.fillStyle = '#C89A5A'; ctx.fillRect(x * TILE + 6, y * TILE + 8, 20, 10); ctx.fillStyle = '#5A8A4A'; ctx.fillRect(x * TILE + 14, y * TILE + 8, 12, 4); }]);
+      sprites.push([y, () => person(n.look, name, x * TILE, y * TILE, n.dir || 'down', 0, false)]);
     }
-    // 史萊姆
-    if (!state.done.has('meadow')) sprites.push([12, () => drawSlime(ctx, 5 * TILE, 12 * TILE, Math.floor(t / 300))]);
-    // 紙箱
+    if (!state.done.has('meadow')) {
+      const f = Math.floor(t / 300) % 2;
+      sprites.push([slimeAt[1], () => ctx.drawImage(sprite(`slime|${f}`, c => drawSlime(c, 0, 0, f)), slimeAt[0] * TILE, slimeAt[1] * TILE)]);
+    }
     if (!state.secrets.has('box')) {
-      sprites.push([9, () => { drawItem(ctx, 0, 9 * TILE, 'box'); if (Math.floor(t / 1600) % 3 === 0) { ctx.fillStyle = '#F7B867'; ctx.fillRect(10, 9 * TILE + 14, 4, 4); } }]);
+      const [bx, by] = SECRET_TILES.box[0];
+      sprites.push([by, () => {
+        ctx.drawImage(sprite('box', c => drawItem(c, 0, 0, 'box')), bx * TILE, by * TILE);
+        if (Math.floor(t / 1600) % 3 === 0) { ctx.fillStyle = '#FFFFFF'; ctx.fillRect(bx * TILE + 12, by * TILE + 14, 4, 4); }
+      }]);
     }
-    // 可以選的物件
     if (state.active && WALK_ITEMS[state.active]) {
       WALK_ITEMS[state.active].forEach(it => {
         if (it.kind === 'slime') return;
         sprites.push([it.at[1], () => drawItem(ctx, it.at[0] * TILE, it.at[1] * TILE, it.kind, t)]);
       });
     }
-    // 跟在後面的貓
-    const followers = [CATS.guide];
-    for (let i = 0; i < Math.min(4, state.cats); i++) followers.push([CATS.calico, CATS.black, CATS.orange, CATS.calico][i]);
-    followers.forEach((look, i) => {
+    const followers = [[CATS.guide, 'guide']];
+    const extra = [[CATS.calico, 'calico'], [CATS.black, 'black'], [CATS.orange, 'orange'], [CATS.calico, 'calico']];
+    for (let i = 0; i < Math.min(4, state.cats); i++) followers.push(extra[i]);
+    followers.forEach(([look, name], i) => {
       const h = state.history[Math.min(state.history.length - 1, (i + 1) * 9)];
-      const [fx, fy, fd] = h || [state.player.px, state.player.py + TILE * (i + 1) * 0.4, 'up'];
       if (!h && i > 0) return;
-      sprites.push([fy / TILE, () => drawCat(ctx, Math.round(fx), Math.round(fy) + (h ? 0 : 6), look, fd, Math.floor(t / 160), state.player.moving)]);
+      const [fx, fy, fd] = h || [p.px + 18, p.py + 6, 'left'];
+      sprites.push([fy / TILE, () => cat(look, name, fx, fy, fd, p.frame, p.moving)]);
     });
-    // 玩家
-    const p = state.player;
-    sprites.push([p.py / TILE + 0.01, () => drawPerson(ctx, Math.round(p.px), Math.round(p.py), LOOKS[state.gender], p.dir, p.frame, p.moving)]);
+    sprites.push([p.py / TILE + 0.01, () => person(LOOKS[state.gender], state.gender, p.px, p.py, p.dir, p.frame, p.moving)]);
     sprites.sort((a, b) => a[0] - b[0]).forEach(s => s[1]());
 
     // 驚嘆號
@@ -346,20 +358,28 @@ export function createWorld(canvas, opts) {
     // 天色
     const tint = ['rgba(0,0,0,0)', 'rgba(255,240,200,.06)', 'rgba(255,190,120,.12)', 'rgba(255,130,90,.18)', 'rgba(90,60,140,.28)', 'rgba(30,30,90,.42)'][state.timeOfDay];
     ctx.fillStyle = tint; ctx.fillRect(0, 0, W * TILE, H * TILE);
+    if (state.timeOfDay >= 4) {
+      ctx.fillStyle = 'rgba(255,255,220,.8)';
+      for (let i = 0; i < 18; i++) {
+        if ((Math.floor(t / 400) + i) % 5 === 0) continue;
+        ctx.fillRect((i * 73) % (W * TILE), (i * 37) % (3 * TILE), 2, 2);
+      }
+    }
 
-    // 迷霧之森的黑暗
+    // 迷霧之森的黑暗：只剩主角身邊一圈光
     if (!state.done.has('forest') && inZone('forest', p.x, p.y)) {
       if (!state.darkSince) state.darkSince = t;
-      const dark = document.createElement('canvas');
-      dark.width = W * TILE; dark.height = H * TILE;
       const d = dark.getContext('2d');
+      d.globalCompositeOperation = 'source-over';
+      d.clearRect(0, 0, dark.width, dark.height);
       d.fillStyle = 'rgba(8,10,24,.93)'; d.fillRect(0, 0, dark.width, dark.height);
       d.globalCompositeOperation = 'destination-out';
       const g = d.createRadialGradient(p.px + 16, p.py + 16, 10, p.px + 16, p.py + 16, 58);
       g.addColorStop(0, 'rgba(0,0,0,1)'); g.addColorStop(1, 'rgba(0,0,0,0)');
       d.fillStyle = g; d.fillRect(0, 0, dark.width, dark.height);
+      ctx.imageSmoothingEnabled = true;
       ctx.drawImage(dark, 0, 0);
-      // 8 秒後物件自己微微發光
+      ctx.imageSmoothingEnabled = false;
       if (state.active === 'forest' && t - state.darkSince > 8000) {
         const a = 0.35 + 0.25 * Math.sin(t / 300);
         WALK_ITEMS.forest.forEach(it => {
@@ -370,14 +390,7 @@ export function createWorld(canvas, opts) {
     } else {
       state.darkSince = 0;
     }
-    // 夜晚的星星
-    if (state.timeOfDay >= 4) {
-      ctx.fillStyle = 'rgba(255,255,220,.8)';
-      for (let i = 0; i < 14; i++) {
-        if ((Math.floor(t / 400) + i) % 5 === 0) continue;
-        ctx.fillRect((i * 73) % (W * TILE), (i * 37) % (3 * TILE), 2, 2);
-      }
-    }
+
     // 太久沒動：箭頭指向最近的事件
     if (!state.paused && performance.now() - state.lastInput > 10000) {
       const next = nearestTodo();
