@@ -641,3 +641,83 @@ Layout from top to bottom:
 - Very bottom: a white royal castle wall with blue banners and a closed gate.
 No characters, no animals, no text, no UI. Vertical 3:4.
 ```
+
+---
+
+## 地圖上走路的小人（點陣風，正方形，綠色背景）
+
+每個角色只畫**一張站姿**，走路時由程式讓它彈跳、左右翻轉。
+
+**每一張都上傳兩張參考圖**：地圖 `assets/map/village.webp` ＋ 喵導員頭像（只參考畫風）。綠色背景是為了讓我用程式自動去背，請不要讓 Gemini 換成別的顏色。
+
+### 主角（男） → `sprite_player_m.png`
+
+```
+Cute chibi pixel art game sprite for a cozy 16-bit JRPG, about 2 heads tall, chunky and round, clean soft dark-brown outline (not black), soft shading, bright warm colors, matching the style of the reference image. Full body, standing still, facing the viewer, centered, feet touching the bottom of the character area, the character fills about 80% of the image height. Plain solid pure green background (#00FF00), completely flat, no shadow on the ground, no other objects. Square 1:1. No text. A young boy adventurer with short light-brown hair, big sparkling eyes, white and sky-blue tunic, short golden-orange scarf, brown boots.
+```
+
+### 主角（女） → `sprite_player_f.png`
+
+```
+Cute chibi pixel art game sprite for a cozy 16-bit JRPG, about 2 heads tall, chunky and round, clean soft dark-brown outline (not black), soft shading, bright warm colors, matching the style of the reference image. Full body, standing still, facing the viewer, centered, feet touching the bottom of the character area, the character fills about 80% of the image height. Plain solid pure green background (#00FF00), completely flat, no shadow on the ground, no other objects. Square 1:1. No text. A young girl adventurer with long light-brown hair and a small blue ribbon, big sparkling eyes, white and sky-blue tunic, short golden-orange scarf, brown boots.
+```
+
+### 喵導員 → `sprite_guide.png`
+
+```
+Cute chibi pixel art game sprite for a cozy 16-bit JRPG, about 2 heads tall, chunky and round, clean soft dark-brown outline (not black), soft shading, bright warm colors, matching the style of the reference image. Full body, standing still, facing the viewer, centered, feet touching the bottom of the character area, the character fills about 80% of the image height. Plain solid pure green background (#00FF00), completely flat, no shadow on the ground, no other objects. Square 1:1. No text. A chubby round fluffy orange tabby cat with white chin and white paws, sitting upright, wearing a tiny blue tour guide cap with a gold badge and a small leather satchel.
+```
+
+### 阿麥（男） → `sprite_mai_m.png`
+
+```
+Cute chibi pixel art game sprite for a cozy 16-bit JRPG, about 2 heads tall, chunky and round, clean soft dark-brown outline (not black), soft shading, bright warm colors, matching the style of the reference image. Full body, standing still, facing the viewer, centered, feet touching the bottom of the character area, the character fills about 80% of the image height. Plain solid pure green background (#00FF00), completely flat, no shadow on the ground, no other objects. Square 1:1. No text. A tall young warrior boy with messy short red hair, simple grey iron armor, a bandage on the cheek, a short sword on the back, a slightly shy smile.
+```
+
+### 阿麥（女） → `sprite_mai_f.png`
+
+```
+Cute chibi pixel art game sprite for a cozy 16-bit JRPG, about 2 heads tall, chunky and round, clean soft dark-brown outline (not black), soft shading, bright warm colors, matching the style of the reference image. Full body, standing still, facing the viewer, centered, feet touching the bottom of the character area, the character fills about 80% of the image height. Plain solid pure green background (#00FF00), completely flat, no shadow on the ground, no other objects. Square 1:1. No text. A sporty young warrior girl with long red hair in a high ponytail, simple grey iron armor (modest, fully covered), a bandage on the cheek, a short sword on the back, a slightly shy smile.
+```
+
+### 掃地的村民 → `sprite_villager.png`
+
+```
+Cute chibi pixel art game sprite for a cozy 16-bit JRPG, about 2 heads tall, chunky and round, clean soft dark-brown outline (not black), soft shading, bright warm colors, matching the style of the reference image. Full body, standing still, facing the viewer, centered, feet touching the bottom of the character area, the character fills about 80% of the image height. Plain solid pure green background (#00FF00), completely flat, no shadow on the ground, no other objects. Square 1:1. No text. A friendly village man in a brown vest and cream shirt, holding a straw broom.
+```
+
+### 黑貓 → `sprite_blackcat.png`
+
+```
+Cute chibi pixel art game sprite for a cozy 16-bit JRPG, about 2 heads tall, chunky and round, clean soft dark-brown outline (not black), soft shading, bright warm colors, matching the style of the reference image. Full body, standing still, facing the viewer, centered, feet touching the bottom of the character area, the character fills about 80% of the image height. Plain solid pure green background (#00FF00), completely flat, no shadow on the ground, no other objects. Square 1:1. No text. A small sleek black cat with glowing yellow eyes, sitting.
+```
+
+### 小三花 → `sprite_calico.png`
+
+```
+Cute chibi pixel art game sprite for a cozy 16-bit JRPG, about 2 heads tall, chunky and round, clean soft dark-brown outline (not black), soft shading, bright warm colors, matching the style of the reference image. Full body, standing still, facing the viewer, centered, feet touching the bottom of the character area, the character fills about 80% of the image height. Plain solid pure green background (#00FF00), completely flat, no shadow on the ground, no other objects. Square 1:1. No text. A small calico kitten (white with orange and black patches), sitting.
+```
+
+### 史萊姆 → `sprite_slime.png`
+
+```
+Cute chibi pixel art game sprite for a cozy 16-bit JRPG, about 2 heads tall, chunky and round, clean soft dark-brown outline (not black), soft shading, bright warm colors, matching the style of the reference image. Full body, standing still, facing the viewer, centered, feet touching the bottom of the character area, the character fills about 80% of the image height. Plain solid pure green background (#00FF00), completely flat, no shadow on the ground, no other objects. Square 1:1. No text. A round, bouncy, light-blue slime with a shiny highlight, big cute eyes and rosy cheeks.
+```
+
+### 小狗 → `sprite_dog.png`
+
+```
+Cute chibi pixel art game sprite for a cozy 16-bit JRPG, about 2 heads tall, chunky and round, clean soft dark-brown outline (not black), soft shading, bright warm colors, matching the style of the reference image. Full body, standing still, facing the viewer, centered, feet touching the bottom of the character area, the character fills about 80% of the image height. Plain solid pure green background (#00FF00), completely flat, no shadow on the ground, no other objects. Square 1:1. No text. A small fluffy beige puppy with floppy ears, wagging tail, standing.
+```
+
+### 兔子 → `sprite_bunny.png`
+
+```
+Cute chibi pixel art game sprite for a cozy 16-bit JRPG, about 2 heads tall, chunky and round, clean soft dark-brown outline (not black), soft shading, bright warm colors, matching the style of the reference image. Full body, standing still, facing the viewer, centered, feet touching the bottom of the character area, the character fills about 80% of the image height. Plain solid pure green background (#00FF00), completely flat, no shadow on the ground, no other objects. Square 1:1. No text. A small white bunny with pink inner ears and red eyes, sitting.
+```
+
+### 灰貓 → `sprite_graycat.png`
+
+```
+Cute chibi pixel art game sprite for a cozy 16-bit JRPG, about 2 heads tall, chunky and round, clean soft dark-brown outline (not black), soft shading, bright warm colors, matching the style of the reference image. Full body, standing still, facing the viewer, centered, feet touching the bottom of the character area, the character fills about 80% of the image height. Plain solid pure green background (#00FF00), completely flat, no shadow on the ground, no other objects. Square 1:1. No text. A small grey tabby cat, standing, tail up.
+```
