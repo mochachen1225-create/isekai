@@ -40,7 +40,9 @@ function waitClick(el) {
 // ---- 對話框 ----
 async function say(lines) {
   const box = $('#dialog'), face = $('#dialog-face'), name = $('#dialog-name'), text = $('#dialog-text');
+  const tap = $('#tapcatch');
   box.hidden = false;
+  tap.hidden = false;
   for (const [who, line] of lines) {
     const sp = SPEAKERS[who] || SPEAKERS.narr;
     face.innerHTML = '';
@@ -52,16 +54,17 @@ async function say(lines) {
     text.textContent = '';
     let skip = false;
     const onTap = () => { skip = true; };
-    box.addEventListener('click', onTap);
+    tap.addEventListener('click', onTap);
     for (const ch of line) {
       if (skip) { text.textContent = line; break; }
       text.textContent += ch;
       await sleep(28);
     }
-    box.removeEventListener('click', onTap);
-    await waitClick(box);
+    tap.removeEventListener('click', onTap);
+    await waitClick(tap);
   }
   box.hidden = true;
+  tap.hidden = true;
 }
 
 function toast(msg) {
