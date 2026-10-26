@@ -73,6 +73,15 @@ const CRITTERS = [
   { look: { body: '#8A8F9A', stripe: '#6A6F7A', belly: '#D8DCE4', eye: '#2A2333' }, at: [3, 4] },    // 灰貓
 ];
 
+// Gemini 畫的小人（去背後放在 assets/sprites/）。有圖就用圖，沒有就用程式畫的點陣小人
+const SPRITE_NAMES = ['player_m', 'player_f', 'guide', 'mai_m', 'mai_f', 'villager', 'blackcat', 'calico', 'slime', 'dog', 'bunny', 'graycat'];
+const SPRITE_IMG = {};
+for (const n of SPRITE_NAMES) {
+  const img = new Image();
+  img.onload = () => { SPRITE_IMG[n] = img; };
+  img.src = `assets/sprites/${n}.png`;
+}
+
 export function createWorld(canvas, opts) {
   const ctx = canvas.getContext('2d');
   NPCS.mai.look = LOOKS.mai;
@@ -325,11 +334,31 @@ export function createWorld(canvas, opts) {
     }
     return c;
   }
+  // 畫一張圖片小人：腳踩在格子底部，走路時上下彈跳，往左走就左右翻轉
+  function drawImgSprite(img, x, y, dir, frame, moving, h = 40) {
+    const w = img.width / img.height * h;
+    const bob = moving && frame % 2 ? -2 : 0;
+    const cx = x + TILE / 2, foot = y + TILE - 1;
+    ctx.fillStyle = 'rgba(30,20,40,.22)';
+    ctx.beginPath(); ctx.ellipse(cx, foot, w * 0.32, 3, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.save();
+    ctx.imageSmoothingEnabled = true;
+    ctx.translate(Math.round(cx), Math.round(foot + bob));
+    if (dir === 'left') ctx.scale(-1, 1);
+    ctx.drawImage(img, -w / 2, -h, w, h);
+    ctx.restore();
+    ctx.imageSmoothingEnabled = false;
+  }
+
   function person(look, name, x, y, dir, frame, moving) {
+    const img = SPRITE_IMG[{ m: 'player_m', f: 'player_f' }[name] || name];
+    if (img) return drawImgSprite(img, x, y, dir, frame, moving);
     const f = moving ? frame % 2 : 0;
     ctx.drawImage(sprite(`p|${name}|${dir}|${f}|${moving}`, c => drawPerson(c, 0, 0, look, dir, f, moving)), Math.round(x), Math.round(y));
   }
   function cat(look, name, x, y, dir, frame, moving) {
+    const img = SPRITE_IMG[{ critter0: 'dog', critter1: 'bunny', critter2: 'graycat', black: 'blackcat', calico: 'calico', guide: 'guide' }[name]];
+    if (img) return drawImgSprite(img, x, y, dir, frame, moving, 26);
     const f = moving ? frame % 2 : 0;
     ctx.drawImage(sprite(`c|${name}|${dir}|${f}|${moving}`, c => drawCat(c, 0, 0, look, dir, f, moving)), Math.round(x), Math.round(y));
   }
@@ -365,7 +394,8 @@ export function createWorld(canvas, opts) {
     for (const [name, n] of Object.entries(NPCS)) {
       if (!n.look) continue;
       const [x, y] = n.at;
-      sprites.push([y, () => person(n.look, name, x * TILE, y * TILE, n.dir || 'down', 0, false)]);
+      const key = name === 'mai' ? (state.gender === 'm' ? 'mai_f' : 'mai_m') : name;
+      sprites.push([y, () => person(n.look, key, x * TILE, y * TILE, n.dir || 'down', 0, false)]);
     }
     if (!state.done.has('meadow')) {
       const f = Math.floor(t / 300) % 2;
