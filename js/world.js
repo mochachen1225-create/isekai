@@ -159,6 +159,7 @@ export function createWorld(canvas, opts) {
     }
     if (t === 'K') return { go: [[x, 17], [7, 15]], act: { type: 'locked', id: 'home' } };
     if (t === 'H') return { go: SECRET_TILES.shop, act: null };
+    if (t === 'w') return { go: around(x, y), act: { type: 'chat', id: 'fountain' } }; // 隱藏的小互動：沒有箭頭
     if (y <= 2 && x >= 4 && x <= 10) return state.unlocked ? { go: PLACES.castle.triggers, act: null } : { go: [[7, 4], [8, 4]], act: { type: 'locked', id: 'castle' } };
     if (blocked(x, y)) return { go: around(x, y), act: null };
     return { go: [[x, y]], act: null };
@@ -345,14 +346,28 @@ export function createWorld(canvas, opts) {
     sprites.push([p.py / TILE + 0.01, () => person(LOOKS[state.gender], state.gender, p.px, p.py, p.dir, p.frame, p.moving)]);
     sprites.sort((a, b) => a[0] - b[0]).forEach(s => s[1]());
 
-    // 驚嘆號
+    // 事件地點上方的箭頭（往下指）
+    const arrow = (cx, top, col) => {
+      ctx.fillStyle = '#3A2F3A';
+      ctx.fillRect(cx - 4, top - 1, 8, 9); ctx.fillRect(cx - 9, top + 7, 18, 3); ctx.fillRect(cx - 7, top + 10, 14, 2);
+      ctx.fillRect(cx - 5, top + 12, 10, 2); ctx.fillRect(cx - 3, top + 14, 6, 2); ctx.fillRect(cx - 1, top + 16, 2, 2);
+      ctx.fillStyle = col;
+      ctx.fillRect(cx - 3, top, 6, 8); ctx.fillRect(cx - 8, top + 8, 16, 2); ctx.fillRect(cx - 6, top + 10, 12, 2);
+      ctx.fillRect(cx - 4, top + 12, 8, 2); ctx.fillRect(cx - 2, top + 14, 4, 2);
+    };
+    const bounce = Math.round(Math.sin(t / 200) * 3);
     for (const [id, pl] of Object.entries(PLACES)) {
-      if (state.done.has(id) || (id === 'castle' && !state.unlocked)) continue;
-      const bounce = Math.round(Math.sin(t / 200) * 2);
-      const mx = pl.marker[0] * TILE + 12, my = pl.marker[1] * TILE - 6 + bounce;
-      ctx.fillStyle = '#3A2F3A'; ctx.fillRect(mx - 1, my - 1, 10, 16);
-      ctx.fillStyle = '#FFE58A'; ctx.fillRect(mx, my, 8, 14);
-      ctx.fillStyle = '#3A2F3A'; ctx.fillRect(mx + 3, my + 2, 2, 7); ctx.fillRect(mx + 3, my + 10, 2, 2);
+      if (state.done.has(id) || (id === 'castle' && !state.unlocked) || id === state.active) continue;
+      arrow(pl.marker[0] * TILE + 16, pl.marker[1] * TILE - 8 + bounce, '#FFE58A');
+    }
+    // 正在進行的「走過去選」事件：每個可以選的東西上方都有一個粉紅色箭頭，下面有一圈光
+    if (state.active && WALK_ITEMS[state.active] && !(state.active === 'forest' && inZone('forest', p.x, p.y) && t - state.darkSince < 8000)) {
+      WALK_ITEMS[state.active].forEach((it, i) => {
+        const [ix, iy] = it.at;
+        ctx.fillStyle = `rgba(255,240,170,${0.35 + 0.2 * Math.sin(t / 250 + i)})`;
+        ctx.fillRect(ix * TILE + 2, iy * TILE + 24, TILE - 4, 6);
+        arrow(ix * TILE + 16, iy * TILE - 16 + Math.round(Math.sin(t / 200 + i) * 3), '#FF8AA8');
+      });
     }
 
     // 天色

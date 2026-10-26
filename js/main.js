@@ -1,8 +1,8 @@
 // 遊戲流程：開場 → 地圖 → 事件 → 揭曉 → 結果 → 組隊
-import { EVENTS, SECRETS, SPEAKERS, OPENINGS, SUMMON, CHATTER, JOBS, DIM_INFO, DIMS } from './data.js';
+import { EVENTS, SECRETS, SPEAKERS, OPENINGS, GUIDE_INTRO, CHATTER, JOBS, DIM_INFO, DIMS } from './data.js';
 import { VOICES, THEMES, GUT } from './persona.js';
 import { computeResult, encodeParty, decodeParty, teamInfo } from './score.js';
-import { createWorld } from './world.js';
+import { createWorld, WALK_ITEMS } from './world.js';
 import { drawPerson, drawCat, drawSlime, LOOKS, CATS, spriteCanvas, faceCanvas } from './pixel.js';
 
 const $ = sel => document.querySelector(sel);
@@ -128,15 +128,12 @@ async function sceneStep(text, art, cls = '') {
 async function playScene(opening) {
   show('scene');
   const me = spriteCanvas(c => drawPerson(c, 0, 0, LOOKS[game.profile.gender]), 4);
-  await sceneStep(opening.panels[0], opening.icon, 'night');
-  await sceneStep(opening.panels[1], '✨');
-  const king = spriteCanvas(c => drawPerson(c, 0, 0, LOOKS.king), 4);
-  const cat = spriteCanvas(c => drawCat(c, 0, 0, CATS.guide), 4);
-  await sceneStep('光散開。你站在一座金碧輝煌的大廳中央。', [me], 'hall');
-  $('#scene-text').textContent = '';
+  const s = $('#screen-scene');
+  s.className = 'screen on arrive';
   $('#scene-art').innerHTML = '';
-  $('#scene-art').append(king, me, cat);
-  await say(SUMMON.slice(1));
+  $('#scene-art').append(me);
+  $('#scene-text').innerHTML = `<p>${opening.arrive}</p><p class="sys-box">【系統】歡迎來到異世界。<br>新手教學：職業分配　開始。</p>`;
+  await waitClick(s);
   startGame();
 }
 
@@ -163,8 +160,10 @@ function startGame() {
   renderStamps();
   $('#status-btn').onclick = openStatus;
   game.world = createWorld($('#map'), { gender: game.profile.gender, onTrigger: handleTrigger });
-  game.world.pause(false);
-  toast('點地面就可以走路');
+  say(GUIDE_INTRO).then(() => {
+    game.world.pause(false);
+    toast('點地面就可以走路');
+  });
 }
 
 let busy = false;
@@ -181,7 +180,7 @@ async function handleTrigger(a) {
     else if (a.type === 'locked' && a.id === 'castle') {
       await say([['guide', `城門還鎖著。先把村子裡的五個地方都逛完吧（${game.profile.order.length}/5）。`]]);
     } else if (a.type === 'locked' && a.id === 'home') {
-      await say([['guide', '王城的門關起來了……國王說，打倒魔王之前不要回去。']]);
+      await say([['guide', '王城的大門關著。守衛說國王正忙著「召喚儀式」，閒雜人等不准進去。']]);
     }
   } finally {
     busy = false;
@@ -288,7 +287,7 @@ function askGut(ev) {
 // 走過去選的事件：畫面上方列出四個選項和內心話
 function showLegend(ev) {
   const box = $('#legend');
-  box.innerHTML = `<div class="legend-q">${THEMES[ev.id]}？</div><div class="legend-hint">${ev.kind === 'dark' ? '在黑暗中走走看，找到後走過去' : '走到想選的東西旁邊'}</div>`;
+  box.innerHTML = `<div class="legend-q">${THEMES[ev.id]}？</div><div class="legend-hint">${ev.kind === 'dark' ? '在黑暗中走走看，或直接點下面的選項' : '點下面的選項，或走到地圖上的東西旁邊'}</div>`;
   ev.options.forEach((o, i) => {
     const row = document.createElement('div');
     row.className = 'legend-row';
@@ -297,6 +296,8 @@ function showLegend(ev) {
     art.append(optionArt(o.art));
     row.append(art);
     row.insertAdjacentHTML('beforeend', `<span><b>${o.label}</b><br>「${VOICES[ev.id][i].voice}」</span>`);
+    // 直接點這一行也可以：主角會自己走過去
+    row.onclick = () => { const [x, y] = WALK_ITEMS[ev.id][i].at; game.world.walkTo(x, y); };
     box.append(row);
   });
   box.hidden = false;
