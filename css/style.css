@@ -34,7 +34,8 @@ button { font: inherit; color: inherit; }
 .eyebrow { margin: 0 0 8px; font-size: 13px; letter-spacing: .2em; color: #3A6EA5; }
 h1 { margin: 0 0 12px; font-size: 34px; line-height: 1.25; color: #2A4D7A;
   text-shadow: 0 2px 0 #fff, 0 4px 12px rgba(58,110,165,.25); }
-h2 { margin: 0 0 18px; font-size: 22px; }
+h2 { margin: 0 0 18px; font-size: 22px; line-height: 1.6; letter-spacing: .04em; }
+#screen-situation h2 { margin-bottom: 26px; }
 .sub { color: var(--ink-soft); line-height: 1.7; margin: 0 0 18px; }
 .fine { font-size: 12px; color: var(--ink-soft); margin-top: 14px; }
 .sprite-row { display: flex; justify-content: center; gap: 8px; margin: 8px 0 22px; image-rendering: pixelated; }
