@@ -1,5 +1,5 @@
 // 計分與代碼：純函式，不碰畫面。瀏覽器和 node 都能直接 import。
-import { DIMS, JOBS, JOB_ORDER, EVENTS, SECRETS, VERSION, TEAM_PREFIX, TEAM_TYPE, maiText } from './data.js';
+import { DIMS, DIM_INFO, JOBS, JOB_ORDER, EVENTS, SECRETS, VERSION, TEAM_PREFIX, TEAM_TYPE, maiText } from './data.js';
 import { THEMES, VOICES, TYPE, GUT, AXES, WORDS, AXIS_ICON } from './persona.js';
 import { DARK_VOICES, DARK_TYPE, DARK_AXES } from './tone.js';
 
@@ -216,6 +216,24 @@ function hashCodes(profiles) {
   let h = 0;
   for (const ch of profiles.map(encodeProfile).join('')) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
   return h;
+}
+
+// 兩個人合不合：同職業、天生搭檔、同屬性，或互補
+export function pairMatch(me, other) {
+  const dot = DIMS.reduce((a, d) => a + me.dims[d] * other.dims[d], 0);
+  const len = r => Math.sqrt(DIMS.reduce((a, d) => a + r.dims[d] ** 2, 0)) || 1;
+  const similar = Math.round(100 * dot / (len(me) * len(other)));
+  const a = JOBS[me.main], b = JOBS[other.main];
+  const [ma, mb] = [DIM_INFO[me.topDims[0]], DIM_INFO[other.topDims[0]]];
+  if (me.main === other.main)
+    return { icon: '👯', label: '一模一樣', similar, text: `你們轉生成了同一個職業！很多事不用說出口，對方就懂了。` };
+  if (a.partner === other.main)
+    return { icon: '💞', label: '天生搭檔', similar, text: a.partnerText };
+  if (b.partner === me.main)
+    return { icon: '💞', label: '天生搭檔', similar, text: `在${b.name}眼裡，${a.name}是最可靠的夥伴；你們一起出發，什麼都不怕。` };
+  if (me.topDims[0] === other.topDims[0])
+    return { icon: '🤝', label: '同屬性', similar, text: `你們都是「${ma.name}」系的人。${ma.strong}` };
+  return { icon: '🧩', label: '互補型', similar, text: `你帶來「${ma.name}」，對方帶來「${mb.name}」，剛好補上彼此缺的那一塊。` };
 }
 
 export function teamInfo(profiles) {

@@ -2,7 +2,7 @@
 import { maiText, EVENTS, SECRETS, SPEAKERS, OPENINGS, GUIDE_INTRO, GUIDE_REUNION, CHATTER, JOBS, DIM_INFO, DIMS } from './data.js';
 import { VOICES, THEMES, GUT, QUESTIONS } from './persona.js';
 import { toned, tipFor } from './tone.js';
-import { rulerOf, computeResult, encodeParty, decodeParty, teamInfo } from './score.js';
+import { rulerOf, computeResult, encodeParty, decodeParty, teamInfo, pairMatch } from './score.js';
 import { createWorld, WALK_ITEMS } from './world.js';
 import { drawPerson, drawCat, drawSlime, LOOKS, CATS, spriteCanvas, faceCanvas } from './pixel.js';
 
@@ -154,7 +154,8 @@ async function sceneStep(text, art, cls = '') {
 
 async function playScene(opening) {
   show('scene');
-  const me = spriteCanvas(c => drawPerson(c, 0, 0, LOOKS[game.profile.gender]), 4);
+  const g = game.profile.gender;
+  const me = gSprite(`player_${g}`, () => spriteCanvas(c => drawPerson(c, 0, 0, LOOKS[g]), 4));
   const s = $('#screen-scene');
   s.className = 'screen on arrive';
   $('#scene-art').innerHTML = '';
@@ -533,7 +534,11 @@ function showResult(profile, party) {
       const pr = computeResult(p);
       return `<span class="party-chip${i === party.length - 1 ? ' me' : ''}">${JOBS[pr.main].icon} ${i === party.length - 1 ? '你' : `旅人 ${i + 1}`}・${JOBS[pr.main].name}</span>`;
     }).join('')}</div>
-    <p>${left ? `你的好朋友，跟你是<b>互相搭配</b>的屬性，還是<b>一模一樣</b>呢？把連結傳給朋友，測完就會加入你的隊伍。湊滿四人，隊名和你們的隊伍屬性就會揭曉！（還差 ${left} 位）` : '四個人到齊了，來看看你們的隊名吧！'}</p>
+    ${party.slice(0, -1).map((p, i) => {
+      const o = computeResult(p), m = pairMatch(r, o);
+      return `<div class="match"><div class="match-head">你 × 旅人 ${i + 1}（${JOBS[o.main].name}）：<b>${m.icon} ${m.label}</b><span>屬性相似度 ${m.similar}%</span></div><p>${maiText(m.text, gender, r.ruler)}</p></div>`;
+    }).join('')}
+    <p>${left ? (party.length > 1 ? `把連結傳給更多朋友，看看他們跟你合不合！湊滿四人，隊名和你們的隊伍屬性就會揭曉！（還差 ${left} 位）` : `你的好朋友，跟你是<b>互相搭配</b>的屬性，還是<b>一模一樣</b>呢？把連結傳給朋友，測完就會知道你們合不合。湊滿四人，隊名和你們的隊伍屬性就會揭曉！（還差 ${left} 位）`) : '四個人到齊了，來看看你們的隊名吧！'}</p>
     <div class="btn-col">${left ? '<button class="btn primary" data-act="invite">邀請夥伴組隊</button>' : '<button class="btn primary" data-act="team">揭曉我們的隊伍</button>'}</div>`;
   root.querySelector('[data-act="invite"]')?.addEventListener('click', () =>
     share(shareLink(party, r.main), `我轉生成了「${job.name}」！那你呢？四個人就可以組隊！（${party.length}/4）`));
