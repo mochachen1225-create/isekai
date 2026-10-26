@@ -286,3 +286,8 @@ h2 { margin: 0 0 18px; font-size: 22px; line-height: 1.6; letter-spacing: .04em;
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* 選擇外觀頁：字放大 */
+#screen-avatar .sys-box { font-size: 20px; padding: 14px 20px; line-height: 1.6; }
+#screen-avatar .avatar-card { font-size: 22px; }
+#screen-avatar .fine { font-size: 15px; }
