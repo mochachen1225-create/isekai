@@ -28,11 +28,11 @@
 | 伙食長（男） | `cook_m.jpg` | ✅ 已完成 |
 | 伙食長（女） | `cook_f.jpg` | ✅ 已完成 |
 | 吟遊詩人（男） | `bard_m.jpg` | ⬜ |
-| 吟遊詩人（女） | `bard_f.jpg` | ⬜ |
-| 祭典花火師（男） | `fireworks_m.jpg` | ⬜ |
-| 祭典花火師（女） | `fireworks_f.jpg` | ⬜ |
-| 鍊金術師（男） | `alchemist_m.jpg` | ⬜ |
-| 鍊金術師（女） | `alchemist_f.jpg` | ⬜ |
+| 吟遊詩人（女） | `bard_f.jpg` | ✅ 已完成 |
+| 祭典花火師（男） | `fireworks_m.jpg` | ✅ 已完成 |
+| 祭典花火師（女） | `fireworks_f.jpg` | ✅ 已完成 |
+| 鍊金術師（男） | `alchemist_m.jpg` | ✅ 已完成 |
+| 鍊金術師（女） | `alchemist_f.jpg` | ✅ 已完成 |
 | 占星術師（男） | `astrologer_m.jpg` | ⬜ |
 | 占星術師（女） | `astrologer_f.jpg` | ⬜ |
 | 探險家（男） | `explorer_m.jpg` | ⬜ |
@@ -53,7 +53,7 @@
 | 對話頭像：咖啡館奶奶 | `portrait_granny.jpg` | ⬜ |
 | 對話頭像：小三花（紙箱貓） | `portrait_calico.jpg` | ⬜ |
 
-共 37 張：14 個職業 × 男女 = 28 張（手遊立繪風），對話頭像 9 張（點陣風，跟地圖同一套畫風）。職業插畫已完成 11/28，對話頭像已完成 1/9。
+共 37 張：14 個職業 × 男女 = 28 張（手遊立繪風），對話頭像 9 張（點陣風，跟地圖同一套畫風）。職業插畫已完成 16/28，對話頭像已完成 1/9。
 
 ## 配色總覽
 
