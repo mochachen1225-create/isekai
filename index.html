@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#7EC8F2">
+<title>異世界轉生職業測驗</title>
+<meta name="description" content="三分鐘的異世界小冒險，找出你的轉生職業。純屬娛樂，不收集任何個人資料。">
+<meta property="og:title" content="異世界轉生職業測驗">
+<meta property="og:description" content="你會轉生成什麼職業？一起組一支隊伍吧！">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <section id="screen-title" class="screen">
+    <div class="title-wrap">
+      <p class="eyebrow">新手教學・職業分配</p>
+      <h1>異世界<br>轉生職業測驗</h1>
+      <p class="sub">三分鐘的小冒險，<br>找出你的轉生職業。</p>
+      <div id="title-sprites" class="sprite-row"></div>
+      <button class="btn primary" data-action="start">開始轉生</button>
+      <p class="fine">不收集任何個人資料・純屬娛樂</p>
+    </div>
+  </section>
+
+  <section id="screen-invite" class="screen">
+    <div class="title-wrap">
+      <p class="eyebrow">隊伍邀請</p>
+      <h2 id="invite-title"></h2>
+      <div id="invite-members" class="member-row"></div>
+      <p class="sub">測完之後，你就會加入這支隊伍。<br>湊滿四人，隊名就會揭曉。</p>
+      <button class="btn primary" data-action="start">開始轉生</button>
+      <p class="fine">不收集任何個人資料・純屬娛樂</p>
+    </div>
+  </section>
+
+  <section id="screen-avatar" class="screen">
+    <div class="title-wrap">
+      <p class="sys-box">【系統】請選擇你的轉生外觀。</p>
+      <div class="choice-row">
+        <button class="avatar-card" data-gender="m"><span class="avatar-sprite" data-look="m"></span><span>男生</span></button>
+        <button class="avatar-card" data-gender="f"><span class="avatar-sprite" data-look="f"></span><span>女生</span></button>
+      </div>
+      <p class="fine">只影響角色外觀，不影響結果。</p>
+    </div>
+  </section>
+
+  <section id="screen-situation" class="screen">
+    <div class="title-wrap">
+      <h2>你現在正在做什麼？</h2>
+      <div id="situations" class="situation-list"></div>
+    </div>
+  </section>
+
+  <section id="screen-scene" class="screen">
+    <div id="scene-art" class="scene-art"></div>
+    <div id="scene-text" class="scene-text"></div>
+    <p class="tap-hint">點一下繼續</p>
+  </section>
+
+  <section id="screen-game" class="screen">
+    <header id="topbar">
+      <span class="tb-label">新手教學</span>
+      <div id="stamps"></div>
+      <button id="status-btn" class="status-btn" aria-label="狀態視窗">狀態</button>
+    </header>
+    <div id="stage"><canvas id="map" aria-label="異世界村莊地圖"></canvas></div>
+  </section>
+
+  <section id="screen-ritual" class="screen">
+    <div id="ritual-stamps"></div>
+    <div class="status-window ritual-window"><div id="ritual-lines"></div></div>
+    <div id="ritual-crystal"></div>
+    <p class="tap-hint">點一下跳過</p>
+  </section>
+
+  <section id="screen-result" class="screen scroll"></section>
+  <section id="screen-team" class="screen scroll"></section>
+
+  <!-- 疊在畫面上的東西 -->
+  <div id="dialog" class="dialog" hidden>
+    <div class="dialog-face" id="dialog-face"></div>
+    <div class="dialog-body">
+      <div class="dialog-name" id="dialog-name"></div>
+      <div class="dialog-text" id="dialog-text"></div>
+    </div>
+    <span class="dialog-next">▼</span>
+  </div>
+  <div id="panel" class="panel" hidden></div>
+  <div id="status" class="modal" hidden></div>
+  <div id="toast" class="toast" hidden></div>
+</div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
