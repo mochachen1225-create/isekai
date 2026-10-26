@@ -291,3 +291,15 @@ h2 { margin: 0 0 18px; font-size: 22px; line-height: 1.6; letter-spacing: .04em;
 #screen-avatar .sys-box { font-size: 20px; padding: 14px 20px; line-height: 1.6; }
 #screen-avatar .avatar-card { font-size: 22px; }
 #screen-avatar .fine { font-size: 15px; }
+
+/* 進入異世界：眼睛慢慢睜開 */
+.eyes { position: absolute; inset: 0; z-index: 9; pointer-events: none; }
+.eyes[hidden] { display: none; }
+.eyes .lid { position: absolute; left: -10%; right: -10%; height: 58%; background: #1A1420; transition: transform 1.4s cubic-bezier(.5,0,.2,1); }
+.eyes .lid.top { top: 0; border-radius: 0 0 50% 50% / 0 0 30% 30%; }
+.eyes .lid.bottom { bottom: 0; border-radius: 50% 50% 0 0 / 30% 30% 0 0; }
+.eyes.open .lid.top { transform: translateY(-105%); }
+.eyes.open .lid.bottom { transform: translateY(105%); }
+.eyes p { position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-50%); text-align: center; color: #fff; font-size: 16px;
+  margin: 0; opacity: 1; transition: opacity .8s; text-shadow: 0 1px 4px rgba(0,0,0,.6); }
+.eyes.open p { opacity: 0; }

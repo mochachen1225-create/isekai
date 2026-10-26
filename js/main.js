@@ -1,6 +1,6 @@
 // 遊戲流程：開場 → 地圖 → 事件 → 揭曉 → 結果 → 組隊
 import { EVENTS, SECRETS, SPEAKERS, OPENINGS, GUIDE_INTRO, GUIDE_REUNION, CHATTER, JOBS, DIM_INFO, DIMS } from './data.js';
-import { VOICES, THEMES, GUT } from './persona.js';
+import { VOICES, THEMES, GUT, QUESTIONS } from './persona.js';
 import { computeResult, encodeParty, decodeParty, teamInfo } from './score.js';
 import { createWorld, WALK_ITEMS } from './world.js';
 import { drawPerson, drawCat, drawSlime, LOOKS, CATS, spriteCanvas, faceCanvas } from './pixel.js';
@@ -77,6 +77,8 @@ function toast(msg) {
 
 // ---- 開場 ----
 function initTitle() {
+  // 先在背景下載地圖，進入異世界時就不用等太久
+  new Image().src = 'assets/map/village.webp';
   const row = $('#title-sprites');
   row.append(spriteCanvas(c => drawPerson(c, 0, 0, LOOKS.m), 3));
   const guide = faceElement('guide');
@@ -160,10 +162,24 @@ function startGame() {
   renderStamps();
   $('#status-btn').onclick = openStatus;
   game.world = createWorld($('#map'), { gender: game.profile.gender, onTrigger: handleTrigger });
-  say(GUIDE_INTRO).then(() => {
+  openEyes().then(() => say(GUIDE_INTRO)).then(() => {
     game.world.pause(false);
     toast('點地面就可以走路');
   });
+}
+
+// 進入異世界的過場：眼睛慢慢睜開，畫面從馬賽克變清楚（同時等地圖載入）
+async function openEyes() {
+  const eyes = $('#eyes');
+  eyes.hidden = false;
+  eyes.className = 'eyes';
+  $('#eyes-text').textContent = '……好刺眼……眼睛有點睜不開……';
+  const revealing = game.world.reveal(2200);
+  await sleep(900);
+  eyes.classList.add('open');
+  await revealing;
+  await sleep(300);
+  eyes.hidden = true;
 }
 
 let busy = false;
@@ -215,7 +231,7 @@ function choosePanel(ev) {
   panel.className = `panel ${ev.id}`;
   panel.hidden = false;
   panel.innerHTML = `<div class="panel-sheet"><div class="panel-cast"></div><div class="panel-head"><div class="place">${ev.icon} ${ev.name}</div>
-    <div class="q">${THEMES[ev.id]}？</div><div class="play">${ev.id === 'shrine' ? '選一個你最想要的願望，翻開看看是什麼特典' : ev.id === 'guild' ? '撕下一張委託單' : '選一個最像你的'}</div></div>
+    <div class="q">${QUESTIONS[ev.id]}</div><div class="play">${ev.id === 'shrine' ? '選一個你最想要的願望，翻開看看是什麼特典' : ev.id === 'guild' ? '撕下一張委託單' : '選一個最像你的'}</div></div>
     <div class="options"></div></div>`;
   const grid = panel.querySelector('.options');
   const cast = panel.querySelector('.panel-cast');
@@ -288,7 +304,7 @@ function askGut(ev) {
 // 走過去選的事件：畫面上方列出四個選項和內心話
 function showLegend(ev) {
   const box = $('#legend');
-  box.innerHTML = `<div class="legend-q">${THEMES[ev.id]}？</div><div class="legend-hint">${ev.kind === 'dark' ? '在黑暗中走走看，或直接點下面的選項' : '點下面的選項，或走到地圖上的東西旁邊'}</div>`;
+  box.innerHTML = `<div class="legend-q">${QUESTIONS[ev.id]}</div><div class="legend-hint">${ev.kind === 'dark' ? '在黑暗中走走看，或直接點下面的選項' : '點下面的選項，或走到地圖上的東西旁邊'}</div>`;
   ev.options.forEach((o, i) => {
     const row = document.createElement('div');
     row.className = 'legend-row';

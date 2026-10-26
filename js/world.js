@@ -74,6 +74,10 @@ export function createWorld(canvas, opts) {
   };
   const bg = new Image();
   bg.src = 'assets/map/village.webp';
+  const ready = bg.decode ? bg.decode().catch(() => {}) : new Promise(r => { bg.onload = r; bg.onerror = r; });
+  // 進場效果：mosaic = 馬賽克格子大小（1 就是清楚的畫面）
+  let mosaic = 1;
+  const tmp = document.createElement('canvas');
   const dark = document.createElement('canvas');
   dark.width = W * TILE; dark.height = H * TILE;
 
@@ -418,6 +422,18 @@ export function createWorld(canvas, opts) {
         ctx.fillRect(mx * TILE + 12, my * TILE - 13 + bob, 8, 3);
       }
     }
+
+    // 馬賽克：把畫面縮小再放大
+    if (mosaic > 1) {
+      const w = Math.max(1, Math.round(canvas.width / mosaic)), h = Math.max(1, Math.round(canvas.height / mosaic));
+      tmp.width = w; tmp.height = h;
+      const tc = tmp.getContext('2d');
+      tc.imageSmoothingEnabled = true;
+      tc.drawImage(canvas, 0, 0, w, h);
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(tmp, 0, 0, w, h, 0, 0, canvas.width, canvas.height);
+    }
   }
 
   function nearestTodo() {
@@ -441,7 +457,23 @@ export function createWorld(canvas, opts) {
   }
   raf = requestAnimationFrame(loop);
 
+  // 等地圖載入後，從馬賽克慢慢變清楚
+  async function reveal(ms = 1800) {
+    mosaic = 48;
+    await ready;
+    const start = performance.now();
+    await new Promise(done => {
+      const step = now => {
+        const k = Math.min(1, (now - start) / ms);
+        mosaic = Math.max(1, Math.round(48 * Math.pow(1 - k, 2)));
+        if (k < 1) requestAnimationFrame(step); else { mosaic = 1; done(); }
+      };
+      requestAnimationFrame(step);
+    });
+  }
+
   return {
+    reveal,
     state,
     resize,
     walkTo,

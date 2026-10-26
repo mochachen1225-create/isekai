@@ -10,6 +10,16 @@ export const THEMES = {
   castle: '你怎麼看待別人',
 };
 
+// 選項出現前的題目（用「你覺得你會……」的語氣）
+export const QUESTIONS = {
+  shrine: '如果只能許一個願望，你覺得你會選……',
+  guild: '第一份工作，你覺得你會挑……',
+  meadow: '遇到突發狀況，你覺得你的第一反應會是……',
+  forest: '迷路的時候，你覺得你會怎麼決定方向……',
+  camp: '朋友很沮喪的時候，你覺得你會……',
+  castle: '面對大家口中的「壞人」，你覺得你會……',
+};
+
 export const VOICES = {
   shrine: [
     { voice: '我想要能保護重要的人的力量。',
@@ -116,22 +126,22 @@ export const TYPE = {
 // 第一層：直覺反應（二選一）。每題測一個面向，四個面向組成「轉生代碼」。
 // axis：energy 外／內、info 實／想、judge 理／感、life 計／隨
 export const GUT = {
-  shrine: { axis: 'info', q: '女神把四張卡攤在你面前，你會？',
+  shrine: { axis: 'info', q: '女神把四張卡攤在你面前，你覺得你會……',
     a: { label: '先一張一張看清楚', react: '嗯……每張都要仔細看。', letter: '實' },
     b: { label: '先想像拿到之後的生活', react: '如果我有了這個能力……（開始幻想）', letter: '想' } },
-  guild: { axis: 'energy', q: '水晶球一亮，整個公會的人都圍過來看你，你會？',
+  guild: { axis: 'energy', q: '水晶球一亮，整個公會的人都圍過來看你，你覺得你會……',
     a: { label: '有點得意，跟大家揮揮手', react: '嘿嘿，大家好～', letter: '外' },
     b: { label: '好想找個地方躲起來', react: '（拜託不要一直看我……）', letter: '內' } },
-  meadow: { axis: 'judge', q: '史萊姆在你面前一抖一抖的，你第一個念頭是？',
+  meadow: { axis: 'judge', q: '史萊姆在你面前一抖一抖的，你覺得你第一個念頭會是……',
     a: { label: '牠的弱點在哪裡？', react: '先觀察牠的動作……', letter: '理' },
     b: { label: '牠是不是也很害怕？', react: '你看，牠好像在發抖……', letter: '感' } },
-  forest: { axis: 'life', q: '霧越來越濃了，你會？',
+  forest: { axis: 'life', q: '霧越來越濃了，你覺得你會……',
     a: { label: '先停下來，確認方向', react: '等一下，先想清楚再走。', letter: '計' },
     b: { label: '先往前走走看', react: '走了才知道嘛！', letter: '隨' } },
-  camp: { axis: 'energy', q: '阿麥拍拍身邊的木頭：「要不要一起坐？」你會？',
+  camp: { axis: 'energy', q: '阿麥拍拍身邊的木頭：「要不要一起坐？」你覺得你會……',
     a: { label: '「好啊！」直接坐過去', react: '阿麥愣了一下，然後笑了。', letter: '外' },
     b: { label: '有點害羞，先坐遠一點', react: '你坐在火堆的另一邊，偷偷看了他一眼。', letter: '內' } },
-  castle: { axis: 'judge', q: '魔王出現了，你腦中第一個念頭是？',
+  castle: { axis: 'judge', q: '魔王出現了，你覺得你腦中第一個念頭會是……',
     a: { label: '他有多強？我們打得贏嗎？', react: '你迅速估算了一下距離和退路。', letter: '理' },
     b: { label: '他看起來……好寂寞', react: '你注意到他握劍的手，一直在發抖。', letter: '感' } },
 };
