@@ -63,7 +63,7 @@
 | 熱血格鬥家 | 暗黑：黑＋烈焰橘紅＋金 |
 | 守護騎士 | 明亮：皇家藍＋銀＋白 |
 | 結界師 | 暗黑：深夜藍＋水晶青＋銀 |
-| 聖職者 | 明亮：白＋金＋奶油色 |
+| 聖職者 | 明亮：白＋金＋天空藍 |
 | 伙食長 | 明亮：番茄紅＋奶油白＋皮革棕 |
 | 吟遊詩人 | 明亮：櫻花粉＋白＋金 |
 | 祭典花火師 | 半暗：深紫＋金＋朱紅 |
@@ -235,7 +235,7 @@ Full body, slight three-quarter view, hair and clothes flowing gently in the win
 
 ---
 
-## 5. 聖職者　（明亮：白＋金＋奶油色）
+## 5. 聖職者　（明亮：白＋金＋天空藍）
 
 ### 男生版 → `cleric_m.jpg`
 
@@ -246,7 +246,7 @@ Use the attached image ONLY as a style reference: match its art style, line qual
 
 High-quality anime gacha game character splash art, refined and highly detailed, in the style of modern mobile RPG character illustrations. Normal anime proportions, about 6.5 heads tall. Crisp clean line art, delicate hair strands with glossy highlights, soft cel shading with subtle gradients. Very intricate costume with many small accessories: brooches, tassels, small metal charms and thin chains, belts with little pouches, embroidered gold patterns.
 
-Character: the "Cleric" class, a boy (clearly male: boyish face, flat chest, slightly broader shoulders, masculine pose; not a girl) around 16 years old, soft medium-length platinum hair, soft kind eyes and a warm smile, as if listening to someone. Color scheme: white, soft cream and gold. Outfit: a layered white-and-gold priest robe with broad shoulders, a gold leaf circlet, a holy-symbol pendant, a small book hanging from a chain at the waist, embroidered gold patterns, a long robe over white trousers. Signature prop: an ornate golden lantern with a warm glowing flame, held in both hands in front of the chest.
+Character: the "Cleric" class, a boy (clearly male: boyish face, flat chest, slightly broader shoulders, masculine pose; not a girl) around 16 years old, short neat ash-blond hair, soft kind eyes and a warm smile, as if listening to someone. Color scheme: white and gold, with soft sky-blue accents. Outfit: a long white priest's coat with a high collar and gold buttons, a sky-blue stole with gold embroidery draped over the shoulders, a holy-symbol pendant, a leather belt with a small book on a chain, white trousers and brown leather boots. Signature prop: a small golden lantern hanging from one hand with a warm glowing flame; the other hand gently held out, palm up, with tiny glowing healing lights floating above it. A soft, welcoming pose.
 
 Full body, slight three-quarter view, hair and clothes flowing gently in the wind. Ground: a radiant white-gold halo sigil with feather patterns and concentric rings of light, glowing softly beneath the feet. Background: the inside of a grand cathedral with stained-glass windows, warm light beams and falling white feathers. The background is detailed and beautiful, like a gacha game card illustration, but softly blurred with shallow depth of field, a gentle vignette at the edges, and floating light particles; the character is the sharpest and brightest element and stands out clearly. No other people in the background. Vertical 3:4 portrait. The outfit is modest and fully covered. No text, no letters, no logo, no watermark, no UI elements, no frame.
 ```
@@ -260,7 +260,7 @@ Use the attached image ONLY as a style reference: match its art style, line qual
 
 High-quality anime gacha game character splash art, refined and highly detailed, in the style of modern mobile RPG character illustrations. Normal anime proportions, about 6.5 heads tall. Crisp clean line art, delicate hair strands with glossy highlights, soft cel shading with subtle gradients. Very intricate costume with many small accessories: hair ornaments, earrings, brooches, tassels, ribbons, small metal charms and thin chains, belts with little pouches, embroidered gold patterns.
 
-Character: the "Cleric" class, a girl around 16 years old, long wavy platinum-blonde hair, soft kind eyes and a warm smile, as if listening to someone. Color scheme: white, soft cream and gold. Outfit: a layered white-and-gold priest robe, a gold leaf hair ornament with a short veil, a holy-symbol pendant, a small book hanging from a chain at the waist, embroidered gold patterns, a long robe skirt. Signature prop: an ornate golden lantern with a warm glowing flame, held in both hands in front of the chest.
+Character: the "Cleric" class, a girl around 16 years old, long straight light-blonde hair, soft kind eyes and a warm smile, as if listening to someone. Color scheme: white and gold, with soft sky-blue accents. Outfit: a layered white-and-gold priestess robe with a sky-blue capelet, a short white veil held by a gold leaf hair ornament, a holy-symbol pendant, a small book hanging from a chain at the waist, embroidered gold patterns, a long robe skirt over white boots. Signature prop: a small golden lantern hanging from one hand with a warm glowing flame; the other hand gently held out, palm up, with tiny glowing healing lights floating above it. A soft, welcoming pose.
 
 Full body, slight three-quarter view, hair and clothes flowing gently in the wind. Ground: a radiant white-gold halo sigil with feather patterns and concentric rings of light, glowing softly beneath the feet. Background: the inside of a grand cathedral with stained-glass windows, warm light beams and falling white feathers. The background is detailed and beautiful, like a gacha game card illustration, but softly blurred with shallow depth of field, a gentle vignette at the edges, and floating light particles; the character is the sharpest and brightest element and stands out clearly. No other people in the background. Vertical 3:4 portrait. The outfit is modest and fully covered. No text, no letters, no logo, no watermark, no UI elements, no frame.
 ```
