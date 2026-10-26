@@ -96,19 +96,19 @@ h2 { margin: 0 0 18px; font-size: 22px; }
 
 /* ---- 對話框 ---- */
 .dialog { position: absolute; left: 10px; right: 10px; bottom: max(12px, env(safe-area-inset-bottom)); z-index: 20;
-  display: flex; gap: 10px; align-items: flex-start; background: rgba(28,34,62,.94); color: #fff; border: 3px solid #fff;
-  border-radius: 12px; padding: 12px 14px 22px; min-height: 104px; box-shadow: 0 0 0 3px #2A3050, 0 8px 24px rgba(0,0,0,.3); cursor: pointer; }
+  display: flex; gap: 10px; align-items: flex-start; background: #FFF8EC; color: #4A3426; border: 3px solid #E8C99A;
+  border-radius: 14px; padding: 12px 14px 22px; min-height: 104px; box-shadow: 0 0 0 3px #8A5A34, 0 8px 24px rgba(60,30,10,.3); cursor: pointer; }
 .dialog[hidden] { display: none; }
-.dialog-face { flex: none; width: 64px; height: 64px; border-radius: 8px; background: #3A4470; display: grid; place-items: center;
+.dialog-face { flex: none; width: 64px; height: 64px; border-radius: 8px; background: #F2E2C4; display: grid; place-items: center;
   overflow: hidden; font-size: 30px; }
 .dialog-face:empty { display: none; }
 .dialog-face canvas { width: 64px; height: 64px; image-rendering: pixelated; }
 .dialog-face img { width: 64px; height: 64px; object-fit: cover; }
 .dialog-body { flex: 1; min-width: 0; }
-.dialog-name { font-size: 13px; color: var(--lemon); font-weight: 700; margin-bottom: 4px; }
+.dialog-name { display: inline-block; font-size: 13px; color: #fff; background: #B07A44; border-radius: 999px; padding: 1px 10px; font-weight: 700; margin-bottom: 6px; }
 .dialog-name:empty { display: none; }
 .dialog-text { font-size: 17px; line-height: 1.6; }
-.dialog-next { position: absolute; right: 12px; bottom: 6px; font-size: 12px; animation: blink 1s infinite; }
+.dialog-next { position: absolute; right: 12px; bottom: 6px; font-size: 12px; color: #B07A44; animation: blink 1s infinite; }
 
 /* ---- 事件特寫 ---- */
 .panel { position: absolute; inset: 0; z-index: 15; background: rgba(20,24,48,.55); display: flex; flex-direction: column;

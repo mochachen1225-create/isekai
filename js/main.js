@@ -352,8 +352,10 @@ function illustration(job, gender, big = true) {
   return wrap;
 }
 
-function shareLink(party) {
-  return `${location.origin}${location.pathname}#${encodeParty(party)}`;
+// 分享連結指向 r/<職業>.html：那一頁有該職業的預覽圖（LINE、FB 會顯示），打開後自動轉回遊戲
+function shareLink(party, job) {
+  const base = `${location.origin}${location.pathname.replace(/[^/]*$/, '')}`;
+  return `${base}${job ? `r/${job}.html` : ''}#${encodeParty(party)}`;
 }
 
 async function share(url, text) {
@@ -426,7 +428,7 @@ function showResult(profile, party) {
     <p>${left ? `還差 ${left} 位，隊名尚未解鎖。把連結傳給朋友，讓他們測完加入你的隊伍吧！` : '四個人到齊了，來看看你們的隊名吧！'}</p>
     <div class="btn-col">${left ? '<button class="btn primary" data-act="invite">邀請夥伴組隊</button>' : '<button class="btn primary" data-act="team">揭曉我們的隊伍</button>'}</div>`;
   root.querySelector('[data-act="invite"]')?.addEventListener('click', () =>
-    share(shareLink(party), `我轉生成了「${job.name}」！你會是什麼職業？測完就能加入我的隊伍（${party.length}/4）`));
+    share(shareLink(party, r.main), `我轉生成了「${job.name}」！你會是什麼職業？測完就能加入我的隊伍（${party.length}/4）`));
   root.querySelector('[data-act="team"]')?.addEventListener('click', () => showTeam(party, true));
   root.querySelector('[data-act="again"]').addEventListener('click', () => {
     const others = party.slice(0, -1);
