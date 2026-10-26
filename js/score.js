@@ -1,6 +1,7 @@
 // 計分與代碼：純函式，不碰畫面。瀏覽器和 node 都能直接 import。
 import { DIMS, JOBS, JOB_ORDER, EVENTS, SECRETS, VERSION, TEAM_PREFIX, TEAM_TYPE, maiText } from './data.js';
 import { THEMES, VOICES, TYPE, GUT, AXES, WORDS, AXIS_ICON } from './persona.js';
+import { DARK_VOICES, DARK_TYPE, DARK_AXES } from './tone.js';
 
 const SIG_BONUS = 3;
 const FLOOR_RATIO = 0.8;
@@ -108,9 +109,11 @@ export function computeResult(profile) {
     description: maiText(describe(main, hidden), profile.gender, rulerOf(profile)),
     type: personaType(profile, topDims),
     code: rebirthCode(profile),
-    analysis: profile.choices.map((c, e) => { const v = VOICES[EVENTS[e].id][c]; const t = x => maiText(x, profile.gender, rulerOf(profile)); return { event: e, theme: THEMES[EVENTS[e].id], voice: t(v.voice), short: t(v.short), long: t(v.long) }; }),
+    analysis: profile.choices.map((c, e) => { const v = { ...VOICES[EVENTS[e].id][c], ...(dark(profile) ? DARK_VOICES[EVENTS[e].id][c] : {}) }; const t = x => maiText(x, profile.gender, rulerOf(profile)); return { event: e, theme: THEMES[EVENTS[e].id], voice: t(v.voice), short: t(v.short), long: t(v.long) }; }),
   };
 }
+
+const dark = profile => profile.tone === 'd';
 
 // 性格類型名稱：最高兩個面向＋三個標籤
 // 轉生代碼：每個直覺反應投票給一個字，同票時以比較晚回答的那一題為準
@@ -132,20 +135,22 @@ function rebirthCode(profile) {
     return v.length ? v.sort((p, q) => q.pos - p.pos)[0].letter : x;
   });
   const [en, inf, ju, li] = letters;
+  const axisText = (axis, l) => (dark(profile) && DARK_AXES[l]) || AXES[axis].text[l];
   return {
     code: letters.map(l => WORDS[l]).join('・'),
-    letters: Object.keys(AXES).map((axis, i) => ({ axis, icon: AXIS_ICON[axis], name: AXES[axis].name, letter: letters[i], word: WORDS[letters[i]], text: AXES[axis].text[letters[i]] })),
-    line: `${AXES.energy.text[en]}；${AXES.info.text[inf]}；${AXES.judge.text[ju]}；${AXES.life.text[li]}。`,
+    letters: Object.keys(AXES).map((axis, i) => ({ axis, icon: AXIS_ICON[axis], name: AXES[axis].name, letter: letters[i], word: WORDS[letters[i]], text: axisText(axis, letters[i]) })),
+    line: `${axisText('energy', en)}；${axisText('info', inf)}；${axisText('judge', ju)}；${axisText('life', li)}。`,
   };
 }
 
 function personaType(profile, topDims) {
   const [a, b] = topDims;
   const h = profile.choices.reduce((x, c) => x * 4 + c, 7);
+  const T = dark(profile) ? DARK_TYPE : TYPE;
   return {
     name: `${TYPE[a].adj}・${TYPE[b].adj}型`,
     tags: [TYPE[a].tags[h % 3], TYPE[a].tags[(h + 1) % 3], TYPE[b].tags[h % 3]],
-    line: `${TYPE[a].core}，${TYPE[b].sub}。`,
+    line: `${T[a].core}，${T[b].sub}。`,
   };
 }
 
