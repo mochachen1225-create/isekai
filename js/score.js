@@ -210,6 +210,50 @@ export function decodeParty(hash) {
   return profiles.every(Boolean) ? profiles : [];
 }
 
+// ---- 六碼轉生代碼：一個人的全部答案塞進 30 bits，方便用嘴巴報給朋友 ----
+// 沒有 0/O、1/I，避免看錯
+const CODE_ABC = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
+const FACT = [24, 6, 2, 1, 1];
+
+function permIndex(order) {
+  const rest = [0, 1, 2, 3, 4];
+  return order.reduce((acc, v, i) => { const k = rest.indexOf(v); rest.splice(k, 1); return acc + k * FACT[i]; }, 0);
+}
+function permFromIndex(n) {
+  const rest = [0, 1, 2, 3, 4];
+  return FACT.map(f => { const k = Math.floor(n / f); n %= f; return rest.splice(k, 1)[0]; });
+}
+const parity = n => { let p = 0; while (n) { p ^= n & 1; n >>>= 1; } return p; };
+
+export function toShortCode(p) {
+  let n = p.gender === 'm' ? 1 : 0;
+  n = n * 2 + (p.tone === 'd' ? 1 : 0);
+  for (const c of p.choices) n = n * 4 + c;
+  for (const g of p.gut || [0, 0, 0, 0, 0, 0]) n = n * 2 + g;
+  n = n * 128 + permIndex(p.order);
+  n = n * 4 + p.secrets;
+  n = n * 2 + parity(n);
+  let out = '';
+  for (let i = 0; i < 6; i++) { out = CODE_ABC[n % 32] + out; n = Math.floor(n / 32); }
+  return out;
+}
+
+export function fromShortCode(str) {
+  const s = String(str || '').toUpperCase().replace(/[^0-9A-Z]/g, '').replace(/O/g, '0').replace(/I/g, '1');
+  if (s.length !== 6) return null;
+  let n = 0;
+  for (const ch of s) { const v = CODE_ABC.indexOf(ch); if (v < 0) return null; n = n * 32 + v; }
+  if (parity(Math.floor(n / 2)) !== n % 2) return null;
+  n = Math.floor(n / 2);
+  const secrets = n % 4; n = Math.floor(n / 4);
+  const pi = n % 128; n = Math.floor(n / 128);
+  if (pi > 119) return null;
+  const gut = []; for (let i = 0; i < 6; i++) { gut.unshift(n % 2); n = Math.floor(n / 2); }
+  const choices = []; for (let i = 0; i < 6; i++) { choices.unshift(n % 4); n = Math.floor(n / 4); }
+  const tone = n % 2 ? 'd' : 'l'; n = Math.floor(n / 2);
+  return { gender: n % 2 ? 'm' : 'f', choices, gut, order: permFromIndex(pi), secrets, tone };
+}
+
 // ---- 隊伍 ----
 
 function hashCodes(profiles) {

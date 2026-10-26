@@ -349,3 +349,16 @@ h2 { margin: 0 0 18px; font-size: 22px; line-height: 1.6; letter-spacing: .04em;
 .match-head b { color: #C0602C; }
 .match-head span { display: block; font-size: 13px; color: #8A7A6A; }
 .match p { margin: 6px 0 0; font-size: 15px; line-height: 1.6; }
+
+.join { margin-top: 16px; padding-top: 14px; border-top: 1px dashed #E4D6C0; text-align: center; }
+.join-label { font-size: 14px; color: #8A7A6A; margin-bottom: 10px; }
+.my-code { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.my-code span { font-size: 14px; color: #8A7A6A; }
+.my-code b { font-size: 26px; letter-spacing: 4px; color: #3A3058; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.join-form { display: flex; gap: 8px; justify-content: center; margin: 14px 0 10px; }
+.join-form input { width: 190px; font: inherit; font-size: 17px; padding: 8px 12px; border-radius: 12px; border: 2px solid #F0D8B0; background: #fff; text-transform: uppercase; letter-spacing: 2px; }
+.join-form input::placeholder { letter-spacing: 0; text-transform: none; font-size: 14px; }
+.btn.ghost { background: transparent; box-shadow: none; color: #5A6878; text-decoration: underline; }
+.qr { margin-top: 10px; }
+.qr img { width: 200px; height: 200px; image-rendering: pixelated; border-radius: 12px; background: #fff; }
+.qr p { font-size: 13px; color: #8A7A6A; margin: 6px 0 0; }

@@ -2,7 +2,7 @@
 import { maiText, EVENTS, SECRETS, SPEAKERS, OPENINGS, GUIDE_INTRO, GUIDE_REUNION, CHATTER, JOBS, DIM_INFO, DIMS } from './data.js';
 import { VOICES, THEMES, GUT, QUESTIONS } from './persona.js';
 import { toned, tipFor } from './tone.js';
-import { rulerOf, computeResult, encodeParty, decodeParty, teamInfo, pairMatch } from './score.js';
+import { rulerOf, computeResult, encodeParty, decodeParty, encodeProfile, teamInfo, pairMatch, toShortCode, fromShortCode } from './score.js';
 import { createWorld, WALK_ITEMS } from './world.js';
 import { drawPerson, drawCat, drawSlime, LOOKS, CATS, spriteCanvas, faceCanvas } from './pixel.js';
 
@@ -539,9 +539,38 @@ function showResult(profile, party) {
       return `<div class="match"><div class="match-head">你 × 旅人 ${i + 1}（${JOBS[o.main].name}）：<b>${m.icon} ${m.label}</b><span>屬性相似度 ${m.similar}%</span></div><p>${maiText(m.text, gender, r.ruler)}</p></div>`;
     }).join('')}
     <p>${left ? (party.length > 1 ? `把連結傳給更多朋友，看看他們跟你合不合！湊滿四人，隊名和你們的隊伍屬性就會揭曉！（還差 ${left} 位）` : `你的好朋友，跟你是<b>互相搭配</b>的屬性，還是<b>一模一樣</b>呢？把連結傳給朋友，測完就會知道你們合不合。湊滿四人，隊名和你們的隊伍屬性就會揭曉！（還差 ${left} 位）`) : '四個人到齊了，來看看你們的隊名吧！'}</p>
-    <div class="btn-col">${left ? '<button class="btn primary" data-act="invite">邀請夥伴組隊</button>' : '<button class="btn primary" data-act="team">揭曉我們的隊伍</button>'}</div>`;
+    <div class="btn-col">${left ? '<button class="btn primary" data-act="invite">邀請夥伴組隊</button>' : '<button class="btn primary" data-act="team">揭曉我們的隊伍</button>'}</div>
+    <div class="join">
+      <div class="join-label">沒有連結也可以組隊</div>
+      <div class="my-code"><span>我的轉生代碼</span><b>${toShortCode(profile)}</b><button class="btn small" data-act="copycode">複製</button></div>
+      ${left ? `<form class="join-form" data-act="join"><input name="code" maxlength="8" autocomplete="off" autocapitalize="characters" placeholder="輸入朋友的 6 碼代碼" aria-label="朋友的轉生代碼"><button class="btn small">加入</button></form>
+      <button class="btn small ghost" data-act="qr">📱 顯示 QR Code，讓旁邊的朋友掃</button><div class="qr" hidden></div>` : ''}
+    </div>`;
   root.querySelector('[data-act="invite"]')?.addEventListener('click', () =>
     share(shareLink(party, r.main), `我轉生成了「${job.name}」！那你呢？四個人就可以組隊！（${party.length}/4）`));
+  root.querySelector('[data-act="copycode"]').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(toShortCode(profile)); toast('代碼已複製！'); } catch { toast(`你的代碼是 ${toShortCode(profile)}`); }
+  });
+  root.querySelector('[data-act="join"]')?.addEventListener('submit', e => {
+    e.preventDefault();
+    const friend = fromShortCode(e.target.code.value);
+    if (!friend) { toast('代碼好像打錯了，再檢查一下喔'); return; }
+    if (party.some(p => encodeProfile(p) === encodeProfile(friend))) { toast('這位朋友已經在隊伍裡了！'); return; }
+    const next = [...party.slice(0, -1), friend, profile];
+    history.replaceState(null, '', `#${encodeParty(next)}.me`);
+    toast(`${JOBS[computeResult(friend).main].name}加入了隊伍！`);
+    showResult(profile, next);
+    requestAnimationFrame(() => $('#screen-result .party')?.scrollIntoView({ block: 'start' }));
+  });
+  root.querySelector('[data-act="qr"]')?.addEventListener('click', e => {
+    const box = root.querySelector('.qr');
+    if (!box.hidden) { box.hidden = true; return; }
+    const qr = window.qrcode(0, 'M');
+    qr.addData(shareLink(party, r.main));
+    qr.make();
+    box.innerHTML = `<img alt="組隊 QR Code" src="${qr.createDataURL(6, 2)}"><p>用手機相機掃這個，就能加入你的隊伍</p>`;
+    box.hidden = false;
+  });
   root.querySelector('[data-act="full"]').addEventListener('click', () => showAnalysis(r));
   root.querySelector('[data-act="card"]').addEventListener('click', () => shareCard(r, gender, party));
   root.querySelector('[data-act="team"]')?.addEventListener('click', () => showTeam(party, true));
@@ -609,7 +638,7 @@ async function makeCard(r, gender) {
   g.fillStyle = '#A0604A'; g.font = `700 ${font(44)}`;
   g.fillText(`${r.type.name}　${r.type.tags.slice(0, 2).join(' ')}`, W / 2, 1550);
   g.fillStyle = '#8A9AAA'; g.font = font(34);
-  g.fillText('異世界轉生職業測驗　你會轉生成什麼？', W / 2, 1660);
+  g.fillText(`異世界轉生職業測驗　組隊代碼 ${toShortCode(r.profile)}`, W / 2, 1660);
   return new Promise(resolve => c.toBlob(resolve, 'image/png'));
 }
 
