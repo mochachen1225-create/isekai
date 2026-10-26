@@ -539,7 +539,7 @@ function showResult(profile, party) {
       return `<div class="match"><div class="match-head">你 × 旅人 ${i + 1}（${JOBS[o.main].name}）：<b>${m.icon} ${m.label}</b><span>屬性相似度 ${m.similar}%</span></div><p>${maiText(m.text, gender, r.ruler)}</p></div>`;
     }).join('')}
     <p>${left ? (party.length > 1 ? `把連結傳給更多朋友，看看他們跟你合不合！湊滿四人，隊名和你們的隊伍屬性就會揭曉！（還差 ${left} 位）` : `你的好朋友，跟你是<b>互相搭配</b>的屬性，還是<b>一模一樣</b>呢？把連結傳給朋友，測完就會知道你們合不合。湊滿四人，隊名和你們的隊伍屬性就會揭曉！（還差 ${left} 位）`) : '四個人到齊了，來看看你們的隊名吧！'}</p>
-    <div class="btn-col">${left ? '<button class="btn primary" data-act="invite">邀請夥伴組隊</button>' : '<button class="btn primary" data-act="team">揭曉我們的隊伍</button>'}</div>
+    <div class="btn-col">${left ? '<button class="btn primary" data-act="invite">邀請夥伴組隊</button>' : '<button class="btn primary" data-act="team">揭曉我們的隊伍</button>'}${party.length > 1 ? '<button class="btn small" data-act="teamcard">📸 分享隊伍圖卡</button>' : ''}</div>
     <div class="join">
       <div class="join-label">沒有連結也可以組隊</div>
       <div class="my-code"><span>我的轉生代碼</span><b>${toShortCode(profile)}</b><button class="btn small" data-act="copycode">複製</button></div>
@@ -574,6 +574,7 @@ function showResult(profile, party) {
   root.querySelector('[data-act="full"]').addEventListener('click', () => showAnalysis(r));
   root.querySelector('[data-act="card"]').addEventListener('click', () => shareCard(r, gender, party));
   root.querySelector('[data-act="team"]')?.addEventListener('click', () => showTeam(party, true));
+  root.querySelector('[data-act="teamcard"]')?.addEventListener('click', () => shareTeamCard(party, true));
   root.querySelector('[data-act="again"]').addEventListener('click', () => {
     const others = party.slice(0, -1);
     location.hash = others.length ? encodeParty(others) : '';
@@ -648,18 +649,92 @@ async function shareCard(r, gender, party) {
   const file = new File([blob], `isekai-${r.main}.png`, { type: 'image/png' });
   const url = shareLink(party, r.main);
   const text = `我轉生成了「${JOBS[r.main].name}」！那你呢？四個人就可以組隊！（${party.length}/4）`;
+  await shareImage(file, text, url);
+}
+
+// 分享圖卡＋文字；不能直接分享圖片的瀏覽器就把圖片打開，讓玩家長按儲存
+async function shareImage(file, text, url) {
   try {
     if (navigator.canShare && navigator.canShare({ files: [file] })) {
       await navigator.share({ files: [file], text: `${text}\n${url}` });
       return;
     }
   } catch (e) { if (e.name === 'AbortError') return; }
-  // 不能直接分享圖片的瀏覽器：把圖片打開，讓玩家長按儲存
-  const href = URL.createObjectURL(blob);
+  const href = URL.createObjectURL(file);
   const modal = $('#status');
-  modal.innerHTML = `<div class="card-preview"><img src="${href}" alt="職業卡"><p>長按圖片就可以儲存或分享</p></div>`;
+  modal.innerHTML = `<div class="card-preview"><img src="${href}" alt="圖卡"><p>長按圖片就可以儲存或分享</p></div>`;
   modal.hidden = false;
   modal.onclick = () => { modal.hidden = true; };
+  try { await navigator.clipboard.writeText(`${text}\n${url}`); toast('文字和連結已複製'); } catch { /* 沒有剪貼簿權限就算了 */ }
+}
+
+// 隊伍圖卡：四格成員（空位顯示「等你加入」），沒滿顯示你跟每個人合不合，滿了顯示隊名
+async function makeTeamCard(party, meLast) {
+  const W = 1080, H = 1350;
+  const c = document.createElement('canvas');
+  c.width = W; c.height = H;
+  const g = c.getContext('2d');
+  await document.fonts.ready;
+  const font = s => `${s}px Huninn, "PingFang TC", "Noto Sans TC", sans-serif`;
+  const bg = g.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#FFDDB8'); bg.addColorStop(0.45, '#FFF3E2'); bg.addColorStop(1, '#FFF8EC');
+  g.fillStyle = bg; g.fillRect(0, 0, W, H);
+  const results = party.map(computeResult);
+  const full = party.length === 4;
+  const t = full ? teamInfo(party) : null;
+  g.textAlign = 'center';
+  g.fillStyle = '#8A7A6A'; g.font = font(34);
+  g.fillText(full ? '我們的隊伍成軍了！' : `我們的隊伍（${party.length}/4）`, W / 2, 80);
+  g.fillStyle = '#3A3058'; g.font = `900 ${font(full ? 72 : 64)}`;
+  g.fillText(full ? t.name : '還差 ' + (4 - party.length) + ' 位夥伴！', W / 2, 170);
+  const S = 380, gap = 40, x0 = (W - S * 2 - gap) / 2, y0 = 210;
+  for (let i = 0; i < 4; i++) {
+    const x = x0 + (i % 2) * (S + gap), y = y0 + Math.floor(i / 2) * (S + 80);
+    g.save();
+    g.beginPath(); g.roundRect(x, y, S, S, 32); g.clip();
+    const r = results[i];
+    if (r) {
+      const img = await loadImage(`assets/illustrations/${r.main}_${r.profile.gender}.jpg`);
+      if (img) g.drawImage(img, 0, 0, img.width, img.width, x, y, S, S);
+      else { g.fillStyle = JOBS[r.main].color; g.fillRect(x, y, S, S); }
+    } else {
+      g.fillStyle = 'rgba(255,255,255,.7)'; g.fillRect(x, y, S, S);
+      g.fillStyle = '#C8B8A0'; g.font = `900 ${font(150)}`; g.fillText('？', x + S / 2, y + S / 2 + 40);
+      g.font = font(34); g.fillText('等你加入', x + S / 2, y + S / 2 + 110);
+    }
+    g.restore();
+    if (r) {
+      const me = meLast && i === party.length - 1;
+      g.fillStyle = me ? '#C0602C' : '#3A3058'; g.font = `700 ${font(38)}`;
+      g.fillText(`${me ? '我' : `旅人 ${i + 1}`}・${JOBS[r.main].icon} ${JOBS[r.main].name}`, x + S / 2, y + S + 50);
+    }
+  }
+  g.font = font(32); g.fillStyle = '#6A5A4A';
+  if (full) {
+    g.fillText(DIM_INFO[t.top].strong, W / 2, 1195);
+  } else if (meLast && party.length > 1) {
+    const me = results[results.length - 1];
+    results.slice(0, -1).forEach((o, i) => {
+      const m = pairMatch(me, o);
+      g.fillText(`我 × 旅人 ${i + 1}（${JOBS[o.main].name}）：${m.icon} ${m.label}`, W / 2, 1180 + i * 44);
+    });
+  }
+  g.fillStyle = '#8A9AAA'; g.font = font(30);
+  g.fillText(meLast ? `異世界轉生職業測驗　我的組隊代碼 ${toShortCode(party[party.length - 1])}` : '異世界轉生職業測驗　你會轉生成什麼？', W / 2, 1305);
+  return new Promise(resolve => c.toBlob(resolve, 'image/png'));
+}
+
+async function shareTeamCard(party, meLast) {
+  toast('隊伍圖卡製作中……');
+  const blob = await makeTeamCard(party, meLast);
+  const file = new File([blob], 'isekai-party.png', { type: 'image/png' });
+  const names = party.map(p => JOBS[computeResult(p).main].name).join('、');
+  const full = party.length === 4;
+  const text = full
+    ? `我們的隊伍是「${teamInfo(party).name}」！成員：${names}。你也來轉生看看吧！`
+    : `我們的隊伍目前 ${party.length}/4：${names}。還差 ${4 - party.length} 位，你要來嗎？`;
+  const me = computeResult(party[party.length - 1]).main;
+  await shareImage(file, text, full ? shareLink(party) : shareLink(party, meLast ? me : null));
 }
 
 // 完整解析頁
@@ -698,7 +773,7 @@ function showTeam(party, fromResult) {
     <div class="card"><h3>你們最強的時候</h3><p>${DIM_INFO[t.top].strong}</p></div>
     <div class="card"><h3>這支隊伍的小提醒</h3><p>${DIM_INFO[t.low].tip}</p></div>
     <div class="btn-col">
-      <button class="btn primary" data-act="share">分享我們的隊伍</button>
+      <button class="btn primary" data-act="share">📸 分享我們的隊伍</button>
       ${fromResult ? '<button class="btn small" data-act="back">回到我的結果</button>' : ''}
       <button class="btn small" data-act="new">我也要轉生，組一支新隊伍</button>
     </div>
@@ -715,7 +790,7 @@ function showTeam(party, fromResult) {
     m.insertAdjacentHTML('beforeend', `<div class="who">旅人 ${i + 1}</div><div class="jn">${JOBS[r.main].icon} ${JOBS[r.main].name}</div><div class="rl">${JOBS[r.main].role}</div>`);
     grid.append(m);
   });
-  root.querySelector('[data-act="share"]').onclick = () => share(shareLink(party), `我們的隊伍是「${t.name}」！你也來轉生看看吧`);
+  root.querySelector('[data-act="share"]').onclick = () => shareTeamCard(party, fromResult);
   root.querySelector('[data-act="back"]')?.addEventListener('click', () => show('result'));
   root.querySelector('[data-act="new"]').onclick = () => { location.hash = ''; location.reload(); };
   show('team');
