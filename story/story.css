@@ -5,11 +5,11 @@
 }
 
 :root {
-  --bg: #F4F1FA;
+  --bg: #E2EAF6;
   --paper: #FFFDF8;
   --ink: #2D3A4A;
   --ink-soft: #6A7688;
-  --accent: #6F78B8;
+  --accent: #4F6A9A;
 }
 
 * { box-sizing: border-box; }
@@ -52,3 +52,4 @@ h1 { margin: 6px 0 4px; font-size: 26px; text-align: center; letter-spacing: .06
 .toc small { display: block; color: var(--ink-soft); margin-bottom: 4px; }
 .intro { line-height: 1.9; color: var(--ink-soft); margin: 0 0 28px; text-align: center; }
 .fine { font-size: 12px; color: var(--ink-soft); text-align: center; margin-top: 28px; }
+.cta.top { margin: 0 0 28px; }
