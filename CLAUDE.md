@@ -34,4 +34,6 @@
 - 頁面在 `story/`（目錄 `index.html`、每話一個 `01.html`、`02.html`…，共用 `story.css`），遊戲首頁有「開始連載中」的連結。
 - 世界觀、角色、寫作口氣都在設定集文件 https://claude.ai/artifact/LYw7AbqJjjDvJ9hwCDfxno（私人），寫新的一話前先讀，照「寫作口氣指南」寫：短句、不一五一十交代、少用「我」、可以有台味。
 - 沒用在連載、但適合單獨發 IG／Threads 的圖，放在素材庫頁面 https://claude.ai/artifact/VpLeUwx1DQxYUz4pReewvp（私人）。不要放進 repo：這個 repo 推上去就會出現在 GitHub Pages，任何人都看得到（還沒定稿的草稿也一樣，放 scratchpad）。
+- 分工（2026-10-28 起）：小說由 Claude 寫草稿，使用者看過微調，說 OK 就由 Claude 上線。漫畫由 Claude 寫分鏡和 prompt，使用者回「生成」後用 API 畫，Claude 修圖、排字、上線。草稿放 scratchpad，不放 repo。
+- 更新節奏：每週三晚上小說＋漫畫一起上線，週四 IG 輪播。待辦和發文排程（日期、配圖連結、可複製的文案）都在進度表 https://claude.ai/artifact/EbWR1U1Twg1p5f6trDkwDT 的 `tasks`（欄位 due、time、caption、link、linkText）。每話做好後，把那一話的 Threads／IG 項目補上配圖和文案。
 - 新增一話：複製 `story/01.html` 改內容，在 `story/index.html` 目錄加一行、把上一話的「準備中」改成連結，然後重跑 `tools/subset_font.py`（它也會掃 `story/*.html`）。
