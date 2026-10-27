@@ -12,7 +12,7 @@ from fontTools import subset
 root = pathlib.Path(__file__).resolve().parent.parent
 chars = set(chr(c) for c in range(0x20, 0x7F))
 chars |= set('，。、：；！？「」『』（）…—～·・→←↑↓▼★☆％＋／')
-for path in [root / 'index.html', *sorted((root / 'js').glob('*.js'))]:
+for path in [root / 'index.html', *sorted((root / 'js').glob('*.js')), *sorted((root / 'story').glob('*.html'))]:
     chars |= set(path.read_text(encoding='utf-8'))
 chars = {c for c in chars if c.isprintable() and ord(c) >= 0x20}
 
