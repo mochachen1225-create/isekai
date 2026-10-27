@@ -19,3 +19,11 @@
 - Gemini API 已接好（2026-10-27）：`tools/gemini_image.py`，預設模型 `gemini-3.1-flash-image`（Nano Banana 2）。金鑰在 Network secrets，帳戶是預付制（NT$150，用完自動停），不要開自動儲值。Google Cloud 的帳單幣別是台幣：設預算或花費上限時填的數字是台幣（曾經誤設成 NT$5，害 API 被擋）。
 - 這個網站在 `site` 分支，push 後 GitHub Pages 自動更新。
 - 連續畫多張時用 `set -e` 或 `|| exit`，不要把 `tools/gemini_image.py` 的輸出接 pipe（`| cut` 會吃掉錯誤碼，失敗了也不會停）。
+
+## 職業短片預告（2026-10-27 起）
+
+- 使用者用 Gemini App 做 10 秒短片（每天 3 支，不用 API），我用 `tools/make_trailer.py config.json` 剪成直式預告：字卡 → 三個鏡頭（慢動作＋緩慢推近）→ 個性字卡 → 片名＋遊戲網址。範例設定在 `tools/trailer_example.json`。
+- 使用者偏好：配樂用 Gemini 做的歌的「中段比較豐富的段落」；男版咖啡師配慵懶法式（Rainfall on Saint-Germain），女版配 Bossa Nova（Café Promenade）。
+- 橫式來源：使用者選「置中＋上下模糊背景」的版本，不要裁成直式填滿。請使用者在影片 prompt 最後加「Vertical 9:16 video.」。
+- 個性字卡三段：第一句結論（例：你是讓人安心的那種人。）→ 兩三句具體行為的立體描述 → 身邊的人跟你在一起的感覺。正向。
+- 每支影片的三段故事 prompt 在工作檯頁面 https://claude.ai/artifact/3UpfrfLTVP8vi9Lzvn2UYU（私人）。
