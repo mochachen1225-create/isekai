@@ -73,3 +73,5 @@ h1 { margin: 6px 0 6px; font-size: 26px; line-height: 1.35; text-align: center; 
 .gap.s { height: 22vh; } .gap.m { height: 32vh; } .gap.l { height: 50vh; } .gap.xl { height: 70vh; }
 .gap p { margin: 0; font-size: 20px; letter-spacing: .12em; color: #2b3445; }
 .gap.dark p { color: #EDEFF5; }
+.strip { margin: 0 -22px; max-width: 800px; }
+.strip img { display: block; width: 100%; height: auto; }
