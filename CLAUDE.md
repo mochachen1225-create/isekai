@@ -16,3 +16,4 @@
 - 省錢原則：全新構圖一次畫 2 張挑選；修改只畫 1 張，而且把想改的地方一次寫進同一個 prompt（「一次改到位」）。
 - Gemini API 已接好（2026-10-27）：`tools/gemini_image.py`，預設模型 `gemini-3.1-flash-image`（Nano Banana 2）。金鑰在 Network secrets，帳戶是預付制（約 5 美元，用完自動停），不要開自動儲值。
 - 這個網站在 `site` 分支，push 後 GitHub Pages 自動更新。
+- 連續畫多張時用 `set -e` 或 `|| exit`，不要把 `tools/gemini_image.py` 的輸出接 pipe（`| cut` 會吃掉錯誤碼，失敗了也不會停）。
