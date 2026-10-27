@@ -6,7 +6,7 @@
 API Token 由環境的 Network secrets 代理自動加上（Claude 看不到）；本機測試時才需要 CLOUDFLARE_API_TOKEN。
 
 用法：
-  python3 tools/cf_image.py prompt.txt out.png [ref1.jpg ref2.jpg ...] [--model=@cf/black-forest-labs/flux-2-dev]
+  python3 tools/cf_image.py prompt.txt out.png [ref1.jpg ref2.jpg ...] [--model=@cf/black-forest-labs/flux-2-dev] [--size=768x1024]
 """
 import base64, io, json, os, sys, urllib.request, uuid
 from PIL import Image
@@ -37,8 +37,9 @@ def multipart(fields, files):
 
 
 def main(argv):
-    args = [a for a in argv if not a.startswith('--model')]
+    args = [a for a in argv if not a.startswith('--')]
     model = next((a.split('=', 1)[1] for a in argv if a.startswith('--model=')), MODEL)
+    w, h = next((a.split('=', 1)[1] for a in argv if a.startswith('--size=')), '768x1024').split('x')
     if len(args) < 2:
         sys.exit(__doc__)
     prompt = open(args[0], encoding='utf-8').read().strip()
@@ -48,7 +49,7 @@ def main(argv):
         sys.exit('缺少 CLOUDFLARE_ACCOUNT_ID')
 
     # 直式 3:4
-    body, ctype = multipart({'prompt': prompt, 'width': '768', 'height': '1024'},
+    body, ctype = multipart({'prompt': prompt, 'width': w, 'height': h},
                             {f'input_image_{i}': ref_bytes(p) for i, p in enumerate(refs)})
     req = urllib.request.Request(
         f'https://api.cloudflare.com/client/v4/accounts/{account}/ai/run/{model}',
