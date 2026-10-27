@@ -58,9 +58,16 @@ h1 { margin: 6px 0 4px; font-size: 26px; text-align: center; letter-spacing: .06
 .toc li.ep { padding: 16px 18px; border-radius: 14px; background: var(--paper); box-shadow: 0 1px 8px rgba(80,80,140,.08); }
 .toc .links { display: flex; gap: 8px; margin-top: 10px; }
 .toc .links a { flex: 1; padding: 8px 0; border-radius: 10px; text-align: center; background: #EEF2FA; box-shadow: none; }
-.comic { margin: 0 -22px; padding: 14px 0; background: #121419; }
-.comic img { display: block; width: 100%; height: auto; margin: 0 0 14px; }
 .next-note { margin: 22px 0 0; text-align: center; color: var(--ink-soft); line-height: 1.8; }
-.gap { display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 0 14px; }
-.gap.s { height: 18vh; } .gap.m { height: 32vh; } .gap.l { height: 50vh; } .gap.xl { height: 70vh; }
-.gap p { margin: 0; color: #EDEFF5; font-size: 20px; letter-spacing: .12em; }
+/* 漫畫：白色漫畫頁，格子大小不一；黑色段落是停頓 */
+.comic { margin: 0 -22px; padding: 18px 0; background: #fbfaf7; display: flex; flex-direction: column; gap: 22px; }
+.comic img { display: block; height: auto; }
+.comic img.full { width: 100%; }
+.comic img.in { width: 92%; margin: 0 auto; border: 4px solid #141414; }
+.comic img.left { margin: 0 auto 0 4%; } .comic img.right { margin: 0 4% 0 auto; }
+.comic img.w72 { width: 72%; } .comic img.w74 { width: 74%; } .comic img.w78 { width: 78%; } .comic img.w82 { width: 82%; }
+.gap { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+.gap.dark { background: #121419; }
+.gap.s { height: 22vh; } .gap.m { height: 32vh; } .gap.l { height: 50vh; } .gap.xl { height: 70vh; }
+.gap p { margin: 0; font-size: 20px; letter-spacing: .12em; color: #2b3445; }
+.gap.dark p { color: #EDEFF5; }
