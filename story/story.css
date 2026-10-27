@@ -19,7 +19,7 @@ a { color: var(--accent); }
 
 .page { max-width: 560px; margin: 0 auto; padding: 32px 22px 56px; }
 .series { margin: 0; font-size: 13px; letter-spacing: .2em; color: var(--accent); text-align: center; }
-h1 { margin: 6px 0 4px; font-size: 26px; text-align: center; letter-spacing: .06em; }
+h1 { margin: 6px 0 6px; font-size: 26px; line-height: 1.35; text-align: center; letter-spacing: .06em; }
 .chapter-no { margin: 0; text-align: center; color: var(--ink-soft); font-size: 14px; }
 
 /* 月暈雙環：月亮外面兩圈淡淡的光 */
@@ -32,6 +32,8 @@ h1 { margin: 6px 0 4px; font-size: 26px; text-align: center; letter-spacing: .06
   box-shadow: 0 2px 14px rgba(80,80,140,.08); }
 .story p { margin: 0 0 1.25em; font-size: 17px; line-height: 2; letter-spacing: .03em; }
 .story p.beat { margin-top: 2em; }
+.story p.scene { margin: 2.2em 0; text-align: center; color: var(--ink-soft); letter-spacing: 0; }
+.story p.punch { margin-top: 2em; text-align: center; font-size: 21px; font-weight: 700; line-height: 1.6; }
 .story .cat { display: block; width: 96px; margin: 8px auto 18px; image-rendering: pixelated; }
 
 .nav { display: flex; justify-content: space-between; gap: 12px; margin: 28px 0 0; font-size: 15px; }
