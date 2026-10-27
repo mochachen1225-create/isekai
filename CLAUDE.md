@@ -27,3 +27,4 @@
 - 橫式來源：使用者選「置中＋上下模糊背景」的版本，不要裁成直式填滿。請使用者在影片 prompt 最後加「Vertical 9:16 video.」。
 - 個性字卡三段：第一句結論（例：你是讓人安心的那種人。）→ 兩三句具體行為的立體描述 → 身邊的人跟你在一起的感覺。正向。
 - 每支影片的三段故事 prompt 在工作檯頁面 https://claude.ai/artifact/3UpfrfLTVP8vi9Lzvn2UYU（私人）。
+- 做好的預告放在 `promo/<職業>_<m|f>.mp4`（commit 到 site 分支，GitHub Pages 的網址可以在手機開啟、存影片）。同時加進工作檯頁面：在頁面的 `DONE` 物件加上 key 和貼文文字，影片放到 artifact 的 `video/<key>.mp4`。工作檯頁面的原始檔要先用 Artifact read 讀回來再改。
