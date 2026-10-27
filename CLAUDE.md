@@ -55,7 +55,8 @@
 - 新增一話：複製上一話的 html 改內容；在 `story/index.html` 目錄加一行，把上一話的「準備中」改成連結；重跑 `tools/subset_font.py`（它會掃 `story/*.html`）。
 - 寫新的一話前先讀設定集，照「寫作口氣指南」：異世界輕小說風格、短句、少用「我」、可以有台味、設定只露不解釋（讓讀者自己發現）、前面輕鬆。
 - 用字：敘述裡叫「橘貓」，不要叫「喵導員」（她還不知道這個名字）。故事裡不出現使用者的家人。
-- 漫畫不用跟小說逐字對應，要有 webtoon 的節奏感。台詞全部後製排字，圖裡不放字。
+- 漫畫不用跟小說逐字對應，要有 webtoon 的節奏感。台詞全部後製排字，圖裡不放字；每格 prompt 最後加「Leave clear empty space for speech bubbles.」。
+- 漫畫排成一整條直式條漫（2026-10-28 起）：排版程式 `isekai-studio` 的 `work/wt/webtoon.py`，每話寫一個 `epNN.py`（格間底色跟著時間變、滿版／小框、對話框、心聲、旁白、狀聲詞、留白停頓）。輸出切成 800×1280（LINE WEBTOON 規格），放 `story/comic/NN-s-XX.jpg`，`NN-comic.html` 用 `<div class="strip">` 連續排。單格圖 `NN-1.jpg`… 留著給 IG 輪播用。每話的排版計畫寫在草稿本該話分頁的「條漫排版」。
 
 ## 5. 職業短片預告
 
