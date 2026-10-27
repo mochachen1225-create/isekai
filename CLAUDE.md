@@ -13,4 +13,5 @@
 
 - 新畫風已完成：咖啡館店長、勇者、熱血格鬥家、守護騎士（男女版共 8 張）＋結界師男版。下一個是結界師女版，設定在 `DESIGN.md` 第 12 章的表格。
 - 2026-10-27 試過 Cloudflare Workers AI 的免費 FLUX.2（`tools/cf_image.py`）：畫風勉強接近，但使用者覺得太醜，不採用。插畫繼續用 Gemini。
+- Gemini API 已接好（2026-10-27）：`tools/gemini_image.py`，預設模型 `gemini-3.1-flash-image`（Nano Banana 2）。金鑰在 Network secrets，帳戶是預付制（約 5 美元，用完自動停），不要開自動儲值。
 - 這個網站在 `site` 分支，push 後 GitHub Pages 自動更新。
