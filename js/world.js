@@ -357,7 +357,7 @@ export function createWorld(canvas, opts) {
     ctx.drawImage(sprite(`p|${name}|${dir}|${f}|${moving}`, c => drawPerson(c, 0, 0, look, dir, f, moving)), Math.round(x), Math.round(y));
   }
   function cat(look, name, x, y, dir, frame, moving) {
-    const img = SPRITE_IMG[{ critter0: 'dog', critter1: 'bunny', critter2: 'graycat', black: 'blackcat', calico: 'calico', guide: 'guide' }[name]];
+    const img = SPRITE_IMG[{ critter0: 'dog', critter1: 'bunny', critter2: 'graycat', black: 'blackcat', calico: 'calico', graycat: 'graycat', guide: 'guide' }[name]];
     if (img) return drawImgSprite(img, x, y, dir, frame, moving, 26);
     const f = moving ? frame % 2 : 0;
     ctx.drawImage(sprite(`c|${name}|${dir}|${f}|${moving}`, c => drawCat(c, 0, 0, look, dir, f, moving)), Math.round(x), Math.round(y));
@@ -418,7 +418,7 @@ export function createWorld(canvas, opts) {
     }
     critters.forEach((c, i) => sprites.push([c.py / TILE, () => cat(c.look, `critter${i}`, c.px, c.py, c.dir, Math.floor(t / 200), c.moving)]));
     const followers = []; // 喵導員先去城堡準備了，只有路上收服的貓會跟著
-    const extra = [[CATS.calico, 'calico'], [CATS.black, 'black'], [CATS.orange, 'orange'], [CATS.calico, 'calico']];
+    const extra = [[CATS.calico, 'calico'], [CATS.black, 'black'], [CATS.orange, 'graycat'], [CATS.calico, 'calico']]; // 每隻都要有 Gemini 小人圖，沒有的會退回程式畫的點陣貓，看起來跟大家不一樣
     for (let i = 0; i < Math.min(4, state.cats); i++) followers.push(extra[i]);
     followers.forEach(([look, name], i) => {
       const h = state.history[Math.min(state.history.length - 1, (i + 1) * 9)];

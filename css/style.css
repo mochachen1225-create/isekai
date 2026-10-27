@@ -118,7 +118,7 @@ h2 { margin: 0 0 18px; font-size: 22px; line-height: 1.6; letter-spacing: .04em;
 .dialog-face canvas { width: 60px; height: 60px; image-rendering: pixelated; }
 .dialog-face img { width: 68px; height: 68px; object-fit: cover; }
 .dialog-face { overflow: hidden; }
-.dialog-face img.me-face { width: 84px; height: auto; max-width: none; object-fit: fill; align-self: start; margin-top: 5px; }
+.dialog-face img.me-face { width: 52px; height: auto; max-width: none; object-fit: fill; align-self: start; margin-top: 8px; }
 .panel-cast .gsprite { width: auto; height: 64px; border-radius: 0; }
 .dialog-body { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; text-align: center; }
 .dialog-name { position: absolute; top: -12px; left: 22px; font-size: 13px; color: #fff; background: #C08A52; border-radius: 999px;
