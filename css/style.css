@@ -38,6 +38,8 @@ h2 { margin: 0 0 18px; font-size: 22px; line-height: 1.6; letter-spacing: .04em;
 #screen-situation h2 { margin-bottom: 26px; }
 .sub { color: var(--ink-soft); line-height: 1.7; margin: 0 0 18px; }
 .fine { font-size: 12px; color: var(--ink-soft); margin-top: 14px; }
+.story-link { display: inline-block; margin-top: 16px; padding: 8px 14px; border-radius: 999px; font-size: 13px;
+  color: #3A6EA5; background: rgba(255,255,255,.7); text-decoration: none; }
 .sprite-row { display: flex; justify-content: center; gap: 8px; margin: 8px 0 22px; image-rendering: pixelated; }
 .sprite-row { align-items: flex-end; }
 .sprite-row canvas { width: 96px; height: 96px; image-rendering: pixelated; }

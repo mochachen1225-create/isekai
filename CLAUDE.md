@@ -28,3 +28,9 @@
 - 個性字卡三段：第一句結論（例：你是讓人安心的那種人。）→ 兩三句具體行為的立體描述 → 身邊的人跟你在一起的感覺。正向。
 - 每支影片的三段故事 prompt 在工作檯頁面 https://claude.ai/artifact/3UpfrfLTVP8vi9Lzvn2UYU（私人）。
 - 做好的預告放在 `promo/<職業>_<m|f>.mp4`（commit 到 site 分支，GitHub Pages 的網址可以在手機開啟、存影片）。同時加進工作檯頁面：在頁面的 `DONE` 物件加上 key 和貼文文字，影片放到 artifact 的 `video/<key>.mp4`。工作檯頁面的原始檔要先用 Artifact read 讀回來再改。
+
+## 線上小說《貓貓勇者小隊》（2026-10-27 起）
+
+- 頁面在 `story/`（目錄 `index.html`、每話一個 `01.html`、`02.html`…，共用 `story.css`），遊戲首頁有「開始連載中」的連結。
+- 世界觀、角色、寫作口氣都在設定集文件 https://claude.ai/artifact/LYw7AbqJjjDvJ9hwCDfxno（私人），寫新的一話前先讀，照「寫作口氣指南」寫：短句、不一五一十交代、少用「我」、可以有台味。
+- 新增一話：複製 `story/01.html` 改內容，在 `story/index.html` 目錄加一行、把上一話的「準備中」改成連結，然後重跑 `tools/subset_font.py`（它也會掃 `story/*.html`）。
