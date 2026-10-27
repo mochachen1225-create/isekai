@@ -2,7 +2,8 @@
 
 一次執行只呼叫一次 API，失敗就結束、不重試（見 CLAUDE.md）。
 
-需要的環境變數：CLOUDFLARE_ACCOUNT_ID、CLOUDFLARE_API_TOKEN
+需要的環境變數：CLOUDFLARE_ACCOUNT_ID。
+API Token 由環境的 Network secrets 代理自動加上（Claude 看不到）；本機測試時才需要 CLOUDFLARE_API_TOKEN。
 
 用法：
   python3 tools/cf_image.py prompt.txt out.png [ref1.jpg ref2.jpg ...] [--model=@cf/black-forest-labs/flux-2-dev]
@@ -43,8 +44,8 @@ def main(argv):
     prompt = open(args[0], encoding='utf-8').read().strip()
     out_path, refs = args[1], args[2:6]
     account, token = os.environ.get('CLOUDFLARE_ACCOUNT_ID'), os.environ.get('CLOUDFLARE_API_TOKEN')
-    if not account or not token:
-        sys.exit('缺少 CLOUDFLARE_ACCOUNT_ID 或 CLOUDFLARE_API_TOKEN')
+    if not account:
+        sys.exit('缺少 CLOUDFLARE_ACCOUNT_ID')
 
     # 直式 3:4
     body, ctype = multipart({'prompt': prompt, 'width': '768', 'height': '1024'},
@@ -52,7 +53,7 @@ def main(argv):
     req = urllib.request.Request(
         f'https://api.cloudflare.com/client/v4/accounts/{account}/ai/run/{model}',
         data=body, method='POST',
-        headers={'Authorization': f'Bearer {token}', 'Content-Type': ctype})
+        headers={'Content-Type': ctype, **({'Authorization': f'Bearer {token}'} if token else {})})
     try:
         with urllib.request.urlopen(req, timeout=180) as r:
             raw, rtype = r.read(), r.headers.get('Content-Type', '')
