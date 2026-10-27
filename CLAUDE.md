@@ -5,6 +5,7 @@
 - 美術規範和每個職業的角色設定都在 `DESIGN.md` 第 12 章。畫新圖前先讀。
 - **呼叫圖片 API 前一定要先確認**：先輸出英文 Prompt 和構圖構想（中文說明）給使用者看，等使用者回覆「生成」才可以呼叫 API。使用者沒說「生成」，就只討論、不呼叫。
 - 每次呼叫前說清楚這次會產生幾張圖。一次最多 3 張；不要自動重試、不要寫會自己一直重跑的迴圈。呼叫失敗就停下來，回報錯誤。
+- 例外：連載漫畫（2026-10-28 起）。每話先把整份分鏡和 12 格的 prompt 一次講清楚（構圖、參考圖、比例、要避免的錯），使用者回一次「生成」就畫完整話（每格 1 張，約 NT$26）。失敗就停下來回報、不重試。之後重畫個別格子，還是一張一張確認。目標是一次到位，不要來回浪費 API 費用。
 - 產生的圖先整理成比較圖給使用者挑，選定後才縮成 900 寬、放進 `assets/illustrations/`。
 - 同一張圖修改太多次會被舊構圖綁住。改不動時，換成用定稿參考圖重新生成。
 - 光影改不出來時，可以用程式在光源方向疊暖色（見 `DESIGN.md` 守護騎士的紀錄）。
@@ -35,5 +36,6 @@
 - 世界觀、角色、寫作口氣都在設定集文件 https://claude.ai/artifact/LYw7AbqJjjDvJ9hwCDfxno（私人），寫新的一話前先讀，照「寫作口氣指南」寫：短句、不一五一十交代、少用「我」、可以有台味。
 - 沒用在連載、但適合單獨發 IG／Threads 的圖，放在素材庫頁面 https://claude.ai/artifact/VpLeUwx1DQxYUz4pReewvp（私人）。不要放進 repo：這個 repo 推上去就會出現在 GitHub Pages，任何人都看得到（還沒定稿的草稿也一樣，放 scratchpad）。
 - 分工（2026-10-28 起）：小說由 Claude 寫草稿，使用者看過微調，說 OK 就由 Claude 上線。漫畫由 Claude 寫分鏡和 prompt，使用者回「生成」後用 API 畫，Claude 修圖、排字、上線。草稿放 scratchpad，不放 repo。
+- 推廣計畫在 https://claude.ai/artifact/MZpjDvX1fNDdtxfv3eqyjT（Claude Docs）：11/11 正式開跑，開跑前存稿到第 5 話。
 - 更新節奏：每週三晚上小說＋漫畫一起上線，週四 IG 輪播。待辦和發文排程（日期、配圖連結、可複製的文案）都在進度表 https://claude.ai/artifact/EbWR1U1Twg1p5f6trDkwDT 的 `tasks`（欄位 due、time、caption、link、linkText）。每話做好後，把那一話的 Threads／IG 項目補上配圖和文案。
 - 新增一話：複製 `story/01.html` 改內容，在 `story/index.html` 目錄加一行、把上一話的「準備中」改成連結，然後重跑 `tools/subset_font.py`（它也會掃 `story/*.html`）。
