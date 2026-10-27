@@ -8,3 +8,10 @@
 - 產生的圖先整理成比較圖給使用者挑，選定後才縮成 900 寬、放進 `assets/illustrations/`。
 - 同一張圖修改太多次會被舊構圖綁住。改不動時，換成用定稿參考圖重新生成。
 - 光影改不出來時，可以用程式在光源方向疊暖色（見 `DESIGN.md` 守護騎士的紀錄）。
+
+## 目前進度（換新 session 時從這裡接）
+
+- 新畫風已完成：咖啡館店長、勇者、熱血格鬥家、守護騎士（男女版共 8 張）。下一個是結界師，設定在 `DESIGN.md` 第 12 章的表格。
+- 正在試用 Cloudflare Workers AI 的免費 FLUX.2 畫圖：`tools/cf_image.py`（一次只呼叫一次、不重試）。需要環境變數 `CLOUDFLARE_ACCOUNT_ID`、`CLOUDFLARE_API_TOKEN`，網路要允許 `api.cloudflare.com`。
+- 試畫時用已定稿的圖當參考圖（例如 `assets/illustrations/knight_m.jpg`），再跟 Gemini 畫的 8 張比較畫風是否一致；不夠一致就改用 Gemini API。
+- 這個網站在 `site` 分支，push 後 GitHub Pages 自動更新。
