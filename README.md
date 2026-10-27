@@ -3,9 +3,14 @@
 三分鐘的異世界小冒險：在點陣小地圖上自由走動，完成 6 個事件，得到你的「轉生職業」，再用分享連結和朋友組成四人隊伍。純屬娛樂，不收集任何個人資料。
 
 - 設計稿：[`DESIGN.md`](DESIGN.md)
+- 給 Claude 的工作規則與專案地圖：[`CLAUDE.md`](CLAUDE.md)
 - Gemini 插畫指令與進度：[`PROMPTS.md`](PROMPTS.md)
 - 地圖背景是 `assets/map/village.webp`（Gemini 繪製），可以走的格子和事件位置定義在 `js/world.js` 最上面的 `ROWS`
 - 插畫放在 `assets/illustrations/`，檔名照 `PROMPTS.md` 的表格（例如 `hero_f.jpg`），放進去就會自動顯示
+
+## 連載《貓貓勇者小隊》
+
+測驗的世界觀延伸成小說＋漫畫連載，在 `story/`（每週三更新）。漫畫圖片以 AI 輔助繪製，故事、設定、台詞和分鏡是原創。
 
 ## 本機試玩
 
