@@ -44,7 +44,7 @@
 - 漫畫：Claude 寫分鏡和 prompt、自己用 API 畫、自己檢查、修圖、排字、上線（規則見第 3 節）。
 - 發文：Claude 在進度表準備好配圖和可複製的文案；使用者自己在 app 排程、上傳巴哈和 LINE WEBTOON。
 - 影片：使用者用 Gemini App 做（比 API 便宜），Claude 剪接（第 5 節）。
-- 進度表每一項都要有 owner（你／我／一起）和 due。欄位：done、owner、due、time、title、note、link、linkText、caption。每話做好後，把那一話的 Threads／IG 項目補上配圖和文案。
+- 進度表每一項都要有 owner（你／我／一起）和 due。欄位：done、owner、due、time、title、note、link、linkText、caption。每話做好後，把那一話的 Threads／IG 項目補上配圖和文案。使用者只看進度表（10/28）：任何準備好給她用的東西（圖、縮圖、文案、上傳包）都放進對應項目的 link／caption，圖片放 `promo/` 用 GitHub Pages 網址，方便她直接複製、存檔、貼上。
 - 排程任務（都送回這個 session）：
   - 每週日 19:41（台灣時間）：準備下一話的草稿、分鏡、prompt 和下週文案，推播通知。
   - 每天 18:47：讀進度表，有「你／一起」今天到期或逾期的項目就推播，沒有就不出聲。
