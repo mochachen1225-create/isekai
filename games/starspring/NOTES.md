@@ -20,6 +20,12 @@
 - 角色是點陣圖加白邊，像貼紙貼在瓦楞紙上；地面和道具維持原本的紙板手作風
 - 新角色圖在 `img/`：2026-10-28 用 Gemini 畫一張 4×4 角色表（約 NT$2.2），程式裁切、去背、縮到約 96px 高。原始角色表在 `isekai-studio` 的 `work/sprites/`
 
+## 配樂（2026-10-28）
+
+- 兩首都是使用者用 Gemini 做的：主關卡 `audio/cb.m4a`（Cloudbound Postman），魔王關 `audio/tt.m4a`（Tuxedo Tyrant's Standoff）。原檔在 `isekai-studio` 的 `uploads/music/`
+- 用頻譜相似度找循環點（主關卡 20.3→52.3 秒、魔王關 14.3→51.3 秒），接縫交叉淡化 0.25 秒；檔案前後各多 0.5 秒，播放時用 `loopStart`/`loopEnd` 跳過，所以不會有 AAC 開頭空白造成的斷點
+- 開始遊戲淡入 1.5 秒，換關卡交叉淡化，失敗時淡出；切到別的分頁會暫停。靜音按鈕原本就有（記在 localStorage `jack_mute`），現在也管配樂
+
 ## 還沒做
 
 - 標題卡、按鈕、提示框、高度條還是紙卡／瓦楞紙風（UI，沒動）
