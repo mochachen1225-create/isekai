@@ -106,7 +106,8 @@ h2{margin:0 0 6px;font-size:26px;color:var(--ink)}
       ④ 送貨的鵜鶘飛過來時<b>跳向牠</b>，抓住木箱！<br>
       ⑤ 大風來時<b>按住不要動</b><br>
       ⑥ 魔王用肉球摀住眼睛時<b>按住前進</b>，肉球放下就<b>放開</b>！<br>
-      <span class="pc">電腦也能玩：用滑鼠點擊、按住</span>
+      ⑦ 停在<b>平台</b>上就能站著休息（橘貓還是會追來）<br>
+      <span class="pc">電腦：↑／空白鍵爬（按住＝按住螢幕）、← → 換柱子</span>
     </div>
     <div class="best" id="tBest"></div>
     <button class="btn green" id="bStart">開始</button>
@@ -921,7 +922,7 @@ function newRun() {
     momH: -3.5, momStalk: 1, momTo: 1, momHop: 0, momWait: 0, momDelay: 0, momTalk: 3, momLine: '', momLineT: 0,
     time: 0, bonus: 0, events: genEvents(), coins: genCoins(), breaks: [], floats: [], ev: null, windBlow: false,
     seen: {}, streaks: [], inGiant: false, gi: null, final: 0, failReason: '', quick: false, bubble: '',
-    obs: [], ride: null, sameCount: 0, hits: 0, slips: 0, rode: false, minGap: 99, giantT: 0, momBag: [], momVis: false, bumpT: 0, stungT: 0
+    obs: [], ride: null, sameCount: 0, hits: 0, slips: 0, rode: false, minGap: 99, giantT: 0, momBag: [], momVis: false, bumpT: 0, stungT: 0, idleT: 0, rest: null, rests: 0
   };
 }
 G = newRun();
@@ -940,6 +941,9 @@ function jackX() {
 
 // ---------- 介面 ----------
 let hintTO = 0;
+// 電腦（有滑鼠或按過鍵盤）就在提示裡多寫按鍵
+let KB = false; try { KB = matchMedia('(hover: hover) and (pointer: fine)').matches; } catch (e) {}
+const kb = (touch, key) => KB ? key : touch;
 function hint(s, d = 1.5) { const el = $('hint'); el.textContent = s; el.classList.add('on'); clearTimeout(hintTO); hintTO = setTimeout(() => el.classList.remove('on'), d * 1000); }
 function clearHint() { clearTimeout(hintTO); $('hint').classList.remove('on'); }
 let chantText = null;
@@ -959,14 +963,14 @@ function startRun(quick) {
   panel(null); chant(''); clearHint(); fadeA = 0;
   camH = 4; sceneT = 0;
   if (quick) { grown = TOP + 3; scene = 'mom'; G.bubble = pick(MOM_LINES); SFX.door(); }
-  else { grown = 0; scene = 'plant'; hint('點一下土地，種下夜市買的怪種子', 30); }
+  else { grown = 0; scene = 'plant'; hint(kb('點一下土地，種下夜市買的怪種子', '點一下土地（或按空白鍵），種下夜市買的怪種子'), 30); }
 }
 function plant() { scene = 'sow'; sceneT = 0; clearHint(); }
 function startClimb() {
   scene = 'climb'; sceneT = 0;
   G.h = G.vh = 1.5; G.stalk = G.from = 1; G.momH = -3.5;
   G.momDelay = firstEver ? 1.6 : .7;
-  hint(firstEver ? '點妳那一根柱子往上爬，點別根就跳過去！' : '快爬！', firstEver ? 2.6 : 1);
+  hint(firstEver ? kb('點妳那一根柱子往上爬，點別根就跳過去！', '按 ↑ 往上爬，← → 跳到旁邊的柱子！（也可以用點的）') : '快爬！', firstEver ? 2.6 : 1);
 }
 function fail(reason) {
   if (scene === 'fail' || scene === 'win') return;
@@ -1012,12 +1016,13 @@ function jackTitle() {
 function setupGiant() {
   scene = 'giant'; sceneT = 0; G.inGiant = true; fadeA = 1;
   G.gi = { p: 0, state: 'back', t: 0, dur: firstEver ? 3.6 : rnd(2, 3), walk: 0, stepT: 0, moving: false, first: true };
-  hint(firstEver ? '一二三木頭人！魔王用肉球摀住眼睛時「按住」前進，肉球一放下就「放開」！' : '一二三木頭人！', firstEver ? 3.2 : 1.2);
+  hint(firstEver ? kb('一二三木頭人！魔王用肉球摀住眼睛時「按住」前進，肉球一放下就「放開」！', '一二三木頭人！魔王摀住眼睛時「按住 ↑ 或空白鍵」前進，肉球一放下就「放開」！') : '一二三木頭人！', firstEver ? 3.2 : 1.2);
 }
 
 // ---------- 操作 ----------
 function stroke() {
   if (scene !== 'climb' || G.stun > 0 || G.windBlow || G.ride) return;
+  G.idleT = 0; G.rest = null;
   G.arm = 1 - G.arm;
   G.heat += 18;
   if (G.heat > 100) { slip(); return; }
@@ -1071,7 +1076,7 @@ function swipeSide(to) {
   const sn = G.obs.find(o => o.type === 'snail' && o.stalk === to && Math.abs(o.h - G.h) < .9);
   if (sn) { hint(`那邊有${sn.name}！`, .8); return; }
   G.swDur = SW * (Math.abs(to - G.stalk) > 1 ? 1.45 : 1);
-  G.from = G.stalk; G.stalk = to; G.switchT = G.swDur; SFX.swish();
+  G.from = G.stalk; G.stalk = to; G.switchT = G.swDur; G.idleT = 0; G.rest = null; SFX.swish();
   for (const c of G.coins) if (!c.got && c.stalk === to && Math.abs(c.h - G.h) < 1) takeCoin(c);
   const hv = G.obs.find(o => o.type === 'hive' && !o.used && o.stalk === to && Math.abs(o.h - G.h) < .7);
   if (hv) sting(hv);
@@ -1104,6 +1109,26 @@ cv.addEventListener('pointermove', e => {
 const up = e => { if (e.pointerId === ptr.id) { ptr.down = false; ptr.id = -1; } };
 cv.addEventListener('pointerup', up); cv.addEventListener('pointercancel', up);
 document.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
+// 鍵盤：↑/W/空白鍵＝爬（按住＝按住螢幕），←/A、→/D＝跳到旁邊的柱子，Enter/空白鍵＝按面板上的主要按鈕
+const HOLD_KEYS = ['ArrowUp', 'KeyW', 'Space'], SIDE_KEYS = { ArrowLeft: -1, KeyA: -1, ArrowRight: 1, KeyD: 1 };
+const keysHeld = new Set();
+const held = () => ptr.down || keysHeld.size > 0;
+const GAME_KEYS = [...HOLD_KEYS, ...Object.keys(SIDE_KEYS), 'ArrowDown', 'Enter'];
+window.addEventListener('keydown', e => {
+  if (e.ctrlKey || e.metaKey || e.altKey || !GAME_KEYS.includes(e.code)) return;
+  e.preventDefault(); KB = true; audio();
+  if (HOLD_KEYS.includes(e.code)) keysHeld.add(e.code);
+  if (e.repeat) return;
+  const btn = { pTitle: 'bStart', pFail: 'bRetry', pWin: 'bAgain' }[['pTitle', 'pFail', 'pWin', 'pShare'].find(id => $(id).classList.contains('on'))];
+  if (btn) { if (e.code === 'Enter' || HOLD_KEYS.includes(e.code)) $(btn).click(); return; }
+  if (document.querySelector('.panel.on')) return;
+  if (scene === 'climb') {
+    if (SIDE_KEYS[e.code]) { const to = G.stalk + SIDE_KEYS[e.code]; if (to >= 0 && to <= 2) swipeSide(to); }
+    else if (HOLD_KEYS.includes(e.code)) stroke();
+  } else if (HOLD_KEYS.includes(e.code) || e.code === 'Enter') onDown(-1);
+}, { passive: false });
+window.addEventListener('keyup', e => { keysHeld.delete(e.code); if (GAME_KEYS.includes(e.code)) e.preventDefault(); });
+window.addEventListener('blur', () => keysHeld.clear());
 
 // ---------- 事件（鳥、斷柱、大風） ----------
 function startEvent(e) {
@@ -1115,7 +1140,7 @@ function startEvent(e) {
       G.breaks.push({ stalk: G.stalk, h: bh });
       G.coins = G.coins.filter(c => !(c.stalk === G.stalk && c.h > bh - .8 && c.h < bh + 2.2));
       G.ev = { type: 'break', bh, t: 0 };
-      hint(first ? '前面柱子斷了！點別根跳過去' : '前面斷了！換邊！', first ? 2.2 : 1.2);
+      hint(first ? kb('前面柱子斷了！點別根跳過去', '前面柱子斷了！按 ← → 跳過去') : '前面斷了！換邊！', first ? 2.2 : 1.2);
       return;
     }
   }
@@ -1146,10 +1171,10 @@ function startEvent(e) {
     hint(first ? '魔王在夢裡踢毛線球！看到紅色記號就換邊' : '毛線球又來了！', first ? 2 : 1);
   } else if (e.type === 'bird') {
     G.ev = { type: 'bird', phase: 'warn', t: 0, warn: first ? 2 : 1.6, from: rs(), target: G.stalk, x: 0, y: 0 };
-    SFX.tweet(); buzz(40); hint(first ? '烏鴉要來啄妳了！點別根閃開！' : '烏鴉來了！閃！', first ? 1.8 : 1);
+    SFX.tweet(); buzz(40); hint(first ? kb('烏鴉要來啄妳了！點別根閃開！', '烏鴉要來啄妳了！按 ← → 閃開！') : '烏鴉來了！閃！', first ? 1.8 : 1);
   } else if (e.type === 'wind') {
     G.ev = { type: 'wind', phase: 'warn', t: 0, grip: 100, dir: Math.random() < .5 ? -1 : 1 };
-    SFX.windWarn(); hint('大風要來了！手指按住螢幕不要動！', 1.8);
+    SFX.windWarn(); hint(kb('大風要來了！手指按住螢幕不要動！', '大風要來了！按住螢幕或空白鍵不要動！'), 1.8);
   }
 }
 function updEvent(dt) {
@@ -1200,7 +1225,7 @@ function updEvent(dt) {
   } else if (e.type === 'wind') {
     if (e.phase === 'warn' && e.t >= 1.7) { e.phase = 'blow'; e.t = 0; G.windBlow = true; SFX.wind(); buzz(60); }
     else if (e.phase === 'blow') {
-      if (!ptr.down) e.grip -= 65 * dt;
+      if (!held()) e.grip -= 65 * dt;
       if (e.grip <= 0) { fail('wind'); return; }
       if (e.t >= 2.6) { G.windBlow = false; G.ev = null; G.lastSide = -1; ptr.ox = ptr.x; ptr.oy = ptr.y; hint('撐住了！繼續爬！', .9); }
     }
@@ -1247,7 +1272,15 @@ function update(dt) {
 }
 function updClimb(dt) {
   G.time += dt;
-  G.heat = Math.max(0, G.heat - 55 * dt);
+  G.idleT += dt;
+  const pl = (!G.ride && !G.windBlow && G.stun <= 0 && G.switchT === 0 && G.idleT >= REST_IDLE) ? platHere() : null;
+  if (pl && pl !== G.rest) {
+    const prev = G.h; G.h = pl.h; if (pl.h > prev) collectCoins(prev, pl.h);
+    G.rest = pl; G.rests++; SFX.pop();
+    float('休息一下', platStandX(pl), sy(pl.h) - 105 * U, '#2f8f8a');
+    if (!restTipShown) { restTipShown = true; hint('站在平台上休息，手很快就不累了！但橘貓還在追喔', 2.2); }
+  } else if (!pl) G.rest = null;
+  G.heat = Math.max(0, G.heat - (G.rest ? 55 * REST_COOL : 55) * dt);
   if (G.stun > 0) G.stun -= dt;
   if (G.switchT > 0) G.switchT = Math.max(0, G.switchT - dt);
   if (G.bumpT > 0) G.bumpT -= dt;
@@ -1301,7 +1334,7 @@ function updClimb(dt) {
 function updGiant(dt) {
   const g = G.gi; g.t += dt; G.time += dt; G.giantT += dt;
   if (fadeA > 0) fadeA = Math.max(0, fadeA - dt * 2.5);
-  g.moving = ptr.down && g.state !== 'front';
+  g.moving = held() && g.state !== 'front';
   if (g.moving) {
     g.p = Math.min(1, g.p + .21 * dt); g.walk += dt * 9;
     if ((g.stepT -= dt) <= 0) { g.stepT = .28; SFX.step(); }
@@ -1322,7 +1355,7 @@ function updGiant(dt) {
     case 'front':
       chant('不准動！');
       if ((g.beatT = (g.beatT || 0) - dt) <= 0) { g.beatT = .6; SFX.heart(); }
-      if (ptr.down && g.t > .12) { fail('giant'); return; }
+      if (held() && g.t > .12) { fail('giant'); return; }
       if (g.t >= g.dur) { g.state = 'turnback'; g.t = 0; }
       break;
     case 'turnback':
@@ -1405,6 +1438,22 @@ function drawWorld() {
   }
   if (scene === 'climb' || (scene === 'fail' && !G.inGiant)) drawClimbUI();
 }
+// ---------- 貓跳台的平台（可以站上去休息） ----------
+// 每根柱子每 6 公尺一個平台，三根錯開 2 公尺（0 號在 6、12…，1 號在 8、14…，2 號在 10、16…），跟 paintStalk() 畫的位置一樣
+const REST_IDLE = .4, REST_COOL = 3, REST_WIN = .7, PLAT_W = 15;
+let restTipShown = false;
+function platInfo(i, h) { const n = Math.round(h / 6) + i; return { side: n % 2 ? 1 : -1, kind: n % 4 }; }
+const PLATS = [0, 1, 2].map(i => { const a = []; for (let h = 6 + i * 2; h < TOP - .5; h += 6) a.push({ stalk: i, h, ...platInfo(i, h) }); return a; });
+function platHere() {
+  const st = G.stalk, p = PLATS[st].find(q => Math.abs(q.h - G.h) <= REST_WIN);
+  if (!p) return null;
+  if (G.breaks.some(b => b.stalk === st && p.h > b.h - .6 && p.h < b.h + 2)) return null;
+  if (G.obs.some(o => o.stalk === st && Math.abs(o.h - p.h) < 1.3)) return null;
+  return p;
+}
+// 站在平台上的位置（腳底中心）
+const platStandX = p => stalkX(p.stalk, p.h) + p.side * 8 * PQ();
+const platTopY = p => Math.round(sy(p.h) / PQ()) * PQ() - (p.kind === 1 ? 4 : 1) * PQ();
 // 一段麻繩柱（貓跳台）；X/Y 把世界座標換成畫布座標。一格 PQ() 像素的點陣風
 const ROPE = ['#e6c88f', '#d4ae72', '#bb935c'], POST_OL = '#5a4232';
 function paintStalk(i, a, c, X, Y) {
@@ -1416,13 +1465,13 @@ function paintStalk(i, a, c, X, Y) {
     const h = a + (y1 - y) / (y1 - y0 || 1) * (c - a), cx = snap(X(stalkX(i, h))), row = Math.round(y / P);
     for (let k = -3; k <= 3; k++) B(cx, y, k, 0, 1, 1, Math.abs(k) === 3 ? POST_OL : k === -2 ? '#f1dcae' : ROPE[((k + row) % 3 + 3) % 3]);
   }
-  // 柱子上的平台、貓窩、吊床、逗貓棒（只是裝飾）
+  // 柱子上的平台（可以站上去休息，見 PLATS），上面可能有貓窩，下面掛吊床、逗貓棒
   for (let h = Math.ceil(a / 6) * 6 + i * 2; h < c; h += 6) {
     if (h < 4) continue;
-    const n = Math.round(h / 6) + i, side = n % 2 ? 1 : -1, kind = n % 4, cx = snap(X(stalkX(i, h))), y = snap(Y(h));
-    const x0 = side > 0 ? 3 : -15;
-    B(cx, y, x0, -1, 13, 4, POST_OL); B(cx, y, x0 + (side > 0 ? 0 : 1), 0, 12, 1, '#a9bbd9'); B(cx, y, x0 + (side > 0 ? 0 : 1), 1, 12, 1, '#8597bb');
-    B(cx, y, side > 0 ? x0 : x0 + 10, 3, 3, 1, POST_OL); B(cx, y, side > 0 ? x0 : x0 + 12, 4, 1, 1, POST_OL);
+    const { side, kind } = platInfo(i, h), cx = snap(X(stalkX(i, h))), y = snap(Y(h));
+    const PW = PLAT_W, x0 = side > 0 ? 3 : -3 - PW, xi = x0 + (side > 0 ? 0 : 1);
+    B(cx, y, x0, -1, PW, 4, POST_OL); B(cx, y, xi, 0, PW - 1, 1, '#f3ead2'); B(cx, y, xi, 1, PW - 1, 1, '#a9bbd9'); B(cx, y, xi + (side > 0 ? 0 : 1), 2, PW - 2, 1, '#8597bb');
+    B(cx, y, side > 0 ? x0 : x0 + PW - 3, 3, 3, 1, POST_OL); B(cx, y, side > 0 ? x0 : x0 + PW - 1, 4, 1, 1, POST_OL);
     if (kind === 1) { B(cx, y, x0 + 2, -4, 9, 3, POST_OL); B(cx, y, x0 + 3, -3, 7, 1, '#f2a7b8'); B(cx, y, x0 + 4, -3, 5, 1, '#f9d3dc'); B(cx, y, x0 + 3, -2, 7, 1, '#e08a9c'); }
     else if (kind === 2) { const hx = x0 + 2; B(cx, y, hx, 3, 1, 3, POST_OL); B(cx, y, hx + 8, 3, 1, 3, POST_OL); B(cx, y, hx, 5, 9, 3, POST_OL); B(cx, y, hx + 1, 5, 7, 1, '#efd98a'); B(cx, y, hx + 2, 6, 5, 1, '#e2c66a'); }
     else if (kind === 3) {
@@ -1503,6 +1552,12 @@ function drawJackInWorld() {
   }
   if (G.inGiant) return;
   if (G.ride) { drawBalloon(G.ride.x, sy(G.vh) + 10 * U, T, true, G.ride.dir || 1); return; }
+  if (G.rest && scene === 'climb') {
+    const p = G.rest, fx = platStandX(p), fy = platTopY(p) + (sy(G.vh) - sy(p.h));
+    drawJack(fx, fy - 28 * 1.1 * U + 7 * U, 1.1, 'stand');  // 貼紙白邊和陰影，往下補一點讓腳踩到平台
+    if (G.stungT > 0) { circ(fx + 7 * U, fy - 80 * U, 5 * U, '#f58da8'); }
+    return;
+  }
   let x = jackX(), y = sy(G.vh), rot = 0;
   if (G.switchT > 0) y -= Math.sin((1 - G.switchT / G.swDur) * Math.PI) * 10 * U;
   if (G.windBlow && G.ev) x += Math.sin(T * 25) * 3 * U * (1 + (100 - G.ev.grip) / 30);
@@ -1713,7 +1768,7 @@ function drawClimbUI() {
   const e = G.ev;
   if (e && e.type === 'wind' && e.phase === 'blow') {
     rr(W / 2 - 120, by - 18, 240, 76, 18, 'rgba(255,248,234,.94)', false);
-    text(ptr.down ? '抓緊！不要動！' : '按住螢幕！', W / 2, by + 8, 22, '#d64f45', null);
+    text(held() ? '抓緊！不要動！' : kb('按住螢幕！', '按住空白鍵！'), W / 2, by + 8, 22, '#d64f45', null);
     rr(W / 2 - 96, by + 30, 192, 12, 6, '#eadcc0', false);
     rr(W / 2 - 96, by + 30, 192 * clamp(e.grip / 100, 0, 1), 12, 6, e.grip > 40 ? '#5aa04a' : '#e0503f', false);
   } else if (scene === 'climb') {
@@ -1725,10 +1780,10 @@ function drawClimbUI() {
       else { ctx.globalAlpha = .6; rr(cx - pw / 2, by, pw, 52, 8, '#dcbb84', false); ctx.globalAlpha = 1; }
       if (mine) {
         poly([[cx - 8, by + 15], [cx, by + 6], [cx + 8, by + 15]], '#d64f45', false);
-        text('點這裡爬', cx, by + 28, 15, '#3d2b1f', null);
+        text(G.rest ? '休息中…' : kb('點這裡爬', '點這裡爬 ↑'), cx, by + 28, 15, G.rest ? '#2f8f8a' : '#3d2b1f', null);
         rr(cx - 30, by + 38, 60, 7, 3.5, 'rgba(255,255,255,.9)', false);
         rr(cx - 30, by + 38, Math.max(7, 60 * hp), 7, 3.5, hp < .6 ? '#5aa04a' : hp < .82 ? '#f0a53b' : '#e0503f', false);
-      } else text('跳過來', cx, by + 26, 15, 'rgba(61,43,31,.6)', null);
+      } else text(KB && Math.abs(s2 - G.stalk) === 1 ? (s2 < G.stalk ? '← 跳過來' : '跳過來 →') : '跳過來', cx, by + 26, 15, 'rgba(61,43,31,.6)', null);
     }
     if (hp > .75) text('太快會滑手！', W * (G.stalk + .5) / 3, by - 12, 14, '#d64f45');
   }
