@@ -21,6 +21,10 @@
 
 **定時上線（10/28 使用者同意，GitHub Actions，免費）**：`main` 分支的 `.github/workflows/release.yml` 每週三台灣時間 20:45 照 `main` 的 `release.json`（台灣日期 → 存稿分支）自動把那一話合併到 `site`，跑 `tools/check_site.py`，通過才推 site 和 story-draft，再請 Pages 重建；失敗 GitHub 會寄信給使用者。每做好一話的存稿，就在 `main` 的 `release.json` 加一行。也可以在 Actions 頁手動 Run workflow 填分支名。`site` 和存稿分支推上去時 `.github/workflows/check.yml` 會自動檢查（連結、條漫 ≤500KB、上傳包檔名、目錄）。合併後還會重新縮減字型、跑 `tools/make_feed.py` 更新 RSS（`story/feed.xml`）和 `sitemap.xml`。所以平常在 site 上改字不用重跑字型（避免跟存稿分支的字型檔衝突），上線時會自動補。上線日 Claude 只要確認 Actions 有成功、沒成功就手動合併。
 
+**Threads 自動發文（10/28 使用者同意：她只做審核，其他 Claude 做）**：`main` 的 `.github/workflows/threads.yml` 每 15 分鐘發 `main` 的 `posts/threads.json` 裡 `approved: true`、時間到、還沒發的貼文（`tools/threads_post.py`，文字／單圖／輪播，圖要公開網址），發完寫回 `posted`。每週一自動延長 60 天 token。加密設定 THREADS_TOKEN、THREADS_APP_SECRET、GH_SECRETS_PAT 由使用者照設定頁 https://claude.ai/artifact/XgR1DZQvxQxN5rPCMPUwtf 設（10/29 做）。只有使用者對那則說 OK，Claude 才把它設成 approved；每週日排好下週貼文給她一次看完。Meta API 免費。IG 之後再開；巴哈、LINE WEBTOON 沒有 API，維持她手動上傳。
+
+**發文口氣（10/28 使用者：要更像她、像真人）**：照她平常講話的樣子：短句、少標點（常用空格斷句）、會用「～」「😂」「Ｘ＿Ｘ」、括號吐槽、「我覺得」、台味；不寫成文案腔、不說教；結尾丟一個問題給讀者。她有給自己寫過的貼文就以那個為準。
+
 **存稿分支**：第三話（小說＋漫畫頁、條漫、IG 單格、目錄）做好放在 `ep03-stock` 分支，使用者 10/28 說漫畫 OK。11/11 開跑時把它合併進 `site`（`git merge ep03-stock`），再推到 site 和 story-draft。之後每話照這個做法：做好先放 `epNN-stock`，上線日再合併。
 
 **等使用者**：10/29 看 Google Cloud 帳單，確認 Vertex 扣的是試用額度（10/28 中午抵免額頁：剩 NT$9,520.96／原 NT$9,534，已開始扣，但預算頁寫「No credits used」、Vertex 當天約 NT$76 只扣到 13，應是延遲；10/29 再看剩餘有沒有約少 NT$76）→ 確認後撤銷 Cloudflare Token、刪 Network secrets 那筆、把第 3 節「遊戲周邊用 Cloudflare」改成 Vertex、刪 `tools/cf_image.py`。
