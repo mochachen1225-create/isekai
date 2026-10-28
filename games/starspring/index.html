@@ -89,7 +89,7 @@ h2{margin:0 0 6px;font-size:26px;color:var(--ink)}
   <canvas id="c"></canvas>
   <div id="hud">
     <div class="chip" id="timer"><span class="sw"></span><b id="tval">0.0</b> 秒</div>
-    <div class="chip" id="coins">星砂 0</div>
+    <div class="chip" id="coins">零食 0</div>
     <div class="chip" id="bestc"></div>
     <button class="chip" id="mute" aria-label="靜音">🔊</button>
   </div>
@@ -103,11 +103,12 @@ h2{margin:0 0 6px;font-size:26px;color:var(--ink)}
       ① 點土地，種下夜市買的怪種子<br>
       ② 三根麻繩柱，<b>點妳那一根</b>往上爬（點太快會滑手）<br>
       ③ <b>點別根</b>就跳過去：閃開烏鴉、騎掃把的黑貓、兔子、毛線球，繞過斷掉的柱子、史萊姆、螢光蘑菇<br>
+      ③-2 <b>點她腳下</b>可以往下退一步（躲黑貓的掃把）<br>
       ④ 送貨的鵜鶘飛過來時<b>跳向牠</b>，抓住木箱！<br>
       ⑤ 大風來時<b>按住不要動</b><br>
       ⑥ 魔王用肉球摀住眼睛時<b>按住前進</b>，肉球放下就<b>放開</b>！<br>
       ⑦ 停在<b>平台</b>上就能站著休息（橘貓還是會追來）<br>
-      <span class="pc">電腦：↑／空白鍵爬（按住＝按住螢幕）、← → 換柱子</span>
+      <span class="pc">電腦：↑／空白鍵爬（按住＝按住螢幕）、↓ 往下退、← → 換柱子</span>
     </div>
     <div class="best" id="tBest"></div>
     <button class="btn green" id="bStart">開始</button>
@@ -651,7 +652,8 @@ function paintGiantFingers(w, h) {
 }
 let DECO = [], FOG = [], STARS = [];
 // 草地上走來走去的綿羊
-const FLOCK = [{ x: .58, y: 34, dir: -1, v: .035, wait: 0, s: 1.05 }, { x: .42, y: 58, dir: 1, v: .028, wait: 1.5, s: 1.2 }, { x: .82, y: 82, dir: -1, v: .04, wait: 0, s: 1.35 }];
+// 地面：兔子留一隻，其他換史萊姆（10/28 使用者）
+const FLOCK = [{ x: .58, y: 34, dir: -1, v: .035, wait: 0, s: 1.05, slime: true }, { x: .42, y: 58, dir: 1, v: .028, wait: 1.5, s: 1.2 }, { x: .82, y: 82, dir: -1, v: .04, wait: 0, s: 1.35, slime: true }];
 function updFlock(dt) {
   for (const f of FLOCK) {
     if (f.wait > 0) { f.wait -= dt; continue; }
@@ -663,7 +665,13 @@ function updFlock(dt) {
 }
 function drawFlock() {
   const gy = sy(0); if (gy > H + 20 || gy < -150) return;
-  for (const f of FLOCK) drawSheep(f.x * W, gy + f.y * U, f.dir, T + f.x * 9, false, f.wait > 0 ? (Math.sin(T * 3 + f.y) > 0 ? 1 : .7) : 0, f.s);
+  for (const f of FLOCK) {
+    if (f.slime && SPR.slime) {
+      const k = U * f.s * 1.4, x = f.x * W, y = gy + f.y * U;
+      ell(x, y + 14 * k, 12 * k, 3 * k, 'rgba(40,60,20,.35)', 0, false);
+      drawSpr('slime', x, y + 14 * k - (f.wait > 0 ? 0 : Math.abs(Math.sin(T * 6 + f.x * 9)) * 4 * k), 26 * k, f.dir < 0);
+    } else drawSheep(f.x * W, gy + f.y * U, f.dir, T + f.x * 9, false, f.wait > 0 ? (Math.sin(T * 3 + f.y) > 0 ? 1 : .7) : 0, f.s);
+  }
 }
 function initStatic() {
   DECO = []; for (let i = 0; i < 34; i++) DECO.push({ h: rnd(5, TOP - 2), x: Math.random(), f: rnd(.35, .7), s: rnd(.45, 1.05), a: 1, k: i % 6 });
@@ -893,11 +901,33 @@ function drawBird(x, y, s, dir, t, rot = 0) {
   circ(6, -4, 2.4, '#1d2a40', false); circ(6.8, -4.8, .8, '#fff', false);
   ctx.restore();
 }
-function drawCoin(x, y, t) {
-  if (drawSprC('starsand', x, y - Math.sin(t * 3) * 2 * U, 17 * U)) { if (Math.sin(t * 5) > .7) star(x + 7 * U, y - 9 * U, 3 * U, '#fff6c8'); return; }
-  ctx.save(); ctx.translate(x, y); ctx.scale((Math.abs(Math.cos(t * 3)) * .6 + .4) * U, U);
-  circ(0, 0, 10, '#8fd3ff'); circ(0, 0, 6.5, '#dff6ff', false); circ(-2, -2.5, 2, '#ffffff', false);
+// 繩子上的零食（10/28 使用者：換成大一點、看得出是什麼的東西）：0 小魚乾、1 罐罐、2 肉球餅乾
+function drawCoin(x, y, t, k = 0) {
+  ctx.save(); ctx.translate(x, y - Math.sin(t * 3) * 2 * U); ctx.scale(U * 1.5, U * 1.5); ctx.rotate(Math.sin(t * 2) * .12);
+  const g = ctx.createRadialGradient(0, 0, 4, 0, 0, 30);
+  g.addColorStop(0, 'rgba(255,240,170,.55)'); g.addColorStop(1, 'rgba(255,240,170,0)');
+  sh(false); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, 30, 0, Math.PI * 2); ctx.fill();
+  ctx.lineWidth = 2.5; ctx.strokeStyle = '#4a3420'; ctx.lineJoin = 'round';
+  if (k === 0) {
+    ctx.beginPath(); ctx.ellipse(-3, 0, 17, 9, 0, 0, Math.PI * 2); ctx.fillStyle = '#c9d6e2'; ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(12, 0); ctx.lineTo(23, -9); ctx.lineTo(23, 9); ctx.closePath(); ctx.fillStyle = '#a9bccd'; ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(-3, 3, 13, 4, 0, 0, Math.PI); ctx.fillStyle = '#f2f5f8'; ctx.fill();
+    circ(-12, -2, 2.6, '#2a2018', false);
+    ctx.beginPath(); ctx.moveTo(-1, -6); ctx.lineTo(-1, 6); ctx.moveTo(4, -6); ctx.lineTo(4, 6); ctx.strokeStyle = '#8fa3b6'; ctx.lineWidth = 1.5; ctx.stroke();
+  } else if (k === 1) {
+    ctx.fillStyle = '#d8dde3'; ctx.beginPath(); ctx.rect(-15, -9, 30, 20); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#e8553f'; ctx.fillRect(-14, -4, 28, 10);
+    ctx.beginPath(); ctx.ellipse(0, 11, 15, 4.5, 0, 0, Math.PI); ctx.fillStyle = '#b9c0c8'; ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(0, -9, 15, 4.5, 0, 0, Math.PI * 2); ctx.fillStyle = '#eef1f4'; ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(4, -9, 4, 1.8, 0, 0, Math.PI * 2); ctx.strokeStyle = '#8b939c'; ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(-6, 1); ctx.quadraticCurveTo(0, -3, 6, 1); ctx.moveTo(-6, 1); ctx.lineTo(-9, 3); ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
+  } else {
+    ctx.beginPath(); ctx.arc(0, 0, 16, 0, Math.PI * 2); ctx.fillStyle = '#e2b26a'; ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(0, 5, 7, 5.5, 0, 0, Math.PI * 2); ctx.fillStyle = '#f4a3a8'; ctx.fill();
+    for (const [a, b] of [[-9, -4], [-3.5, -9], [3.5, -9], [9, -4]]) { ctx.beginPath(); ctx.arc(a, b, 3, 0, Math.PI * 2); ctx.fill(); }
+  }
   ctx.restore();
+  if (Math.sin(t * 5) > .75) star(x + 24 * U, y - 20 * U, 3.5 * U, '#fff6c8');
 }
 function drawEgg(x, y, s, t) {
   const k = U * s;
@@ -939,7 +969,7 @@ function genEvents() {
 }
 function genCoins() {
   const a = []; let h = 6;
-  while (h < TOP - 4) { a.push({ h, stalk: Math.random() * 3 | 0, got: false }); h += rnd(4.5, 7.5); }
+  while (h < TOP - 4) { a.push({ h, stalk: Math.random() * 3 | 0, got: false, k: Math.random() * 3 | 0 }); h += rnd(4.5, 7.5); }
   return a;
 }
 function newRun() {
@@ -975,7 +1005,8 @@ function two(s) {
   if (s.includes('\n') || s.length < 11) return s;
   const mid = s.length / 2; let best = -1;
   for (let i = 2; i < s.length - 2; i++) if ('，。！？：、）～'.includes(s[i]) && (best < 0 || Math.abs(i + 1 - mid) < Math.abs(best + 1 - mid))) best = i;
-  const at = best >= 0 && Math.abs(best + 1 - mid) < s.length * .3 ? best + 1 : Math.ceil(mid);
+  let at = best >= 0 && Math.abs(best + 1 - mid) < s.length * .3 ? best + 1 : Math.ceil(mid);
+  while (at < s.length - 1 && '，。！？：、）」…'.includes(s[at])) at++;
   return s.slice(0, at) + '\n' + s.slice(at);
 }
 function hint(s, d = 1.5) { const el = $('hint'); el.textContent = two(s); el.classList.add('on'); clearTimeout(hintTO); hintTO = setTimeout(() => el.classList.remove('on'), d * 1000); }
@@ -1028,7 +1059,7 @@ function win() {
   SFX.win(); buzz([40, 40, 40, 40, 120]);
   setTimeout(() => {
     $('wTime').innerHTML = `${fmt(G.final)}<small> 秒</small>`;
-    $('wDetail').textContent = G.bonus ? `實際 ${fmt(G.time)} 秒，星砂 ${G.bonus} 枚扣 ${G.bonus} 秒` : '這次沒撿到星砂，撿星砂可以扣秒數喔';
+    $('wDetail').textContent = G.bonus ? `實際 ${fmt(G.time)} 秒，零食 ${G.bonus} 個扣 ${G.bonus} 秒` : '這次沒撿到零食，撿零食可以扣秒數喔';
     $('wBest').textContent = `最佳紀錄：${fmt(Math.min(G.final, b || G.final))} 秒`;
     $('wNew').style.display = G.newBest ? 'inline-block' : 'none';
     $('wTitle').textContent = G.title.main;
@@ -1039,10 +1070,10 @@ function win() {
 }
 function jackTitle() {
   const t = G.final;
-  const main = t < 32 ? '閃電星砂王' : t < 40 ? '雲端飛毛腿' : t < 50 ? '星星結晶神偷' : t < 65 ? '勇敢的兩腳獸' : '慢慢爬也是英雄';
+  const main = t < 32 ? '閃電零食王' : t < 40 ? '雲端飛毛腿' : t < 50 ? '星星結晶神偷' : t < 65 ? '勇敢的兩腳獸' : '慢慢爬也是英雄';
   const tags = [];
   if (!G.hits && !G.slips) tags.push('毫髮無傷');
-  if (G.bonus >= 8) tags.push('星砂收藏家');
+  if (G.bonus >= 8) tags.push('零食收藏家');
   if (G.rode) tags.push('鵜鶘的包裹');
   if (G.giantT < 7) tags.push('木頭人大師');
   if (G.minGap < 1.6) tags.push('貓爪下逃生');
@@ -1070,6 +1101,12 @@ function stroke() {
   for (const b of G.breaks) if (b.stalk === G.stalk && prev < b.h && nh >= b.h - .3) { snapBreak(b); return; }
   G.h = nh; collectCoins(prev, nh); SFX.climb(G.arm);
   for (const o of G.obs) if (o.type === 'hive' && !o.used && o.stalk === G.stalk && prev < o.h && nh >= o.h - .6) sting(o);
+}
+// 往下退一步（10/28 使用者：被黑貓掃把撞太多次，想要能後退）：↓/S 或點她腳下的地方
+function stepDown() {
+  if (scene !== 'climb' || G.stun > 0 || G.windBlow || G.ride || G.switchT > 0) return;
+  G.idleT = 0; G.rest = null; G.arm = 1 - G.arm;
+  G.h = Math.max(.5, G.h - 1.2); SFX.climb(G.arm);
 }
 function sting(o) {
   o.used = true; G.stun = 1; G.lastSide = -1; G.hits++; G.stungT = 1.6;
@@ -1117,7 +1154,8 @@ function swipeSide(to) {
   const hv = G.obs.find(o => o.type === 'hive' && !o.used && o.stalk === to && Math.abs(o.h - G.h) < .7);
   if (hv) sting(hv);
 }
-function onDown(x) {
+function onDown(x, y = -1) {
+  if (scene === 'climb' && y > sy(G.vh) + 70 * U && !G.windBlow) { stepDown(); return; }
   if (scene === 'climb') { const side = x < W / 3 ? 0 : x < W * 2 / 3 ? 1 : 2; if (side === G.stalk || G.windBlow) stroke(); else swipeSide(side); }
   else if (scene === 'plant') plant();
   else if (scene === 'grow' && sceneT > 1) { scene = 'mom'; sceneT = 0; camH = 4; grown = TOP + 3; G.bubble = '兩腳獸！妳在幹嘛喵！'; SFX.door(); }
@@ -1134,7 +1172,7 @@ cv.addEventListener('pointerdown', e => {
   const [x, y] = pos(e);
   ptr.down = true; ptr.id = e.pointerId; ptr.x = ptr.ox = ptr.lx = x; ptr.y = ptr.oy = ptr.ly = y;
   try { cv.setPointerCapture(e.pointerId); } catch (_) {}
-  onDown(x);
+  onDown(x, y);
 }, { passive: false });
 cv.addEventListener('pointermove', e => {
   if (!ptr.down || e.pointerId !== ptr.id) return;
@@ -1149,7 +1187,7 @@ document.addEventListener('touchmove', e => e.preventDefault(), { passive: false
 const HOLD_KEYS = ['ArrowUp', 'KeyW', 'Space'], SIDE_KEYS = { ArrowLeft: -1, KeyA: -1, ArrowRight: 1, KeyD: 1 };
 const keysHeld = new Set();
 const held = () => ptr.down || keysHeld.size > 0;
-const GAME_KEYS = [...HOLD_KEYS, ...Object.keys(SIDE_KEYS), 'ArrowDown', 'Enter'];
+const GAME_KEYS = [...HOLD_KEYS, ...Object.keys(SIDE_KEYS), 'ArrowDown', 'KeyS', 'Enter'];
 window.addEventListener('keydown', e => {
   if (e.ctrlKey || e.metaKey || e.altKey || !GAME_KEYS.includes(e.code)) return;
   e.preventDefault(); KB = true; audio();
@@ -1161,6 +1199,7 @@ window.addEventListener('keydown', e => {
   if (scene === 'climb') {
     if (SIDE_KEYS[e.code]) { const to = G.stalk + SIDE_KEYS[e.code]; if (to >= 0 && to <= 2) swipeSide(to); }
     else if (HOLD_KEYS.includes(e.code)) stroke();
+    else if (e.code === 'ArrowDown' || e.code === 'KeyS') stepDown();
   } else if (HOLD_KEYS.includes(e.code) || e.code === 'Enter') onDown(-1);
 }, { passive: false });
 window.addEventListener('keyup', e => { keysHeld.delete(e.code); if (GAME_KEYS.includes(e.code)) e.preventDefault(); });
@@ -1194,8 +1233,8 @@ function startEvent(e) {
     }
   }
   if (e.type === 'witch') {
-    G.ev = { type: 'witch', phase: 'warn', t: 0, warn: first ? 2.2 : 1.5, from: rs(), x: -999 };
-    SFX.cackle(); hint(first ? '黑貓騎掃把橫掃整排！等牠飛過別根柱子，再跳過去' : '黑貓來了！看準時機！', first ? 2.6 : 1.2);
+    G.ev = { type: 'witch', phase: 'warn', t: 0, warn: first ? 2.2 : 1.5, from: rs(), x: -999, wh: G.h };
+    SFX.cackle(); hint(first ? kb('黑貓騎掃把橫掃這一排！點妳腳下往下退，或等牠飛過別根柱子再跳過去', '黑貓騎掃把橫掃這一排！按 ↓ 往下退，或等牠飛過別根柱子再跳過去') : '黑貓來了！往下退或看準時機！', first ? 3 : 1.2);
   } else if (e.type === 'balloon') {
     G.ev = { type: 'balloon', t: 0, dur: 5, from: rs(), x: -999 };
     SFX.dodge(); hint(first ? '送貨的鵜鶘！等牠飛過來，跳過去抓住木箱！' : '鵜鶘來了！跳上去！', first ? 2.6 : 1.3);
@@ -1233,7 +1272,7 @@ function updEvent(dt) {
     if (e.phase === 'warn' && e.t >= e.warn) { e.phase = 'fly'; e.t = 0; SFX.swoosh(); }
     else if (e.phase === 'fly') {
       const dir = e.from ? -1 : 1; e.x = (e.from ? W + 70 : -70) + dir * W * .5 * e.t;
-      if (G.switchT === 0 && Math.abs(e.x - jackX()) < 24 * U) { G.lastWindDir = dir; fail('witch'); return; }
+      if (G.switchT === 0 && Math.abs(G.vh - e.wh) < .9 && Math.abs(e.x - jackX()) < 24 * U) { G.lastWindDir = dir; fail('witch'); return; }
       if (e.x < -90 || e.x > W + 90) { G.ev = null; SFX.dodge(); float('閃過！', W / 2, sy(G.vh) - 60 * U, '#2f8f8a'); }
     }
   } else if (e.type === 'balloon') {
@@ -1446,7 +1485,7 @@ function drawWorld() {
     ell(W / 2, gy, 28 * U, 9 * U, '#c79a78');
   }
   drawStalks();
-  for (const c of G.coins) if (!c.got && c.h < grown) { const cy = sy(c.h); if (cy > -20 && cy < H + 20) drawCoin(stalkX(c.stalk, c.h), cy, T + c.h); }
+  for (const c of G.coins) if (!c.got && c.h < grown) { const cy = sy(c.h); if (cy > -20 && cy < H + 20) drawCoin(stalkX(c.stalk, c.h), cy, T + c.h, c.k); }
   drawObstacles();
   if (G.ev && G.ev.type === 'balloon') drawBalloon(G.ev.x, sy(G.vh) + 10 * U, T, false, G.ev.from ? -1 : 1);
   drawMomInWorld();
@@ -1743,7 +1782,7 @@ function drawWitch(x, y, dir, t) {
   ctx.restore();
 }
 function drawWitchEvent() {
-  const e = G.ev, jy = sy(G.vh) - 8 * U, dir = e.from ? -1 : 1;
+  const e = G.ev, jy = sy(e.wh ?? G.vh) - 8 * U, dir = e.from ? -1 : 1;
   if (e.phase === 'warn') {
     sh(false); ctx.setLineDash([10 * U, 8 * U]); ctx.strokeStyle = `rgba(123,94,167,${.35 + .25 * Math.sin(T * 10)})`; ctx.lineWidth = 4 * U;
     ctx.beginPath(); ctx.moveTo(0, jy); ctx.lineTo(W, jy); ctx.stroke(); ctx.setLineDash([]);
@@ -2079,7 +2118,7 @@ function hud() {
   if (t !== lastTimer) { $('tval').textContent = t; lastTimer = t; $('timer').style.setProperty('--a', (G.time % 1) * 360 + 'deg'); }
   const b = bestTime(), bs = show && b ? '最佳 ' + fmt(b) : '';
   if (bs !== lastBest) { lastBest = bs; $('bestc').textContent = bs; $('bestc').style.display = bs ? 'block' : 'none'; }
-  if (G.bonus !== lastCoins) { lastCoins = G.bonus; $('coins').style.display = G.bonus ? 'block' : 'none'; $('coins').textContent = `星砂 −${G.bonus} 秒`; }
+  if (G.bonus !== lastCoins) { lastCoins = G.bonus; $('coins').style.display = G.bonus ? 'block' : 'none'; $('coins').textContent = `零食 −${G.bonus} 秒`; }
 }
 
 // ---------- 主迴圈 ----------
