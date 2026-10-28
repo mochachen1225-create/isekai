@@ -72,6 +72,11 @@
 - 個性字卡三段：第一句結論（例：你是讓人安心的那種人。）→ 兩三句具體行為 → 身邊的人跟你在一起的感覺。正向。
 - 做好的預告放 `promo/<職業>_<m|f>.mp4`（commit 到 site 分支，手機可以從 GitHub Pages 存影片）。同時加進工作檯頁面：先用 Artifact read 讀回原始檔，在 `DONE` 物件加 key 和貼文文字，影片放 artifact 的 `video/<key>.mp4`。
 
+## 小遊戲改版
+
+- 放在 `games/<名字>/`，原本的遊戲 repo 不動。改好先不放進周邊小舖、也不放連結，網址只給使用者測試；頁面加 `<meta name="robots" content="noindex">`。使用者說可以了，才拿掉 noindex、加進周邊小舖。
+- 每個遊戲資料夾放一份 `NOTES.md`：改自哪個 repo、換了什麼、還沒做什麼。
+
 ## 6. 備案工具（免費、可公開用為主，還沒用到）
 
 - 動畫影片：Remotion（React 寫影片，個人和 3 人以下公司免費，5.0 版授權會改，用前再查）、Motion Canvas、Blender、three.js、FFmpeg（預告片已經在用）。可以拿漫畫格做成動態漫畫 Reels；注意使用者不喜歡放大推近的鏡頭。
