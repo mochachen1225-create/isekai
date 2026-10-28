@@ -46,7 +46,7 @@
 | 世界觀設定集 | https://claude.ai/artifact/LYw7AbqJjjDvJ9hwCDfxno（Claude Docs） |
 | 漫畫存稿閱讀器（還沒上線的條漫，使用者從這裡看） | https://claude.ai/artifact/Wduivnp7d8KyU2hjTQucaY（原始檔 `isekai-studio` 的 `work/comicview/`；每話排好條漫就把切片放 `c/`、改 `EPS` 再發布） |
 | 幕後筆記（一個人＋AI 做連載的幕後：改之前／改之後＋心得文案，那一話上線後才發） | https://claude.ai/artifact/M9EzdWhDTwafDtFX4JW4Yo（原始檔 `isekai-studio` 的 `work/behind/`；使用者 10/28：要有人性、像真人心得、分享；寫點子的由來，不寫修圖；［ ］留給她補真心話） |
-| 製作日誌（不公開：「我如何跟 Claude 打造一個 IP」的素材，里程碑到了再整理成系列貼文；10/28 使用者：主軸不變、同時收集素材，之後可做番外篇「幕後直擊」；YouTube 頻道「貓貓工作室」放影片版幕後：AI 小貓員工從製作到配音的過程，1 月中開始） | https://claude.ai/artifact/4pESS1ynTFvyQq7VYRH8ZH（Claude Docs；表格一列一件事：日期、發生什麼、誰的點子、她說的話。每週日準備下週時補一筆。記點子和決定，不記修圖細節——使用者 10/28 說修圖很無聊） |
+| 製作日誌（不公開：「我如何跟 Claude 打造一個 IP」的素材，里程碑到了再整理成系列貼文；10/28 使用者：主軸不變、同時收集素材，之後可做番外篇「幕後直擊」；YouTube 頻道「貓貓工作室」放影片版幕後：AI 小貓員工從製作到配音的過程，都做短的（Shorts 為主），1 月中開始） | https://claude.ai/artifact/4pESS1ynTFvyQq7VYRH8ZH（Claude Docs；表格一列一件事：日期、發生什麼、誰的點子、她說的話。每週日準備下週時補一筆。記點子和決定，不記修圖細節——使用者 10/28 說修圖很無聊） |
 | 素材庫（沒用在連載、可單獨發的圖） | https://claude.ai/artifact/VpLeUwx1DQxYUz4pReewvp |
 | 預告片工作檯 | https://claude.ai/artifact/3UpfrfLTVP8vi9Lzvn2UYU |
 | 冷啟動數據紀錄表 | https://claude.ai/artifact/6BXsmJZF8TZYbUWAXTXD76 |
