@@ -2155,8 +2155,8 @@ function resultCard() {
     ctx.fillStyle = vg(0, h, '#2f6f7e', '#8fc6d8'); ctx.fillRect(0, 0, w, h);
     for (let i = 0; i < 16; i++) { sh(); star((i * 137) % 680 + 20, (i * 71) % 260 + 20, 8 + (i % 3) * 4, '#f6d36b'); }
     // 城堡往下放，魔王從城堡後面探頭（10/28 使用者）
-    const cW = 340, cH = SPR.castle ? cW * SPR.castle.height / SPR.castle.width : 0, cB = 372;
-    if (SPR.boss_stare) drawSpr('boss_stare', w / 2 + 62, cB - cH + 92, 150, false, .12);
+    const cW = 500, cH = SPR.castle ? cW * SPR.castle.height / SPR.castle.width : 0, cB = 440;
+    if (SPR.boss_stare) drawSpr('boss_stare', w / 2 + 195, cB - cH + 200, 160, false, .15);
     if (SPR.castle) drawSpr('castle', w / 2, cB, cH);
     else { const cw = 440, chh = IMG.castle.h * cw / IMG.castle.w; ctx.drawImage(IMG.castle, (w - cw) / 2, 340 - chh, cw, chh); }
     { const oW = W; W = w; cloudRow(330, 1, false, 4); W = oW; }
