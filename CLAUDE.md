@@ -36,6 +36,7 @@
 | 進度表（待辦＋發文排程） | https://claude.ai/artifact/EbWR1U1Twg1p5f6trDkwDT（資料在 db 的 `tasks`） |
 | 連載草稿本（還沒上線的小說、分鏡、prompt） | https://claude.ai/artifact/N9vUVni1oPJ4f1FYmzQySi（Claude Docs；「總覽」分頁放打勾清單和各話連結，每一話一個分頁） |
 | 世界觀設定集 | https://claude.ai/artifact/LYw7AbqJjjDvJ9hwCDfxno（Claude Docs） |
+| 漫畫存稿閱讀器（還沒上線的條漫，使用者從這裡看） | https://claude.ai/artifact/Wduivnp7d8KyU2hjTQucaY（原始檔 `isekai-studio` 的 `work/comicview/`；每話排好條漫就把切片放 `c/`、改 `EPS` 再發布） |
 | 素材庫（沒用在連載、可單獨發的圖） | https://claude.ai/artifact/VpLeUwx1DQxYUz4pReewvp |
 | 預告片工作檯 | https://claude.ai/artifact/3UpfrfLTVP8vi9Lzvn2UYU |
 | 冷啟動數據紀錄表 | https://claude.ai/artifact/6BXsmJZF8TZYbUWAXTXD76 |
