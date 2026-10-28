@@ -14,7 +14,7 @@ errs = []
 for page in sorted(story.glob('*.html')):
     text = page.read_text(encoding='utf-8')
     for ref in re.findall(r'(?:src|href)="([^"]+)"', text):
-        if re.match(r'^(https?:|mailto:|#|data:)', ref):
+        if re.match(r'^(https?:|//|mailto:|#|data:)', ref):
             continue
         target = (page.parent / ref.split('#')[0].split('?')[0]).resolve()
         if target.is_dir():
