@@ -47,7 +47,7 @@
 - 圖片小問題優先用程式修（放大貓、去標誌、縮小人物、疊暖光），不用重畫。做法見 `isekai-studio` 的 `work/comic2/`。
 - 光影改不出來時，可以用程式在光源方向疊暖色（見 `DESIGN.md` 守護騎士的紀錄）。
 - 職業插畫選定後縮成 900 寬放進 `assets/illustrations/`。28 張已在 2026-10-27 全部換成新畫風，定稿紀錄在 `DESIGN.md` 第 12 章。
-- 錢的分配（2026-10-28 使用者定）：付費的 Gemini 只花在連載漫畫（和漫畫用的設定圖）。小遊戲、周邊、桌布以外的雜項圖片，用免費的 Cloudflare Workers AI（`tools/cf_image.py`，FLUX.2，需要 `CLOUDFLARE_ACCOUNT_ID`，Token 由 Network secrets 代理加上）。能用程式畫（SVG、canvas）或從現有漫畫圖裁切的就不生圖。FLUX.2 畫風跟漫畫不完全一樣，所以不拿來畫漫畫和職業插畫。同樣一次只呼叫一次、失敗不重試。
+- 錢的分配（2026-10-28 使用者定）：付費的 Gemini 只花在連載漫畫（和漫畫用的設定圖）。小遊戲、周邊、桌布以外的雜項圖片，用免費的 Cloudflare Workers AI（`tools/cf_image.py`，FLUX.2，需要 `CLOUDFLARE_ACCOUNT_ID`，Token 由 Network secrets 代理加上）。能用程式畫（SVG、canvas）或從現有漫畫圖裁切的就不生圖。FLUX.2 畫風跟漫畫不完全一樣，所以不拿來畫漫畫和職業插畫。同樣一次只呼叫一次、失敗不重試。Cloudflare 只用免費方案、不升級付費：每天 10,000 Neurons，台灣時間早上 8 點重置，FLUX.2 很耗額度，一天大概只夠幾張，而且可能跟使用者其他專案共用；額度用完（429）就等隔天。這個專案沒有營利，錢要花在刀口上：能用現成素材（`assets/sprites/` 的點陣角色、`assets/portraits/`、LINE 貼圖、漫畫圖）就不生圖。連續呼叫時每一行都加 `|| exit 1`（`set -e` 在這個環境不一定會停）。
 
 ## 4. 連載《貓貓勇者小隊》
 
