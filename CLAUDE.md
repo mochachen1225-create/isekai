@@ -119,6 +119,8 @@
 
 ## 7. 一定要遵守
 
+- 跟使用者說話一律用繁體中文（10/28 使用者說英文看得懂但比較慢）。簡潔。
+
 - 任何事實、數字、日期、平台規定，先搜尋再說。
 - 不貼金鑰。筆名帳號（巴哈、LINE WEBTOON）跟使用者的個人身分分開。筆名＝「貓貓勇者小隊」（2026-10-28 定，Threads、巴哈、LINE WEBTOON 顯示名稱都已改好；巴哈和 LINE WEBTOON 帳號 10/28 建好；LINE WEBTOON 第一話 10/28 已發布，作者資訊網站填測驗首頁；作者主頁 https://www.webtoons.com/p/community/zh-hant/u/catheroparty ；巴哈第一話 10/28 已發）。LINE（10/28 過審上架）：表情貼 https://line.me/S/emoji/?id=6ae16b19a98c12374a15872f 、主題（霧藍）https://store.line.me/themeshop/product/0e7d3345-2a73-4932-b53a-3547ca36f928/zh-Hant ；薄荷、淡紫兩色主題可以接著送審。羊年貼圖／表情貼特輯排在進度表 ny1–ny4（全新圖、勾「使用 AI」、12/14 送審，截止 2027/1/8）。IG：https://www.instagram.com/mochachen12252026/ 。網址、IG、WEBTOON 帳號裡的「mocha chen」是使用者家的貓的名字、不是本名，使用者說沒差，不用再提。文案、簡介裡不寫使用者本名。
 - AI 作品要誠實標示（巴哈勾「AI 創作」、LINE WEBTOON 簡介寫「AI 輔助作畫」、不參加禁止 AI 的比賽）。
