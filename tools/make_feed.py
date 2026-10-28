@@ -2,7 +2,7 @@
 
 - 每一話的資料從 story/index.html 的目錄讀（第N話、話名、小說和漫畫連結），簡介用 NN.html 的 description。
 - 每一話第一次出現在目錄的日期記在 story/feed-dates.json（台灣時間），之後不再變。
-- sitemap.xml 列出首頁、職業結果頁 r/、連載的每一頁；遊戲還在測試（noindex）不列。
+- sitemap.xml 列出首頁、職業結果頁 r/、連載的每一頁；小遊戲正式上架的才列（星之泉 10/28 上架）。
 定時上線（main 的 release.yml）合併存稿後會跑這支，再一起推上去。
 """
 import datetime, html, json, pathlib, re
@@ -49,7 +49,7 @@ for no, title, nn in reversed(eps):
 </rss>
 ''', encoding='utf-8')
 
-pages = ['', 'story/'] + [f'r/{p.name}' for p in sorted((root / 'r').glob('*.html'))]
+pages = ['', 'story/', 'games/starspring/'] + [f'r/{p.name}' for p in sorted((root / 'r').glob('*.html'))]
 pages += [f'story/{p.name}' for p in sorted(story.glob('[0-9][0-9]*.html'))]
 urls = '\n'.join(f'  <url><loc>{BASE}{p}</loc></url>' for p in pages)
 (root / 'sitemap.xml').write_text(f'''<?xml version="1.0" encoding="UTF-8"?>
