@@ -15,7 +15,7 @@ from PIL import Image
 MODEL = 'gemini-3.1-flash-image'  # Nano Banana 2
 REF_MAX = 1536
 PROJECT = 'gen-lang-client-0406332141'  # Google Cloud 專案「isekai」
-DAILY_MAX = 40
+DAILY_MAX = 100  # 2026-10-28 使用者同意從 40 放寬
 LOG = os.path.expanduser('~/.isekai_image_log.json')
 
 

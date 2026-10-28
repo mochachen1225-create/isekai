@@ -11,7 +11,7 @@
 **現在最優先**（11/11 開跑，要存稿到第五話）：
 1. 第三到五話漫畫還沒畫。生圖改走 Vertex（試用額度，見第 6 節），錢不是問題了。先重畫夜市街參考圖 s5（非歐洲風），再畫三話各格，排條漫（`isekai-studio/work/wt/`），給使用者看。
 2. 第三話小說 10/28 補了三段：熱美式（伏筆，第六話收）、史萊姆掃街、市集牆上的「魔王」畫像（灰藍賓士貓擺帥，底下有貓在睡覺）。漫畫分鏡要加上畫像：夜市格背景放一張沒有字的大畫像。
-3. 第六話草稿 10/28 已寫好（魚湯當咖啡、半個罐罐換小貓作業簿當速寫本、自我介紹「喵導員」、手機曬太陽充電），等使用者看；第四、五話 10/28 照她的口氣改過。11/1 週日排程接著寫第七話。使用者的口氣規則整理在設定集「寫作口氣指南」表格最後四列（還不確定用問句、不替她做聰明比喻、居民隨口回答、回嘴短）。
+3. 第四到六話小說使用者 10/28 說 OK（第六話：魚湯當咖啡、打掃兩天換小貓作業簿和炭筆、自我介紹「喵導員」、手機曬太陽充電）。第四話漫畫 10/28 開始畫（`isekai-studio/work/comic4/`）。第七話 10/28 開始寫（洗澡）。使用者的口氣規則整理在設定集「寫作口氣指南」表格最後四列（還不確定用問句、不替她做聰明比喻、居民隨口回答、回嘴短）。
 4. 11/4 GoatCounter；11/10 巴哈和 LINE WEBTOON 上架資料、免費周邊頁。
 
 **存稿分支**：第三話（小說＋漫畫頁、條漫、IG 單格、目錄）做好放在 `ep03-stock` 分支，使用者 10/28 說漫畫 OK。11/11 開跑時把它合併進 `site`（`git merge ep03-stock`），再推到 site 和 story-draft。之後每話照這個做法：做好先放 `epNN-stock`，上線日再合併。
@@ -100,7 +100,7 @@
 
 - 動畫影片：Remotion（React 寫影片，個人和 3 人以下公司免費，5.0 版授權會改，用前再查）、Motion Canvas、Blender、three.js、FFmpeg（預告片已經在用）。可以拿漫畫格做成動態漫畫 Reels；注意使用者不喜歡放大推近的鏡頭。
 - 免費生圖：Cloudflare Workers AI（目前每天都顯示額度用完，原因待查）、Hugging Face 上的 FLUX.1 schnell（授權要看模型頁）、使用者手動用 Gemini App 畫。
-- Vertex AI（2026-10-28 設定好、測試成功，現在是 `tools/gemini_image.py` 的預設）：Google Cloud 試用送的約 NT$9,534 額度（到 2027-01-26）不能付 AI Studio 的 Gemini API，但可以付 Vertex AI（新名 Agent Platform API）。專案「isekai」（ID `gen-lang-client-0406332141`，mocha 帳號），服務帳戶 `isekai-image`（只有 Agent Platform User 角色），API 金鑰 `isekai-vertex` 綁在這個服務帳戶、只開 Agent Platform API，放在 Network secrets（網域 `aiplatform.googleapis.com`，header `x-goog-api-key`，prefix 空白）。模型 `gemini-3.1-flash-image` 跟 AI Studio 同一個。上限：專案有 Spend cap enforcement（Vertex AI，每月 NT$9,000，到了會真的暫停），工具每天最多 40 張。`--loc=us-central1` 也能用（改區域沒解決 429）。`--api=studio` 可改回 AI Studio 預付。iskatie 帳號下另有一個誤建的專案 `wide-bastion-470510-m3`（金鑰、服務帳戶），使用者要自己去刪。待確認：隔天看帳單是不是扣試用額度。
+- Vertex AI（2026-10-28 設定好、測試成功，現在是 `tools/gemini_image.py` 的預設）：Google Cloud 試用送的約 NT$9,534 額度（到 2027-01-26）不能付 AI Studio 的 Gemini API，但可以付 Vertex AI（新名 Agent Platform API）。專案「isekai」（ID `gen-lang-client-0406332141`，mocha 帳號），服務帳戶 `isekai-image`（只有 Agent Platform User 角色），API 金鑰 `isekai-vertex` 綁在這個服務帳戶、只開 Agent Platform API，放在 Network secrets（網域 `aiplatform.googleapis.com`，header `x-goog-api-key`，prefix 空白）。模型 `gemini-3.1-flash-image` 跟 AI Studio 同一個。上限：專案有 Spend cap enforcement（Vertex AI，每月 NT$9,000，到了會真的暫停），工具每天最多 100 張（2026-10-28 使用者同意從 40 放寬；一張約 NT$2.2，100 張約 NT$220）。`--loc=us-central1` 也能用（改區域沒解決 429）。`--api=studio` 可改回 AI Studio 預付。iskatie 帳號下另有一個誤建的專案 `wide-bastion-470510-m3`（金鑰、服務帳戶），使用者要自己去刪。待確認：隔天看帳單是不是扣試用額度。
 - 省錢生圖：Gemini API 是一張圖算一次錢（1K 約 US$0.067、2K 約 US$0.101），角色小圖可以一次畫一整張 4×4 或 5×5 的角色表再用程式裁切。2026-10-28 實測成功（星之泉 16 個角色一張搞定，使用者覺得很划算）：洋紅色底、每格一個角色，程式去背後縮到約 96px 就是點陣貼紙。做法和原圖在 `isekai-studio` 的 `work/sprites/`。小遊戲、周邊的角色圖以後優先用這招。
 - 免費素材：Kenney（CC0）。
 
