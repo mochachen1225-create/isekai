@@ -17,7 +17,7 @@
 6. 預告片：熱血格鬥家、守護騎士、結界師男女都剪好、都進了工作檯（結界師 10/28 晚上放進去）。使用者今天影片額度用完，明天會再傳；收到先給音樂 prompt（第 5 節）。
 7. 星之泉遊戲：10/28 使用者 OK、正式上架（拿掉 noindex、首頁和連載目錄有入口、GoatCounter）。之前加了兩首配樂、Vertex 畫的點陣背景（地面、雲、城堡）、光影、鍵盤操作、可休息的大平台（地毯＋木板）、斷柱隨機、魔王關走路左右翻面。
 7b. Vertex 影音 10/28 試過：Lyria（`lyria-002`，30 秒約 NT$2）和 Veo（`veo-3.1-lite-generate-001`，圖生影片，720p 每秒約 US$0.03，做法 `isekai-studio` 的 `work/vertex_test/veo.py`）。使用者想用在還沒做的職業預告（聖職者、伙食長、吟遊詩人、花火師、鍊金術師、占星術師、探險家、馴獸師），prompt 先給她看。插畫是 3:4，送 Veo 前先補成 9:16。
-8. GoatCounter 10/28 加好（站台 catheroparty，`tools/add_goatcounter.py`，新的一話上線時 release.yml 會自動補；也可以做好一話就在存稿分支跑一次）；RSS `story/feed.xml` 和 `sitemap.xml` 10/28 做好；Search Console 等使用者給驗證標記（進度表 n-gsc）；11/10 第 2–3 話巴哈和 LINE WEBTOON 上傳包、免費周邊頁（第一話三個平台 10/28 都已發）。
+8. GoatCounter 10/28 加好（站台 catheroparty，`tools/add_goatcounter.py`，新的一話上線時 release.yml 會自動補；也可以做好一話就在存稿分支跑一次）；RSS `story/feed.xml` 和 `sitemap.xml` 10/28 做好；Search Console 10/28 驗證通過（index.html 的 google-site-verification，不要刪），使用者要提交 sitemap.xml；11/10 第 2–3 話巴哈和 LINE WEBTOON 上傳包、免費周邊頁（第一話三個平台 10/28 都已發）。
 
 **定時上線（10/28 使用者同意，GitHub Actions，免費）**：`main` 分支的 `.github/workflows/release.yml` 每週三台灣時間 20:45 照 `main` 的 `release.json`（台灣日期 → 存稿分支）自動把那一話合併到 `site`，跑 `tools/check_site.py`，通過才推 site 和 story-draft，再請 Pages 重建；失敗 GitHub 會寄信給使用者。每做好一話的存稿，就在 `main` 的 `release.json` 加一行。也可以在 Actions 頁手動 Run workflow 填分支名。`site` 和存稿分支推上去時 `.github/workflows/check.yml` 會自動檢查（連結、條漫 ≤500KB、上傳包檔名、目錄）。合併後還會重新縮減字型、跑 `tools/make_feed.py` 更新 RSS（`story/feed.xml`）和 `sitemap.xml`。所以平常在 site 上改字不用重跑字型（避免跟存稿分支的字型檔衝突），上線時會自動補。上線日 Claude 只要確認 Actions 有成功、沒成功就手動合併。
 
