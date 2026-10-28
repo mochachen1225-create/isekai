@@ -72,7 +72,14 @@
 - 個性字卡三段：第一句結論（例：你是讓人安心的那種人。）→ 兩三句具體行為 → 身邊的人跟你在一起的感覺。正向。
 - 做好的預告放 `promo/<職業>_<m|f>.mp4`（commit 到 site 分支，手機可以從 GitHub Pages 存影片）。同時加進工作檯頁面：先用 Artifact read 讀回原始檔，在 `DONE` 物件加 key 和貼文文字，影片放 artifact 的 `video/<key>.mp4`。
 
-## 6. 一定要遵守
+## 6. 備案工具（免費、可公開用為主，還沒用到）
+
+- 動畫影片：Remotion（React 寫影片，個人和 3 人以下公司免費，5.0 版授權會改，用前再查）、Motion Canvas、Blender、three.js、FFmpeg（預告片已經在用）。可以拿漫畫格做成動態漫畫 Reels；注意使用者不喜歡放大推近的鏡頭。
+- 免費生圖：Cloudflare Workers AI（目前每天都顯示額度用完，原因待查）、Hugging Face 上的 FLUX.1 schnell（授權要看模型頁）、使用者手動用 Gemini App 畫。
+- 省錢生圖：Gemini API 是一張圖算一次錢（1K 約 US$0.067、2K 約 US$0.101），角色小圖可以一次畫一整張 4×4 或 5×5 的角色表再用程式裁切。
+- 免費素材：Kenney（CC0）。
+
+## 7. 一定要遵守
 
 - 任何事實、數字、日期、平台規定，先搜尋再說。
 - 不貼金鑰。筆名帳號（巴哈、LINE WEBTOON）跟使用者的個人身分分開。
