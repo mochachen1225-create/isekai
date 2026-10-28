@@ -42,7 +42,7 @@
 
 - 小說：Claude 寫草稿放草稿本，使用者在總覽打勾 OK（或留言要改），Claude 上線。
 - 漫畫：Claude 寫分鏡和 prompt、自己用 API 畫、自己檢查、修圖、排字、上線（規則見第 3 節）。
-- 平台分工（2026-10-28 定）：巴哈只放小說，每話配 3 張插圖（從該話漫畫格挑，打包成 `promo/epNN_bahamut.zip`，文案裡標［插圖 1／2／3］位置，結尾一行導到漫畫版）；LINE WEBTOON 只放漫畫（條漫切片打包成 `promo/epNN_comic.zip`）；網站兩種都有。
+- 平台分工（2026-10-28 定）：巴哈只放小說，每話配 3 張插圖（從該話漫畫格挑，打包成 `promo/epNN_bahamut.zip`，文案裡標［插圖 1／2／3］位置，結尾一行導到漫畫版；資料夾「貓貓勇者小隊」；標籤：原創、異世界、輕小說、貓、搞笑、日常、轉生、貓貓勇者小隊、AI輔助）；LINE WEBTOON 只放漫畫（條漫切片打包成 `promo/epNN_comic.zip`）；網站兩種都有。
 - 發文：Claude 在進度表準備好配圖和可複製的文案；使用者自己在 app 排程、上傳巴哈和 LINE WEBTOON。
 - 影片：使用者用 Gemini App 做（比 API 便宜），Claude 剪接（第 5 節）。
 - 進度表每一項都要有 owner（你／我／一起）和 due。欄位：done、owner、due、time、title、note、link、linkText、caption。每話做好後，把那一話的 Threads／IG 項目補上配圖和文案。使用者只看進度表（10/28）：任何準備好給她用的東西（圖、縮圖、文案、上傳包）都放進對應項目的 link／caption，圖片放 `promo/` 用 GitHub Pages 網址，方便她直接複製、存檔、貼上。
