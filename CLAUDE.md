@@ -19,7 +19,7 @@
 7b. Vertex 影音 10/28 試過：Lyria（`lyria-002`，30 秒約 NT$2）和 Veo（`veo-3.1-lite-generate-001`，圖生影片，720p 每秒約 US$0.03，做法 `isekai-studio` 的 `work/vertex_test/veo.py`）。使用者想用在還沒做的職業預告（聖職者、伙食長、吟遊詩人、花火師、鍊金術師、占星術師、探險家、馴獸師），prompt 先給她看。插畫是 3:4，送 Veo 前先補成 9:16。
 8. 11/4 GoatCounter；11/10 第 2–3 話巴哈和 LINE WEBTOON 上傳包、免費周邊頁（第一話三個平台 10/28 都已發）。
 
-**定時上線（10/28 使用者同意，GitHub Actions，免費）**：`main` 分支的 `.github/workflows/release.yml` 每週三台灣時間 20:45 照 `main` 的 `release.json`（台灣日期 → 存稿分支）自動把那一話合併到 `site`，跑 `tools/check_site.py`，通過才推 site 和 story-draft，再請 Pages 重建；失敗 GitHub 會寄信給使用者。每做好一話的存稿，就在 `main` 的 `release.json` 加一行。也可以在 Actions 頁手動 Run workflow 填分支名。`site` 和存稿分支推上去時 `.github/workflows/check.yml` 會自動檢查（連結、條漫 ≤500KB、上傳包檔名、目錄）。上線日 Claude 只要確認 Actions 有成功、沒成功就手動合併。
+**定時上線（10/28 使用者同意，GitHub Actions，免費）**：`main` 分支的 `.github/workflows/release.yml` 每週三台灣時間 20:45 照 `main` 的 `release.json`（台灣日期 → 存稿分支）自動把那一話合併到 `site`，跑 `tools/check_site.py`，通過才推 site 和 story-draft，再請 Pages 重建；失敗 GitHub 會寄信給使用者。每做好一話的存稿，就在 `main` 的 `release.json` 加一行。也可以在 Actions 頁手動 Run workflow 填分支名。`site` 和存稿分支推上去時 `.github/workflows/check.yml` 會自動檢查（連結、條漫 ≤500KB、上傳包檔名、目錄）。合併後還會重新縮減字型、跑 `tools/make_feed.py` 更新 RSS（`story/feed.xml`）和 `sitemap.xml`。所以平常在 site 上改字不用重跑字型（避免跟存稿分支的字型檔衝突），上線時會自動補。上線日 Claude 只要確認 Actions 有成功、沒成功就手動合併。
 
 **存稿分支**：第三話（小說＋漫畫頁、條漫、IG 單格、目錄）做好放在 `ep03-stock` 分支，使用者 10/28 說漫畫 OK。11/11 開跑時把它合併進 `site`（`git merge ep03-stock`），再推到 site 和 story-draft。之後每話照這個做法：做好先放 `epNN-stock`，上線日再合併。
 
