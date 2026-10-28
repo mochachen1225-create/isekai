@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#4a3524">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="description" content="《貓貓勇者小隊》小遊戲：爬上怪藤、躲過橘貓，跟午睡的魔王玩一二三木頭人，拿到星星結晶！">
+<meta name="description" content="《貓貓勇者小隊》小遊戲：爬上怪貓跳台、躲過橘貓，跟午睡的魔王玩一二三木頭人，拿到星星結晶！">
 <meta property="og:type" content="website">
 <meta property="og:title" content="爬上星之泉｜貓貓勇者小隊小遊戲">
 <meta property="og:description" content="種下夜市買的怪種子，爬上魔王城堡後面的星之泉！躲過要抓妳回去睡覺的橘貓，跟午睡的魔王玩一二三木頭人。手機點開就能玩！">
@@ -98,11 +98,11 @@ h2{margin:0 0 6px;font-size:26px;color:var(--ink)}
 
   <div class="panel on" id="pTitle"><div class="card">
     <h1>爬上星之泉</h1>
-    <p class="sub">爬上怪藤、躲過橘貓，拿到魔王的星星結晶！</p>
+    <p class="sub">爬上怪貓跳台、躲過橘貓，拿到魔王的星星結晶！</p>
     <div class="how">
       ① 點土地，種下夜市買的怪種子<br>
-      ② 三根藤，<b>點妳那一根</b>往上爬（點太快會滑手）<br>
-      ③ <b>點別根藤</b>就跳過去：閃開烏鴉、騎掃把的黑貓、兔子、毛線球，繞過斷藤、史萊姆、螢光蘑菇<br>
+      ② 三根麻繩柱，<b>點妳那一根</b>往上爬（點太快會滑手）<br>
+      ③ <b>點別根</b>就跳過去：閃開烏鴉、騎掃把的黑貓、兔子、毛線球，繞過斷掉的柱子、史萊姆、螢光蘑菇<br>
       ④ 送貨的鵜鶘飛過來時<b>跳向牠</b>，抓住木箱！<br>
       ⑤ 大風來時<b>按住不要動</b><br>
       ⑥ 魔王用肉球摀住眼睛時<b>按住前進</b>，肉球放下就<b>放開</b>！<br>
@@ -156,8 +156,8 @@ const mainCtx = cv.getContext('2d');
 let ctx = mainCtx;
 const FONT = '"Huninn","PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif';
 const TOP = 90;          // 魔豆高度（公尺）
-const SW = 0.22;         // 換藤時間
-const STX = [.22, .5, .78]; // 三根藤的位置
+const SW = 0.22;         // 換柱子的時間
+const STX = [.22, .5, .78]; // 三根麻繩柱的位置
 let W = 390, H = 760, DPR = 1, PX = 47, U = 1, Yj = 420;
 
 // ---------- 小工具 ----------
@@ -371,44 +371,58 @@ function make(w, h, fn) {
   const old = ctx; ctx = c.getContext('2d'); ctx.setTransform(DPR, 0, 0, DPR, 0, 0); fn(w, h); ctx = old;
   c.w = w; c.h = h; return c;
 }
-function paintCloud(w, h) {
-  const k = w / 240;
-  const path = () => { ctx.beginPath(); [[60, 80, 30], [100, 62, 40], [146, 70, 36], [184, 86, 24], [124, 90, 30]].forEach(([x, y, r]) => { ctx.moveTo((x + r) * k, y * k); ctx.arc(x * k, y * k, r * k, 0, Math.PI * 2); }); };
-  card(path, PAT.white, '#bfb29b', 4);
-  sh(false); ctx.fillStyle = vg(20 * k, 120 * k, 'rgba(255,255,255,.3)', 'rgba(120,95,60,.14)'); path(); ctx.fill();
-  pin(104 * k, 36 * k, '#d64f45', k / U);
+// ---------- 點陣小畫布 ----------
+// 在 1/q 大小的小畫布上一格一格畫，最後用最近鄰放大貼回去，邊緣才會是方塊（跟點陣角色同一套）
+const PQ = () => Math.max(2, Math.round(3 * U));
+function pix(w, h, q, fn) {
+  const lw = Math.ceil(w / q), lh = Math.ceil(h / q);
+  const c = document.createElement('canvas'); c.width = lw; c.height = lh;
+  const x = c.getContext('2d');
+  const r = (x0, y0, ww, hh, col) => { x.fillStyle = col; x.fillRect(Math.round(x0), Math.round(y0), Math.max(1, Math.round(ww)), Math.max(1, Math.round(hh))); };
+  const disc = (cx, cy, rad, col) => { rad = Math.round(rad); for (let j = -rad; j <= rad; j++) { const half = Math.round(Math.sqrt(rad * rad - j * j)); r(cx - half, cy + j, half * 2 + 1, 1, col); } };
+  // 地形線：每一欄從 top(i) 往下塗滿，最上面和露出來的側邊描深色
+  const ridge = (top, face, ol, bottom = lh) => {
+    for (let i = 0; i < lw; i++) {
+      const t = top(i), m = Math.max(t + 1, Math.min(Math.max(top(i - 1), top(i + 1)), bottom));
+      r(i, t, 1, bottom - t, face); r(i, t, 1, m - t, ol);
+    }
+  };
+  const hash = n => { n = (n * 2654435761) >>> 0; n ^= n >>> 15; return (n * 2246822519 >>> 0) / 4294967296; };
+  fn({ lw, lh, q, r, disc, ridge, hash, x });
+  ctx.save(); ctx.imageSmoothingEnabled = false; ctx.drawImage(c, 0, 0, lw * q, lh * q); ctx.restore();
 }
-// 一層層的雲帶（參考剪紙立體感）
+function paintCloud(w, h) {
+  pix(w, h, 4 * w / 240, P => {
+    const k = P.lw / 60, puffs = [[15, 20, 7], [25, 15, 10], [36, 17, 9], [46, 21, 6], [31, 22, 7]];
+    puffs.forEach(([x, y, rd]) => P.disc(x * k, y * k, rd * k + 1, '#9d93a6'));
+    puffs.forEach(([x, y, rd]) => P.disc(x * k, y * k, rd * k, '#e3dde8'));
+    puffs.forEach(([x, y, rd]) => P.disc(x * k - 1, y * k - 1, rd * k - 1, '#fbf8f1'));
+  });
+}
+// 一層層的點陣雲帶
 function paintBand(w, h, fillBottom) {
-  const layers = [[PAT.kraftL, '#9c7a48'], ['#e2d7c2', '#b3a283'], [PAT.white, '#c2b59d'], ['#fbf7ee', '#cdc2ab']];
-  let seed = 11; const r2 = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
-  layers.forEach(([face, edge], i) => {
-    const base = h * (fillBottom ? .2 + i * .13 : .3 + i * .12), pts = [];
-    for (let x = -30 + i * 17; x < w + 50; x += w * .12) pts.push([x, w * (.065 + r2() * .05)]);
-    const path = () => { ctx.beginPath(); pts.forEach(([x, r]) => { ctx.moveTo(x + r, base); ctx.arc(x, base, r, 0, Math.PI * 2); }); if (fillBottom) ctx.rect(-10, base, w + 20, h - base + 10); };
-    card(path, face, edge, 5);
-    if (i === 3) { pin(pts[2][0], base - pts[2][1] * .55, '#3b9c97', .9); pin(pts[6] ? pts[6][0] : w * .7, base - (pts[6] ? pts[6][1] : 20) * .55, '#f0c443', .9); }
+  pix(w, h, PQ(), P => {
+    const { lw, lh } = P; let seed = 11; const r2 = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+    [['#e3dde8', .3], ['#fbf8f1', .42]].forEach(([face, b], li) => {
+      const base = Math.round(lh * (fillBottom ? b - .12 : b)), pts = [];
+      for (let x = -4 + li * 5; x < lw + 8; x += lw * .12) pts.push([x, Math.round(lw * (.06 + r2() * .045))]);
+      pts.forEach(([x, rd]) => P.disc(x, base, rd + 1, '#9d93a6'));
+      if (fillBottom) P.r(0, base, lw, lh - base, '#9d93a6');
+      pts.forEach(([x, rd]) => P.disc(x, base, rd, face));
+      if (fillBottom) P.r(0, base + 1, lw, lh - base, face);
+    });
   });
 }
 function paintSun(w, h) {
-  const c = w / 2, r = w * .3;
-  for (let i = 0; i < 10; i++) {
-    const a = i * Math.PI / 5;
-    card(() => { ctx.beginPath(); ctx.moveTo(c + Math.cos(a - .18) * r * 1.05, c + Math.sin(a - .18) * r * 1.05); ctx.lineTo(c + Math.cos(a) * r * 1.55, c + Math.sin(a) * r * 1.55); ctx.lineTo(c + Math.cos(a + .18) * r * 1.05, c + Math.sin(a + .18) * r * 1.05); ctx.closePath(); }, PAT.yellow, '#b8862a', 2);
-  }
-  card(() => { ctx.beginPath(); ctx.arc(c, c, r, 0, Math.PI * 2); }, PAT.yellow, '#b8862a', 3);
-  sh(false); ctx.fillStyle = '#5a3a1a'; circ(c - r * .32, c - r * .1, r * .08, '#5a3a1a', false); circ(c + r * .32, c - r * .1, r * .08, '#5a3a1a', false);
-  ctx.strokeStyle = '#5a3a1a'; ctx.lineWidth = r * .07; ctx.lineCap = 'round'; ctx.beginPath(); ctx.arc(c, c + r * .05, r * .32, .3, Math.PI - .3); ctx.stroke();
-  circ(c - r * .55, c + r * .2, r * .12, 'rgba(214,79,69,.45)', false); circ(c + r * .55, c + r * .2, r * .12, 'rgba(214,79,69,.45)', false);
-  tape(c + r * .2, c - r * .9, r * .9, r * .3, .35, '#3b9c97', 'stripes');
+  pix(w, h, PQ(), P => {
+    const c = Math.floor(P.lw / 2), rd = Math.round(P.lw * .27);
+    for (let k = 0; k < 8; k++) { const a = k * Math.PI / 4, x = c + Math.round(Math.cos(a) * (rd + 4)), y = c + Math.round(Math.sin(a) * (rd + 4)); P.r(x - 1, y - 1, 3, 3, '#b8862a'); P.r(x, y, 1, 1, '#f6d36b'); }
+    P.disc(c, c, rd + 1, '#b8862a'); P.disc(c, c, rd, '#f6c94a'); P.disc(c - 2, c - 2, rd - 4, '#fbe08a');
+    P.r(c - 3, c - 1, 1, 2, '#5a3a1a'); P.r(c + 3, c - 1, 1, 2, '#5a3a1a'); P.r(c - 1, c + 2, 3, 1, '#5a3a1a');
+    P.r(c - 6, c + 1, 2, 1, '#f08a7a'); P.r(c + 5, c + 1, 2, 1, '#f08a7a');
+  });
 }
-function paintLeaf(w, h) {
-  const o = 4 * U, cy = h / 2, L = 26 * U, d = 10 * U;
-  sh(); ctx.fillStyle = '#4e8f37'; ctx.beginPath(); ctx.moveTo(o, cy);
-  ctx.quadraticCurveTo(o + L * .5, cy - d, o + L, cy); ctx.quadraticCurveTo(o + L * .5, cy + d, o, cy); ctx.fill();
-  sh(false); ctx.fillStyle = '#76b356'; ctx.beginPath(); ctx.moveTo(o, cy); ctx.quadraticCurveTo(o + L * .5, cy - d, o + L, cy); ctx.closePath(); ctx.fill();
-  ctx.strokeStyle = 'rgba(30,60,20,.45)'; ctx.lineWidth = 1 * U; ctx.beginPath(); ctx.moveTo(o + 2 * U, cy); ctx.lineTo(o + L - 4 * U, cy); ctx.stroke();
-}
+
 function paintVignette(w, h) {
   const g = ctx.createRadialGradient(w / 2, h * .45, Math.min(w, h) * .35, w / 2, h * .5, Math.max(w, h) * .78);
   g.addColorStop(0, 'rgba(60,35,15,0)'); g.addColorStop(1, 'rgba(60,35,15,.3)');
@@ -421,129 +435,113 @@ function makeGrain() {
   x.putImageData(d, 0, 0); return mainCtx.createPattern(c, 'repeat');
 }
 function paintFar(w, h) {
-  const rows = [[PAT.kraftL, '#9c7a48', .35, .1, 0], [PAT.green, '#3c6e2a', .55, .08, 2]];
-  rows.forEach(([face, edge, b, a, ph], ri) => {
-    const path = () => { ctx.beginPath(); ctx.moveTo(0, h + 10); for (let x = 0; x <= w + 10; x += 8) ctx.lineTo(x, h * b + Math.sin(x * .011 + ph) * h * a + Math.sin(x * .029 + ph) * h * .04); ctx.lineTo(w + 10, h + 10); ctx.closePath(); };
-    card(path, face, edge, 5);
-    if (ri === 1) for (let i = 0; i < 6; i++) {
-      const x = (i + .5) / 6 * w, y = h * b + Math.sin(x * .011 + ph) * h * a + Math.sin(x * .029 + ph) * h * .04;
-      limb(x, y + 4, x, y - 16 * U, '#e8cfa0', 3 * U); card(() => { ctx.beginPath(); ctx.arc(x, y - 22 * U, 9 * U, 0, 7); }, PAT.green, '#3c6e2a', 2);
-    }
+  pix(w, h, PQ(), P => {
+    const { lw, q } = P;
+    [['#c9dab0', '#7f9a6a', .35, .1, 0], ['#9cc27a', '#5f7f4a', .55, .08, 2]].forEach(([face, ol, b, a, ph], ri) => {
+      const top = i => Math.round((h * b + Math.sin(i * q * .011 + ph) * h * a + Math.sin(i * q * .029 + ph) * h * .04) / q);
+      P.ridge(top, face, ol);
+      if (ri === 1) for (let k = 0; k < 6; k++) {
+        const x = Math.round((k + .5) / 6 * lw), t = top(x);
+        P.r(x, t - 5, 1, 5, '#7a5a3e'); P.disc(x, t - 8, 4, ol); P.disc(x, t - 8, 3, '#7fb35c'); P.disc(x - 1, t - 9, 1, '#a3d27e');
+      }
+    });
   });
-  tape(w * .18, h * .3, 60 * U, 14 * U, -.2, '#f0c443', 'stripes');
 }
 function paintVillage(w, h) {
-  const gy = h * .78;
-  card(() => { ctx.beginPath(); ctx.moveTo(0, h + 10); for (let x = 0; x <= w + 10; x += 8) ctx.lineTo(x, gy + Math.sin(x * .02) * 5); ctx.lineTo(w + 10, h + 10); ctx.closePath(); }, PAT.felt, '#2f6a2c', 4);
-  const roofs = [PAT.red, PAT.teal, PAT.yellow, PAT.red, PAT.teal];
-  [.07, .21, .58, .73, .9].forEach((f, i) => {
-    const x = f * w, s = .7 * U, bw = 34 * s, bh = 26 * s, y = gy + Math.sin(x * .02) * 5;
-    card(() => { ctx.beginPath(); ctx.rect(x - bw / 2, y - bh, bw, bh + 3); }, PAT.kraft, '#8a6436', 3);
-    card(() => { ctx.beginPath(); ctx.moveTo(x - bw / 2 - 5 * s, y - bh + 2); ctx.lineTo(x, y - bh - 20 * s); ctx.lineTo(x + bw / 2 + 5 * s, y - bh + 2); ctx.closePath(); }, roofs[i], '#6a3a22', 3);
-    rr(x - 4 * s, y - 13 * s, 8 * s, 13 * s, 2, '#3a2818', false);
-  });
-  [.14, .33, .46, .66, .82, .97].forEach(f => {
-    const x = f * w, y = gy + Math.sin(x * .02) * 5;
-    limb(x, y, x, y - 18 * U, '#e8cfa0', 3 * U);
-    card(() => { ctx.beginPath(); ctx.arc(x, y - 24 * U, 10 * U, 0, 7); }, PAT.green, '#3c6e2a', 2);
+  pix(w, h, PQ(), P => {
+    const { lw, q } = P, top = i => Math.round((h * .78 + Math.sin(i * q * .02) * 5) / q), OL = '#4f4058';
+    P.ridge(top, '#8cc468', '#4f8a3c');
+    const roofs = ['#d9665b', '#3b9c97', '#f0c443', '#d9665b', '#3b9c97'];
+    [.07, .21, .58, .73, .9].forEach((f, n) => {
+      const x = Math.round(f * lw), t = top(x) + 1;
+      P.r(x - 4, t - 7, 9, 7, OL); P.r(x - 3, t - 6, 7, 6, '#efe3cc'); P.r(x + 2, t - 6, 1, 6, '#d6c6a8');
+      for (let j = 0; j < 5; j++) { P.r(x - j - 2, t - 12 + j, 2 * j + 5, 1, OL); if (j) P.r(x - j - 1, t - 12 + j, 2 * j + 3, 1, roofs[n]); }
+      P.r(x - 1, t - 3, 2, 3, '#5a3b2a');
+    });
+    [.14, .33, .46, .66, .82, .97].forEach(f => {
+      const x = Math.round(f * lw), t = top(x);
+      P.r(x, t - 5, 1, 5, '#7a5a3e'); P.disc(x, t - 8, 4, '#3c6e2a'); P.disc(x, t - 8, 3, '#76b356'); P.disc(x - 1, t - 9, 1, '#9fd07a');
+    });
   });
 }
 function paintGround(w, h) {
-  const gy = h * .3;
-  // 毛氈草地＋底下一層瓦楞紙板
-  card(() => { ctx.beginPath(); ctx.moveTo(-10, h + 10); for (let x = -10; x <= w + 10; x += 8) ctx.lineTo(x, gy + h * .2 + Math.sin(x * .03) * 4); ctx.lineTo(w + 10, h + 10); ctx.closePath(); }, PAT.kraft, '#6e4d2a', 6);
-  card(() => { ctx.beginPath(); ctx.moveTo(-10, gy + h * .2 + 4); for (let x = -10; x <= w + 10; x += 6) ctx.lineTo(x, gy + Math.sin(x * .045) * 4 + (x % 12 ? 0 : 1.5)); ctx.lineTo(w + 10, gy + h * .2 + 4); ctx.closePath(); }, PAT.felt, '#2c6428', 6);
-  corrug(0, gy + h * .2 - 2, w, 7 * U);
-  for (let i = 0; i < 16; i++) { const x = (i * 97 % 100) / 100 * w, y = gy + 14 + ((i * 53) % 100) / 100 * h * .14; circ(x, y, 3.2 * U, ['#f0c443', '#d64f45', '#f7f1e3'][i % 3]); circ(x, y, 1.2 * U, '#7a4a20', false); }
-  pin(w * .52, gy + h * .1, '#3b9c97');
-  // 傑克家（紅色穀倉農舍，紙板手作）
-  const u = U, white = '#f7f1e3', plank = 'rgba(90,20,10,.22)';
-  const stones = (x0, x1, y) => {
-    card(() => rrPath(x0, y - 13 * u, x1 - x0, 15 * u, 3 * u), '#a9a59c', '#6f6a60', 3);
-    for (let x = x0 + 5 * u, i = 0; x < x1 - 4 * u; x += 11 * u, i++) ell(x + 3 * u, y - 6 * u + (i % 2) * 2 * u, 5 * u, 3.6 * u, i % 3 ? '#c4c0b6' : '#b4b0a6', 0, false);
-  };
-  const planks = (x0, x1, y0, y1) => { sh(false); ctx.strokeStyle = plank; ctx.lineWidth = 1.2 * u; for (let x = x0 + 8 * u; x < x1 - 2; x += 8 * u) { ctx.beginPath(); ctx.moveTo(x, y0); ctx.lineTo(x, y1); ctx.stroke(); } };
-  const trim = (pts, lw = 4) => { sh(false); ctx.strokeStyle = white; ctx.lineWidth = lw * u; ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.beginPath(); pts.forEach((q, i) => i ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1])); ctx.stroke(); };
-  const win = (cx, cy, ww, wh2) => {
-    rr(cx - ww / 2 - 2 * u, cy - wh2 / 2 - 2 * u, ww + 4 * u, wh2 + 4 * u, 2, white);
-    rr(cx - ww / 2, cy - wh2 / 2, ww, wh2, 1.5, '#4a2a22', false);
-    limb(cx, cy - wh2 / 2, cx, cy + wh2 / 2, white, 2 * u, false); limb(cx - ww / 2, cy, cx + ww / 2, cy, white, 2 * u, false);
-  };
-  // 筒倉（後面）
-  const sx0 = -w * .03, sw = w * .12, stop = gy - 178 * u;
-  card(() => { ctx.beginPath(); ctx.rect(sx0, stop, sw, gy - stop); }, PAT.gray, '#6f747a', 5);
-  const sg = ctx.createLinearGradient(sx0, 0, sx0 + sw, 0); sg.addColorStop(0, 'rgba(40,40,50,.25)'); sg.addColorStop(.45, 'rgba(255,255,255,.2)'); sg.addColorStop(1, 'rgba(40,40,50,.3)');
-  sh(false); ctx.fillStyle = sg; ctx.fillRect(sx0, stop, sw, gy - stop);
-  card(() => { ctx.beginPath(); ctx.ellipse(sx0 + sw / 2, stop, sw / 2, sw * .42, 0, Math.PI, 0); ctx.closePath(); }, PAT.gray, '#6f747a', 3);
-  for (let y = stop + 26 * u; y < gy - 20 * u; y += 26 * u) limb(sx0, y, sx0 + sw, y, 'rgba(60,60,70,.3)', 1.5 * u, false);
-  barcode(sx0 + sw * .2, stop + 40 * u, sw * .65, 16 * u);
-  // 側屋（左邊，有煙囪）
-  const wx0 = w * .02, wx1 = w * .12, wwh = 62 * u;
-  card(() => { ctx.beginPath(); ctx.rect(wx0, gy - wwh, wx1 - wx0, wwh); }, PAT.red, '#7e2620', 5);
-  planks(wx0, wx1, gy - wwh, gy);
-  HOUSE = { cx: wx0 + 12 * u, dy: -(wwh + 40 * u), door: .26 };
-  card(() => { ctx.beginPath(); ctx.moveTo(wx0 - 8 * u, gy - wwh + 2 * u); ctx.lineTo(wx0 + (wx1 - wx0) * .45, gy - wwh - 30 * u); ctx.lineTo(wx1 + 8 * u, gy - wwh + 2 * u); ctx.closePath(); }, PAT.red, '#6e1f1a', 4);
-  trim([[wx0 - 8 * u, gy - wwh + 2 * u], [wx0 + (wx1 - wx0) * .45, gy - wwh - 30 * u], [wx1 + 8 * u, gy - wwh + 2 * u]]);
-  limb(wx0 + 12 * u, gy - wwh - 34 * u, wx0 + 12 * u, gy - wwh - 8 * u, '#5a5a60', 6 * u); rr(wx0 + 7 * u, gy - wwh - 38 * u, 10 * u, 5 * u, 2, '#45454b');
-  win((wx0 + wx1) / 2, gy - wwh * .55, 20 * u, 18 * u);
-  stones(wx0 - 2 * u, wx1, gy + 2 * u);
-  // 主穀倉
-  const bx = w * .26, bw = w * .32, bl = bx - bw / 2, br = bx + bw / 2, wh = 100 * u, eave = gy - wh;
-  const roof = [[bl - 9 * u, eave + 4 * u], [bl + bw * .1, eave - 42 * u], [bx, eave - 76 * u], [br - bw * .1, eave - 42 * u], [br + 9 * u, eave + 4 * u]];
-  card(() => { ctx.beginPath(); ctx.rect(bl, eave, bw, wh); }, PAT.red, '#7e2620', 6);
-  card(() => { ctx.beginPath(); roof.forEach((q, i) => i ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1])); ctx.closePath(); }, PAT.red, '#6e1f1a', 5);
-  planks(bl, br, eave - 40 * u, gy);
-  sh(false); ctx.save(); ctx.beginPath(); roof.forEach((q, i) => i ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1])); ctx.closePath(); ctx.clip();
-  ctx.fillStyle = 'rgba(60,10,5,.18)'; ctx.fillRect(bl - 10 * u, eave - 70 * u, bw + 20 * u, 70 * u); ctx.restore();
-  planks(bl + bw * .1, br - bw * .1, eave - 40 * u, eave + 2 * u);
-  trim(roof, 5);
-  trim([[bl, eave + 2 * u], [br, eave + 2 * u]], 4);
-  trim([[bl + 1.5 * u, eave], [bl + 1.5 * u, gy - 12 * u]], 3); trim([[br - 1.5 * u, eave], [br - 1.5 * u, gy - 12 * u]], 3);
-  [-1, 0, 1].forEach(i => win(bx + i * 19 * u, eave - 30 * u, 15 * u, 17 * u));
-  // 白色交叉大門（左扇關、右扇打開，看得到乾草）
-  const dw = bw * .42, dh = wh * .64, dl = bx - dw / 2, dt = gy - 12 * u - dh;
-  rr(dl - 3 * u, dt - 3 * u, dw + 6 * u, dh + 3 * u, 2, white);
-  rr(dl, dt, dw, dh, 1, '#2e1a12', false);
-  card(() => { ctx.beginPath(); ctx.moveTo(bx + 2 * u, gy - 12 * u); ctx.quadraticCurveTo(bx + dw * .25, dt + dh * .35, dl + dw - 2 * u, gy - 12 * u); ctx.closePath(); }, PAT.yellow, '#b8862a', 2);
-  const xdoor = (x0, y0, ww, hh) => {
-    rr(x0, y0, ww, hh, 1, PAT.red, false);
-    sh(false); ctx.strokeStyle = white; ctx.lineWidth = 3 * u; ctx.strokeRect(x0 + 1.5 * u, y0 + 1.5 * u, ww - 3 * u, hh - 3 * u);
-    ctx.beginPath(); ctx.moveTo(x0 + 2 * u, y0 + 2 * u); ctx.lineTo(x0 + ww - 2 * u, y0 + hh - 2 * u); ctx.moveTo(x0 + ww - 2 * u, y0 + 2 * u); ctx.lineTo(x0 + 2 * u, y0 + hh - 2 * u); ctx.stroke();
-  };
-  xdoor(dl, dt, dw / 2, dh);
-  ctx.save(); ctx.translate(dl + dw, dt); ctx.transform(1, .12, 0, 1, 0, 0); xdoor(0, 0, dw * .32, dh); ctx.restore();
-  rr(dl - 6 * u, dt - 9 * u, dw + 12 * u, 5 * u, 2, white);
-  win(bl + bw * .14, eave + wh * .4, 16 * u, 18 * u); win(br - bw * .14, eave + wh * .4, 16 * u, 18 * u);
-  stones(bl - 3 * u, br + 3 * u, gy + 2 * u);
-  // 手作小道具
-  tape(br - 6 * u, eave + 10 * u, 28 * u, 9 * u, .7, '#f0c443', 'stripes');
-  tape(bl + 2 * u, eave - 30 * u, 26 * u, 9 * u, -.8, '#3b9c97');
-  pin(bx, eave - 60 * u, '#f0c443');
-  // 空空的牛棚：乾草、空水桶、打開的柵門（牛牛被換成豆子了）
-  const px0 = w * .76;
-  card(() => { ctx.beginPath(); ctx.moveTo(w * .78, gy + 2); ctx.quadraticCurveTo(w * .79, gy - 52 * U, w * .835, gy - 46 * U); ctx.quadraticCurveTo(w * .88, gy - 54 * U, w * .9, gy + 2); ctx.closePath(); }, PAT.yellow, '#b8862a', 2);
-  sh(false); ctx.strokeStyle = 'rgba(140,95,20,.5)'; ctx.lineWidth = 1.2 * U;
-  for (let i = 0; i < 7; i++) { const x = w * (.79 + i * .015); ctx.beginPath(); ctx.moveTo(x, gy - 2 * U); ctx.lineTo(x + 3 * U, gy - 34 * U - (i % 3) * 5 * U); ctx.stroke(); }
-  for (let x = px0; x < w + 10; x += 15 * U) card(() => { rrPath(x, gy - 30 * U, 9 * U, 32 * U, 4 * U); }, '#ecd3a4', '#b39060', 2);
-  card(() => { rrPath(px0 - 2 * U, gy - 24 * U, w - px0 + 12, 6 * U, 3 * U); }, '#e2c38e', '#a8844f', 2);
-  card(() => { rrPath(px0 - 2 * U, gy - 12 * U, w - px0 + 12, 6 * U, 3 * U); }, '#e2c38e', '#a8844f', 2);
-  sh(false); ctx.strokeStyle = '#4c6f7c'; ctx.lineWidth = 1.5 * U; ctx.beginPath(); ctx.arc(w * .915 + 11 * U, gy - 34 * U, 9 * U, Math.PI, 0); ctx.stroke();
-  card(() => { ctx.beginPath(); ctx.moveTo(w * .915, gy - 34 * U); ctx.lineTo(w * .915 + 22 * U, gy - 34 * U); ctx.lineTo(w * .915 + 18 * U, gy - 14 * U); ctx.lineTo(w * .915 + 4 * U, gy - 14 * U); ctx.closePath(); }, '#7fa9b8', '#4c6f7c', 2);
-  ell(w * .915 + 11 * U, gy - 34 * U, 11 * U, 3 * U, '#3e5a64', 0, false);
-  // 打開的柵門（斜斜地往外開）
-  for (const t of [0, .5, 1]) limb(px0 - 30 * U * t, gy - 26 * U + 6 * U * t, px0 - 30 * U * t, gy - 2 * U + 6 * U * t, '#ecd3a4', 6 * U);
-  limb(px0, gy - 21 * U, px0 - 30 * U, gy - 15 * U, '#e2c38e', 5 * U); limb(px0, gy - 8 * U, px0 - 30 * U, gy - 2 * U, '#e2c38e', 5 * U);
-  // 「牛牛的家」牌子
-  const sx = w * .87, sgy = gy - 62 * U;
-  limb(sx, gy + 2, sx, sgy, '#d9b98a', 5 * U);
-  ctx.save(); ctx.translate(sx, sgy - 4 * U); ctx.rotate(-.05);
-  card(() => rrPath(-40 * U, -18 * U, 80 * U, 34 * U, 4 * U), PAT.kraftL, '#8a6436', 3);
-  ctx.font = `900 ${14 * U}px ${FONT}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#3d2b1f'; ctx.fillText('橘貓的家', 8 * U, 0);
-  circ(-28 * U, -1 * U, 9 * U, '#fbf7ee'); circ(-31 * U, -4 * U, 3.5 * U, '#3d2b1f', false); circ(-24 * U, 3 * U, 2.5 * U, '#3d2b1f', false);
-  ell(-28 * U, 4 * U, 5 * U, 3 * U, '#f4a6a0', 0, false); circ(-30 * U, 4 * U, .9 * U, '#7a3a30', false); circ(-26 * U, 4 * U, .9 * U, '#7a3a30', false);
-  ell(-36 * U, -7 * U, 3 * U, 1.6 * U, '#fbf7ee', -.5, false); ell(-20 * U, -7 * U, 3 * U, 1.6 * U, '#fbf7ee', .5, false);
-  ctx.restore();
-  tape(sx + 30 * U, sgy - 20 * U, 26 * U, 9 * U, .5, '#d64f45', 'stripes');
+  const q = PQ(), gy = h * .3;
+  let sign = null;
+  pix(w, h, q, P => {
+    const { lw, lh, r, disc, hash } = P, G0 = Math.round(gy / q), D0 = Math.round((gy + h * .2) / q);
+    const top = i => Math.round(G0 + Math.sin(i * q * .045) * 1.3);
+    // 草地＋底下的土
+    P.ridge(top, '#7cbf5a', '#3f6e34', D0);
+    for (let i = 0; i < lw; i++) r(i, top(i) + 1, 1, 1, '#9bd47a');
+    for (let n = 0; n < 70; n++) { const x = Math.floor(hash(n) * lw), y = Math.round(top(x) + 3 + hash(n + 99) * (D0 - top(x) - 5)); r(x, y, 1, 2, '#5f9e45'); r(x + 1, y + 1, 1, 1, '#5f9e45'); }
+    for (let n = 0; n < 18; n++) {
+      const x = Math.floor(hash(n + 300) * lw), y = Math.round(top(x) + 4 + hash(n + 400) * (D0 - top(x) - 7)), c = ['#f0c443', '#e0645a', '#fbf8f1'][n % 3];
+      r(x - 1, y, 3, 1, c); r(x, y - 1, 1, 3, c); r(x, y, 1, 1, '#7a4a20');
+    }
+    r(0, D0, lw, lh - D0, '#c79d6e'); r(0, D0, lw, 1, '#3f6e34'); r(0, D0 + 1, lw, 1, '#a98057');
+    for (let y = D0 + 12; y < lh; y += 13) r(0, y, lw, 1, '#b48a5f');
+    for (let n = 0; n < 40; n++) { const x = Math.floor(hash(n + 500) * lw), y = Math.round(D0 + 3 + hash(n + 600) * (lh - D0 - 5)); r(x, y, 3, 2, '#a3825e'); r(x, y, 2, 1, '#dcc3a0'); }
+
+    // 橘貓的樹屋：大樹幹、樹冠裡一間橘色屋頂的小木屋，樹下有貓門和信箱
+    const tx = Math.round(lw * .17), OL = '#3f2a1c', T0 = G0 - 40;
+    for (let y = T0; y <= G0; y++) {
+      const flare = y > G0 - 3 ? G0 - y < 1 ? 3 : G0 - y < 2 ? 2 : 1 : 0, x0 = tx - 4 - flare, x1 = tx + 4 + flare;
+      r(x0, y, x1 - x0 + 1, 1, '#8b5e3c'); r(x0, y, 1, 1, OL); r(x1, y, 1, 1, OL);
+      r(x0 + 1, y, 2, 1, '#a8774f'); r(x1 - 2, y, 2, 1, '#6b452b');
+      if (hash(y * 7) < .25) r(tx - 1 + Math.round(hash(y) * 3), y, 1, 2, '#6b452b');
+    }
+    // 貓門（橘貓從這裡衝出來）
+    r(tx - 3, G0 - 7, 6, 7, OL); r(tx - 2, G0 - 6, 4, 6, '#3a2416'); r(tx - 2, G0 - 7, 4, 1, OL); r(tx - 1, G0 - 8, 2, 1, OL);
+    // 樹冠
+    const leaves = [[-10, -46, 12], [9, -48, 13], [0, -58, 12], [-16, -38, 8], [16, -40, 8]];
+    leaves.forEach(([dx, dy, rd]) => disc(tx + dx, G0 + dy, rd + 1, '#3f6e34'));
+    leaves.forEach(([dx, dy, rd]) => disc(tx + dx, G0 + dy, rd, '#6fae4f'));
+    leaves.forEach(([dx, dy, rd]) => disc(tx + dx - 2, G0 + dy - 2, rd - 4, '#8cc868'));
+    // 平台
+    r(tx - 15, T0 - 1, 31, 4, OL); r(tx - 14, T0, 29, 2, '#c49a6c'); r(tx - 14, T0 + 1, 29, 1, '#a8774f');
+    // 小木屋
+    const hy0 = T0 - 14, hy1 = T0 - 1;
+    r(tx - 11, hy0, 23, hy1 - hy0 + 1, OL); r(tx - 10, hy0 + 1, 21, hy1 - hy0 - 1, '#e9c79a');
+    for (let x = tx - 8; x < tx + 10; x += 3) r(x, hy0 + 1, 1, hy1 - hy0 - 1, '#d1a874');
+    r(tx + 9, hy0 + 1, 2, hy1 - hy0 - 1, '#c99d68');
+    r(tx - 8, hy0 + 4, 6, 6, OL); r(tx - 7, hy0 + 5, 4, 4, '#fad66e'); r(tx - 7, hy0 + 5, 2, 2, '#fff0b4'); r(tx - 5, hy0 + 5, 1, 4, OL);
+    r(tx + 3, hy0 + 4, 5, 6, OL); r(tx + 4, hy0 + 5, 3, 4, '#fad66e');
+    // 煙囪＋橘色屋頂
+    const ry0 = hy0 - 11;
+    r(tx + 5, ry0 - 2, 4, 9, OL); r(tx + 6, ry0 - 1, 2, 7, '#b5654a');
+    for (let j = 0; j <= 11; j++) {
+      const half = j + 2; r(tx - half - 1, ry0 + j, half * 2 + 3, 1, OL);
+      if (j > 0 && j < 11) { r(tx - half, ry0 + j, half * 2 + 1, 1, '#e98a3c'); r(tx + half - 2, ry0 + j, 2, 1, '#c06a28'); if (j % 3 === 0) r(tx - half + 1, ry0 + j, half * 2 - 2, 1, '#d97a30'); }
+    }
+    HOUSE = { cx: (tx + 6.5) * q, dy: (ry0 - 3) * q - gy, door: tx * q / w };
+    // 梯子
+    for (const lx of [tx + 6, tx + 10]) { r(lx - 1, T0 + 3, 3, G0 - T0 - 2, OL); r(lx, T0 + 3, 1, G0 - T0 - 2, '#c49a6c'); }
+    for (let y = T0 + 6; y < G0 - 1; y += 4) { r(tx + 7, y - 1, 3, 3, OL); r(tx + 7, y, 3, 1, '#dcb98a'); }
+    // 郵差的信箱
+    r(tx + 15, G0 - 9, 1, 9, OL); r(tx + 12, G0 - 14, 7, 6, OL); r(tx + 13, G0 - 13, 5, 4, '#d64f45'); r(tx + 13, G0 - 13, 5, 1, '#ea7a6e'); r(tx + 19, G0 - 15, 1, 4, OL); r(tx + 20, G0 - 15, 2, 2, '#f0c443');
+
+    // 右邊：白柵欄、毛線球籃子、「橘貓的家」牌子
+    const fx0 = Math.round(lw * .72);
+    for (const yy of [G0 - 8, G0 - 4]) { r(fx0, yy - 1, lw - fx0, 3, OL); r(fx0, yy, lw - fx0, 1, '#f3ead8'); }
+    for (let x = fx0 + 1; x < lw; x += 6) { r(x - 1, G0 - 12, 4, 13, OL); r(x, G0 - 11, 2, 11, '#f7f0e2'); r(x + 1, G0 - 11, 1, 11, '#dccfb5'); }
+    const bx = Math.round(lw * .9);
+    r(bx - 5, G0 - 6, 11, 7, OL); r(bx - 4, G0 - 5, 9, 5, '#c49a6c');
+    for (let x = bx - 4; x < bx + 5; x += 2) r(x, G0 - 5, 1, 5, '#a8774f');
+    disc(bx - 2, G0 - 8, 3, OL); disc(bx - 2, G0 - 8, 2, '#d64f45'); disc(bx + 3, G0 - 8, 3, OL); disc(bx + 3, G0 - 8, 2, '#3b9c97'); r(bx - 3, G0 - 9, 1, 1, '#f7a99f');
+    const sx = Math.round(lw * .84), sy0 = G0 - 30;
+    r(sx - 1, sy0 + 8, 3, G0 - sy0 - 8, OL); r(sx, sy0 + 8, 1, G0 - sy0 - 8, '#c49a6c');
+    r(sx - 17, sy0, 35, 11, OL); r(sx - 16, sy0 + 1, 33, 9, '#ecd3a4'); r(sx - 16, sy0 + 9, 33, 1, '#d1b585');
+    // 牌子上的橘貓頭
+    const ix = sx - 14, iy = sy0 + 3;
+    r(ix - 1, iy - 1, 7, 6, OL); r(ix - 1, iy - 2, 2, 1, OL); r(ix + 4, iy - 2, 2, 1, OL);
+    r(ix, iy, 5, 4, '#f0a04b'); r(ix, iy - 1, 1, 1, '#f0a04b'); r(ix + 4, iy - 1, 1, 1, '#f0a04b');
+    r(ix + 1, iy + 1, 1, 1, OL); r(ix + 3, iy + 1, 1, 1, OL); r(ix + 2, iy + 2, 1, 1, '#f2a7b8'); r(ix + 1, iy + 3, 3, 1, '#fbe3c4');
+    sign = { x: (sx + 4) * q, y: (sy0 + 5.5) * q };
+  });
+  if (sign) {
+    ctx.font = `900 ${14 * U}px ${FONT}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#3d2b1f';
+    ctx.fillText('橘貓的家', sign.x, sign.y);
+  }
 }
 function paintCastle(w, h) {
   const tube = (x, tw, top) => {
@@ -660,7 +658,6 @@ function resize() {
   });
   IMG.pbank = pixelBank(W, H * .55);
   IMG.sun = make(110 * U, 110 * U, paintSun);
-  IMG.leaf = make(34 * U, 26 * U, paintLeaf);
   IMG.grain = makeGrain();
   IMG.vig = make(W, H, (w, h) => { paintVignette(w, h); ctx.fillStyle = IMG.grain; ctx.fillRect(0, 0, w, h); });
   IMG.star = make(26 * U, 26 * U, (w, h) => { sh(); star(w / 2, h / 2 - 2 * U, 9 * U, '#f6d36b'); });
@@ -863,8 +860,8 @@ let firstEver = LS.get('jack_played', '0') !== '1';
 const ptr = { down: false, id: -1, x: 0, y: 0, ox: 0, oy: 0, lx: 0, ly: 0 };
 const MOM_LINES = ['回來睡覺喵！', '午睡時間還沒結束喵！', '兩腳獸不要亂爬喵！', '那是魔王的地方喵！', '本喵會被罵喵！',
   '下來，罐罐分妳一半喵！', '妳爬那麼高要幹嘛喵？', '本喵數到三……一、二……喵', '爬樹是貓的工作喵！', '妳的腳那麼短喵！',
-  '魔王醒來就完蛋了喵！', '本喵的午覺都被妳吵醒了喵！', '下來，帶妳去夜市喵！', '星之泉不能隨便看喵！', '妳的睡衣勾到藤了喵！',
-  '本喵爬得比妳快喵！', '神殿沒說可以爬這個喵！', '郵局明天還要上班喵！', '藤上的蘑菇不要亂按喵！', '本喵的尾巴都炸開了喵！'];
+  '魔王醒來就完蛋了喵！', '本喵的午覺都被妳吵醒了喵！', '下來，帶妳去夜市喵！', '星之泉不能隨便看喵！', '妳的睡衣勾到麻繩了喵！',
+  '本喵爬得比妳快喵！', '神殿沒說可以爬這個喵！', '郵局明天還要上班喵！', '柱子上的蘑菇不要亂按喵！', '本喵的尾巴都炸開了喵！'];
 const QUOTES = {
   mom: ['回來睡覺喵！', '午睡時間還沒結束喵。', '被橘貓叼回去睡午覺了。', '本喵爬得比妳快喵。'],
   bird: ['烏鴉：亮亮的東西都是我的！', '嘎！妳的髮夾看起來很值錢。', '烏鴉商會今天收購髮夾。', '被啄一下，手就鬆了……'],
@@ -901,7 +898,7 @@ G = newRun();
 
 function momSay() { if (!G.momBag.length) G.momBag = shuffle(MOM_LINES.slice()); return G.momBag.pop(); }
 function stalkX(i, h) {
-  const base = W * STX[i] + Math.sin(h * .9 + i * 2.1) * W * .016;
+  const base = W * STX[i];
   return h < 3 ? lerp(W / 2, base, ease(clamp(h / 3, 0, 1))) : base;
 }
 const sy = (h, f = 1) => Yj + PX * ((camH - 4) * f + 4 - h);
@@ -939,7 +936,7 @@ function startClimb() {
   scene = 'climb'; sceneT = 0;
   G.h = G.vh = 1.5; G.stalk = G.from = 1; G.momH = -3.5;
   G.momDelay = firstEver ? 1.6 : .7;
-  hint(firstEver ? '點妳那一根藤往上爬，點別根就跳過去！' : '快爬！', firstEver ? 2.6 : 1);
+  hint(firstEver ? '點妳那一根柱子往上爬，點別根就跳過去！' : '快爬！', firstEver ? 2.6 : 1);
 }
 function fail(reason) {
   if (scene === 'fail' || scene === 'win') return;
@@ -1029,7 +1026,7 @@ function slip() {
 }
 function snapBreak(b) {
   G.h = Math.max(.5, b.h - 4.5); G.stun = .5; G.lastSide = -1; G.hits++; G.heat = Math.max(0, G.heat - 30);
-  SFX.crack(); buzz(120); shakeT = .25; hint('藤斷了！往旁邊滑，換到另一根！', 1.8);
+  SFX.crack(); buzz(120); shakeT = .25; hint('柱子斷了！往旁邊滑，換到另一根！', 1.8);
 }
 function collectCoins(a, b) {
   for (const c of G.coins) if (!c.got && c.stalk === G.stalk && c.h > a - .5 && c.h <= b + .5) takeCoin(c);
@@ -1078,7 +1075,7 @@ const up = e => { if (e.pointerId === ptr.id) { ptr.down = false; ptr.id = -1; }
 cv.addEventListener('pointerup', up); cv.addEventListener('pointercancel', up);
 document.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
 
-// ---------- 事件（鳥、斷藤、大風） ----------
+// ---------- 事件（鳥、斷柱、大風） ----------
 function startEvent(e) {
   const first = !G.seen[e.type]; G.seen[e.type] = true;
   if (e.type === 'break') {
@@ -1088,7 +1085,7 @@ function startEvent(e) {
       G.breaks.push({ stalk: G.stalk, h: bh });
       G.coins = G.coins.filter(c => !(c.stalk === G.stalk && c.h > bh - .8 && c.h < bh + 2.2));
       G.ev = { type: 'break', bh, t: 0 };
-      hint(first ? '前面藤蔓斷了！點別根藤跳過去' : '前面斷了！換邊！', first ? 2.2 : 1.2);
+      hint(first ? '前面柱子斷了！點別根跳過去' : '前面斷了！換邊！', first ? 2.2 : 1.2);
       return;
     }
   }
@@ -1101,13 +1098,13 @@ function startEvent(e) {
       G.coins = G.coins.filter(c => !(c.stalk === G.stalk && Math.abs(c.h - oh) < 1.5));
       G.ev = { type: 'obs', t: 0 };
       if (e.type === 'hive') hint(first ? '前面有螢光蘑菇！碰到會看呆，換邊繞過去' : '小心螢光蘑菇！', first ? 2.2 : 1.1);
-      else hint(first ? `前面有${name}擋路！換到另一根藤繞過去` : `${name}擋路！`, first ? 2.2 : 1.1);
+      else hint(first ? `前面有${name}擋路！換到另一根柱子繞過去` : `${name}擋路！`, first ? 2.2 : 1.1);
       return;
     }
   }
   if (e.type === 'witch') {
     G.ev = { type: 'witch', phase: 'warn', t: 0, warn: first ? 2.2 : 1.5, from: rs(), x: -999 };
-    SFX.cackle(); hint(first ? '黑貓騎掃把橫掃整排！等牠飛過別根藤，再跳過去' : '黑貓來了！看準時機！', first ? 2.6 : 1.2);
+    SFX.cackle(); hint(first ? '黑貓騎掃把橫掃整排！等牠飛過別根柱子，再跳過去' : '黑貓來了！看準時機！', first ? 2.6 : 1.2);
   } else if (e.type === 'balloon') {
     G.ev = { type: 'balloon', t: 0, dur: 5, from: rs(), x: -999 };
     SFX.dodge(); hint(first ? '送貨的鵜鶘！等牠飛過來，跳過去抓住木箱！' : '鵜鶘來了！跳上去！', first ? 2.6 : 1.3);
@@ -1119,7 +1116,7 @@ function startEvent(e) {
     hint(first ? '魔王在夢裡踢毛線球！看到紅色記號就換邊' : '毛線球又來了！', first ? 2 : 1);
   } else if (e.type === 'bird') {
     G.ev = { type: 'bird', phase: 'warn', t: 0, warn: first ? 2 : 1.6, from: rs(), target: G.stalk, x: 0, y: 0 };
-    SFX.tweet(); buzz(40); hint(first ? '烏鴉要來啄妳了！點別根藤閃開！' : '烏鴉來了！閃！', first ? 1.8 : 1);
+    SFX.tweet(); buzz(40); hint(first ? '烏鴉要來啄妳了！點別根閃開！' : '烏鴉來了！閃！', first ? 1.8 : 1);
   } else if (e.type === 'wind') {
     G.ev = { type: 'wind', phase: 'warn', t: 0, grip: 100, dir: Math.random() < .5 ? -1 : 1 };
     SFX.windWarn(); hint('大風要來了！手指按住螢幕不要動！', 1.8);
@@ -1248,7 +1245,7 @@ function updClimb(dt) {
     // 還沒破過關的新手，媽媽稍微慢一點
     G.momH += ((firstEver ? 2.2 : 2.5) + Math.min(.8, Math.max(0, G.h) * .01) + Math.max(0, gap - 8) * .25) * dt;
   }
-  // 媽媽也只能抓在藤上：跟著傑克換藤，但慢半拍、用跳的；遇到斷掉的地方先跳到別根
+  // 媽媽也只能抓在柱子上：跟著傑克換柱子，但慢半拍、用跳的；遇到斷掉的地方先跳到別根
   const gapAt = (st, h) => G.breaks.some(b => b.stalk === st && h > b.h - .5 && h < b.h + 2);
   let want = G.stalk;
   if (gapAt(want, G.momH)) want = [1, 0, 2].find(q => !gapAt(q, G.momH)) ?? G.momStalk;
@@ -1376,28 +1373,39 @@ function drawWorld() {
   }
   if (scene === 'climb' || (scene === 'fail' && !G.inGiant)) drawClimbUI();
 }
-// 一段藤（紙板條＋葉子＋紙膠帶）；ox/oy 把世界座標換成畫布座標
-function paintStalk(i, a, c, X, Y, face = PAT.green) {
-  const hw = 7 * U, pts = [];
-  for (let h = a; h < c; h += .3) pts.push([X(stalkX(i, h)), Y(h)]); pts.push([X(stalkX(i, c)), Y(c)]);
-  const path = () => {
-    ctx.beginPath();
-    pts.forEach((q, j) => j ? ctx.lineTo(q[0] - hw, q[1]) : ctx.moveTo(q[0] - hw, q[1]));
-    for (let j = pts.length - 1; j >= 0; j--) ctx.lineTo(pts[j][0] + hw, pts[j][1]);
-    ctx.closePath();
-  };
-  card(path, face, '#2f5e22', 3.5);
-  sh(false); ctx.strokeStyle = 'rgba(255,255,255,.28)'; ctx.lineWidth = 1.4 * U; ctx.beginPath();
-  pts.forEach((q, j) => j ? ctx.lineTo(q[0] - 4 * U, q[1]) : ctx.moveTo(q[0] - 4 * U, q[1])); ctx.stroke();
-  for (let h = Math.ceil(a / 1.7) * 1.7; h < c; h += 1.7) {
-    const side = (Math.round(h / 1.7) + i) % 2 ? 1 : -1, x = X(stalkX(i, h)), y = Y(h);
-    ctx.save(); ctx.translate(x + side * 4 * U, y); ctx.scale(side, 1); ctx.rotate(-.45);
-    ctx.drawImage(IMG.leaf, -4 * U, -IMG.leaf.h / 2, IMG.leaf.w, IMG.leaf.h); ctx.restore();
+// 一段麻繩柱（貓跳台）；X/Y 把世界座標換成畫布座標。一格 PQ() 像素的點陣風
+const ROPE = ['#e6c88f', '#d4ae72', '#bb935c'], POST_OL = '#5a4232';
+function paintStalk(i, a, c, X, Y) {
+  const P = PQ(), snap = v => Math.round(v / P) * P;
+  const B = (cx, y, dx, dy, wc, hc, col) => { ctx.fillStyle = col; ctx.fillRect(cx + dx * P - P / 2, y + dy * P, wc * P, hc * P); };
+  sh(false);
+  const y0 = snap(Y(c)), y1 = snap(Y(a));
+  for (let y = y0; y < y1; y += P) {
+    const h = a + (y1 - y) / (y1 - y0 || 1) * (c - a), cx = snap(X(stalkX(i, h))), row = Math.round(y / P);
+    for (let k = -3; k <= 3; k++) B(cx, y, k, 0, 1, 1, Math.abs(k) === 3 ? POST_OL : k === -2 ? '#f1dcae' : ROPE[((k + row) % 3 + 3) % 3]);
   }
+  // 柱子上的平台、貓窩、吊床、逗貓棒（只是裝飾）
   for (let h = Math.ceil(a / 6) * 6 + i * 2; h < c; h += 6) {
     if (h < 4) continue;
-    const k = Math.round(h / 6) % 2; tape(X(stalkX(i, h)), Y(h), 24 * U, 9 * U, k ? .25 : -.2, k ? '#3b9c97' : '#f0c443', k ? 'dots' : 'stripes');
+    const n = Math.round(h / 6) + i, side = n % 2 ? 1 : -1, kind = n % 4, cx = snap(X(stalkX(i, h))), y = snap(Y(h));
+    const x0 = side > 0 ? 3 : -15;
+    B(cx, y, x0, -1, 13, 4, POST_OL); B(cx, y, x0 + (side > 0 ? 0 : 1), 0, 12, 1, '#a9bbd9'); B(cx, y, x0 + (side > 0 ? 0 : 1), 1, 12, 1, '#8597bb');
+    B(cx, y, side > 0 ? x0 : x0 + 10, 3, 3, 1, POST_OL); B(cx, y, side > 0 ? x0 : x0 + 12, 4, 1, 1, POST_OL);
+    if (kind === 1) { B(cx, y, x0 + 2, -4, 9, 3, POST_OL); B(cx, y, x0 + 3, -3, 7, 1, '#f2a7b8'); B(cx, y, x0 + 4, -3, 5, 1, '#f9d3dc'); B(cx, y, x0 + 3, -2, 7, 1, '#e08a9c'); }
+    else if (kind === 2) { const hx = x0 + 2; B(cx, y, hx, 3, 1, 3, POST_OL); B(cx, y, hx + 8, 3, 1, 3, POST_OL); B(cx, y, hx, 5, 9, 3, POST_OL); B(cx, y, hx + 1, 5, 7, 1, '#efd98a'); B(cx, y, hx + 2, 6, 5, 1, '#e2c66a'); }
+    else if (kind === 3) {
+      const sx = x0 + (side > 0 ? 10 : 2); ctx.fillStyle = POST_OL; ctx.fillRect(cx + sx * P - P / 2 + P / 3, y + 3 * P, Math.max(1, P / 3), 5 * P);
+      B(cx, y, sx - 1, 8, 1, 2, '#3b9c97'); B(cx, y, sx, 8, 1, 3, '#f2a7b8'); B(cx, y, sx + 1, 8, 1, 2, '#f0c443');
+    }
   }
+  // 最上面的蓋子
+  if (c >= STALK_TOP - .01) { const cx = snap(X(stalkX(i, c))); B(cx, y0, -5, -1, 11, 3, POST_OL); B(cx, y0, -4, 0, 9, 1, '#a9bbd9'); }
+}
+// 斷掉的地方：麻繩散開
+function frayEnd(i, h, up) {
+  const P = PQ(), snap = v => Math.round(v / P) * P, cx = snap(stalkX(i, h)), y = snap(sy(h)) + (up ? -P : 0);
+  sh(false); ctx.fillStyle = POST_OL; ctx.fillRect(cx - 3 * P - P / 2, y, 7 * P, P);
+  [[-1, 2], [0, 1], [1, 2]].forEach(([k, len]) => { ctx.fillStyle = ROPE[k + 1]; ctx.fillRect(cx + k * P - P / 2, up ? y - len * P : y + P, P, len * P); });
 }
 const STALK_TOP = TOP + 1, STALK_BASE = 3;
 function buildStalks() {
@@ -1405,6 +1413,10 @@ function buildStalks() {
   IMG.stalks = [0, 1, 2].map(i => make(w, hgt, () => paintStalk(i, STALK_BASE - .3, STALK_TOP, x => x - W * STX[i] + w / 2, h => (STALK_TOP - h) * PX + 20 * U)));
 }
 function drawStalks() {
+  if (grown > .3) {
+    const P = PQ(), gy = Math.round(sy(0) / P) * P, x0 = Math.round(W / 2 / P) * P;
+    if (gy < H + 20) { sh(false); ctx.fillStyle = POST_OL; ctx.fillRect(x0 - 11 * P, gy - 2 * P, 22 * P, 4 * P); ctx.fillStyle = '#a9bbd9'; ctx.fillRect(x0 - 10 * P, gy - P, 20 * P, P); ctx.fillStyle = '#8597bb'; ctx.fillRect(x0 - 10 * P, gy, 20 * P, P); }
+  }
   const h0 = Math.max(0, camH - (H - Yj) / PX - 1), h1 = Math.min(grown, TOP + .6, camH + Yj / PX + 1);
   if (h1 <= h0) return;
   for (let i = 0; i < 3; i++) {
@@ -1414,13 +1426,13 @@ function drawStalks() {
     }
     const spr = IMG.stalks[i], sl = h => (STALK_TOP - h) * PX + 20 * U;
     for (const [a, c] of segs) {
-      if (a < STALK_BASE) paintStalk(i, a, Math.min(c, STALK_BASE), x => x, h => sy(h), '#69a84a');
+      if (a < STALK_BASE) paintStalk(i, a, Math.min(c, STALK_BASE), x => x, h => sy(h));
       const a2 = Math.max(a, STALK_BASE); if (c <= a2) continue;
       const top = sl(c), hh = sl(a2) - top;
       ctx.drawImage(spr, 0, top * DPR, spr.width, hh * DPR, W * STX[i] - spr.w / 2, sy(c), spr.w, hh);
     }
     for (const b of G.breaks) if (b.stalk === i && b.h < grown) {
-      [b.h, b.h + 1.6].forEach((h, j) => { const x = stalkX(i, h), y = sy(h); poly([[x - 7 * U, y], [x - 3 * U, y + (j ? -9 : 9) * U], [x + 1 * U, y], [x + 5 * U, y + (j ? -7 : 7) * U], [x + 7 * U, y]], '#69a84a'); corrug(x - 7 * U, y - 2 * U, 14 * U, 4 * U); });
+      frayEnd(i, b.h, true); frayEnd(i, b.h + 1.6, false);
     }
   }
 }
@@ -1987,7 +1999,7 @@ $('bShareText').onclick = async () => {
   copyText(shareMsg() + ' ' + url);
 };
 const shareGame = async () => {
-  const url = GAME_URL(), msg = '來玩《爬上星之泉》！爬上怪藤、躲過橘貓，看誰最快拿到魔王的星星結晶！《貓貓勇者小隊》小遊戲';
+  const url = GAME_URL(), msg = '來玩《爬上星之泉》！爬上怪貓跳台、躲過橘貓，看誰最快拿到魔王的星星結晶！《貓貓勇者小隊》小遊戲';
   if (navigator.share) {
     try { await navigator.share({ title: '爬上星之泉', text: msg, url }); return; }
     catch (e) { if (e && e.name === 'AbortError') return; }
