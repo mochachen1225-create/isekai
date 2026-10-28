@@ -666,7 +666,7 @@ function drawFlock() {
   for (const f of FLOCK) drawSheep(f.x * W, gy + f.y * U, f.dir, T + f.x * 9, false, f.wait > 0 ? (Math.sin(T * 3 + f.y) > 0 ? 1 : .7) : 0, f.s);
 }
 function initStatic() {
-  DECO = []; for (let i = 0; i < 34; i++) DECO.push({ h: rnd(5, TOP - 2), x: Math.random(), f: rnd(.35, .7), s: rnd(.45, 1.05), a: 1 });
+  DECO = []; for (let i = 0; i < 34; i++) DECO.push({ h: rnd(5, TOP - 2), x: Math.random(), f: rnd(.35, .7), s: rnd(.45, 1.05), a: 1, k: i % 6 });
   STARS = []; for (let i = 0; i < 30; i++) STARS.push({ x: Math.random(), h: rnd(28, 110), s: rnd(.6, 1.3), dot: Math.random() < .45, c: pick(['#f6d36b', '#fff3d0', '#f2a03a', '#ffffff']) });
   FOG = []; for (let i = 0; i < 18; i++) FOG.push({ h: rnd(37, 57), x: Math.random(), s: rnd(1, 1.9), v: rnd(-.03, .03) });
 }
@@ -720,6 +720,23 @@ loadSpr('black', '../../assets/sprites/blackcat.png');
 loadSpr('slime', '../../assets/sprites/slime.png');
 loadSpr('bunny', '../../assets/sprites/bunny.png');
 ['hero_stand', 'hero_climb', 'hero_run', 'hero_star', 'hero_dazed', 'boss', 'boss_hide', 'boss_stare', 'pelican', 'crow', 'mushroom', 'crystal', 'starsand', 'yarn', 'castle'].forEach(k => loadSpr(k, 'img/' + k + '.png'));
+// ---------- 背景（2026-10-28 換成 Gemini 畫的點陣背景：地面整張、雲 6 朵；城堡在 img/castle.png） ----------
+const BG = {};
+['bg_ground', 'cloud0', 'cloud1', 'cloud2', 'cloud3', 'cloud4', 'cloud5'].forEach(k => {
+  const im = new Image(); im.onload = () => { BG[k] = im; }; im.src = 'img/' + k + (k === 'bg_ground' ? '.jpg' : '.png');
+});
+// 以中心點 (x, y) 畫第 k 朵雲，寬 w
+function cloud(k, x, y, w, a = 1) {
+  const im = BG['cloud' + (k % 6)];
+  if (!im) { const h = w * 130 / 240; ctx.globalAlpha = a; ctx.drawImage(IMG.cloud, x - w / 2, y - h / 2, w, h); ctx.globalAlpha = 1; return; }
+  const h = w * im.height / im.width;
+  ctx.globalAlpha = a; ctx.imageSmoothingEnabled = false; ctx.drawImage(im, x - w / 2, y - h / 2, w, h); ctx.globalAlpha = 1;
+}
+// 一整排雲（雲層、雲海）；fill 為 true 時雲下面塗滿
+function cloudRow(y, a = 1, fill = false, seed = 0) {
+  if (fill) { ctx.fillStyle = `rgba(238,242,250,${a})`; ctx.fillRect(0, y, W, H - y + 2); }
+  for (let i = -1; i < 7; i++) { const k = (i + seed + 6) % 6, w = W * (.36 + (k % 3) * .06); cloud([0, 3, 4, 1, 3, 0][k], i * W * .19 + ((seed * 37) % 20) * U, y - (i % 2) * 10 * U, w, a); }
+}
 // 以中心點為基準的貼紙（鳥、道具）
 function drawSprC(key, x, y, hgt, flip = false, rot = 0, sq = 1) {
   const c = SPR[key]; if (!c) return false;
@@ -1370,30 +1387,40 @@ function updGiant(dt) {
 function drawWorld() {
   const tt = clamp(camH / TOP, 0, 1);
   const gr = ctx.createLinearGradient(0, 0, 0, H);
-  gr.addColorStop(0, mix3('#f2d65e', '#8fc6d8', '#2f6f7e', tt)); gr.addColorStop(1, mix3('#f8e9a8', '#cfe6e4', '#7fb6b8', tt));
+  gr.addColorStop(0, mix3('#6fc6ee', '#3f7fcf', '#1b2a5c', tt)); gr.addColorStop(1, mix3('#b9e4f2', '#f2c9a0', '#4b5fa3', tt));
   ctx.fillStyle = gr; ctx.fillRect(0, 0, W, H);
-  paper(camH * PX * .25, tt);
   drawStars(smooth(25, 55, camH), .25);
-  ctx.drawImage(IMG.sun, W * .8 - IMG.sun.w / 2, H * .15 - IMG.sun.h / 2, IMG.sun.w, IMG.sun.h);
   for (const c of DECO) {
     const y = Yj + PX * (camH - c.h) * c.f; if (y < -120 || y > H + 120) continue;
-    const w = 240 * c.s * U, h = 130 * c.s * U;
-    ctx.globalAlpha = c.a; ctx.drawImage(IMG.cloud, c.x * (W + w) - w, y - h / 2, w, h); ctx.globalAlpha = 1;
+    const w = 200 * c.s * U;
+    cloud(c.k, c.x * (W + w) - w / 2, y, w, c.a);
   }
-  let y = sy(0, .3) + H * .03; if (y - IMG.far.h < H) ctx.drawImage(IMG.far, 0, y - IMG.far.h, W, IMG.far.h);
-  y = sy(0, .6) + H * .02; if (y - IMG.village.h < H) ctx.drawImage(IMG.village, 0, y - IMG.village.h, W, IMG.village.h);
+  let y;
+  const bg = BG.bg_ground;
+  if (bg) {
+    // 整張地面背景：圖的 66% 高度對齊地面，寬度至少蓋滿畫面
+    const ih = Math.max(W * bg.height / bg.width, H * 1.15), iw = ih * bg.width / bg.height, ix = (W - iw) / 2, iy = sy(0) - ih * .66;
+    HOUSE.door = (ix + iw * .23) / W;
+    if (iy < H) {
+      // 圖的上緣用天空色淡入，接到上面的漸層
+      ctx.imageSmoothingEnabled = false; ctx.drawImage(bg, ix, iy, iw, ih);
+      const fg = ctx.createLinearGradient(0, iy, 0, iy + ih * .12); const top = mix3('#6fc6ee', '#3f7fcf', '#1b2a5c', tt);
+      fg.addColorStop(0, top); fg.addColorStop(1, 'rgba(111,198,238,0)'); ctx.fillStyle = fg; ctx.fillRect(0, iy - 1, W, ih * .12 + 1);
+      if (iy + ih < H) { ctx.fillStyle = '#5f9a3c'; ctx.fillRect(0, iy + ih - 1, W, H - iy - ih + 2); }
+    }
+  }
   y = sy(0) - H * .3;
-  if (y < H) {
+  if (!bg && y < H) {
     ctx.drawImage(IMG.ground, 0, y, W, H);
     const cx = HOUSE.cx, cy = sy(0) + HOUSE.dy;
     for (let i = 0; i < 4; i++) { const p = (T * .3 + i / 4) % 1; circ(cx + Math.sin(p * 5 + i) * 5 * U + p * 16 * U, cy - p * 70 * U, (5 + p * 11) * U, `rgba(255,255,255,${.75 * (1 - p)})`, false); }
   }
-  for (const bh of [36, 57]) { const by = sy(bh); if (by > -IMG.band.h && by < H + IMG.band.h) ctx.drawImage(IMG.band, 0, by - IMG.band.h / 2, W, IMG.band.h); }
+  for (const [n, bh] of [[0, 36], [1, 57]]) { const by = sy(bh); if (by > -H * .3 && by < H + H * .3) cloudRow(by, .95, false, n * 3); }
   const ty = sy(TOP);
   if (ty > -40 && ty < H + IMG.castle.h) {
     if (SPR.castle) { const cw = W * .96; drawSpr('castle', W / 2, ty + 4 * U, cw * SPR.castle.height / SPR.castle.width); }
     else { const cw = W * .8, ch = IMG.castle.h * .8; ctx.drawImage(IMG.castle, W * .1, ty - ch + 4 * U, cw, ch); }
-    ctx.drawImage(IMG.band, 0, ty - IMG.band.h * .35, W, IMG.band.h);
+    cloudRow(ty + 6 * U, 1, false, 2);
   }
   // 土堆
   if (grown < 2) {
@@ -1416,8 +1443,8 @@ function drawWorld() {
   // 雲層地板
   if (ty > -60 && ty < H + 80) {
     for (let i = -1; i < 6; i++) {
-      const w = W * .42, h = w * 130 / 240;
-      ctx.drawImage(IMG.cloud, i * W * .2 - w * .1, ty - h * .55 + (i % 2) * 8 * U, w, h);
+      const w = W * .42;
+      cloud([0, 3, 4][(i + 3) % 3], i * W * .2 + w * .4, ty + (i % 2) * 8 * U, w);
     }
   }
   // 雲層（視線變差）
@@ -1425,8 +1452,8 @@ function drawWorld() {
   if (fog > 0) {
     for (const p of FOG) {
       const fy = sy(p.h); if (fy < -120 || fy > H + 120) continue;
-      const w = 240 * p.s * U, h = 130 * p.s * U, fx = (((p.x + T * p.v) % 1) + 1) % 1 * (W + w) - w;
-      ctx.globalAlpha = .55; ctx.drawImage(IMG.cloud, fx, fy - h / 2, w, h); ctx.globalAlpha = 1;
+      const w = 220 * p.s * U, fx = (((p.x + T * p.v) % 1) + 1) % 1 * (W + w) - w;
+      cloud(Math.round(p.s * 7), fx + w / 2, fy, w, .55);
     }
     ctx.fillStyle = `rgba(255,255,255,${.28 * fog})`; ctx.fillRect(0, 0, W, H);
   }
@@ -1436,7 +1463,42 @@ function drawWorld() {
     if (s.leaf) ell(s.x, s.y + Math.sin(s.x * .05) * 10, 7 * U, 3.5 * U, '#a8e3a0', s.x * .05, false);
     else { limb(s.x, s.y, s.x - Math.sign(s.v) * s.len, s.y, 'rgba(255,255,255,.75)', 3 * U, false); }
   }
+  drawLight();
   if (scene === 'climb' || (scene === 'fail' && !G.inGiant)) drawClimbUI();
+}
+// ---------- 光影：白天右上角的陽光、爬高變黃昏、再高變夜晚（她身邊有一圈暖光）、四角暗角 ----------
+function drawLight() {
+  const day = 1 - smooth(20, 45, camH), dusk = smooth(22, 45, camH) * (1 - smooth(60, 80, camH)), night = smooth(60, 85, camH);
+  ctx.save();
+  if (day > 0) {
+    ctx.globalCompositeOperation = 'screen';
+    const sun = ctx.createRadialGradient(W * .92, -H * .04, 0, W * .92, -H * .04, H * .85);
+    sun.addColorStop(0, `rgba(255,236,180,${.5 * day})`); sun.addColorStop(.45, `rgba(255,224,160,${.14 * day})`); sun.addColorStop(1, 'rgba(255,220,150,0)');
+    ctx.fillStyle = sun; ctx.fillRect(0, 0, W, H);
+    // 斜斜的光束，慢慢晃
+    for (let i = 0; i < 4; i++) {
+      const a = .055 * day * (.6 + .4 * Math.sin(T * .5 + i * 1.7)), x0 = W * (1.05 - i * .07), sw = W * (.05 + i * .02), ang = .62 + i * .1;
+      const ex = x0 - Math.sin(ang) * H * 1.4, ey = Math.cos(ang) * H * 1.4;
+      const lg = ctx.createLinearGradient(x0, 0, ex, ey); lg.addColorStop(0, `rgba(255,244,210,${a})`); lg.addColorStop(1, 'rgba(255,244,210,0)');
+      ctx.fillStyle = lg; ctx.beginPath(); ctx.moveTo(x0 - sw, -10); ctx.lineTo(x0 + sw, -10); ctx.lineTo(ex + sw * 3, ey); ctx.lineTo(ex - sw * 3, ey); ctx.closePath(); ctx.fill();
+    }
+  }
+  if (dusk > 0) { ctx.globalCompositeOperation = 'soft-light'; ctx.fillStyle = `rgba(255,140,70,${.45 * dusk})`; ctx.fillRect(0, 0, W, H); }
+  if (night > 0) {
+    ctx.globalCompositeOperation = 'multiply'; ctx.fillStyle = `rgba(70,80,150,${.35 * night})`; ctx.fillRect(0, 0, W, H);
+    if (scene === 'climb' || scene === 'fail') {
+      const jx = jackX(), jy = sy(G.vh) - 30 * U;
+      ctx.globalCompositeOperation = 'screen';
+      const lg = ctx.createRadialGradient(jx, jy, 0, jx, jy, 130 * U);
+      lg.addColorStop(0, `rgba(255,214,140,${.35 * night})`); lg.addColorStop(1, 'rgba(255,214,140,0)');
+      ctx.fillStyle = lg; ctx.fillRect(0, 0, W, H);
+    }
+  }
+  ctx.globalCompositeOperation = 'source-over';
+  const vg2 = ctx.createRadialGradient(W / 2, H * .5, Math.min(W, H) * .45, W / 2, H * .5, Math.hypot(W, H) * .62);
+  vg2.addColorStop(0, 'rgba(20,16,40,0)'); vg2.addColorStop(1, `rgba(20,16,40,${.28 + .12 * night})`);
+  ctx.fillStyle = vg2; ctx.fillRect(0, 0, W, H);
+  ctx.restore();
 }
 // ---------- 貓跳台的平台（可以站上去休息） ----------
 // 每根柱子每 6 公尺一個平台，三根錯開 2 公尺（0 號在 6、12…，1 號在 8、14…，2 號在 10、16…），跟 paintStalk() 畫的位置一樣
@@ -1686,7 +1748,7 @@ function drawBalloon(x, by, t, withJack, dir = 1) {
   rr(x - 17 * k, by - 12 * k, 34 * k, 5 * k, 2 * k, '#b98a62', false);
 }
 function drawSheep(x, y, dir, t, onCloud = true, graze = 0, sc = 1.4) {
-  const k = U * sc; if (onCloud) ctx.drawImage(IMG.cloud, x - 36 * k, y + 2 * k, 72 * k, 39 * k);
+  const k = U * sc; if (onCloud) cloud(2, x, y + 22 * k, 76 * k);
   if (SPR.bunny) { drawSpr('bunny', x, y + 14 * k - (graze ? 0 : Math.abs(Math.sin(t * 10)) * 3 * k), 30 * k, dir < 0); return; }
   ctx.save(); ctx.translate(x, y - (graze ? 0 : Math.abs(Math.sin(t * 10)) * 3 * k)); ctx.scale(dir * k, k);
   rr(-10, 6, 4, 9, 2, '#7a6a7a', false); rr(6, 6, 4, 9, 2, '#7a6a7a', false);
@@ -1808,9 +1870,8 @@ function drawGiantMouth(x, y, open) {
 function drawGiantScene() {
   const g = G.gi;
   const gr = ctx.createLinearGradient(0, 0, 0, H);
-  gr.addColorStop(0, '#2f6f7e'); gr.addColorStop(.5, '#8fc6d8'); gr.addColorStop(1, '#f2d65e');
+  gr.addColorStop(0, '#1b2a5c'); gr.addColorStop(.5, '#4b5fa3'); gr.addColorStop(1, '#f2c9a0');
   ctx.fillStyle = gr; ctx.fillRect(0, 0, W, H);
-  paper(0, 1);
   drawStars(1, 0);
   const jy = lerp(H * .9, H * .555, g.p), js = lerp(1.2, .62, g.p), jx = lerp(W * .42, W * .5, g.p);
   // 巨人的臉（在城堡後面探出頭）
@@ -1833,12 +1894,12 @@ function drawGiantScene() {
     fg.addColorStop(0, 'rgba(246,242,234,0)'); fg.addColorStop(.5, 'rgba(246,242,234,.65)'); fg.addColorStop(.8, 'rgba(246,242,234,.95)'); fg.addColorStop(1, 'rgba(246,242,234,1)');
     ctx.fillStyle = fg; ctx.fillRect(0, H * .26, W, H * .24); ctx.fillStyle = '#f6f2ea'; ctx.fillRect(0, H * .5, W, H * .12);
     for (let i = 0; i < 6; i++) {
-      const cw2 = W * .55, ch2 = cw2 * 130 / 240, cx2 = ((i * .23 + T * .006 * (i % 2 ? 1 : -1)) % 1.2 + 1.2) % 1.2 * W - cw2 * .3;
-      ctx.globalAlpha = .45; ctx.drawImage(IMG.cloud, cx2 - cw2 / 2, H * (.33 + (i % 3) * .035) - ch2 / 2, cw2, ch2); ctx.globalAlpha = 1;
+      const cw2 = W * .55, cx2 = ((i * .23 + T * .006 * (i % 2 ? 1 : -1)) % 1.2 + 1.2) % 1.2 * W - cw2 * .3;
+      cloud(i, cx2, H * (.33 + (i % 3) * .035), cw2, .45);
     }
-    if (SPR.castle) { const cw = W * .98; drawSpr('castle', W / 2, H * .555, cw * SPR.castle.height / SPR.castle.width); }
+    if (SPR.castle) { const cw = W * .7; drawSpr('castle', W / 2, H * .56, cw * SPR.castle.height / SPR.castle.width); }
     else { const cw = W * .62, ch = IMG.castle.h * .62; ctx.drawImage(IMG.castle, (W - cw) / 2, H * .55 - ch, cw, ch); }
-    ctx.drawImage(IMG.pbank, 0, H * .47, W, IMG.pbank.h);
+    cloudRow(H * .53, 1, true, 1); cloudRow(H * .66, 1, false, 3); cloudRow(H * .8, 1, false, 5); cloudRow(H * .94, 1, false, 2);
     if (scene !== 'win') drawEgg(W / 2, H * .515, 1, T);
     if (scene === 'win') {
       drawJack(jx, jy, js, 'hold', 0);
@@ -2026,10 +2087,9 @@ function resultCard() {
   const c = make(w, h, () => {
     ctx.fillStyle = vg(0, h, '#2f6f7e', '#8fc6d8'); ctx.fillRect(0, 0, w, h);
     for (let i = 0; i < 16; i++) { sh(); star((i * 137) % 680 + 20, (i * 71) % 260 + 20, 8 + (i % 3) * 4, '#f6d36b'); }
-    ctx.drawImage(IMG.sun, 560, 30, 140, 140);
     if (SPR.castle) drawSpr('castle', w / 2, 340, 560 * SPR.castle.height / SPR.castle.width);
     else { const cw = 440, chh = IMG.castle.h * cw / IMG.castle.w; ctx.drawImage(IMG.castle, (w - cw) / 2, 340 - chh, cw, chh); }
-    ctx.drawImage(IMG.band, 0, 250, w, 190);
+    { const oW = W; W = w; cloudRow(330, 1, false, 4); W = oW; }
     card(() => rrPath(50, 380, 620, 530, 14), PAT.kraft, '#7f5a30', 6);
     card(() => rrPath(80, 412, 560, 466, 6), PAT.white, '#bfb29b', 3);
     tape(w / 2, 404, 210, 44, -.04, '#3b9c97');

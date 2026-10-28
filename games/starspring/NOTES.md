@@ -34,6 +34,15 @@
 - 平台畫寬一點（13 → 15 格），上面加一排米白色，看起來是平的、可以站
 - 程式：`platInfo()`、`PLATS`、`platHere()`、`platStandX()`、`platTopY()`（在 `paintStalk()` 前面）；休息判斷在 `updClimb()` 開頭；站姿在 `drawJackInWorld()`；鍵盤在 `touchmove` 那行下面（`held()` 取代原本的 `ptr.down`）
 
+## 背景和光影（2026-10-28 改版）
+
+- 使用者覺得原本的程式點陣背景太潦草，換成 Gemini（Vertex 試用額度）畫的細緻點陣圖，原圖和 prompt 在 `isekai-studio` 的 `work/bg/`（`cut.py` 去背裁切）
+  - `img/bg_ground.jpg`：地面整張（橘貓樹屋在左、村子、遠山、天空）。圖的 66% 高度對齊地面，寬度蓋滿畫面；橘貓從圖裡樹屋門口（23%）衝出來
+  - `img/cloud0`～`cloud5.png`：6 朵雲（一張 3×2 雲朵表裁出來），天空的雲、36／57 公尺的雲層、城堡下的雲海、魔王關的雲海、兔子的雲都用這些（`cloud()`、`cloudRow()`）
+  - `img/castle.png`：新城堡（貓耳屋頂、貓臉大門、後面有星之泉的山）。魔王關的城堡縮成 70% 寬，魔王的臉才露得出來
+  - 拿掉方格紙、紙膠帶、程式畫的太陽；舊的 `paintFar/paintVillage/paintGround/paintBand/pixelBank` 還留著當載入失敗的備案
+- 光影 `drawLight()`：白天右上角暖色陽光＋四道慢慢晃的光束；爬到 22～45 公尺轉黃昏（暖橘 soft-light）；60 公尺以上轉夜晚（藍色 multiply），她身邊一圈暖光；四角暗角
+
 ## 還沒做
 
 - 標題卡、按鈕、提示框、高度條還是紙卡／瓦楞紙風（UI，沒動）
