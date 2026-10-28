@@ -765,7 +765,9 @@ function drawJack(x, y, s, pose, a = 0, arm = 0) {
   if (SPR[HK]) {
     const bob = pose === 'walk' ? Math.abs(Math.sin(a * 2)) * 3 * kk : 0;
     const hg = { dazed: 64, hang: 74 }[pose] || 80, rot = pose === 'climb' ? (arm ? .05 : -.05) : 0;
-    drawSpr(HK, x, y + 28 * kk - bob, hg * kk, pose === 'climb' && arm === 1, rot);
+    // 走路：每一步像紙片一樣左右翻面、身體往那邊傾一點，比較有往前走的感覺
+    const step = pose === 'walk' ? Math.floor(a * 2 / Math.PI) % 2 : 0;
+    drawSpr(HK, x, y + 28 * kk - bob, hg * kk, pose === 'climb' ? arm === 1 : step === 1, pose === 'walk' ? (step ? -.07 : .07) : rot);
     return;
   }
   if (SPR.hero) {
