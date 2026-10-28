@@ -16,7 +16,7 @@
 
 **存稿分支**：第三話（小說＋漫畫頁、條漫、IG 單格、目錄）做好放在 `ep03-stock` 分支，使用者 10/28 說漫畫 OK。11/11 開跑時把它合併進 `site`（`git merge ep03-stock`），再推到 site 和 story-draft。之後每話照這個做法：做好先放 `epNN-stock`，上線日再合併。
 
-**等使用者**：試玩星之泉貓跳台版（`games/starspring/`，noindex）說可不可以；10/29 看 Google Cloud 帳單，確認 Vertex 扣的是試用額度 → 確認後撤銷 Cloudflare Token、刪 Network secrets 那筆、把第 3 節「遊戲周邊用 Cloudflare」改成 Vertex、刪 `tools/cf_image.py`。
+**等使用者**：試玩星之泉貓跳台版（`games/starspring/`，noindex）說可不可以；10/29 看 Google Cloud 帳單，確認 Vertex 扣的是試用額度（10/28 中午抵免額頁：剩 NT$9,520.96／原 NT$9,534，已開始扣，但預算頁寫「No credits used」、Vertex 當天約 NT$76 只扣到 13，應是延遲；10/29 再看剩餘有沒有約少 NT$76）→ 確認後撤銷 Cloudflare Token、刪 Network secrets 那筆、把第 3 節「遊戲周邊用 Cloudflare」改成 Vertex、刪 `tools/cf_image.py`。
 
 **10/28 定的**：魔王 = 使用者自己的貓當原型（灰藍白賓士、黃眼、下巴一撮深色毛、最中二最屁像哈士奇，不是傳統魔王；公開頁面不寫貓的本名）。使用者手繪的圖有著作權、AI 圖沒有：重要角色定稿以後盡量用她的手繪。推廣上，零讀者階段用測驗和小遊戲當入口，連載是讓人留下來的。使用者不想去別人的貼文下面回文（覺得像廣告），推廣建議不要再提這招；改用自己貼文結尾丟問題、主題標籤、測驗分享卡、巴哈和 LINE WEBTOON 的新作曝光。Threads 置頂對外寫「11/11 起，每週不定期更新」（內部仍照週三 21:00 準備）。
 
