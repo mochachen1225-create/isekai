@@ -1,0 +1,57 @@
+# 定時上線：每週三台灣時間 20:45（UTC 12:45），把 release.json 裡「今天」那一話的存稿分支合併到 site，
+# 跑發布前檢查，通過才推到 site 和 story-draft，再請 GitHub Pages 重建網站。
+# 也可以在 Actions 頁面手動按「Run workflow」，填分支名稱立刻上線。
+name: 定時上線
+on:
+  schedule:
+    - cron: '45 12 * * 3'
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: '要上線的存稿分支（例如 ep03-stock）；留空就照 release.json 的今天'
+        required: false
+permissions:
+  contents: write
+  pages: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: ctl
+      - name: 找今天要上線的分支
+        id: pick
+        run: |
+          BR="${{ github.event.inputs.branch }}"
+          if [ -z "$BR" ]; then
+            TODAY=$(TZ=Asia/Taipei date +%F)
+            BR=$(python3 -c "import json,sys; print(json.load(open('ctl/release.json')).get(sys.argv[1], ''))" "$TODAY")
+            echo "台灣日期 $TODAY"
+          fi
+          echo "branch=$BR" >> "$GITHUB_OUTPUT"
+          if [ -z "$BR" ]; then echo "今天沒有排上線"; fi
+      - uses: actions/checkout@v4
+        if: steps.pick.outputs.branch != ''
+        with:
+          ref: site
+          path: site
+          fetch-depth: 0
+      - name: 合併、檢查、推上去
+        if: steps.pick.outputs.branch != ''
+        working-directory: site
+        run: |
+          BR="${{ steps.pick.outputs.branch }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "$BR"
+          git merge --no-edit "origin/$BR"
+          python3 tools/check_site.py
+          git push origin HEAD:site
+          git push origin HEAD:story-draft
+      - name: 請 GitHub Pages 重建
+        if: steps.pick.outputs.branch != ''
+        run: |
+          curl -sS -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/pages/builds" || true
