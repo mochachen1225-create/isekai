@@ -651,12 +651,12 @@ function paintGiantFingers(w, h) {
 }
 let DECO = [], FOG = [], STARS = [];
 // 草地上走來走去的綿羊
-const FLOCK = [{ x: .58, y: 34, dir: -1, v: .035, wait: 0, s: 1.05 }, { x: .2, y: 58, dir: 1, v: .028, wait: 1.5, s: 1.2 }, { x: .82, y: 82, dir: -1, v: .04, wait: 0, s: 1.35 }];
+const FLOCK = [{ x: .58, y: 34, dir: -1, v: .035, wait: 0, s: 1.05 }, { x: .42, y: 58, dir: 1, v: .028, wait: 1.5, s: 1.2 }, { x: .82, y: 82, dir: -1, v: .04, wait: 0, s: 1.35 }];
 function updFlock(dt) {
   for (const f of FLOCK) {
     if (f.wait > 0) { f.wait -= dt; continue; }
     f.x += f.dir * f.v * dt;
-    if (f.x < .06 || f.x > .94) { f.dir *= -1; f.x = clamp(f.x, .06, .94); }
+    if (f.x < .36 || f.x > .9) { f.dir *= -1; f.x = clamp(f.x, .36, .9); }
     if (Math.random() < dt * .25) f.wait = rnd(1, 2.5);
     if (Math.random() < dt * .08) f.dir *= -1;
   }
@@ -922,8 +922,8 @@ const rs = () => Math.random() < .5 ? 0 : 1;
 
 function genEvents() {
   const A = shuffle(['snail', 'hive', 'witch']);
-  const plan = [[10, 'bird'], [17, 'break'], [24, 'wind'], [31, A[0]], [36, A[1]],
-    [41, 'sheep'], [46, 'balloon'], [51, 'sheep'], [57, A[2]],
+  const plan = [[10, 'bird'], [17, 'break'], [24, 'wind'], [28, 'break'], [31, A[0]], [36, A[1]],
+    [41, 'sheep'], [46, 'balloon'], [51, 'sheep'], [54, 'break'], [57, A[2]],
     [63, pick(['bird', 'break', 'wind'])], [68, pick(['witch', 'hive', 'snail'])],
     [74, 'pea'], [80, 'pea'], [85, 'pea']];
   return plan.map(([h, t]) => ({ type: t, h: h + rnd(-1, 1) }));
@@ -986,6 +986,8 @@ function plant() { scene = 'sow'; sceneT = 0; clearHint(); }
 function startClimb() {
   scene = 'climb'; sceneT = 0;
   G.h = G.vh = 1.5; G.stalk = G.from = 1; G.momH = -3.5;
+  // 開局隨機先斷兩處（每次位置不一樣）
+  for (const [lo, hi] of [[12, 22], [40, 50]]) { const bh = rnd(lo, hi), st = Math.random() * 3 | 0; G.breaks.push({ stalk: st, h: bh }); G.coins = G.coins.filter(c => !(c.stalk === st && c.h > bh - .8 && c.h < bh + 2.2)); }
   G.momDelay = firstEver ? 1.6 : .7;
   hint(firstEver ? kb('點妳那一根柱子往上爬，點別根就跳過去！', '按 ↑ 往上爬，← → 跳到旁邊的柱子！（也可以用點的）') : '快爬！', firstEver ? 2.6 : 1);
 }
@@ -1151,11 +1153,11 @@ window.addEventListener('blur', () => keysHeld.clear());
 function startEvent(e) {
   const first = !G.seen[e.type]; G.seen[e.type] = true;
   if (e.type === 'break') {
-    const bh = G.h + 6.2;
-    if (bh > TOP - 3) e.type = 'bird';
+    const bh = G.h + rnd(5.5, 8.5), st = Math.random() < .6 ? G.stalk : pick([0, 1, 2].filter(q => q !== G.stalk));
+    if (bh > TOP - 3 || G.breaks.some(b => Math.abs(b.h - bh) < 4)) e.type = 'bird';
     else {
-      G.breaks.push({ stalk: G.stalk, h: bh });
-      G.coins = G.coins.filter(c => !(c.stalk === G.stalk && c.h > bh - .8 && c.h < bh + 2.2));
+      G.breaks.push({ stalk: st, h: bh });
+      G.coins = G.coins.filter(c => !(c.stalk === st && c.h > bh - .8 && c.h < bh + 2.2));
       G.ev = { type: 'break', bh, t: 0 };
       hint(first ? kb('前面柱子斷了！點別根跳過去', '前面柱子斷了！按 ← → 跳過去') : '前面斷了！換邊！', first ? 2.2 : 1.2);
       return;
@@ -1502,7 +1504,7 @@ function drawLight() {
 }
 // ---------- 貓跳台的平台（可以站上去休息） ----------
 // 每根柱子每 6 公尺一個平台，三根錯開 2 公尺（0 號在 6、12…，1 號在 8、14…，2 號在 10、16…），跟 paintStalk() 畫的位置一樣
-const REST_IDLE = .4, REST_COOL = 3, REST_WIN = .7, PLAT_W = 15;
+const REST_IDLE = .4, REST_COOL = 3, REST_WIN = .8, PLAT_W = 20;
 let restTipShown = false;
 function platInfo(i, h) { const n = Math.round(h / 6) + i; return { side: n % 2 ? 1 : -1, kind: n % 4 }; }
 const PLATS = [0, 1, 2].map(i => { const a = []; for (let h = 6 + i * 2; h < TOP - .5; h += 6) a.push({ stalk: i, h, ...platInfo(i, h) }); return a; });
@@ -1514,7 +1516,7 @@ function platHere() {
   return p;
 }
 // 站在平台上的位置（腳底中心）
-const platStandX = p => stalkX(p.stalk, p.h) + p.side * 8 * PQ();
+const platStandX = p => stalkX(p.stalk, p.h) + p.side * (4 + PLAT_W / 2) * PQ();
 const platTopY = p => Math.round(sy(p.h) / PQ()) * PQ() - (p.kind === 1 ? 4 : 1) * PQ();
 // 一段麻繩柱（貓跳台）；X/Y 把世界座標換成畫布座標。一格 PQ() 像素的點陣風
 const ROPE = ['#e6c88f', '#d4ae72', '#bb935c'], POST_OL = '#5a4232';
@@ -1525,15 +1527,15 @@ function paintStalk(i, a, c, X, Y) {
   const y0 = snap(Y(c)), y1 = snap(Y(a));
   for (let y = y0; y < y1; y += P) {
     const h = a + (y1 - y) / (y1 - y0 || 1) * (c - a), cx = snap(X(stalkX(i, h))), row = Math.round(y / P);
-    for (let k = -3; k <= 3; k++) B(cx, y, k, 0, 1, 1, Math.abs(k) === 3 ? POST_OL : k === -2 ? '#f1dcae' : ROPE[((k + row) % 3 + 3) % 3]);
+    for (let k = -4; k <= 4; k++) B(cx, y, k, 0, 1, 1, Math.abs(k) === 4 ? POST_OL : k === -3 ? '#f1dcae' : ROPE[((k + row) % 3 + 3) % 3]);
   }
   // 柱子上的平台（可以站上去休息，見 PLATS），上面可能有貓窩，下面掛吊床、逗貓棒
   for (let h = Math.ceil(a / 6) * 6 + i * 2; h < c; h += 6) {
     if (h < 4) continue;
     const { side, kind } = platInfo(i, h), cx = snap(X(stalkX(i, h))), y = snap(Y(h));
-    const PW = PLAT_W, x0 = side > 0 ? 3 : -3 - PW, xi = x0 + (side > 0 ? 0 : 1);
-    B(cx, y, x0, -1, PW, 4, POST_OL); B(cx, y, xi, 0, PW - 1, 1, '#f3ead2'); B(cx, y, xi, 1, PW - 1, 1, '#a9bbd9'); B(cx, y, xi + (side > 0 ? 0 : 1), 2, PW - 2, 1, '#8597bb');
-    B(cx, y, side > 0 ? x0 : x0 + PW - 3, 3, 3, 1, POST_OL); B(cx, y, side > 0 ? x0 : x0 + PW - 1, 4, 1, 1, POST_OL);
+    const PW = PLAT_W, x0 = side > 0 ? 4 : -4 - PW, xi = x0 + (side > 0 ? 0 : 1);
+    B(cx, y, x0, -1, PW, 5, POST_OL); B(cx, y, xi, 0, PW - 1, 1, '#f3ead2'); B(cx, y, xi, 1, PW - 1, 1, '#a9bbd9'); B(cx, y, xi, 2, PW - 1, 1, '#a9bbd9'); B(cx, y, xi + (side > 0 ? 0 : 1), 3, PW - 2, 1, '#8597bb');
+    B(cx, y, side > 0 ? x0 : x0 + PW - 4, 4, 4, 1, POST_OL); B(cx, y, side > 0 ? x0 : x0 + PW - 2, 5, 2, 1, POST_OL); B(cx, y, side > 0 ? x0 : x0 + PW - 1, 6, 1, 1, POST_OL);
     if (kind === 1) { B(cx, y, x0 + 2, -4, 9, 3, POST_OL); B(cx, y, x0 + 3, -3, 7, 1, '#f2a7b8'); B(cx, y, x0 + 4, -3, 5, 1, '#f9d3dc'); B(cx, y, x0 + 3, -2, 7, 1, '#e08a9c'); }
     else if (kind === 2) { const hx = x0 + 2; B(cx, y, hx, 3, 1, 3, POST_OL); B(cx, y, hx + 8, 3, 1, 3, POST_OL); B(cx, y, hx, 5, 9, 3, POST_OL); B(cx, y, hx + 1, 5, 7, 1, '#efd98a'); B(cx, y, hx + 2, 6, 5, 1, '#e2c66a'); }
     else if (kind === 3) {
@@ -1552,7 +1554,7 @@ function frayEnd(i, h, up) {
 }
 const STALK_TOP = TOP + 1, STALK_BASE = 3;
 function buildStalks() {
-  const w = 110 * U, hgt = (STALK_TOP - STALK_BASE) * PX + 40 * U;
+  const w = 160 * U, hgt = (STALK_TOP - STALK_BASE) * PX + 40 * U;
   IMG.stalks = [0, 1, 2].map(i => make(w, hgt, () => paintStalk(i, STALK_BASE - .3, STALK_TOP, x => x - W * STX[i] + w / 2, h => (STALK_TOP - h) * PX + 20 * U)));
 }
 function drawStalks() {
@@ -1749,6 +1751,7 @@ function drawBalloon(x, by, t, withJack, dir = 1) {
 }
 function drawSheep(x, y, dir, t, onCloud = true, graze = 0, sc = 1.4) {
   const k = U * sc; if (onCloud) cloud(2, x, y + 22 * k, 76 * k);
+  if (!onCloud) ell(x, y + 14 * k, 11 * k, 3 * k, 'rgba(40,60,20,.35)', 0, false);
   if (SPR.bunny) { drawSpr('bunny', x, y + 14 * k - (graze ? 0 : Math.abs(Math.sin(t * 10)) * 3 * k), 30 * k, dir < 0); return; }
   ctx.save(); ctx.translate(x, y - (graze ? 0 : Math.abs(Math.sin(t * 10)) * 3 * k)); ctx.scale(dir * k, k);
   rr(-10, 6, 4, 9, 2, '#7a6a7a', false); rr(6, 6, 4, 9, 2, '#7a6a7a', false);
