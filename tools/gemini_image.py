@@ -7,7 +7,7 @@
 每天最多 DAILY_MAX 張（記在 ~/.isekai_image_log.json），超過就拒絕執行。
 
 用法：
-  python3 tools/gemini_image.py prompt.txt out.png [ref1.jpg ref2.jpg ...] [--model=gemini-3.1-flash-image] [--ratio=3:4] [--api=vertex|studio]
+  python3 tools/gemini_image.py prompt.txt out.png [ref1.jpg ref2.jpg ...] [--model=gemini-3.1-flash-image] [--ratio=3:4] [--api=vertex|studio] [--loc=global|us-central1…]
 """
 import base64, datetime, io, json, os, sys, urllib.request
 from PIL import Image
@@ -45,6 +45,7 @@ def main(argv):
     if len(args) < 2:
         sys.exit(__doc__)
     model, ratio, api = opt.get('model', MODEL), opt.get('ratio', '3:4'), opt.get('api', 'vertex')
+    loc = opt.get('loc', 'global')  # global 被 429 時可試指定區域
     if count_today() >= DAILY_MAX:
         sys.exit(f'今天已經畫了 {DAILY_MAX} 張，到每日上限，停下來問使用者。')
     prompt = open(args[0], encoding='utf-8').read().strip()
@@ -55,7 +56,7 @@ def main(argv):
         'generationConfig': {'responseModalities': ['IMAGE'], 'imageConfig': {'aspectRatio': ratio}},
     }
     req = urllib.request.Request(
-        f'https://aiplatform.googleapis.com/v1/projects/{PROJECT}/locations/global/publishers/google/models/{model}:generateContent'
+        f'https://aiplatform.googleapis.com/v1/projects/{PROJECT}/locations/{loc}/publishers/google/models/{model}:generateContent'
         if api == 'vertex' else f'https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent',
         data=json.dumps(body).encode(), method='POST', headers={'Content-Type': 'application/json'})
     count_today(1)  # 送出就可能被收費，先記帳
