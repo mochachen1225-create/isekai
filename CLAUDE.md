@@ -112,6 +112,6 @@
 ## 7. 一定要遵守
 
 - 任何事實、數字、日期、平台規定，先搜尋再說。
-- 不貼金鑰。筆名帳號（巴哈、LINE WEBTOON）跟使用者的個人身分分開。筆名＝「貓貓勇者小隊」（2026-10-28 定，Threads、巴哈、LINE WEBTOON 顯示名稱都已改好；巴哈和 LINE WEBTOON 帳號 10/28 建好；LINE WEBTOON 第一話 10/28 已發布，作者資訊網站填測驗首頁）。IG：https://www.instagram.com/mochachen12252026/ 。網址、IG、WEBTOON 帳號裡的「mocha chen」是使用者家的貓的名字、不是本名，使用者說沒差，不用再提。文案、簡介裡不寫使用者本名。
+- 不貼金鑰。筆名帳號（巴哈、LINE WEBTOON）跟使用者的個人身分分開。筆名＝「貓貓勇者小隊」（2026-10-28 定，Threads、巴哈、LINE WEBTOON 顯示名稱都已改好；巴哈和 LINE WEBTOON 帳號 10/28 建好；LINE WEBTOON 第一話 10/28 已發布，作者資訊網站填測驗首頁；作者主頁 https://www.webtoons.com/p/community/zh-hant/u/catheroparty ；巴哈第一話 10/28 已發）。IG：https://www.instagram.com/mochachen12252026/ 。網址、IG、WEBTOON 帳號裡的「mocha chen」是使用者家的貓的名字、不是本名，使用者說沒差，不用再提。文案、簡介裡不寫使用者本名。
 - AI 作品要誠實標示（巴哈勾「AI 創作」、LINE WEBTOON 簡介寫「AI 輔助作畫」、不參加禁止 AI 的比賽）。
 - 不畫任天堂、薩爾達等現有作品的官方角色。
