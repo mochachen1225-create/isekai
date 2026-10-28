@@ -85,6 +85,7 @@
 
 ## 5. 職業短片預告
 
+- 節奏（2026-10-28 使用者說）：她有空就做影片傳過來，沒有固定日期；Claude 收到就剪，要不要開 subagent 平行剪由 Claude 自己決定（多支一起來時可以開，避免主對話被卡住）。
 - 使用者用 Gemini App 做 10 秒短片（每天 3 支），Claude 用 `tools/make_trailer.py config.json` 剪成直式預告：字卡 → 三個鏡頭（慢動作，不要放大推近）→ 個性字卡 → 片名＋遊戲網址。範例在 `tools/trailer_example.json`。
 - 配樂用 Gemini 做的歌的「中段比較豐富的段落」；男版咖啡師配慵懶法式（Rainfall on Saint-Germain），女版配 Bossa Nova（Café Promenade）；勇者配輕快冒險風，從第 42 秒開始。可愛的鏡頭（例如貓咬麵包）放更慢、多停一兩秒。
 - 橫式來源用「置中＋上下模糊背景」，不要裁成直式填滿。請使用者在影片 prompt 最後加「Vertical 9:16 video.」。
