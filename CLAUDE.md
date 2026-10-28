@@ -81,6 +81,7 @@
 
 - 動畫影片：Remotion（React 寫影片，個人和 3 人以下公司免費，5.0 版授權會改，用前再查）、Motion Canvas、Blender、three.js、FFmpeg（預告片已經在用）。可以拿漫畫格做成動態漫畫 Reels；注意使用者不喜歡放大推近的鏡頭。
 - 免費生圖：Cloudflare Workers AI（目前每天都顯示額度用完，原因待查）、Hugging Face 上的 FLUX.1 schnell（授權要看模型頁）、使用者手動用 Gemini App 畫。
+- Vertex AI（2026-10-28 設定，待測試）：Google Cloud 試用送的約 NT$9,534 額度（到 2027-01-26）不能付 AI Studio 的 Gemini API，但可以付 Vertex AI（新名 Agent Platform API）。專案 ID `wide-bastion-470510-m3`，服務帳戶 `isekai-image`（只有 Agent Platform User 角色），API 金鑰 `isekai-vertex` 綁在這個服務帳戶、只開 Agent Platform API，放在 Network secrets（網域 `aiplatform.googleapis.com`）。端點：`https://aiplatform.googleapis.com/v1/projects/wide-bastion-470510-m3/locations/global/publishers/google/models/<model>:generateContent`。舊 session 測試時回 401 `API_KEY_SERVICE_BLOCKED`（新 secret 要新 session 才生效）。下一步：新 session 先畫一張測試圖，跟現在的 Gemini 比品質，隔天請使用者看帳單有沒有扣試用額度。帳戶已升級成後付，額度用完會直接扣卡：要設預算提醒（NT$9,000，50/90/100%），工具要加每日張數上限。
 - 省錢生圖：Gemini API 是一張圖算一次錢（1K 約 US$0.067、2K 約 US$0.101），角色小圖可以一次畫一整張 4×4 或 5×5 的角色表再用程式裁切。2026-10-28 實測成功（星之泉 16 個角色一張搞定，使用者覺得很划算）：洋紅色底、每格一個角色，程式去背後縮到約 96px 就是點陣貼紙。做法和原圖在 `isekai-studio` 的 `work/sprites/`。小遊戲、周邊的角色圖以後優先用這招。
 - 免費素材：Kenney（CC0）。
 
