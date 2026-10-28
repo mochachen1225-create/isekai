@@ -4,7 +4,7 @@
 預設走 Vertex AI（用 Google Cloud 試用送的額度付錢，模型跟 AI Studio 同一個）；
 加 --api=studio 改走 AI Studio 的 Gemini API（用預付儲值）。
 兩邊的金鑰都由環境的 Network secrets 代理自動加上（Claude 看不到）。
-每天最多 DAILY_MAX 張（記在 ~/.isekai_image_log.json），超過就拒絕執行。
+每天畫幾張記在 ~/.isekai_image_log.json。DAILY_MAX 設成 None 就不限張數（靠 Google Cloud 的每月金額上限擋）。
 
 用法：
   python3 tools/gemini_image.py prompt.txt out.png [ref1.jpg ref2.jpg ...] [--model=gemini-3.1-flash-image] [--ratio=3:4] [--api=vertex|studio] [--loc=global|us-central1…]
@@ -15,7 +15,7 @@ from PIL import Image
 MODEL = 'gemini-3.1-flash-image'  # Nano Banana 2
 REF_MAX = 1536
 PROJECT = 'gen-lang-client-0406332141'  # Google Cloud 專案「isekai」
-DAILY_MAX = 100  # 2026-10-28 使用者同意從 40 放寬
+DAILY_MAX = None  # 2026-10-28 使用者取消每日張數上限（她在 Google Cloud 設了每月金額上限）
 LOG = os.path.expanduser('~/.isekai_image_log.json')
 
 
@@ -46,7 +46,7 @@ def main(argv):
         sys.exit(__doc__)
     model, ratio, api = opt.get('model', MODEL), opt.get('ratio', '3:4'), opt.get('api', 'vertex')
     loc = opt.get('loc', 'global')  # global 被 429 時可試指定區域
-    if count_today() >= DAILY_MAX:
+    if DAILY_MAX and count_today() >= DAILY_MAX:
         sys.exit(f'今天已經畫了 {DAILY_MAX} 張，到每日上限，停下來問使用者。')
     prompt = open(args[0], encoding='utf-8').read().strip()
     out_path, refs = args[1], args[2:]
