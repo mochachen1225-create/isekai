@@ -23,6 +23,8 @@
 
 **Threads 自動發文（10/28 使用者同意：她只做審核，其他 Claude 做）**：`main` 的 `.github/workflows/threads.yml` 每 15 分鐘發 `main` 的 `posts/threads.json` 裡 `approved: true`、時間到、還沒發的貼文（`tools/threads_post.py`，文字／單圖／輪播，圖要公開網址），發完寫回 `posted`。每週一自動延長 60 天 token。加密設定 THREADS_TOKEN、THREADS_APP_SECRET、GH_SECRETS_PAT 由使用者照設定頁 https://claude.ai/artifact/XgR1DZQvxQxN5rPCMPUwtf 設（10/29 做）。只有使用者對那則說 OK，Claude 才把它設成 approved；每週日排好下週貼文給她一次看完。Meta API 免費。IG 之後再開；巴哈、LINE WEBTOON 沒有 API，維持她手動上傳。
 
+**三個 Claude 的分工（10/29 使用者定）**：妳＝作者兼老闆（點子、審核、說 OK、登入和付錢的事）；雲端 Claude（這個 session）＝創作和總編，也是使用者的預設窗口（故事、設定、漫畫、翻譯、文案、上架資料夾內容、網站內容、維護進度表），需要架構的事由我轉給架構 Claude、結果帶回來；架構 Claude＝技術顧問（session「技術顧問交接與 mocha-worker」`session_01ENYvsK78hjVas3wb4nYJQs`，雲端；自動化、排程、資料夾約定、工具程式、Claude 之間的交接規則、壞掉查原因；不碰故事內容），用 send_message 互傳；小弟＝她電腦上的 Claude（Chrome 外掛預約上傳，需要她登入的事；不改內容）。進度表的打勾和 owner 由雲端 Claude 統一改，其他兩位要改先跟我說。
+
 **本地助手（10/28 使用者定的分工）**：雲端 Claude（這個 session）負責創作和準備：小說、漫畫、排版、上傳包、文案、網站、Threads 自動發文。巴哈和 LINE WEBTOON 沒有 API，交給她電腦上的 Claude（桌面 app 或 `claude remote-control`）用 Chrome「貓貓勇者」個人資料裡的 Claude in Chrome 上傳：上架資料夾在 `isekai-studio` 的 `publish/queue/`（`work/publish/make_queue.py` 產生，規則見 `publish/README.md`）。10/29 使用者同意小弟直接按「預約發表」（第一次試跑先確認預約能編輯或取消；沒有預約選項就不送出，巴哈小說類改用「限本人觀看」），送出後移到 `publish/done/`。進度表 bh／lw 打勾的時機：`done/` 有新的一篇，而且使用者說她檢查過預約內容；只有雲端 Claude 改進度表。第一次試在 11/10～11/11 上傳第二、三話。
 
 **發文口氣（10/28 使用者：要更像她、像真人）**：照她平常講話的樣子：短句、少標點（常用空格斷句）、會用「～」「😂」「Ｘ＿Ｘ」、括號吐槽、「我覺得」、台味；不寫成文案腔、不說教；結尾丟一個問題給讀者。她有給自己寫過的貼文就以那個為準。
