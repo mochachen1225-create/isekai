@@ -9,6 +9,8 @@
     "date": "2026-10-28T07:42:10+08:00"
   },
   "count": 2,
-  "reached": [],
-  "current": null
+  "reached": [
+    "moonpupil"
+  ],
+  "current": "moonpupil"
 }

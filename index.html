@@ -12,25 +12,166 @@
 <script type="module" src="js/home.js"></script>
 <!-- ▲ 系統掛點 -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#FFDDB8">
+<meta name="theme-color" content="#FFF8EC">
 <title>貓貓勇者小隊</title>
-<meta name="description" content="一個累到忘了生活的台灣上班族，掉進了異世界。小說、漫畫每週三更新。">
+<meta name="description" content="累到忘了生活的上班族，掉進一個懶貓說了算的異世界。小說、漫畫每週三更新，免費看。">
 <meta property="og:title" content="貓貓勇者小隊">
-<meta property="og:description" content="一個累到忘了生活的台灣上班族，掉進了異世界。小說、漫畫每週三更新。">
-<link rel="stylesheet" href="story/story.css">
+<meta property="og:description" content="累到忘了生活的上班族，掉進一個懶貓說了算的異世界。小說、漫畫每週三更新，免費看。">
+<meta property="og:image" content="https://mochachen1225-create.github.io/isekai/assets/home/hero.jpg">
+<link rel="alternate" type="application/rss+xml" title="貓貓勇者小隊" href="story/feed.xml">
 <script data-goatcounter="https://catheroparty.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+/* 作品大門（10/29 改版）：主視覺 → 最新一話 → 角色 → 世界地圖 → 一起玩 → 在哪裡看得到 */
+@font-face{font-family:"Huninn";src:url("fonts/huninn.woff2") format("woff2");font-display:swap}
+:root{
+  --bg:#FFF8EC; --paper:#FFFFFF; --ink:#2D3A4A; --soft:#5A6878; --line:#EADFCB;
+  --rose:#E66F8E; --night:#2A4D7A; --lit:#F6B54A; --dim:#E5DCCB; --sky:#3A6EA5;
+  --round:"Huninn","PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1C2333; --paper:#252E42; --ink:#EEF1F7; --soft:#B3BCCC; --line:#38425A;
+  --rose:#F29AB2; --night:#C9DAF2; --dim:#3A4560; --sky:#8DC3EF; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1C2333; --paper:#252E42; --ink:#EEF1F7; --soft:#B3BCCC; --line:#38425A;
+  --rose:#F29AB2; --night:#C9DAF2; --dim:#3A4560; --sky:#8DC3EF; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--round);font-size:16px;line-height:1.7}
+a{color:inherit}
+a:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
+.wrap{max-width:720px;margin:0 auto;padding-block:0 48px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:36px}
+.top{padding-top:14px}
+.logo{font-size:20px;color:var(--night);margin:0}
+h2{font-size:22px;margin:0;color:var(--night)}
+.sec{display:grid;gap:14px}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.sec-head small{color:var(--soft);font-size:14px}
+.hero{display:grid;gap:16px}
+.hero img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:22px;display:block}
+.tag-line{font-size:clamp(20px,5vw,26px);line-height:1.5;margin:0}
+.cta{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{display:flex;align-items:center;justify-content:center;text-align:center;min-height:52px;border-radius:16px;font-size:16px;text-decoration:none;padding:8px 12px;border:2px solid var(--night)}
+.btn.main{background:var(--night);color:var(--bg)}
+.btn.sub{background:var(--paper);color:var(--night)}
+.meta{font-size:14px;color:var(--soft);margin:0}
+.latest{display:grid;grid-template-columns:120px 1fr;gap:14px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:12px;align-items:center}
+.latest img{width:120px;height:150px;object-fit:cover;border-radius:12px}
+.latest .body{min-width:0;display:grid;gap:6px}
+.pill{justify-self:start;font-size:12px;background:var(--rose);color:#fff;border-radius:999px;padding:0 10px}
+.latest h3{margin:0;font-size:17px;line-height:1.5}
+.two{display:flex;gap:8px;flex-wrap:wrap}
+.mini{font-size:14px;border:1px solid var(--night);color:var(--night);border-radius:999px;padding:3px 14px;text-decoration:none}
+.chars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.char{display:grid;justify-items:center;align-content:start;gap:4px;text-align:center}
+.char img,.char .q{width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid var(--paper);box-shadow:0 0 0 2px var(--lit)}
+.char b{font-size:14px;line-height:1.3}
+.char span{font-size:12px;color:var(--soft);line-height:1.4}
+.char .q{display:grid;place-items:center;background:var(--dim);color:var(--soft);font-size:24px;box-shadow:0 0 0 2px var(--line)}
+/* 地圖：全黑，只有到過的國家亮（data-country 由 js/home.js 加 reached／current） */
+.map{background:#0E1220;border-radius:20px;padding:10px;overflow:hidden}
+.map svg{width:100%;height:auto;display:block}
+.map text{font-family:var(--round);font-size:15px;fill:#4A5470}
+.map .land{fill:#161B2C;stroke:#2A3150;stroke-width:2}
+.map .name{display:none}
+.map .reached .land{fill:#F6B54A;stroke:#FFE3A3;stroke-width:3}
+.map .reached text{fill:#2D2410;font-size:17px}
+.map .reached .name{display:inline}
+.map .reached .unk{display:none}
+.map .glow{fill:#F6B54A;opacity:0}
+.map .reached .glow{opacity:.25}
+.map .you{display:none;fill:#E66F8E;stroke:#fff;stroke-width:2}
+.map .current .you{display:inline}
+.map .star{fill:#FFE3A3;opacity:.5}
+.doors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.door{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:14px;display:grid;gap:8px;align-content:start}
+.door img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px}
+.door h3{margin:0;font-size:17px}
+.door p{margin:0;font-size:14px;color:var(--soft)}
+.door .mini{justify-self:start}
+@media (max-width:620px){.doors{grid-template-columns:1fr}}
+.where{display:flex;flex-wrap:wrap;gap:8px}
+.where a,.where span{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:6px 12px;font-size:14px;text-decoration:none}
+.where small{color:var(--soft);margin-left:6px;font-size:12px}
+footer{font-size:13px;color:var(--soft);display:grid;gap:4px;border-top:1px solid var(--line);padding-top:16px}
+</style>
 </head>
 <body>
-<!-- 暫時的骨架：正式版面由雲端 Claude 在 home-v2 做。data-home… 屬性的用法見 js/home.js -->
-<main class="page">
-  <h1>貓貓勇者小隊</h1>
-  <section data-home-ready hidden>
-    <p>最新：<span data-home="latest.no"></span>　<span data-home="latest.title"></span></p>
-    <img data-home-src="latest.thumb" alt="" width="400">
-    <p><a class="btn" data-home-href="latest.novel" href="story/">小說</a> <a class="btn" data-home-href="latest.comic" href="story/">漫畫</a></p>
+<div class="wrap">
+  <header class="top"><h1 class="logo">貓貓勇者小隊</h1></header>
+
+  <section class="hero">
+    <img src="assets/home/hero.jpg" alt="摩卡和戴郵差帽的橘貓，一起窩在巨大的貓窩裡">
+    <p class="tag-line">累到忘了生活的上班族，掉進一個懶貓說了算的異世界。</p>
+    <div class="cta">
+      <a class="btn main" href="story/01-comic.html">看第一話（漫畫）</a>
+      <a class="btn sub" href="quiz/">測我的轉生職業</a>
+    </div>
+    <p class="meta">每週三 21:00 更新・免費　<a href="story/01.html">想看小說版 →</a></p>
   </section>
-  <p><a class="btn" href="story/">連載目錄</a> <a class="btn" href="quiz/">玩轉生職業測驗</a></p>
-  <p><a href="games/starspring/">小遊戲《爬上星之泉》</a></p>
-</main>
+
+  <section class="sec">
+    <div class="sec-head"><h2>最新一話</h2><a class="mini" href="story/">完整目錄</a></div>
+    <div class="latest" data-home-ready hidden>
+      <img data-home-src="latest.thumb" alt="最新一話的漫畫第一格">
+      <div class="body">
+        <span class="pill" data-home="latest.no"></span>
+        <h3 data-home="latest.title"></h3>
+        <div class="two"><a class="mini" data-home-href="latest.novel" href="story/">看小說</a><a class="mini" data-home-href="latest.comic" href="story/">看漫畫</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>角色</h2><small>隨連載慢慢解鎖</small></div>
+    <div class="chars">
+      <div class="char"><img src="assets/home/f_her.jpg" alt="摩卡開心地笑"><b>摩卡</b><span>懂所有套路的上班族</span></div>
+      <div class="char"><img src="assets/home/f_cat.jpg" alt="戴郵差帽的橘貓"><b>胖橘</b><span>郵差，她的旅伴</span></div>
+      <div class="char"><img src="assets/home/f_maou.jpg" alt="魔王的臉"><b>魔王</b><span>只是覺得很帥</span></div>
+      <div class="char"><span class="q">？</span><b>？？？</b><span>連載後解鎖</span></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>世界地圖</h2><small>連載走到哪，就亮到哪</small></div>
+    <div class="map">
+      <svg viewBox="0 0 640 400" role="img" aria-label="世界地圖：只有已經去過的國家會亮起來">
+        <circle class="star" cx="40" cy="30" r="1.5"/><circle class="star" cx="600" cy="40" r="1.5"/><circle class="star" cx="330" cy="20" r="1.2"/><circle class="star" cx="610" cy="200" r="1.2"/><circle class="star" cx="30" cy="370" r="1.5"/>
+        <g><path class="land" d="M70 60 q60-30 120 0 t60 50 q-20 40 -90 40 t-90-40z"/><text x="118" y="100">？？？</text></g>
+        <g><path class="land" d="M420 50 q70-25 140 5 q20 40-30 60 q-70 15-110-15z"/><text x="468" y="88">？？？</text></g>
+        <g data-country="xiaoyuan"><ellipse class="glow" cx="505" cy="268" rx="80" ry="55"/><path class="land" d="M440 230 q70-20 130 15 q15 45-40 65 q-70 15-100-25z"/><text class="unk" x="490" y="275">？？？</text><text class="name" x="490" y="275">嘯原</text><circle class="you" cx="505" cy="250" r="7"/></g>
+        <g><path class="land" d="M60 220 q50-30 110 0 q20 40-20 60 q-60 20-95-15z"/><text x="92" y="258">？？？</text></g>
+        <g><path class="land" d="M200 300 q60-20 110 10 q10 35-40 50 q-55 10-80-20z"/><text x="232" y="335">？？？</text></g>
+        <g><path class="land" d="M380 330 q50-15 90 5 q10 30-30 40 q-50 8-65-15z"/><text x="402" y="360">？？？</text></g>
+        <g><path class="land" d="M540 330 q40-10 80 10 l0 50 l-90 0 q-20-30 10-60z"/><text x="552" y="365">？？？</text></g>
+        <g data-country="moonpupil"><ellipse class="glow" cx="320" cy="200" rx="110" ry="80"/><path class="land" d="M250 160 q70-50 140 0 q30 45-10 80 q-60 30-120 0 q-40-35-10-80z"/><text class="unk" x="296" y="215">？？？</text><text class="name" x="285" y="215">月瞳國</text><circle class="you" cx="320" cy="182" r="7"/></g>
+      </svg>
+    </div>
+    <p class="meta">每到一個新的國家，就會解鎖那一國的小遊戲和周邊。</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>一起玩</h2></div>
+    <div class="doors">
+      <div class="door"><img src="assets/home/guide.jpg" alt="點陣風的橘貓"><h3>轉生職業測驗</h3><p>三分鐘，看看你掉進異世界會是 28 種職業的哪一種。</p><a class="mini" href="quiz/">開始測驗</a></div>
+      <div class="door"><img src="assets/home/game.jpg" alt="小遊戲《爬上星之泉》封面"><h3>爬上星之泉</h3><p>跟午睡的魔王玩一二三木頭人。</p><a class="mini" href="games/starspring/">玩一場</a></div>
+      <div class="door"><img src="assets/home/ep01.jpg" alt="森林裡的月亮"><h3>LINE 表情貼</h3><p>貓貓勇者小隊的表情貼和主題。</p><a class="mini" href="https://line.me/S/emoji/?id=6ae16b19a98c12374a15872f">去看看</a></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>在哪裡看得到我們</h2></div>
+    <div class="where">
+      <span>巴哈姆特<small>小說</small></span>
+      <a href="https://www.webtoons.com/p/community/zh-hant/u/catheroparty">LINE WEBTOON<small>漫畫</small></a>
+      <a href="https://www.instagram.com/mochachen12252026/">Instagram</a>
+      <span>Threads</span>
+      <a href="story/feed.xml">RSS</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>貓貓勇者小隊｜原創構想，AI 協作製作（故事和漫畫都有 AI 參與）。</span>
+  </footer>
+</div>
 </body>
 </html>

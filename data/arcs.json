@@ -1,0 +1,7 @@
+{
+  "說明": "首頁世界地圖：每國寫 id（對應 index.html 的 data-country）、name、from（第幾話小說進入這一國）。雲端 Claude 維護。",
+  "countries": [
+    {"id": "moonpupil", "name": "月瞳國", "from": 1},
+    {"id": "xiaoyuan", "name": "嘯原", "from": 18}
+  ]
+}
