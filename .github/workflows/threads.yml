@@ -1,5 +1,6 @@
 # Threads 自動發文：每 15 分鐘看一次 posts/threads.json，發「已審核、時間到」的貼文，發完把 posted 寫回去。
 # 每週一換一次 60 天長效 token（存回加密設定 THREADS_TOKEN）。
+# 每天台灣時間 23:17 抓一次數字（30 天內的貼文＋追蹤人數），寫到 stats/threads/YYYY-MM-DD.json。token 要有 threads_manage_insights 權限。
 # 需要的加密設定（Settings → Secrets and variables → Actions）：
 #   THREADS_TOKEN       使用者產生的 Threads token（短效也可以，第一次跑會自動換成長效）
 #   THREADS_APP_SECRET  Meta App 的 Threads App secret
@@ -9,10 +10,11 @@ on:
   schedule:
     - cron: '*/15 * * * *'
     - cron: '7 2 * * 1'
+    - cron: '17 15 * * *'
   workflow_dispatch:
     inputs:
       task:
-        description: 'post（發到期的貼文）或 token（換長效 token）'
+        description: 'post（發到期的貼文）、token（換長效 token）或 stats（抓數字）'
         default: post
 permissions:
   contents: write
@@ -51,3 +53,19 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add posts/threads.json
           git diff --cached --quiet || { git commit -m "Threads：記錄已發的貼文"; git push; }
+  stats:
+    if: github.event.schedule == '17 15 * * *' || github.event.inputs.task == 'stats'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 抓 Threads 數字
+        env:
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+        run: python3 tools/threads_post.py stats
+      - name: 存起來
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          [ -d stats/threads ] || exit 0
+          git add stats/threads
+          git diff --cached --quiet || { git commit -m "Threads：每日數字"; git pull -q --rebase; git push; }

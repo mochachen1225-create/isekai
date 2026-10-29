@@ -2,6 +2,7 @@
 
 python3 tools/threads_post.py post      發 posts/threads.json 裡「已審核、時間到、還沒發」的貼文
 python3 tools/threads_post.py token     把 THREADS_TOKEN 換成（或延長成）60 天的長效 token，印出新的
+python3 tools/threads_post.py stats     抓 30 天內每則貼文的數字和追蹤人數，寫到 stats/threads/YYYY-MM-DD.json（要 threads_manage_insights 權限）
 
 貼文格式（posts/threads.json，一則一個物件）：
   {"id": "bts1", "at": "2026-11-12T20:00:00+08:00", "text": "...", "images": ["https://.../a.jpg"],
@@ -90,5 +91,60 @@ def cmd_token():
     sys.exit('換 token 失敗：token 可能已過期，請重新產生一次')
 
 
+def insight_value(item):
+    """insights 回傳的一個指標：貼文的是 values[0].value，帳號的是 total_value.value。"""
+    if 'total_value' in item:
+        return item['total_value'].get('value')
+    vals = item.get('values') or []
+    return vals[-1].get('value') if vals else None
+
+
+def post_insights(media_id):
+    """views、shares 官方標註還在開發中，拿不到就退回其他四個；再失敗就整則填 null，不讓一則壞掉整次。"""
+    for metrics in ('views,likes,replies,reposts,quotes,shares', 'likes,replies,reposts,quotes'):
+        try:
+            data = call('GET', f'{media_id}/insights', metric=metrics)['data']
+            return {d['name']: insight_value(d) for d in data}
+        except Exception:
+            continue
+    return {}
+
+
+def cmd_stats():
+    """自己帳號 30 天內的貼文（包含手動發的）＋追蹤人數。數字都是累計值，每週增加量由雲端 Claude 統整時算。"""
+    if not token:
+        print('還沒設定 THREADS_TOKEN，跳過'); return
+    tw = datetime.timezone(datetime.timedelta(hours=8))
+    now = datetime.datetime.now(tw)
+    since = int((now - datetime.timedelta(days=30)).timestamp())
+    queued = {p.get('thread_id'): p['id'] for p in json.loads(queue.read_text(encoding='utf-8')) if p.get('thread_id')}
+    out = {'taken_at': now.isoformat(timespec='seconds'), 'followers': None, 'posts': []}
+    try:
+        data = call('GET', 'me/threads_insights', metric='followers_count')['data']
+        out['followers'] = insight_value(data[0]) if data else None
+    except Exception as e:
+        print('追蹤人數抓不到：', e)
+    after = None
+    while True:
+        params = {'fields': 'id,timestamp,permalink', 'since': since, 'limit': 50}
+        if after:
+            params['after'] = after
+        page = call('GET', 'me/threads', **params)
+        for m in page.get('data', []):
+            row = {'id': m['id'], 'queue_id': queued.get(m['id']), 'posted_at': m.get('timestamp'),
+                   'permalink': m.get('permalink')}
+            ins = post_insights(m['id'])
+            for k in ('views', 'likes', 'replies', 'reposts', 'quotes', 'shares'):
+                row[k] = ins.get(k)
+            out['posts'].append(row)
+        after = page.get('paging', {}).get('cursors', {}).get('after') if page.get('paging', {}).get('next') else None
+        if not after:
+            break
+    f = root / 'stats' / 'threads' / f'{now:%Y-%m-%d}.json'
+    f.parent.mkdir(parents=True, exist_ok=True)
+    f.write_text(json.dumps(out, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    print(f'{f.relative_to(root)}：{len(out["posts"])} 則，追蹤 {out["followers"]}')
+
+
 if __name__ == '__main__':
-    {'post': cmd_post, 'token': cmd_token}[sys.argv[1]]()
+    {'post': cmd_post, 'token': cmd_token, 'stats': cmd_stats}[sys.argv[1]]()
