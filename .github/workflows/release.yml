@@ -45,13 +45,18 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch origin "$BR"
-          git merge --no-edit "origin/$BR"
-          # 字型重新縮減（合併後可能多了新字），更新 RSS 和網站地圖，新的一頁補上 GoatCounter
+          # 合併規則寫在 site 的 tools/release_merge.sh：字型、RSS 這類自動產生的檔案衝突時自動處理，其他衝突就停（失敗會寄信）
+          if [ -f tools/release_merge.sh ]; then bash tools/release_merge.sh "origin/$BR"; else git merge --no-edit "origin/$BR"; fi
+          # 字型重新縮減（合併後可能多了新字），更新 RSS、網站地圖、首頁資料，新的一頁補上 GoatCounter
           pip install --quiet fonttools brotli
           curl -sSL -o /tmp/huninn.ttf https://github.com/justfont/open-huninn-font/releases/download/v2.1/jf-openhuninn-2.1.ttf
-          python3 tools/subset_font.py /tmp/huninn.ttf
-          if [ -f tools/make_feed.py ]; then python3 tools/make_feed.py; fi
-          if [ -f tools/add_goatcounter.py ]; then python3 tools/add_goatcounter.py; fi
+          if [ -f tools/after_merge.sh ]; then
+            bash tools/after_merge.sh /tmp/huninn.ttf
+          else
+            python3 tools/subset_font.py /tmp/huninn.ttf
+            if [ -f tools/make_feed.py ]; then python3 tools/make_feed.py; fi
+            if [ -f tools/add_goatcounter.py ]; then python3 tools/add_goatcounter.py; fi
+          fi
           git add -A
           git diff --cached --quiet || git commit -m "上線 $BR：更新字型、RSS、網站地圖"
           python3 tools/check_site.py
