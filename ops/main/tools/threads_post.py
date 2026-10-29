@@ -6,8 +6,9 @@ python3 tools/threads_post.py stats     抓 30 天內每則貼文的數字和追
 
 貼文格式（posts/threads.json，一則一個物件）：
   {"id": "bts1", "at": "2026-11-12T20:00:00+08:00", "text": "...", "images": ["https://.../a.jpg"],
-   "approved": true, "posted": false}
+   "approved": true, "posted": false, "tag": "AI"}
 images 可以是 0 張（純文字）、1 張、2～20 張（輪播）。圖片要是公開網址（GitHub Pages）。
+tag 是 Threads 的主題標籤（一則一個，可以不寫）：1～50 字，「.」和「&」會自動拿掉；標籤被拒絕時改發沒標籤的，不擋發文。
 只有使用者說 OK 的才會由 Claude 設成 approved: true。
 """
 import datetime, json, os, pathlib, sys, time, urllib.parse, urllib.request
@@ -29,7 +30,13 @@ def call(method, path, **params):
         return json.load(r)
 
 
-def container(text=None, image=None, carousel_item=False, children=None):
+def clean_tag(tag):
+    """Threads 主題標籤：不能有「.」「&」，1～50 字；不合格就當作沒有。"""
+    tag = (tag or '').replace('.', '').replace('&', '').strip()[:50]
+    return tag or None
+
+
+def container(text=None, image=None, carousel_item=False, children=None, tag=None):
     p = {}
     if children:
         p.update(media_type='CAROUSEL', children=','.join(children))
@@ -39,6 +46,8 @@ def container(text=None, image=None, carousel_item=False, children=None):
         p.update(media_type='TEXT')
     if text and not carousel_item:
         p['text'] = text
+    if tag and not carousel_item:     # 標籤放在主容器（輪播放在 CAROUSEL 那層），子項目不放
+        p['topic_tag'] = tag
     if carousel_item:
         p['is_carousel_item'] = 'true'
     return call('POST', 'me/threads', **p)['id']
@@ -46,11 +55,16 @@ def container(text=None, image=None, carousel_item=False, children=None):
 
 def publish(post):
     imgs = post.get('images') or []
-    if len(imgs) > 1:
-        kids = [container(image=u, carousel_item=True) for u in imgs]
-        cid = container(text=post['text'], children=kids)
-    else:
-        cid = container(text=post['text'], image=imgs[0] if imgs else None)
+    kids = [container(image=u, carousel_item=True) for u in imgs] if len(imgs) > 1 else None
+    main = dict(text=post['text'], children=kids, image=None if kids else (imgs[0] if imgs else None))
+    tag = clean_tag(post.get('tag'))
+    try:
+        cid = container(**main, tag=tag)
+    except Exception as e:
+        if not tag:
+            raise
+        print(f'{post["id"]}：主題標籤「{tag}」被拒絕（{e}），改發沒有標籤的')
+        cid = container(**main)
     if imgs:
         time.sleep(30)  # Meta 建議有圖的貼文等容器處理好再發
     return call('POST', 'me/threads_publish', creation_id=cid)['id']
