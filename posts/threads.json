@@ -9,5 +9,27 @@
     "approved": true,
     "posted": false,
     "tag": "AI"
+  },
+  {
+    "id": "before_ai",
+    "at": "2026-11-02T08:30:00+08:00",
+    "text": "每個 AI 我幾乎都訂過\n一開始真的蠻難用的\n現在跟剛出來的時候 差好多\n\n那我以前每天拿它幹嘛？\n\n工作上 就是翻譯文件 整理資料\n也沒什麼了不起的功能\n\n下班後\n拍照記吃了什麼 算熱量\n問它「我想要減肥該怎麼辦？」\n然後繼續拍照記熱量😂\n學日文卡住 請它教我一下\n無聊就叫它算命 叫它畫個圖\n\n很沒產值 但很隨性\n說穿了 就是個玩樂的工具\n\n只是每個月都在付錢\n結果只拿來記熱量跟算命\n想想 好像有點浪費 😅",
+    "images": [
+      "https://mochachen1225-create.github.io/isekai/promo/threads/before_ai.jpg"
+    ],
+    "tag": "上班族",
+    "approved": true,
+    "posted": false
+  },
+  {
+    "id": "not_magic",
+    "at": "2026-11-03T20:30:00+08:00",
+    "text": "雖然現在每天跟 AI 一起做事\n但我也是被它雷過很多次的人\n\n一下跟我說「我只是個 AI 模型 沒辦法幫你」\n一下又一本正經地亂回答\n常常讓我很傻眼\n\n最慘的是排旅行\n看不懂西班牙文 請 AI 幫我確認時間跟細節\n換了好幾個 結果都亂七八糟\n還會騙我\n最後還是自己開翻譯軟體 一個字一個字看 ＝＝\n\n工作上也是\n很多瑣碎的事 我都丟給 AI\n但東西要出去之前 我一定自己再看一次\n\n因為 AI 可以說「我只是個 AI 模型」\n但我不能說「我只是轉貼 AI 的東西」\n負責的人 是我",
+    "images": [
+      "https://mochachen1225-create.github.io/isekai/promo/threads/not_magic.jpg"
+    ],
+    "tag": "AI",
+    "approved": false,
+    "posted": false
   }
 ]
