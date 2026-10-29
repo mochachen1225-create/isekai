@@ -65,6 +65,21 @@ if quiz.exists():
         if not target.exists():
             errs.append(f'index.html：找不到 {ref}')
 
+links_file = root / 'data' / 'links.json'
+if links_file.exists():
+    import json
+    try:
+        for l in json.loads(links_file.read_text(encoding='utf-8'))['links']:
+            if not l.get('name'):
+                errs.append('data/links.json：有一筆沒有 name')
+            url = l.get('url') or ''
+            if url and not re.match(r'^(https://|[a-z0-9_-]+/)', url, re.I):
+                errs.append(f'data/links.json：網址要 https:// 開頭或站內路徑：{url}')
+            elif url and not url.startswith('https://') and not (root / url.split('#')[0]).exists():
+                errs.append(f'data/links.json：找不到站內檔案 {url}')
+    except (ValueError, KeyError) as e:
+        errs.append(f'data/links.json 格式壞了：{e}')
+
 if errs:
     print('\n'.join(errs))
     sys.exit(1)
