@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>貓貓勇者小隊</title>
+  <link>https://mochachen1225-create.github.io/isekai/story/</link>
+  <atom:link href="https://mochachen1225-create.github.io/isekai/story/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>一個累到忘了生活的台灣上班族，掉進了異世界。小說和漫畫每週同步連載。</description>
+  <language>zh-TW</language>
+  <item>
+    <title>第二話　轉生後的第一個任務，是被貓撿回家睡覺</title>
+    <link>https://mochachen1225-create.github.io/isekai/story/02.html</link>
+    <guid>https://mochachen1225-create.github.io/isekai/story/02.html</guid>
+    <pubDate>Wed, 28 Oct 2026 07:42:10 +0800</pubDate>
+    <description>貓，說話了。根據我看過的一百部異世界作品，這種時候只有三種可能。 漫畫版：https://mochachen1225-create.github.io/isekai/story/02-comic.html</description>
+  </item>
+  <item>
+    <title>第一話　月暈雙環的晚上</title>
+    <link>https://mochachen1225-create.github.io/isekai/story/01.html</link>
+    <guid>https://mochachen1225-create.github.io/isekai/story/01.html</guid>
+    <pubDate>Wed, 28 Oct 2026 07:42:10 +0800</pubDate>
+    <description>本來想去看醫生，結果一覺醒來，已經半夜。 漫畫版：https://mochachen1225-create.github.io/isekai/story/01-comic.html</description>
+  </item>
+</channel>
+</rss>
