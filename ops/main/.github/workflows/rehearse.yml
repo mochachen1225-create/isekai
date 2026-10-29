@@ -1,0 +1,28 @@
+# 預演上線：每天台灣時間 09:07（週三再加 19:07，正式上線前一個多小時），
+# 照 release.json 把還沒上線的存稿分支一個一個合併進 site 的複本、跑檢查，不推任何東西。
+# 失敗＝某個週三會上線失敗，GitHub 會寄信。通常是 site 改了存稿分支也改過的檔案，跑 site 的 tools/sync_stock.sh 解決。
+name: 預演上線
+on:
+  schedule:
+    - cron: '7 1 * * *'
+    - cron: '7 11 * * 3'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  rehearse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: ctl
+      - uses: actions/checkout@v4
+        with:
+          ref: site
+          path: site
+          fetch-depth: 0
+      - name: 預演
+        working-directory: site
+        run: |
+          if [ ! -f tools/rehearse.sh ]; then echo "site 還沒有 tools/rehearse.sh，跳過"; exit 0; fi
+          bash tools/rehearse.sh ../ctl/release.json origin/site
