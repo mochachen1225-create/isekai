@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <!-- ▼ 系統掛點（首頁版面可以整個換掉，但這幾段要留著；check_site.py 會檢查） -->
 <!-- 舊的分享網址「首頁#隊伍碼」轉到測驗（測驗 10/29 搬到 quiz/） -->
-<script>if (/^#v\d+\./.test(location.hash)) location.replace('quiz/' + location.hash);</script>
+<script>function toQuiz() { if (/^#v\d+\./.test(location.hash)) location.replace('quiz/' + location.hash); } toQuiz(); addEventListener('hashchange', toQuiz);</script>
 <!-- Google Search Console 驗證，不能刪 -->
 <meta name="google-site-verification" content="lOzagWclhqDXOwrHEeRQId8vveT2KbTRqUo31Rz1WQQ" />
 <link rel="alternate" hreflang="zh-Hant" href="https://mochachen1225-create.github.io/isekai/">
