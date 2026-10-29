@@ -31,7 +31,7 @@
 
 **10/29 新增**：`isekai-studio` 有三個 skill（`.claude/skills/` 的 isekai-comic、isekai-trailer、isekai-story），畫漫畫、剪預告、寫小說照它們的步驟走。自動檢查工具在 `work/qc/`：`vision_check.py`（Gemini 3.8 Flash 量每格她和橘貓的比例、手腳數、有沒有字）、`media_check.py`（影片鏡頭、音樂段落）。設定集新增「角色尺寸表」，prompt 用 `comic3/shared.py` 的 `SIZE`。魔王畫像 10/29 照使用者家的貓的照片改白毛（`work/maou/portrait_v2.png`，`frames.py` 貼進各話空畫框）。**10/29 下午起 Vertex 每個請求都回 403「違反使用條款」**（生圖和看圖都是），原因是 Google Cloud Trust & Safety 認為專案違反 Gemini 服務條款，使用者 10/29 已送出申訴、收到確認信（論壇說可能要等 2–4 週）；不要另開專案繞過。AI Studio（`--api=studio`，預付真錢）還能用，要用先問她。第六話第 10 格橘貓放大還沒做完（程式放大有牆面接縫，等 Vertex 恢復重畫，prompt 在 `comic6/pr10b.txt`）。
 
-**翻譯版（10/29 使用者決定）**：英文、日文由 Claude 翻（英文她大概看過、日文她看不懂，先測架構）。每一回開頭標示原創構想＋AI 協作、AI 翻譯（日文寫明作者不懂日文），AI 標籤寧可標重。做法和用詞對照在 `isekai-studio` 的 `work/i18n/`（README、glossary）；`webtoon.py` 用 `ISEKAI_LANG`／`ISEKAI_TR` 排英日文版，中文版不受影響。第二話英日文條漫和小說已試做；上架平台和開始日期還沒定。LINE WEBTOON 上架包有「作家的話」`author_note.txt`（她的口吻，`work/publish/author_notes/`）。
+**翻譯版（10/29 使用者決定）**：英文、日文由 Claude 翻（英文她大概看過、日文她看不懂，先測架構）。每一回開頭標示原創構想＋AI 協作、AI 翻譯（日文寫明作者不懂日文），AI 標籤寧可標重。做法和用詞對照在 `isekai-studio` 的 `work/i18n/`（README、glossary）；`webtoon.py` 用 `ISEKAI_LANG`／`ISEKAI_TR` 排英日文版，中文版不受影響。平台（10/29 定）：WEBTOON 英文 → Royal Road → カクヨム → pixiv，一次上線一個，WEBTOON 英文 12/16（三）起（第一到三話同一天）。上架包 `epNN-wten`／`epNN-rr`／`epNN-kky`（pixiv 的 px 等確認有預約再做），用 `work/i18n/make_queue_i18n.py` 產生；作品資料和封面在 `publish/series/`；英文作品的 series_url 等使用者給網址再填。第一到三話已翻好、包好。LINE WEBTOON 上架包有「作家的話」`author_note.txt`（她的口吻，`work/publish/author_notes/`）。
 
 **等使用者**：10/29 看 Google Cloud 帳單，確認 Vertex 扣的是試用額度（10/28 中午抵免額頁：剩 NT$9,520.96／原 NT$9,534，已開始扣，但預算頁寫「No credits used」、Vertex 當天約 NT$76 只扣到 13，應是延遲；10/29 再看剩餘有沒有約少 NT$76）→ 確認後撤銷 Cloudflare Token、刪 Network secrets 那筆、把第 3 節「遊戲周邊用 Cloudflare」改成 Vertex、刪 `tools/cf_image.py`。
 
