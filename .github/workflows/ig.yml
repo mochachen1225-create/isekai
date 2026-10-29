@@ -1,10 +1,8 @@
 # IG 自動發文：每 15 分鐘看一次 posts/ig.json，發「已審核、時間到」的貼文，發完把 posted 寫回去。
 # 不合規格（不是 JPEG、比例超出 4:5～1.91:1）或發文失敗的貼文會寫 error 欄位、這次顯示失敗（GitHub 寄信），之後不再重試。
-# 每週一換一次 60 天長效 token（存回加密設定 IG_TOKEN）。每天台灣時間 23:27 抓一次數字，寫到 stats/ig/YYYY-MM-DD.json。
+# 每週一確認一次 token 還能用（系統用戶權杖不會過期，不用換）。每天台灣時間 23:27 抓一次數字，寫到 stats/ig/YYYY-MM-DD.json。
 # 需要的加密設定（Settings → Secrets and variables → Actions）：
-#   IG_TOKEN        使用者在 Meta 後台產生的 Instagram token
-#   IG_APP_SECRET   Meta App 的 Instagram 應用程式密鑰（短效換長效用）
-#   GH_SECRETS_PAT  跟 Threads 共用的那一把（只開這個 repo「Secrets: Read and write」）
+#   IG_TOKEN        Meta 後台「API setup with Unified login」產生的系統用戶權杖（EAA 開頭）
 name: IG 自動發文
 on:
   schedule:
@@ -14,10 +12,12 @@ on:
   workflow_dispatch:
     inputs:
       task:
-        description: 'check（只檢查規格）、post（發到期的貼文）、token（換長效 token）或 stats（抓數字）'
+        description: 'check（只檢查規格）、post（發到期的貼文）、token（確認 token 能用）或 stats（抓數字）'
         default: check
 permissions:
   contents: write
+env:
+  IG_USER_ID: '17841416960586035'   # mochachen12252026 的 IG 帳號編號（不是機密）
 concurrency:
   group: ig
   cancel-in-progress: false
@@ -34,18 +34,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: 換長效 token 並存回加密設定
+      - name: 確認 token 還能用
         env:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
-          IG_APP_SECRET: ${{ secrets.IG_APP_SECRET }}
-          GH_TOKEN: ${{ secrets.GH_SECRETS_PAT }}
-        run: |
-          if [ -z "$IG_TOKEN" ] || [ -z "$GH_TOKEN" ]; then echo "加密設定還沒齊，跳過"; exit 0; fi
-          NEW=$(python3 tools/ig_post.py token)
-          if [ -z "$NEW" ]; then echo "token 還有效、現在還不能換（剛產生不到 24 小時），下週一再換"; exit 0; fi
-          echo "::add-mask::$NEW"
-          gh secret set IG_TOKEN --repo "${{ github.repository }}" --body "$NEW"
-          echo "已換新 token"
+        run: python3 tools/ig_post.py token
   post:
     if: github.event.schedule == '7,22,37,52 * * * *' || github.event.inputs.task == 'post'
     runs-on: ubuntu-latest

@@ -2,7 +2,7 @@
 
 python3 tools/ig_post.py check     只檢查 posts/ig.json 的圖和影片合不合 IG 規格，不發文（隨時可跑）
 python3 tools/ig_post.py post      發「已審核、時間到、還沒發」的貼文
-python3 tools/ig_post.py token     把 IG_TOKEN 換成（或延長成）60 天的長效 token，印出新的；還不能換就印空的
+python3 tools/ig_post.py token     確認 IG_TOKEN 還能用（系統用戶權杖永遠不會過期，不用換）
 python3 tools/ig_post.py stats     抓追蹤人數和 30 天內貼文的數字，寫到 stats/ig/YYYY-MM-DD.json
 
 貼文格式（posts/ig.json，一則一個物件）：
@@ -13,15 +13,18 @@ python3 tools/ig_post.py stats     抓追蹤人數和 30 天內貼文的數字�
 - 不合規格的貼文不會送出，寫 error 欄位並跳過，之後每 15 分鐘也不會再試；修好檔案後把 error 刪掉就會重試。
 - 只有使用者說 OK 的才會由 Claude 設成 approved: true。
 
-API：Instagram API with Instagram Login（graph.instagram.com，不需要 Facebook 粉專），
-權限 instagram_business_basic、instagram_business_content_publish（stats 的貼文數字另外要 instagram_business_manage_insights）。
+API：Meta 後台「API setup with Unified login」產生的系統用戶權杖（EAA 開頭、永遠不會過期），走 graph.facebook.com，
+用 IG 帳號編號（IG_USER_ID）發文。權限 instagram_basic、instagram_content_publish；
+stats 的觸及、收藏要 instagram_manage_insights，沒有就只抓按讚和留言數。
+token 外流時：到 Meta 商家資產管理組合「貓貓勇者小隊」→ 系統工作人員，撤銷這個權杖，再產生新的貼進 GitHub。
 """
 import datetime, json, os, pathlib, struct, sys, time, urllib.error, urllib.parse, urllib.request
 
-API = 'https://graph.instagram.com/v26.0'
+API = 'https://graph.facebook.com/v26.0'
 root = pathlib.Path(__file__).resolve().parent.parent
 queue = root / 'posts' / 'ig.json'
 token = os.environ.get('IG_TOKEN', '')
+uid = os.environ.get('IG_USER_ID', '')   # IG 帳號編號（不是機密），寫在 ig.yml
 TW = datetime.timezone(datetime.timedelta(hours=8))
 
 
@@ -110,7 +113,7 @@ def wait_ready(cid, minutes=10):
     raise RuntimeError(f'容器 {cid} 等了 {minutes} 分鐘還沒處理好')
 
 
-def publish(post, uid):
+def publish(post):
     if post.get('video'):
         cid = call('POST', f'{uid}/media', media_type='REELS', video_url=post['video'], caption=post['text'])['id']
     elif len(post['images']) > 1:
@@ -135,14 +138,13 @@ def cmd_post():
            and datetime.datetime.fromisoformat(p['at']) <= now]
     if not due:
         return
-    uid = call('GET', 'me', fields='user_id')['user_id']
     failed = False
     for p in due:
         errs = problems(p)
         try:
             if errs:
                 raise RuntimeError('；'.join(errs))
-            p['ig_id'], p['permalink'] = publish(p, uid)
+            p['ig_id'], p['permalink'] = publish(p)
             p['posted'] = True
             p['posted_at'] = now.isoformat(timespec='seconds')
             print('已發：', p['id'], p['permalink'])
@@ -158,23 +160,11 @@ def cmd_post():
 # ---------- token ----------
 
 def cmd_token():
-    """短效換長效（要 IG_APP_SECRET）；已經是長效就延長（要 24 小時以上、還沒過期）。
-    兩個都不行但現在的 token 還能用（例如剛產生不到 24 小時），就印空的，workflow 不改 secret。"""
-    secret = os.environ.get('IG_APP_SECRET', '')
-    for url in (
-        f'https://graph.instagram.com/access_token?grant_type=ig_exchange_token&client_secret={secret}&access_token={token}',
-        f'https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token={token}',
-    ):
-        try:
-            with urllib.request.urlopen(url, timeout=60) as r:
-                print(json.load(r)['access_token']); return
-        except Exception:
-            continue
-    try:
-        call('GET', 'me', fields='user_id')
-        print('')                  # token 還有效，先不換
-    except Exception:
-        sys.exit('換 token 失敗：token 可能已過期，請重新產生一次')
+    """系統用戶權杖不會過期，這裡只確認還能用、連到的是對的 IG 帳號。"""
+    if not token:
+        print('還沒設定 IG_TOKEN，跳過'); return
+    me = call('GET', uid, fields='username')
+    print(f'IG_TOKEN 可以用，帳號：{me.get("username")}')
 
 
 # ---------- 數字 ----------
@@ -186,7 +176,7 @@ def cmd_stats():
     now = datetime.datetime.now(TW)
     out = {'taken_at': now.isoformat(timespec='seconds'), 'followers': None, 'media_count': None, 'posts': []}
     try:
-        me = call('GET', 'me', fields='followers_count,media_count')
+        me = call('GET', uid, fields='followers_count,media_count')
         out['followers'], out['media_count'] = me.get('followers_count'), me.get('media_count')
     except Exception as e:
         print('帳號數字抓不到：', e)
@@ -200,7 +190,7 @@ def cmd_stats():
             row['likes'], row['comments'] = basic.get('like_count'), basic.get('comments_count')
         except Exception as e:
             print(p['id'], '按讚留言數抓不到：', e)
-        try:                       # 要 instagram_business_manage_insights；沒有權限就只有上面兩個
+        try:                       # 要 instagram_manage_insights；沒有權限就只有上面兩個
             data = call('GET', f'{p["ig_id"]}/insights', metric='reach,saved,shares,views')['data']
             row.update({d['name']: (d.get('values') or [{}])[-1].get('value') for d in data})
         except Exception as e:
