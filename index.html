@@ -2,122 +2,35 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
+<!-- ▼ 系統掛點（首頁版面可以整個換掉，但這幾段要留著；check_site.py 會檢查） -->
+<!-- 舊的分享網址「首頁#隊伍碼」轉到測驗（測驗 10/29 搬到 quiz/） -->
+<script>if (/^#v\d+\./.test(location.hash)) location.replace('quiz/' + location.hash);</script>
+<!-- Google Search Console 驗證，不能刪 -->
 <meta name="google-site-verification" content="lOzagWclhqDXOwrHEeRQId8vveT2KbTRqUo31Rz1WQQ" />
+<link rel="alternate" hreflang="zh-Hant" href="https://mochachen1225-create.github.io/isekai/">
+<link rel="alternate" hreflang="x-default" href="https://mochachen1225-create.github.io/isekai/">
+<script type="module" src="js/home.js"></script>
+<!-- ▲ 系統掛點 -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#FFDDB8">
-<title>異世界轉生職業測驗</title>
-<meta name="description" content="三分鐘的異世界小冒險，找出你的轉生職業。純屬娛樂，不收集任何個人資料。">
-<meta property="og:title" content="異世界轉生職業測驗">
-<meta property="og:description" content="你會轉生成什麼職業？一起組一支隊伍吧！">
-<link rel="stylesheet" href="css/style.css">
+<title>貓貓勇者小隊</title>
+<meta name="description" content="一個累到忘了生活的台灣上班族，掉進了異世界。小說、漫畫每週三更新。">
+<meta property="og:title" content="貓貓勇者小隊">
+<meta property="og:description" content="一個累到忘了生活的台灣上班族，掉進了異世界。小說、漫畫每週三更新。">
+<link rel="stylesheet" href="story/story.css">
 <script data-goatcounter="https://catheroparty.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
-<div id="app">
-  <section id="screen-title" class="screen">
-    <div class="title-wrap">
-      <p class="eyebrow">貓貓勇者小隊・新手教學</p>
-      <h1>異世界<br>轉生職業測驗</h1>
-      <p class="sub">三分鐘的小冒險，<br>找出你的轉生職業。</p>
-      <div id="title-sprites" class="sprite-row"></div>
-      <button class="btn primary" data-action="start">開始轉生</button>
-      <a class="story-link" href="story/">線上小說《貓貓勇者小隊》開始連載中 →</a>
-      <a class="story-link" href="games/starspring/">小遊戲《爬上星之泉》：跟魔王玩一二三木頭人 →</a>
-      <p class="fine">不收集任何個人資料・純屬娛樂</p>
-    </div>
+<!-- 暫時的骨架：正式版面由雲端 Claude 在 home-v2 做。data-home… 屬性的用法見 js/home.js -->
+<main class="page">
+  <h1>貓貓勇者小隊</h1>
+  <section data-home-ready hidden>
+    <p>最新：<span data-home="latest.no"></span>　<span data-home="latest.title"></span></p>
+    <img data-home-src="latest.thumb" alt="" width="400">
+    <p><a class="btn" data-home-href="latest.novel" href="story/">小說</a> <a class="btn" data-home-href="latest.comic" href="story/">漫畫</a></p>
   </section>
-
-  <section id="screen-invite" class="screen">
-    <div class="title-wrap">
-      <p class="eyebrow">隊伍邀請</p>
-      <h2 id="invite-title"></h2>
-      <div id="invite-members" class="member-row"></div>
-      <p class="sub">測完之後，你就會加入這支隊伍。<br>湊滿四人，隊名就會揭曉。</p>
-      <button class="btn primary" data-action="start">開始轉生</button>
-      <p class="fine">不收集任何個人資料・純屬娛樂</p>
-    </div>
-  </section>
-
-  <section id="screen-intro" class="screen">
-    <div class="title-wrap intro">
-      <p class="eyebrow">開始之前</p>
-      <h2>這是一場小小的異世界冒險，<br>也是一個個性測驗。</h2>
-      <div class="intro-steps">
-        <p>🗺️ 在村子裡四處逛逛，遇到事情時，<b>憑直覺選</b>就好</p>
-        <p>🔮 最後，異世界的神明會告訴你：<br>你轉生成了什麼職業、你是什麼樣的人</p>
-        <p>👥 把結果傳給朋友，四個人可以組成一支隊伍</p>
-      </div>
-      <p class="intro-q">你想玩哪一個版本？</p>
-      <div class="tone-row">
-        <button class="tone-card light" data-tone="l"><span class="ico">☀️</span><b>光明版</b><span>溫柔正向，<br>像被好朋友抱抱</span></button>
-        <button class="tone-card dark" data-tone="d"><span class="ico">🌙</span><b>暗黑版</b><span>毒舌吐槽，<br>但其實還是很愛你</span></button>
-      </div>
-      <p class="fine">約 3 分鐘・不收集任何個人資料・純屬娛樂</p>
-    </div>
-  </section>
-
-  <section id="screen-avatar" class="screen">
-    <div class="title-wrap">
-      <p class="sys-box">【系統】請選擇你的轉生外觀。</p>
-      <div class="choice-row">
-        <button class="avatar-card" data-gender="m"><span class="avatar-sprite" data-look="m"></span><span>男生</span></button>
-        <button class="avatar-card" data-gender="f"><span class="avatar-sprite" data-look="f"></span><span>女生</span></button>
-      </div>
-      <p class="fine">只影響角色外觀，不影響結果。</p>
-    </div>
-  </section>
-
-  <section id="screen-situation" class="screen">
-    <div class="title-wrap">
-      <h2>今天是個天氣很好的日子，<br>你覺得你正在……？</h2>
-      <div id="situations" class="situation-list"></div>
-    </div>
-  </section>
-
-  <section id="screen-scene" class="screen">
-    <div id="scene-art" class="scene-art"></div>
-    <div id="scene-text" class="scene-text"></div>
-    <p class="tap-hint">點一下繼續</p>
-  </section>
-
-  <section id="screen-game" class="screen">
-    <header id="topbar">
-      <span class="tb-label">新手教學</span>
-      <div id="stamps"></div>
-      <button id="status-btn" class="status-btn" aria-label="狀態視窗">狀態</button>
-    </header>
-    <div id="stage"><canvas id="map" aria-label="異世界村莊地圖"></canvas>
-      <div id="eyes" class="eyes" hidden><div class="lid top"></div><div class="lid bottom"></div><p id="eyes-text"></p></div></div>
-  </section>
-
-  <section id="screen-ritual" class="screen">
-    <div id="ritual-stamps"></div>
-    <div class="status-window ritual-window"><div id="ritual-lines"></div></div>
-    <div id="ritual-crystal"></div>
-    <p class="tap-hint">點一下跳過</p>
-  </section>
-
-  <section id="screen-result" class="screen scroll"></section>
-  <section id="screen-team" class="screen scroll"></section>
-  <section id="screen-analysis" class="screen scroll"></section>
-
-  <!-- 疊在畫面上的東西 -->
-  <div id="tapcatch" class="tapcatch" hidden></div>
-  <div id="dialog" class="dialog" hidden>
-    <div class="dialog-face" id="dialog-face"></div>
-    <div class="dialog-body">
-      <div class="dialog-name" id="dialog-name"></div>
-      <div class="dialog-text" id="dialog-text"></div>
-    </div>
-    <span class="dialog-next">▼</span>
-  </div>
-  <div id="panel" class="panel" hidden></div>
-  <div id="legend" class="legend" hidden></div>
-  <div id="gut" class="gut" hidden></div>
-  <div id="status" class="modal" hidden></div>
-  <div id="toast" class="toast" hidden></div>
-</div>
-<script src="js/vendor/qrcode.js"></script>
-<script type="module" src="js/main.js"></script>
+  <p><a class="btn" href="story/">連載目錄</a> <a class="btn" href="quiz/">玩轉生職業測驗</a></p>
+  <p><a href="games/starspring/">小遊戲《爬上星之泉》</a></p>
+</main>
 </body>
 </html>
