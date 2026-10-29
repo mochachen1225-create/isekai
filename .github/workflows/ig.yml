@@ -1,0 +1,80 @@
+# IG 自動發文：每 15 分鐘看一次 posts/ig.json，發「已審核、時間到」的貼文，發完把 posted 寫回去。
+# 不合規格（不是 JPEG、比例超出 4:5～1.91:1）或發文失敗的貼文會寫 error 欄位、這次顯示失敗（GitHub 寄信），之後不再重試。
+# 每週一換一次 60 天長效 token（存回加密設定 IG_TOKEN）。每天台灣時間 23:27 抓一次數字，寫到 stats/ig/YYYY-MM-DD.json。
+# 需要的加密設定（Settings → Secrets and variables → Actions）：
+#   IG_TOKEN        使用者在 Meta 後台產生的 Instagram token
+#   IG_APP_SECRET   Meta App 的 Instagram 應用程式密鑰（短效換長效用）
+#   GH_SECRETS_PAT  跟 Threads 共用的那一把（只開這個 repo「Secrets: Read and write」）
+name: IG 自動發文
+on:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+    - cron: '17 2 * * 1'
+    - cron: '27 15 * * *'
+  workflow_dispatch:
+    inputs:
+      task:
+        description: 'check（只檢查規格）、post（發到期的貼文）、token（換長效 token）或 stats（抓數字）'
+        default: check
+permissions:
+  contents: write
+concurrency:
+  group: ig
+  cancel-in-progress: false
+jobs:
+  check:
+    if: github.event.inputs.task == 'check' || (github.event_name == 'workflow_dispatch' && github.event.inputs.task == '')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 檢查圖片和影片規格
+        run: python3 tools/ig_post.py check
+  token:
+    if: github.event.schedule == '17 2 * * 1' || github.event.inputs.task == 'token'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 換長效 token 並存回加密設定
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_APP_SECRET: ${{ secrets.IG_APP_SECRET }}
+          GH_TOKEN: ${{ secrets.GH_SECRETS_PAT }}
+        run: |
+          if [ -z "$IG_TOKEN" ] || [ -z "$GH_TOKEN" ]; then echo "加密設定還沒齊，跳過"; exit 0; fi
+          NEW=$(python3 tools/ig_post.py token)
+          if [ -z "$NEW" ]; then echo "token 還有效、現在還不能換（剛產生不到 24 小時），下週一再換"; exit 0; fi
+          echo "::add-mask::$NEW"
+          gh secret set IG_TOKEN --repo "${{ github.repository }}" --body "$NEW"
+          echo "已換新 token"
+  post:
+    if: github.event.schedule == '7,22,37,52 * * * *' || github.event.inputs.task == 'post'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 發到期的貼文
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+        run: python3 tools/ig_post.py post
+      - name: 記錄已發（失敗的也記下來，避免一直重試）
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add posts/ig.json
+          git diff --cached --quiet || { git commit -m "IG：記錄已發的貼文"; git pull -q --rebase; git push; }
+  stats:
+    if: github.event.schedule == '27 15 * * *' || github.event.inputs.task == 'stats'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 抓 IG 數字
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+        run: python3 tools/ig_post.py stats
+      - name: 存起來
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          [ -d stats/ig ] || exit 0
+          git add stats/ig
+          git diff --cached --quiet || { git commit -m "IG：每日數字"; git pull -q --rebase; git push; }
