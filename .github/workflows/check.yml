@@ -1,0 +1,12 @@
+# 推到 site 或存稿分支時，自動跑發布前檢查（圖片、連結、LINE WEBTOON 規格、目錄）
+name: 發布前檢查
+on:
+  push:
+    branches: [site, 'ep*-stock']
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/check_site.py
