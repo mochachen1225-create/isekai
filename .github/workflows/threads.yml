@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
     inputs:
       task:
-        description: 'post（發到期的貼文）、token（換長效 token）或 stats（抓數字）'
+        description: 'post（發到期的貼文）、token（換長效 token）、stats（抓數字）或 probe（測回覆權限，不會發文）'
         default: post
 permissions:
   contents: write
@@ -47,12 +47,13 @@ jobs:
         env:
           THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
         run: python3 tools/threads_post.py post
-      - name: 記錄已發
+      - name: 記錄已發（失敗的也記下來，避免一直重試）
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add posts/threads.json
-          git diff --cached --quiet || { git commit -m "Threads：記錄已發的貼文"; git push; }
+          git diff --cached --quiet || { git commit -m "Threads：記錄已發的貼文"; git pull -q --rebase; git push; }
   stats:
     if: github.event.schedule == '17 15 * * *' || github.event.inputs.task == 'stats'
     runs-on: ubuntu-latest
@@ -69,3 +70,12 @@ jobs:
           [ -d stats/threads ] || exit 0
           git add stats/threads
           git diff --cached --quiet || { git commit -m "Threads：每日數字"; git pull -q --rebase; git push; }
+  probe:
+    if: github.event.inputs.task == 'probe'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 測回覆權限（建容器但不發出）
+        env:
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+        run: python3 tools/threads_post.py probe
