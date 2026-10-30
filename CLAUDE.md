@@ -48,6 +48,7 @@
 | 網站（測驗＋連載） | 這個 repo 的 `site` 分支，push 後 GitHub Pages 自動更新；同時推一份到 `story-draft` |
 | 測驗設計稿 | `DESIGN.md`（第 12 章是插畫美術規範和各職業定稿紀錄） |
 | 職業插畫指令 | `PROMPTS.md` |
+| **工作室大門（所有連結的總頁，已釘選）** | https://claude.ai/artifact/M2y771X1vDynfwjXML627W（原始檔 `isekai-studio` 的 `work/hub/`；新的工作頁做好就加進去） |
 | 推廣計畫 | https://claude.ai/artifact/MZpjDvX1fNDdtxfv3eqyjT（Claude Docs） |
 | 進度表（待辦＋發文排程） | https://claude.ai/artifact/EbWR1U1Twg1p5f6trDkwDT（資料在 db 的 `tasks`） |
 | 連載草稿本（還沒上線的小說、分鏡、prompt） | https://claude.ai/artifact/N9vUVni1oPJ4f1FYmzQySi（Claude Docs；「總覽」分頁放打勾清單和各話連結，每一話一個分頁） |
