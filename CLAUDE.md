@@ -35,7 +35,7 @@
 
 **翻譯版（10/29 使用者決定）**：英文、日文由 Claude 翻（英文她大概看過、日文她看不懂，先測架構）。每一回開頭標示原創構想＋AI 協作、AI 翻譯（日文寫明作者不懂日文），AI 標籤寧可標重。做法和用詞對照在 `isekai-studio` 的 `work/i18n/`（README、glossary）；`webtoon.py` 用 `ISEKAI_LANG`／`ISEKAI_TR` 排英日文版，中文版不受影響。平台（10/29 定）：WEBTOON 英文 → Royal Road → カクヨム → pixiv，一次上線一個，WEBTOON 英文 12/16（三）起（第一到三話同一天）。上架包 `epNN-wten`／`epNN-rr`／`epNN-kky`（pixiv 的 px 等確認有預約再做），用 `work/i18n/make_queue_i18n.py` 產生；作品資料和封面在 `publish/series/`；英文作品的 series_url 等使用者給網址再填。第一到三話已翻好、包好。英文 WEBTOON 作品 1182615（中文是 1182325），第一話 10/29 已預約 12/16 21:40。Royal Road 12/16 起每週三 22:10（rr 包已有日期，series_url 等作品建立後填）；カクヨム日期等 Royal Road 順了再定。英文 WEBTOON 和 Royal Road 第四話以後每週要翻（12/23 起）。LINE WEBTOON 上架包有「作家的話」`author_note.txt`（她的口吻，`work/publish/author_notes/`）。
 
-**等使用者**：10/29 看 Google Cloud 帳單，確認 Vertex 扣的是試用額度（10/28 中午抵免額頁：剩 NT$9,520.96／原 NT$9,534，已開始扣，但預算頁寫「No credits used」、Vertex 當天約 NT$76 只扣到 13，應是延遲；10/29 再看剩餘有沒有約少 NT$76）→ 確認後撤銷 Cloudflare Token、刪 Network secrets 那筆、把第 3 節「遊戲周邊用 Cloudflare」改成 Vertex、刪 `tools/cf_image.py`。
+**等使用者**：10/29 看 Google Cloud 帳單，確認 Vertex 扣的是試用額度（10/28 中午抵免額頁：剩 NT$9,520.96／原 NT$9,534，已開始扣，但預算頁寫「No credits used」、Vertex 當天約 NT$76 只扣到 13，應是延遲；10/29 再看剩餘有沒有約少 NT$76）→（10/30 改）Cloudflare 保留不撤銷：地圖、背景、遊戲小圖改用 FLUX.1 schnell（一天約 200 多張），`cf_image.py` 下次要用時加上 schnell 的格式。Stability 等真的需要再申請（她 10/30 說先不用）。
 
 **名字（10/29 使用者定）**：雲端 Claude＝「總編」，架構 Claude＝「架構師」，本機 Claude＝「小弟」（YouTube 幕後影片也這樣叫）。主角（使用者的替身）＝「摩卡」：網站和 YouTube 直接叫；小說裡等她需要自我介紹時才說「請叫我摩卡」。摩卡是使用者家另一隻貓的名字（不是魔王原型），使用者同意公開；魔王原型的名字仍然不公開（私人備註在 isekai-studio 的 notes/private.md）。
 
