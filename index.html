@@ -36,7 +36,7 @@ a{color:inherit}a:focus-visible{outline:3px solid var(--rose);outline-offset:2px
 @keyframes tk{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.ticker div{animation:none}}
 .wrap{max-width:760px;margin:0 auto;padding-block:0 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:40px}
-.top{padding-top:16px;display:flex;justify-content:space-between;align-items:center}
+.top{padding-top:16px}
 .logo{font-size:22px;margin:0;letter-spacing:.04em}
 .logo::after{content:"✦";color:var(--rose);margin-left:6px}
 h2{font-size:26px;margin:0;line-height:1.2;letter-spacing:.02em}
@@ -125,6 +125,15 @@ h2{font-size:26px;margin:0;line-height:1.2;letter-spacing:.02em}
 .where a,.where span{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:6px 14px;font-size:14px;text-decoration:none;box-shadow:3px 3px 0 var(--line)}
 .where a:nth-child(3n+1){background:#FFE1E6;color:#1F1B2E}.where a:nth-child(3n+2){background:#DDF5EA;color:#1F1B2E}.where a:nth-child(3n){background:#E5E0FF;color:#1F1B2E}
 .where small{opacity:.7;margin-left:6px;font-size:12px}
+.toplinks{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:6px;font-size:14px}
+.toplinks a,.toplinks span{text-decoration:none;color:var(--ink);border-bottom:2px solid var(--rose);line-height:1.6}
+.toplinks span{border-bottom-color:transparent;color:var(--soft)}
+.toplinks small{display:none}
+.logos{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.logos a{width:42px;height:42px;display:grid;place-items:center;border:2.5px solid var(--line);border-radius:50%;background:var(--paper);color:var(--ink);box-shadow:3px 3px 0 var(--line)}
+.logos a:nth-child(3n+1){background:#FFE1E6;color:#1F1B2E}.logos a:nth-child(3n+2){background:#DDF5EA;color:#1F1B2E}.logos a:nth-child(3n){background:#E5E0FF;color:#1F1B2E}
+.logos a:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--line)}
+.logos svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 footer{font-size:13px;color:var(--soft);display:grid;gap:4px;border-top:2.5px dashed var(--line);padding-top:16px}
 </style>
 </head>
@@ -132,7 +141,14 @@ footer{font-size:13px;color:var(--soft);display:grid;gap:4px;border-top:2.5px da
 
 <div class="ticker" aria-hidden="true"><div>NEW　每週三 21:00 更新　・　免費看　・　小說＋漫畫　・　一個人＋三隻 AI 小貓　・　NEW　每週三 21:00 更新　・　免費看　・　小說＋漫畫　・　一個人＋三隻 AI 小貓　・　</div></div>
 <div class="wrap">
-  <header class="top"><h1 class="logo">貓貓勇者小隊</h1></header>
+  <header class="top"><h1 class="logo">貓貓勇者小隊</h1>
+    <nav class="toplinks" data-links aria-label="在哪裡看得到我們">
+      <a href="https://home.gamer.com.tw/artwork.php?sn=6422200">巴哈姆特<small>小說</small></a>
+      <a href="https://www.webtoons.com/p/community/zh-hant/u/catheroparty">LINE WEBTOON<small>漫畫</small></a>
+      <a href="https://www.instagram.com/mochachen12252026/">Instagram</a>
+      <a href="https://www.threads.com/@mochachen12252026">Threads</a>
+    </nav>
+  </header>
 
   <section class="hero">
     <img src="assets/home/hero.jpg" alt="摩卡和戴郵差帽的橘貓，一起窩在巨大的貓窩裡">
@@ -262,18 +278,16 @@ footer{font-size:13px;color:var(--soft);display:grid;gap:4px;border-top:2.5px da
     </div>
   </section>
 
-  <section class="sec">
-    <div class="sec-head"><h2>在哪裡看得到我們</h2></div>
-    <div class="where" data-links>
-      <span>巴哈姆特<small>小說</small></span>
-      <a href="https://www.webtoons.com/p/community/zh-hant/u/catheroparty">LINE WEBTOON<small>漫畫</small></a>
-      <a href="https://www.instagram.com/mochachen12252026/">Instagram</a>
-      <a href="https://www.threads.com/@mochachen12252026">Threads</a>
-      <a href="story/feed.xml">RSS</a>
-    </div>
-  </section>
-
   <footer>
+    <div class="logos">
+      <a href="https://home.gamer.com.tw/artwork.php?sn=6422200" aria-label="巴哈姆特" title="巴哈姆特"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17" text-anchor="middle" font-size="14" fill="currentColor" stroke="none">巴</text></svg></a>
+      <a href="https://www.webtoons.com/p/community/zh-hant/u/catheroparty" aria-label="LINE WEBTOON" title="LINE WEBTOON"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H10l-4 4v-4H4z"/><path d="M7.5 8.5l1.5 5 1.5-4 1.5 4 1.5-5"/></svg></a>
+      <a href="https://www.instagram.com/mochachen12252026/" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.8" cy="7.2" r=".6" fill="currentColor"/></svg></a>
+      <a href="https://www.threads.com/@mochachen12252026" aria-label="Threads" title="Threads"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11.5c-.5-3-2.5-4-4.5-4-3 0-4.8 2.3-4.8 5s1.8 5 4.8 5c2.2 0 4-1.2 4-3.2 0-1.7-1.4-2.6-3.4-2.6-1.6 0-2.6.8-2.6 1.9 0 1 .9 1.6 2 1.6 2.3 0 3-1.8 3-4.2"/></svg></a>
+      <a href="https://creators.spotify.com/pod/show/6NLHeizsfRFcVBZ6MenN8x" aria-label="Podcast「摩卡與總編」" title="Podcast「摩卡與總編」"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3.5" width="6" height="10" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v3.5M9 20.5h6"/></svg></a>
+      <a href="https://www.youtube.com/@catheroparty" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10.5 9.5v5l4.2-2.5z" fill="currentColor"/></svg></a>
+      <a href="story/feed.xml" aria-label="RSS" title="RSS"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6.5" cy="17.5" r="1.4" fill="currentColor"/><path d="M5 11a8 8 0 0 1 8 8M5 5.5a13.5 13.5 0 0 1 13.5 13.5"/></svg></a>
+    </div>
     <span>貓貓勇者小隊｜點子是作者的，作品是 AI 協作產出的。</span>
     <span>我無中生有，AI 有中生更多有。</span>
   </footer>
