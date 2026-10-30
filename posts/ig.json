@@ -15,7 +15,7 @@
    "https://mochachen1225-create.github.io/isekai/promo/carousel/14.jpg",
    "https://mochachen1225-create.github.io/isekai/promo/carousel/16.jpg"
   ],
-  "approved": false,
+  "approved": true,
   "posted": false
  },
  {
@@ -30,12 +30,11 @@
  {
   "id": "ig_game",
   "at": "2026-11-10T20:00:00+08:00",
-  "text": "《貓貓勇者小隊》的小遊戲：爬上星之泉\n\n爬上貓跳台 躲過橘貓\n拿到魔王的星星結晶\n\n手機就能玩\n連結在個人檔案\n\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
-  "images": [
-   "https://mochachen1225-create.github.io/isekai/games/starspring/og.jpg"
-  ],
-  "approved": false,
-  "posted": false
+  "text": "《貓貓勇者小隊》的小遊戲：爬上星之泉\n\n爬上貓跳台 躲過橘貓\n拿到魔王的星星結晶\n\n跟我們的貓貓勇者小隊 異世界小說/漫畫一起\n歡迎玩玩看：Ｄ\n\n（遊戲和圖片：AI 協作）\n\n#貓貓勇者小隊 #異世界 #小遊戲 #橘貓 #AI協作",
+  "images": [],
+  "approved": true,
+  "posted": false,
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/starspring_reel.mp4"
  },
  {
   "id": "ig_ep1",
@@ -53,7 +52,7 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/ep01/11.jpg",
    "https://mochachen1225-create.github.io/isekai/promo/ig/ep01/12.jpg"
   ],
-  "approved": false,
+  "approved": true,
   "posted": false
  },
  {
@@ -71,7 +70,7 @@
   "text": "如果你在異世界開一間咖啡館\n大概就是這種感覺 ☕\n\n你是哪一種職業？\n測驗連結在個人檔案\n\n（影片：AI 協作）\n\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
   "images": [],
   "video": "https://mochachen1225-create.github.io/isekai/promo/cafe_f.mp4",
-  "approved": false,
+  "approved": true,
   "posted": false
  },
  {
@@ -90,7 +89,7 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/11.jpg",
    "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/12.jpg"
   ],
-  "approved": false,
+  "approved": true,
   "posted": false
  },
  {
@@ -109,7 +108,7 @@
   "images": [
    "https://mochachen1225-create.github.io/isekai/promo/ig/yawn.jpg"
   ],
-  "approved": false,
+  "approved": true,
   "posted": false
  }
 ]
