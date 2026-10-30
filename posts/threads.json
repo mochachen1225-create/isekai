@@ -222,5 +222,16 @@
     "tag": "AI",
     "approved": true,
     "posted": false
+  },
+  {
+    "id": "halloween",
+    "at": "2026-10-31T20:00:00+08:00",
+    "text": "萬聖節快樂🎃\n我們貓貓小隊也變裝了\n\n總編是小巫師（但工作證還是掛著）\n架構師是吸血鬼（耳麥沒拔下來）\n小弟是小幽靈 帽子還露在外面 XD\n我戴了貓耳朵 終於跟大家同一國了\n\n不給糖就搗蛋？\n他們說：不給罐罐就搗蛋。",
+    "images": [
+      "https://mochachen1225-create.github.io/isekai/promo/threads/halloween_a.jpg"
+    ],
+    "approved": false,
+    "posted": false,
+    "tag": "日常"
   }
 ]
