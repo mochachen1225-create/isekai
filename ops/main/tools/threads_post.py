@@ -3,15 +3,19 @@
 python3 tools/threads_post.py post      發 posts/threads.json 裡「已審核、時間到、還沒發」的貼文
 python3 tools/threads_post.py token     把 THREADS_TOKEN 換成（或延長成）60 天的長效 token，印出新的
 python3 tools/threads_post.py stats     抓 30 天內每則貼文的數字和追蹤人數，寫到 stats/threads/YYYY-MM-DD.json（要 threads_manage_insights 權限）
+python3 tools/threads_post.py probe     試建一個「回覆最新一則」的容器但不發出，確認 token 有沒有回覆權限
 
 貼文格式（posts/threads.json，一則一個物件）：
   {"id": "bts1", "at": "2026-11-12T20:00:00+08:00", "text": "...", "images": ["https://.../a.jpg"],
    "approved": true, "posted": false, "tag": "AI"}
 images 可以是 0 張（純文字）、1 張、2～20 張（輪播）。圖片要是公開網址（GitHub Pages）。
 tag 是 Threads 的主題標籤（一則一個，可以不寫）：1～50 字，「.」和「&」會自動拿掉；標籤被拒絕時改發沒標籤的，不擋發文。
+replies 是長文接在下面的留言（字串陣列，可以不寫）：主文發出後，由同一個帳號照順序一則接一則回覆（純文字）。
+每段（主文和每則留言）都要 ≤500 字，超過就整則不發。發文中途失敗會寫 error 欄位、不再重試（主文發出去了就不會重發），
+GitHub 會寄失敗信；修好後把 error 刪掉，沒發完的留言會從斷掉的地方接著發。
 只有使用者說 OK 的才會由 Claude 設成 approved: true。
 """
-import datetime, json, os, pathlib, sys, time, urllib.parse, urllib.request
+import datetime, json, os, pathlib, sys, time, urllib.error, urllib.parse, urllib.request
 
 API = 'https://graph.threads.net/v1.0'
 root = pathlib.Path(__file__).resolve().parent.parent
@@ -26,8 +30,26 @@ def call(method, path, **params):
         req = urllib.request.Request(f'{API}/{path}?{data.decode()}')
     else:
         req = urllib.request.Request(f'{API}/{path}', data=data, method='POST')
-    with urllib.request.urlopen(req, timeout=60) as r:
-        return json.load(r)
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return json.load(r)
+    except urllib.error.HTTPError as e:   # 把 Meta 回的錯誤訊息帶出來（token 不會出現在這裡）
+        raise RuntimeError(f'{method} {path}：{e.code} {e.read().decode(errors="replace")[:300]}') from None
+
+
+LIMIT = 500
+
+
+def too_long(post):
+    """主文和每則留言都要 ≤500 字（Threads 上限），回傳超過的說明。"""
+    parts = [('主文', post.get('text') or '')] + [(f'留言 {i + 1}', r) for i, r in enumerate(post.get('replies') or [])]
+    return [f'{name} {len(s)} 字' for name, s in parts if len(s) > LIMIT]
+
+
+def reply(parent_id, text):
+    cid = call('POST', 'me/threads', media_type='TEXT', text=text, reply_to_id=parent_id)['id']
+    time.sleep(5)
+    return call('POST', 'me/threads_publish', creation_id=cid)['id']
 
 
 def clean_tag(tag):
@@ -75,19 +97,51 @@ def cmd_post():
         print('還沒設定 THREADS_TOKEN，跳過'); return
     posts = json.loads(queue.read_text(encoding='utf-8'))
     now = datetime.datetime.now(datetime.timezone.utc)
-    changed = False
+    changed = failed = False
     for p in posts:
-        if p.get('posted') or not p.get('approved'):
+        if not p.get('approved') or p.get('error'):
+            continue
+        replies = p.get('replies') or []
+        done = p.get('reply_ids') or []
+        if p.get('posted') and len(done) >= len(replies):
             continue
         if datetime.datetime.fromisoformat(p['at']) > now:
             continue
-        p['thread_id'] = publish(p)
-        p['posted'] = True
-        p['posted_at'] = now.isoformat(timespec='seconds')
         changed = True
-        print('已發：', p['id'], p['thread_id'])
+        try:
+            if not p.get('posted'):
+                long = too_long(p)
+                if long:
+                    raise RuntimeError('超過 500 字：' + '、'.join(long))
+                p['thread_id'] = publish(p)
+                p['posted'] = True
+                p['posted_at'] = now.isoformat(timespec='seconds')
+                print('已發：', p['id'], p['thread_id'])
+            for text in replies[len(done):]:          # 從斷掉的地方接著發，一則接一則
+                done.append(reply(done[-1] if done else p['thread_id'], text))
+                p['reply_ids'] = done
+                print('已接留言：', p['id'], len(done), '/', len(replies))
+        except Exception as e:                        # 寫 error、不再重試；主文發出去了就不會重發
+            p['error'] = str(e)[:500]
+            failed = True
+            print('失敗：', p['id'], p['error'])
     if changed:
         queue.write_text(json.dumps(posts, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    if failed:
+        sys.exit(1)                                   # Actions 顯示失敗、寄信給使用者
+
+
+def cmd_probe():
+    """用最新一則已發的貼文建一個回覆容器，但不發出（容器沒發會自己過期），看權限夠不夠。"""
+    posts = [p for p in json.loads(queue.read_text(encoding='utf-8')) if p.get('thread_id')]
+    if not posts:
+        sys.exit('還沒有已發的貼文可以測')
+    target = max(posts, key=lambda p: p.get('posted_at', ''))
+    try:
+        call('POST', 'me/threads', media_type='TEXT', text='（權限測試，不會發出）', reply_to_id=target['thread_id'])
+        print(f'可以回覆：用 {target["id"]} 測試成功，容器沒有發出')
+    except Exception as e:
+        sys.exit(f'不能回覆：{e}')
 
 
 def cmd_token():
@@ -161,4 +215,4 @@ def cmd_stats():
 
 
 if __name__ == '__main__':
-    {'post': cmd_post, 'token': cmd_token, 'stats': cmd_stats}[sys.argv[1]]()
+    {'post': cmd_post, 'token': cmd_token, 'stats': cmd_stats, 'probe': cmd_probe}[sys.argv[1]]()
