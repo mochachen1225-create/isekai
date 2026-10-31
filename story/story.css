@@ -78,3 +78,4 @@ h1 { margin: 6px 0 6px; font-size: 26px; line-height: 1.35; text-align: center; 
 .series .rss{margin-left:.5em;font-size:.85em;color:inherit;opacity:.75}
 .game-link{text-align:center;margin:14px 0 0;font-size:14px}
 .game-link a{color:var(--accent)}
+.credit{margin:32px 0 0;font-size:12px;line-height:1.8;color:var(--ink-soft);text-align:center;letter-spacing:.02em}
