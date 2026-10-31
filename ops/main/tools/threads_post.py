@@ -9,6 +9,7 @@ python3 tools/threads_post.py probe     試建一個「回覆最新一則」的�
   {"id": "bts1", "at": "2026-11-12T20:00:00+08:00", "text": "...", "images": ["https://.../a.jpg"],
    "approved": true, "posted": false, "tag": "AI"}
 images 可以是 0 張（純文字）、1 張、2～20 張（輪播）。圖片要是公開網址（GitHub Pages）。
+video 是影片的公開網址（GitHub Pages 的 mp4，選填）：有 video 就發成「文字＋一支影片」，不看 images。
 tag 是 Threads 的主題標籤（一則一個，可以不寫）：1～50 字，「.」和「&」會自動拿掉；標籤被拒絕時改發沒標籤的，不擋發文。
 replies 是長文接在下面的留言（字串陣列，可以不寫）：主文發出後，由同一個帳號照順序一則接一則回覆（純文字）。
 每段（主文和每則留言）都要 ≤500 字，超過就整則不發。發文中途失敗會寫 error 欄位、不再重試（主文發出去了就不會重發），
@@ -58,10 +59,12 @@ def clean_tag(tag):
     return tag or None
 
 
-def container(text=None, image=None, carousel_item=False, children=None, tag=None):
+def container(text=None, image=None, carousel_item=False, children=None, tag=None, video=None):
     p = {}
     if children:
         p.update(media_type='CAROUSEL', children=','.join(children))
+    elif video:
+        p.update(media_type='VIDEO', video_url=video)
     elif image:
         p.update(media_type='IMAGE', image_url=image)
     else:
@@ -75,10 +78,25 @@ def container(text=None, image=None, carousel_item=False, children=None, tag=Non
     return call('POST', 'me/threads', **p)['id']
 
 
+def wait_ready(cid, minutes=10):
+    """等 Meta 處理好容器（影片要轉檔，圖片通常幾秒）才能發；處理失敗就丟錯誤。"""
+    for _ in range(minutes * 6):
+        r = call('GET', cid, fields='status,error_message')
+        if r.get('status') in (None, 'FINISHED'):
+            return
+        if r.get('status') in ('ERROR', 'EXPIRED'):
+            raise RuntimeError(f'容器 {cid} 狀態 {r.get("status")}：{r.get("error_message", "")}')
+        time.sleep(10)
+    raise RuntimeError(f'容器 {cid} 等了 {minutes} 分鐘還沒處理好')
+
+
 def publish(post):
-    imgs = post.get('images') or []
+    video = post.get('video')
+    imgs = [] if video else (post.get('images') or [])
     kids = [container(image=u, carousel_item=True) for u in imgs] if len(imgs) > 1 else None
-    main = dict(text=post['text'], children=kids, image=None if kids else (imgs[0] if imgs else None))
+    for k in kids or []:
+        wait_ready(k)
+    main = dict(text=post['text'], children=kids, image=None if kids else (imgs[0] if imgs else None), video=video)
     tag = clean_tag(post.get('tag'))
     try:
         cid = container(**main, tag=tag)
@@ -87,8 +105,8 @@ def publish(post):
             raise
         print(f'{post["id"]}：主題標籤「{tag}」被拒絕（{e}），改發沒有標籤的')
         cid = container(**main)
-    if imgs:
-        time.sleep(30)  # Meta 建議有圖的貼文等容器處理好再發
+    if imgs or video:
+        wait_ready(cid)
     return call('POST', 'me/threads_publish', creation_id=cid)['id']
 
 
