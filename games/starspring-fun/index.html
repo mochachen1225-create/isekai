@@ -1835,7 +1835,14 @@ function drawWorld() {
   if (grown < 2) {
     const gy = sy(0);
     if (scene === 'plant') { sh(false); ctx.strokeStyle = `rgba(255,248,234,${.5 + .4 * Math.sin(T * 5)})`; ctx.lineWidth = 4 * U; ctx.beginPath(); ctx.ellipse(W / 2, gy, 44 * U + Math.sin(T * 5) * 5, 16 * U, 0, 0, 7); ctx.stroke(); }
-    ell(W / 2, gy, 28 * U, 9 * U, '#c79a78');
+    // 10/31 Lulu 說種下的地方浮浮的、醜：改成貼地的土堆（影子＋深淺兩層土＋小土塊＋小芽），看起來種在草地裡
+    ell(W / 2, gy + 3 * U, 40 * U, 11 * U, 'rgba(60,40,20,.28)');
+    ell(W / 2, gy, 34 * U, 11 * U, '#7a5236');
+    ell(W / 2, gy - 3 * U, 28 * U, 8 * U, '#9b6a45');
+    ell(W / 2 - 9 * U, gy - 5 * U, 7 * U, 3 * U, '#b5835a');
+    for (const [dx, dy, r] of [[-30, 4, 3], [27, 5, 2.5], [-18, 8, 2], [16, 9, 2.2], [34, -1, 1.8]]) ell(W / 2 + dx * U, gy + dy * U, r * U, r * .7 * U, '#6a452c');
+    for (const [dx, h] of [[-38, 9], [-34, 6], [37, 8], [41, 5]]) { ctx.strokeStyle = '#5f9a45'; ctx.lineWidth = 2 * U; ctx.beginPath(); ctx.moveTo(W / 2 + dx * U, gy + 4 * U); ctx.lineTo(W / 2 + (dx + (dx < 0 ? -2 : 2)) * U, gy + (4 - h) * U); ctx.stroke(); }
+    if (scene === 'sow' || grown > 0) { ctx.strokeStyle = '#4f8f3a'; ctx.lineWidth = 3 * U; ctx.beginPath(); ctx.moveTo(W / 2, gy - 6 * U); ctx.quadraticCurveTo(W / 2 + 2 * U, gy - 14 * U, W / 2 - 3 * U, gy - 18 * U); ctx.stroke(); ell(W / 2 - 7 * U, gy - 18 * U, 6 * U, 3 * U, '#78b85a'); ell(W / 2 + 4 * U, gy - 16 * U, 5 * U, 2.5 * U, '#8cc96a'); }
   }
   drawStalks();
   for (const c of G.coins) if (!c.got && c.h < grown) {
@@ -1982,7 +1989,13 @@ function buildStalks() {
 function drawStalks() {
   if (grown > .3) {
     const P = PQ(), gy = Math.round(sy(0) / P) * P, x0 = Math.round(W / 2 / P) * P;
-    if (gy < H + 20) { sh(false); ctx.fillStyle = POST_OL; ctx.fillRect(x0 - 11 * P, gy - 2 * P, 22 * P, 4 * P); ctx.fillStyle = '#a9bbd9'; ctx.fillRect(x0 - 10 * P, gy - P, 20 * P, P); ctx.fillStyle = '#8597bb'; ctx.fillRect(x0 - 10 * P, gy, 20 * P, P); }
+    // 魔豆長出來的根：原本是一塊藍灰色金屬板（看起來浮在草上），改成土堆＋往外抓地的根
+    if (gy < H + 20) { sh(false);
+      ell(x0, gy + 3 * U, 70 * U, 14 * U, 'rgba(60,40,20,.3)'); ell(x0, gy, 62 * U, 13 * U, '#7a5236'); ell(x0, gy - 3 * U, 50 * U, 9 * U, '#9b6a45');
+      ctx.strokeStyle = '#6b4a2e'; ctx.lineCap = 'round';
+      for (const [dx, ex, ey, lw] of [[-8, -58, 10, 6], [8, 60, 9, 6], [-4, -34, 14, 4], [4, 38, 15, 4], [0, -14, 16, 3], [0, 18, 17, 3]]) { ctx.lineWidth = lw * U; ctx.beginPath(); ctx.moveTo(x0 + dx * U, gy - 4 * U); ctx.quadraticCurveTo(x0 + (dx + ex) * .5 * U, gy + 2 * U, x0 + ex * U, gy + ey * U); ctx.stroke(); }
+      ctx.lineCap = 'butt';
+      for (const [dx, dy, r] of [[-66, 8, 3], [64, 9, 3], [-44, 13, 2.4], [48, 12, 2.2]]) ell(x0 + dx * U, gy + dy * U, r * U, r * .7 * U, '#6a452c'); }
   }
   const h0 = Math.max(0, camH - (H - Yj) / PX - 1), h1 = Math.min(grown, TOP + .6, camH + Yj / PX + 1);
   if (h1 <= h0) return;
