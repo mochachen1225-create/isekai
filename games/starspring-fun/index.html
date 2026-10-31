@@ -98,6 +98,19 @@ h2{margin:0 0 6px;font-size:26px;color:var(--ink)}
 #shareImg{display:block;max-width:100%;max-height:42vh;margin:4px auto 6px;border-radius:6px;box-shadow:0 4px 0 #8f6a3c,0 10px 18px rgba(40,25,10,.35);transform:rotate(-1deg);-webkit-touch-callout:default;-webkit-user-select:auto;user-select:auto}
 #pShare .btn{margin-top:9px;padding:12px}
 .ver{font-size:11px;opacity:.55;margin-top:6px}
+.cos{margin:8px 0 0}
+.cos canvas{position:static;inset:auto}
+.cosrow{display:flex;align-items:center;justify-content:center;gap:6px}
+.cosprev{width:48px;height:64px;background:var(--grain),var(--paper);border-radius:6px;box-shadow:0 2px 0 #cdbfa4;flex:none}
+.coslbl{font-size:13px;font-weight:900;writing-mode:vertical-rl;letter-spacing:2px;margin:0 2px}
+.cosb{position:relative;width:42px;height:42px;border-radius:50%;border:0;padding:3px;background:var(--grain),var(--paper);box-shadow:0 3px 0 #cdbfa4;cursor:pointer;flex:none;font-family:inherit}
+.cosb canvas{width:100%;height:100%;display:block;image-rendering:pixelated}
+.cosb.on{background:var(--grain),#fff3c4;outline:3px solid var(--teal);outline-offset:-1px}
+.cosb.lock canvas{filter:grayscale(1) brightness(.55);opacity:.45}
+.cosb.lock:after{content:"🔒";position:absolute;right:-3px;bottom:-3px;font-size:14px}
+.cosb.new:before{content:"NEW";position:absolute;top:-7px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:900;color:#fff;background:var(--red);border-radius:3px;padding:0 3px;line-height:13px}
+.cosb.sea:after{content:"限定";position:absolute;right:-6px;bottom:-5px;font-size:9px;font-weight:900;color:#fff;background:#6a3d9a;border-radius:3px;padding:0 3px;line-height:13px}
+.cosnote{font-size:12.5px;font-weight:800;margin-top:4px;opacity:.85;min-height:1.2em}
 .linkbtn{border:0;background:none;font-family:inherit;font-size:16px;font-weight:800;color:var(--ink);margin-top:10px;cursor:pointer;text-decoration:underline}
 </style>
 </head>
@@ -130,6 +143,7 @@ h2{margin:0 0 6px;font-size:26px;color:var(--ink)}
     <div class="best" id="tBest"></div>
     <ul class="mlist" id="tMis"></ul>
     <div class="coll" id="tColl"></div>
+    <div class="cos" id="tCos"></div>
     <button class="btn green" id="bStart">開始</button>
     <button class="btn ghost" id="bGame2">分享遊戲給朋友</button>
     <div class="ver">貓貓勇者小隊・小遊戲 歡樂版 測試中<br><a href="../../story/" style="color:inherit">看連載漫畫</a></div>
@@ -141,6 +155,7 @@ h2{margin:0 0 6px;font-size:26px;color:var(--ink)}
     <div class="detail" id="fDetail"></div>
     <ul class="mlist" id="fMis"></ul>
     <div class="tip" id="fTip"></div>
+    <div class="cos" id="fCos"></div>
     <button class="btn" id="bRetry">再來一次</button>
   </div></div>
 
@@ -155,6 +170,7 @@ h2{margin:0 0 6px;font-size:26px;color:var(--ink)}
     <div class="diff" id="wDiff"></div>
     <ul class="mlist" id="wMis"></ul>
     <div class="coll" id="wColl"></div>
+    <div class="cos" id="wCos"></div>
     <button class="btn green" id="bShare">分享成績</button>
     <button class="btn" id="bAgain">再玩一次</button>
     <button class="btn ghost" id="bGame">分享遊戲給朋友</button>
@@ -800,6 +816,7 @@ function loadSpr(key, src) {
     for (let i = 0; i < 16; i++) { const a = i / 16 * Math.PI * 2; cx.drawImage(sil, Math.cos(a) * 3, Math.sin(a) * 3); }
     cx.drawImage(im, pad, pad);
     SPR[key] = c;
+    if (key === 'hero_stand') { try { refreshCos(); } catch (e) {} }
   };
   im.src = src;
 }
@@ -863,7 +880,9 @@ function drawJack(x, y, s, pose, a = 0, arm = 0) {
     const hg = { dazed: 64, hang: 74 }[pose] || 80, rot = pose === 'climb' ? (arm ? .05 : -.05) : 0;
     // 走路：每一步像紙片一樣左右翻面、身體往那邊傾一點，比較有往前走的感覺
     const step = pose === 'walk' ? Math.floor(a * 2 / Math.PI) % 2 : 0;
-    drawSpr(HK, x, y + 28 * kk - bob, hg * kk, pose === 'climb' ? arm === 1 : step === 1, pose === 'walk' ? (step ? -.07 : .07) : rot);
+    const fy = y + 28 * kk - bob, fl = pose === 'climb' ? arm === 1 : step === 1, fr = pose === 'walk' ? (step ? -.07 : .07) : rot;
+    drawSpr(HK, x, fy, hg * kk, fl, fr);
+    drawCos(HK, x, fy, hg * kk, fl, fr);  // 歡樂版：季節小裝扮
     return;
   }
   if (SPR.hero) {
@@ -1155,6 +1174,7 @@ function checkMissions() {
     const c = $('mchip'); c.classList.add('pop'); setTimeout(() => c.classList.remove('pop'), 250);
     const st = LSJ('ssf_mset', []); if (!st.includes(id)) { st.push(id); LS.set('ssf_mset', JSON.stringify(st)); }
     LS.set('ssf_stamps', String((parseInt(LS.get('ssf_stamps', '0')) || 0) + 1));
+    checkCos(true);
   }
 }
 function misList(el, ids, done, head) {
@@ -1166,7 +1186,198 @@ function collText() {
   const t = LSJ('ssf_titles', []), st = parseInt(LS.get('ssf_stamps', '0')) || 0, ms = LSJ('ssf_mset', []);
   return `貓掌印章 ×${st}　任務圖鑑 ${ms.length}/${MISSIONS.length}　稱號圖鑑 ${t.length}/${ALL_MAIN.length + ALL_TAGS.length}`;
 }
-function refreshTitle() { misList($('tMis'), nextMissions, null, '這局的任務'); $('tColl').textContent = collText(); }
+function refreshTitle() { misList($('tMis'), nextMissions, null, '這局的任務'); $('tColl').textContent = collText(); refreshCos(); }
+// ---------- 歡樂版：季節小裝扮（全部用 canvas 程式畫成小點陣貼紙，跟著主角的頭／脖子走） ----------
+// 每張主角貼紙的頭頂（hx, hy）、頭寬 hw、脖子（nx, ny），單位是原圖的像素；back＝背面
+const COS_ANCH = {
+  hero_stand: { hx: 24, hy: 8, hw: 44, nx: 24, ny: 52, tilt: 0 },
+  hero_climb: { hx: 29, hy: 4, hw: 34, nx: 29, ny: 45, tilt: 0, back: true },
+  hero_run: { hx: 33, hy: 6, hw: 44, nx: 36, ny: 47, tilt: .08 },
+  hero_star: { hx: 27, hy: 7, hw: 44, nx: 29, ny: 51, tilt: -.05 },
+  hero_dazed: { hx: 29, hy: 7, hw: 44, nx: 31, ny: 51, tilt: .12 }
+};
+// 每個配件：畫在小畫布上（1 單位＝貼紙 1 像素），ax/ay＝要對準頭頂或脖子的點
+const COS_DEF = {
+  ears: { w: 50, h: 22, ax: 25, ay: 18, at: 'head', dy: 11, sc: .84, rot: 0 },
+  hat: { w: 46, h: 42, ax: 23, ay: 36, at: 'head', dy: 12, sc: .86, rot: -.14 },
+  scarf: { w: 40, h: 28, ax: 20, ay: 4, at: 'neck', dy: 0, sc: .72, rot: 0 },
+  scarfB: { w: 40, h: 28, ax: 20, ay: 4, at: 'neck', dy: 0, sc: .72, rot: 0 },
+  crown: { w: 28, h: 20, ax: 14, ay: 17, at: 'head', dy: 8, sc: .95, rot: .12 }
+};
+function paintCos(id, x) {
+  const P = (px, py, c) => { x.fillStyle = c; x.fillRect(px, py, 1, 1); };
+  const fill = (pts, c) => { x.fillStyle = c; x.beginPath(); pts.forEach((p, i) => i ? x.lineTo(p[0], p[1]) : x.moveTo(p[0], p[1])); x.closePath(); x.fill(); };
+  if (id === 'ears') {
+    x.strokeStyle = '#e57fa0'; x.lineWidth = 3; x.lineCap = 'round';
+    x.beginPath(); x.moveTo(4, 21); x.quadraticCurveTo(25, 4, 46, 21); x.stroke();
+    for (const s of [1, -1]) {
+      const m = v => s > 0 ? v : 50 - v;
+      fill([[m(4), 17], [m(8), 0], [m(20), 11]], '#c8702c');
+      fill([[m(6), 16], [m(9), 3], [m(18), 11]], '#f0a24a');
+      fill([[m(9), 13], [m(10), 6], [m(15), 11]], '#f6a7b8');
+      P(m(9), 4, '#ffd08a'); P(m(10), 5, '#ffd08a');
+    }
+  } else if (id === 'hat') {
+    const g = x.createLinearGradient(10, 0, 36, 0); g.addColorStop(0, '#8a5cc4'); g.addColorStop(.55, '#5b3a8c'); g.addColorStop(1, '#3a2360');
+    fill([[10, 34], [15, 22], [20, 12], [26, 5], [33, 1], [37, 2], [32, 6], [30, 13], [32, 23], [36, 34]], g);
+    fill([[33, 1], [37, 2], [35, 4]], '#2c1a48');
+    x.fillStyle = '#21142e'; x.fillRect(11, 28, 25, 5);
+    x.fillStyle = '#f0c443'; x.fillRect(20, 28, 6, 5); x.fillStyle = '#21142e'; x.fillRect(22, 30, 2, 1);
+    x.fillStyle = '#2a1a3a'; x.beginPath(); x.ellipse(23, 36, 22, 5, 0, 0, Math.PI * 2); x.fill();
+    x.fillStyle = '#4b2f6c'; x.beginPath(); x.ellipse(23, 35, 19, 3, 0, Math.PI, Math.PI * 2); x.fill();
+    // 小星星、月亮
+    [[17, 20], [27, 13]].forEach(([sx, sy], i) => { P(sx, sy, '#ffe27a'); P(sx - 1, sy, '#f0c443'); P(sx + 1, sy, '#f0c443'); P(sx, sy - 1, '#f0c443'); P(sx, sy + 1, '#f0c443'); if (!i) P(sx + 2, sy + 3, '#ffe27a'); });
+    x.fillStyle = '#ffe27a'; x.beginPath(); x.arc(37, 3, 2.2, 0, Math.PI * 2); x.fill();
+  } else if (id === 'scarf' || id === 'scarfB') {
+    const R = '#c8372d', D = '#9b241e', L = '#e35b4c', Wt = '#f5efe4';
+    // 毛線：一格一格的「V」字針目
+    const knit = (x0, y0, w, h) => {
+      x.fillStyle = R; x.fillRect(x0, y0, w, h);
+      for (let yy = y0; yy < y0 + h; yy += 2) for (let xx = x0; xx < x0 + w; xx += 3) { P(xx, yy, D); P(xx + 1, yy + 1, D); P(xx + 2, yy, L); }
+    };
+    const fringe = (x0, y0, w) => { for (let i = 0; i < w; i += 2) { x.fillStyle = i % 4 ? L : R; x.fillRect(x0 + i, y0, 1, 3); } };
+    const tail = (x0, y0, w, h, rot) => {
+      x.save(); x.translate(x0, y0); x.rotate(rot); knit(0, 0, w, h);
+      x.fillStyle = Wt; x.fillRect(0, h - 6, w, 2); fringe(0, h, w); x.restore();
+    };
+    if (id === 'scarf') {
+      tail(28, 7, 7, 14, -.2); tail(23, 7, 7, 16, .05);
+      x.save(); x.beginPath(); x.roundRect ? x.roundRect(2, 0, 36, 10, 5) : x.rect(2, 0, 36, 10); x.clip(); knit(2, 0, 36, 10); x.restore();
+      x.fillStyle = D; x.fillRect(3, 9, 34, 1);
+      x.fillStyle = R; x.beginPath(); x.arc(27, 7, 4, 0, Math.PI * 2); x.fill(); P(26, 6, L); P(28, 8, D); P(27, 5, L);
+    } else {
+      tail(20, 6, 8, 15, .1);
+      x.save(); x.beginPath(); x.roundRect ? x.roundRect(2, 0, 36, 9, 4.5) : x.rect(2, 0, 36, 9); x.clip(); knit(2, 0, 36, 9); x.restore();
+      x.fillStyle = D; x.fillRect(3, 8, 34, 1);
+    }
+  } else if (id === 'crown') {
+    fill([[3, 13], [3, 4], [8.5, 9], [14, 1], [19.5, 9], [25, 4], [25, 13]], '#f0c443');
+    fill([[14, 1], [19.5, 9], [25, 4], [25, 13], [14, 13]], '#e0a92a');
+    x.fillStyle = '#f0c443'; x.fillRect(3, 12, 22, 6); x.fillStyle = '#c08a1e'; x.fillRect(3, 17, 22, 1); x.fillStyle = '#fff2b0'; x.fillRect(4, 12, 20, 1);
+    x.fillStyle = '#d64f45'; x.beginPath(); x.arc(14, 15, 2.2, 0, Math.PI * 2); x.fill();
+    x.fillStyle = '#2f9c95'; x.fillRect(7, 14, 3, 3); x.fillRect(18, 14, 3, 3);
+    x.fillStyle = '#fff7c8'; [[3, 4], [14, 1], [25, 4]].forEach(([cx, cy]) => { x.beginPath(); x.arc(cx, cy, 1.8, 0, Math.PI * 2); x.fill(); });
+    P(13, 14, '#ffb3a8');
+  }
+}
+const COSC = {};
+function cosCanvas(id) {
+  if (COSC[id]) return COSC[id];
+  const d = COS_DEF[id], pad = 4;
+  const a = document.createElement('canvas'); a.width = d.w; a.height = d.h;
+  const ax = a.getContext('2d'); paintCos(id, ax);
+  // 邊緣變成硬邊（跟點陣貼紙一樣）
+  const im = ax.getImageData(0, 0, d.w, d.h), p = im.data;
+  for (let i = 3; i < p.length; i += 4) p[i] = p[i] > 110 ? 255 : 0;
+  ax.putImageData(im, 0, 0);
+  const sil = document.createElement('canvas'); sil.width = d.w + pad * 2; sil.height = d.h + pad * 2;
+  const sx = sil.getContext('2d'); sx.drawImage(a, pad, pad); sx.globalCompositeOperation = 'source-in'; sx.fillStyle = '#fffaf0'; sx.fillRect(0, 0, sil.width, sil.height);
+  const c = document.createElement('canvas'); c.width = sil.width; c.height = sil.height;
+  const cx = c.getContext('2d');
+  for (let i = 0; i < 12; i++) { const t = i / 12 * Math.PI * 2; cx.drawImage(sil, Math.round(Math.cos(t) * 2), Math.round(Math.sin(t) * 2)); }
+  cx.drawImage(a, pad, pad);
+  c.pad = pad;
+  return (COSC[id] = c);
+}
+// 畫在主角身上：key＝主角貼紙，(x, y)＝腳底，hgt＝畫出來的高度（跟 drawSpr 一樣）
+function drawCos(key, x, y, hgt, flip, rot) {
+  const id = cosWorn(); if (!id) return;
+  const A = COS_ANCH[key], spr = SPR[key]; if (!A || !spr) return;
+  const did = id === 'scarf' && A.back ? 'scarfB' : id, d = COS_DEF[did], c = cosCanvas(did);
+  const iw = spr.width - 10, ih = spr.height - 10, sc = hgt / spr.height;
+  const px = d.at === 'neck' ? A.nx : A.hx, py = (d.at === 'neck' ? A.ny : A.hy) + d.dy;
+  const k = d.sc * (d.at === 'head' ? A.hw / 44 : A.back ? .9 : 1);
+  ctx.save(); ctx.translate(x, y); ctx.rotate(rot); if (flip) ctx.scale(-1, 1); ctx.scale(sc, sc);
+  ctx.translate(px + 5 - (iw + 10) / 2, py + 5 - (ih + 10));
+  ctx.rotate(d.rot + (d.at === 'head' ? A.tilt : 0)); ctx.scale(k, k);
+  ctx.shadowColor = 'rgba(60,40,20,.3)'; ctx.shadowBlur = 3 * U; ctx.shadowOffsetY = 1.5 * U;
+  ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(c, -d.ax - c.pad, -d.ay - c.pad);
+  ctx.restore();
+}
+const COS = [
+  { id: 'ears', n: '貓耳髮箍', need: '完成 3 個任務', goal: 3 },
+  { id: 'hat', n: '小巫師帽', need: '累積完成 6 個任務', goal: 6, season: [1025, 1107], sn: '萬聖節限定' },
+  { id: 'scarf', n: '聖誕紅圍巾', need: '累積完成 10 個任務', goal: 10, season: [1215, 1231], sn: '聖誕節限定' },
+  { id: 'crown', n: '小皇冠', need: '第一次過魔王關', win: true }
+];
+const cosById = id => COS.find(c => c.id === id);
+const stampN = () => parseInt(LS.get('ssf_stamps', '0')) || 0;
+const cosEarned = c => c.win ? bestTime() > 0 : stampN() >= c.goal;
+function cosSeason(id) {
+  const d = new Date(), md = (d.getMonth() + 1) * 100 + d.getDate(), c = cosById(id);
+  return !!(c && c.season && md >= c.season[0] && md <= c.season[1]);
+}
+const cosHas = id => { const c = cosById(id); return !!c && (cosEarned(c) || cosSeason(id)); };
+let cosOn = LS.get('ssf_cos', '');
+const cosWorn = () => cosOn && cosHas(cosOn) ? cosOn : '';
+function cosWear(id) { cosOn = id; LS.set('ssf_cos', id); }
+// 解鎖檢查：新拿到的直接戴上，跳橫幅
+function checkCos(show) {
+  const got = LSJ('ssf_cosgot', []), nw = LSJ('ssf_cosnew', []), fresh = [];
+  for (const c of COS) if (cosEarned(c) && !got.includes(c.id)) { got.push(c.id); fresh.push(c); if (!nw.includes(c.id)) nw.push(c.id); }
+  if (!fresh.length) return;
+  LS.set('ssf_cosgot', JSON.stringify(got)); LS.set('ssf_cosnew', JSON.stringify(nw));
+  const last = fresh[fresh.length - 1]; cosWear(last.id);
+  if (show) {
+    const busy = $('mban').classList.contains('on');
+    setTimeout(() => { banner('解鎖新裝扮：' + fresh.map(c => c.n).join('、') + '！\n已經幫妳戴上了', 2); SFX.mission(); }, busy ? 2300 : 0);
+  }
+  refreshCos();
+}
+// 季節加碼：那段日期第一次打開，送一件戴一下
+function seasonGift() {
+  for (const c of COS) if (cosSeason(c.id)) {
+    const k = 'ssf_gift_' + new Date().getFullYear() + '_' + c.id;
+    if (LS.get(k, '') === '1') continue;
+    LS.set(k, '1'); cosWear(c.id); refreshCos();
+    setTimeout(() => toast(c.sn + '！' + c.n + '送妳戴一下'), 700);
+  }
+}
+// 換裝列：預覽＋一排小圓圖示
+function cosIcon(cv2, id) {
+  const c = cosCanvas(id), x = cv2.getContext('2d'), s = Math.min((cv2.width - 6) / c.width, (cv2.height - 6) / c.height);
+  x.clearRect(0, 0, cv2.width, cv2.height); x.imageSmoothingEnabled = false;
+  x.drawImage(c, (cv2.width - c.width * s) / 2, (cv2.height - c.height * s) / 2, c.width * s, c.height * s);
+}
+function cosPreview(cv2) {
+  if (!SPR.hero_stand) return;
+  const x = cv2.getContext('2d'), oc = ctx, oU = U;
+  x.clearRect(0, 0, cv2.width, cv2.height);
+  ctx = x; U = 1;
+  try { drawJack(cv2.width / 2, cv2.height - 3 - 28 * 1.15, 1.15, "stand"); } finally { ctx = oc; U = oU; }
+}
+function cosNote(el, s) { const n = el.querySelector('.cosnote'); if (n) n.textContent = s; }
+function cosStatus() {
+  const w = cosWorn(), c = w && cosById(w);
+  return c ? '戴著：' + c.n + (!cosEarned(c) && cosSeason(w) ? `（${c.sn}）` : '') : '點小圓圈換裝';
+}
+function buildCos(el) {
+  if (!el) return;
+  if (!el.dataset.built) {
+    el.dataset.built = '1';
+    el.innerHTML = '<div class="cosrow"><canvas class="cosprev" width="96" height="128"></canvas><span class="coslbl">換裝</span>' +
+      COS.map(c => `<button class="cosb" data-id="${c.id}" aria-label="${c.n}"><canvas width="64" height="64"></canvas></button>`).join('') + '</div><div class="cosnote"></div>';
+    el.querySelectorAll('.cosb').forEach(b => {
+      cosIcon(b.querySelector('canvas'), b.dataset.id);
+      b.onclick = e => {
+        e.stopPropagation(); const id = b.dataset.id, c = cosById(id);
+        const nw = LSJ('ssf_cosnew', []); if (nw.includes(id)) LS.set('ssf_cosnew', JSON.stringify(nw.filter(v => v !== id)));
+        if (!cosHas(id)) { refreshCos(); cosNote(el, `🔒 ${c.n}：${c.need}` + (c.goal ? `（${Math.min(stampN(), c.goal)}/${c.goal}）` : '')); SFX.bump(); return; }
+        cosWear(cosWorn() === id ? "" : id); refreshCos(); buzz(12); SFX.pop2();
+      };
+    });
+  }
+  const w = cosWorn(), nw = LSJ('ssf_cosnew', []);
+  el.querySelectorAll('.cosb').forEach(b => {
+    const id = b.dataset.id, c = cosById(id);
+    b.classList.toggle('on', w === id); b.classList.toggle('lock', !cosHas(id)); b.classList.toggle('new', nw.includes(id));
+    b.classList.toggle('sea', !cosEarned(c) && cosSeason(id));
+  });
+  cosPreview(el.querySelector('.cosprev'));
+  cosNote(el, cosStatus());
+}
+function refreshCos() { ['tCos', 'fCos', 'wCos'].forEach(id => buildCos($(id))); }
 function setMute() { $('mute').textContent = muted ? '🔇' : '🔊'; }
 
 // ---------- 流程 ----------
@@ -1213,7 +1424,7 @@ function fail(reason) {
     $('fDetail').textContent = G.inGiant ? `就差一點點！（進度 ${Math.round(G.gi.p * 100)}%）` : `爬到 ${hh} / ${TOP} 公尺` + (hh > bh && bh ? '（最高紀錄！）' : TOP - hh <= 15 ? `，再 ${TOP - hh} 公尺就到魔王城！` : '');
     misList($('fMis'), G.missions, G.mdone, '這局任務（沒完成的留到下一局）');
     $('fTip').textContent = '小撇步：' + pick(TIPS);
-    panel('pFail');
+    refreshCos(); panel('pFail');
   }, 800);
 }
 function win() {
@@ -1222,7 +1433,7 @@ function win() {
   const b = bestTime(); G.newBest = !b || G.final < b;
   if (G.newBest) { LS.set('ssf_best', G.final.toFixed(1)); LS.set('ssf_pace', JSON.stringify(G.pace)); }
   LS.set('ssf_played', '1'); firstEver = false;
-  checkMissions(); rollMissions();
+  checkMissions(); rollMissions(); checkCos(true);
   G.title = jackTitle();
   SFX.win(); buzz([40, 40, 40, 40, 120]);
   // 慶祝：彩帶、星星
@@ -1239,7 +1450,7 @@ function win() {
     $('wTags').innerHTML = G.title.tags.map(t => `<span class="${G.title.fresh.includes(t) ? 'new' : ''}">${t}</span>`).join('');
     misList($('wMis'), G.missions, G.mdone, '這局任務');
     $('wColl').textContent = collText();
-    panel('pWin');
+    refreshCos(); panel('pWin');
   }, 2100);
   setTimeout(prepareCard, 50);
 }
@@ -2696,6 +2907,7 @@ window.addEventListener('resize', resize);
 initPats(); initStatic(); resize();
 // 粉圓體載入後重畫一次預先畫好的圖（招牌、標籤上的字）
 try { document.fonts.load('20px Huninn', document.documentElement.textContent).then(() => resize()).catch(() => {}); } catch (e) {} setMute(); updateTitleBest();
+try { checkCos(false); seasonGift(); refreshCos(); } catch (e) { console.warn('cos', e); }
 requestAnimationFrame(frame);
 window.__game = { get G() { return G; }, get scene() { return scene; }, set scene(v) { scene = v; }, PAT, IMG, get slowT() { return slowT; } };
 })();
