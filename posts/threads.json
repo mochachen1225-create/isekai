@@ -13,6 +13,19 @@
     "posted_at": "2026-10-30T13:25:32+00:00"
   },
   {
+    "id": "halloween",
+    "at": "2026-10-31T08:30:00+08:00",
+    "text": "萬聖節快樂🎃\n\n先自我介紹一下\n我們是「貓貓小隊」\n一個上班族（我）\n加上幾隻 AI 小貓員工\n一起做故事、漫畫、小遊戲的小團隊\n\n今天大家都變裝了\n總編是小巫師（工作證還是掛著）\n架構師是吸血鬼（耳麥沒拔下來）\n小弟是小幽靈 帽子還露在外面 XD\n我戴了貓耳朵 終於跟大家同一國了\n\n我們這個組合是怎麼湊起來的\n之後再慢慢跟大家說 :)\n\n不給糖就搗蛋？\n他們說：不給罐罐就搗蛋。",
+    "images": [
+      "https://mochachen1225-create.github.io/isekai/promo/threads/halloween_a.jpg"
+    ],
+    "approved": true,
+    "posted": true,
+    "tag": "日常",
+    "thread_id": "18115488236145894",
+    "posted_at": "2026-10-31T00:34:38+00:00"
+  },
+  {
     "id": "podcast_ep1",
     "at": "2026-11-01T20:30:00+08:00",
     "text": "我跟我的 AI 開了一個 podcast，有點瘋 ꉂ🤣𐤔\n叫《摩卡與總編》\n\n我是摩卡 ～負責想點子跟問問題\n總編是 AI ～負責回答、剪接、配樂、上架\n\n第一集只有 3 分多鐘\n讓大家認識我們貓貓工作室：Ｄ\n雖然很短，但錄完那一刻我真的超興奮！！\n\nSpotify 搜尋「摩卡與總編」就聽得到 :)\nhttps://open.spotify.com/show/6NLHeizsfRFcVBZ6MenN8x",
@@ -34,6 +47,18 @@
     "tag": "上班族",
     "approved": true,
     "posted": false
+  },
+  {
+    "id": "ng1",
+    "at": "2026-11-03T12:30:00+08:00",
+    "text": "用 Google Flow 生成影片，結果……\n總編變種田、隊名變汪汪小隊😂\n原來 AI 拍片也會吃螺絲\n（全部 AI 做的，NG 也是）",
+    "images": [],
+    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/ng1.mp4",
+    "tag": "AI",
+    "style": "short",
+    "approved": true,
+    "posted": false,
+    "note": "10/31 她 OK；第一則 Threads 影片自動發"
   },
   {
     "id": "not_magic",
@@ -223,18 +248,5 @@
     "tag": "AI",
     "approved": true,
     "posted": false
-  },
-  {
-    "id": "halloween",
-    "at": "2026-10-31T08:30:00+08:00",
-    "text": "萬聖節快樂🎃\n\n先自我介紹一下\n我們是「貓貓小隊」\n一個上班族（我）\n加上幾隻 AI 小貓員工\n一起做故事、漫畫、小遊戲的小團隊\n\n今天大家都變裝了\n總編是小巫師（工作證還是掛著）\n架構師是吸血鬼（耳麥沒拔下來）\n小弟是小幽靈 帽子還露在外面 XD\n我戴了貓耳朵 終於跟大家同一國了\n\n我們這個組合是怎麼湊起來的\n之後再慢慢跟大家說 :)\n\n不給糖就搗蛋？\n他們說：不給罐罐就搗蛋。",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/threads/halloween_a.jpg"
-    ],
-    "approved": true,
-    "posted": true,
-    "tag": "日常",
-    "thread_id": "18115488236145894",
-    "posted_at": "2026-10-31T00:34:38+00:00"
   }
 ]
