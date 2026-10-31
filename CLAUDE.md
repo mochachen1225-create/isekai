@@ -4,7 +4,7 @@
 
 ## 0. 交接（換 session 時先看這段，做完一件就改這段）
 
-最後更新：2026-10-28。
+最後更新：2026-10-29 晚上。**換 session 後先看私人 repo `isekai-studio` 的 `notes/handoff.md`（最新狀態和私人細節都寫那裡，不寫進這個公開檔）。**
 
 **換 session 的規則**：對話很長（上下文被壓縮過一兩次）、或開始一件獨立的大工作（例如畫一整話漫畫）時，就開新 session。新 session 要選同一個 repo（`mochachen1225-create/isekai`，分支 `site`）和同一個環境（Network secrets 才會在）。開好後把兩個排程任務（每天 18:47 提醒、每週日 19:41 準備下週）重新綁到新 session，舊的刪掉。這件事由 Claude 自己判斷、自己做（使用者 10/28 交代）：先更新這段交接並 push，用 create_session 開新 session（給它清楚的開場任務），搬排程任務，最後告訴使用者新 session 的名字。私人工作檔 repo `isekai-studio` 要用 add_repo 加進來再 clone。
 
@@ -25,9 +25,9 @@
 
 **三個 Claude 的分工（10/29 使用者定）**：妳＝作者兼老闆（點子、審核、說 OK、登入和付錢的事）；雲端 Claude（這個 session）＝創作和總編，也是使用者的預設窗口（故事、設定、漫畫、翻譯、文案、上架資料夾內容、網站內容、維護進度表），需要架構的事由我轉給架構 Claude、結果帶回來；架構 Claude＝技術顧問（session「技術顧問交接與 mocha-worker」`session_01ENYvsK78hjVas3wb4nYJQs`，雲端；自動化、排程、資料夾約定、工具程式、Claude 之間的交接規則、壞掉查原因；不碰故事內容），用 send_message 互傳；小弟＝她電腦上的 Claude（Chrome 外掛預約上傳，需要她登入的事；不改內容）。進度表的打勾和 owner 由雲端 Claude 統一改，其他兩位要改先跟我說。跟故事、角色、世界觀有關的延伸（小遊戲的玩法和製作、LINE 貼圖／主題／表情貼、桌布、月曆、貼紙、分享卡、預告片、幕後筆記）都歸雲端 Claude；碰到系統層面（後端、資料庫、排行榜、金流、數據追蹤、網站整體改版）才找架構 Claude 一起討論。外部網站沒有 API、要她登入操作的（巴哈、LINE WEBTOON、英文 WEBTOON、Royal Road、カクヨム 上傳）→ 小弟；可以用 API 或程式自動化的「管線」（GitHub Actions、Threads 自動發文、轉址、資料自動產生）→ 架構 Claude 設計和寫，內容由雲端 Claude 填，每天跑的是「自動」。首頁改版（10/29 定）：作品大門版（預覽 https://claude.ai/artifact/4r883Ux7CpErix2f3a8o71 ），測驗搬 /quiz/，系統由架構寫、我檢查合併，11/8 前上線、11/9～11/11 凍結；/en/、/ja/ 獨立靜態頁，各語言首頁的漫畫／小說按鈕直接連該語言的平台版本。正式版在 `home-v2` 分支（10/29 做好、預演第 3～9 話都過），11/6 合併進 site 給她 11/7 試，合併後要跑 sync_stock.sh。首頁規則：`<head>` 的「▼ 系統掛點」那段和 GoatCounter 要留（check_site 會查）；最新一話用 `data-home*` 屬性（`js/home.js` 讀上線時產生的 `data/home.json`，存稿分支不要 commit 它）；世界地圖每國一個 `data-country`，國家清單 `data/arcs.json`（id、name、from＝第幾話進入）由我維護；測驗在 `quiz/`，連載頁的測驗按鈕是 `../quiz/`。en/、ja/ 還沒做，12/16 英文上線前做，做好再加語言切換。
 
-**本地助手（10/28 使用者定的分工）**：雲端 Claude（這個 session）負責創作和準備：小說、漫畫、排版、上傳包、文案、網站、Threads 自動發文。巴哈和 LINE WEBTOON 沒有 API，交給她電腦上的 Claude（桌面 app 或 `claude remote-control`）用 Chrome「貓貓勇者」個人資料裡的 Claude in Chrome 上傳：上架資料夾在 `isekai-studio` 的 `publish/queue/`（`work/publish/make_queue.py` 產生，規則見 `publish/README.md`）。10/29 使用者同意小弟直接按「預約發表」（第一次試跑先確認預約能編輯或取消；沒有預約選項就不送出，巴哈小說類改用「限本人觀看」），送出後移到 `publish/done/`。進度表 bh／lw 打勾的時機：`done/` 有新的一篇，而且使用者說她檢查過預約內容；只有雲端 Claude 改進度表。第一次試在 11/10～11/11 上傳第二、三話。
+**本地助手（10/28 使用者定的分工）**：雲端 Claude（這個 session）負責創作和準備：小說、漫畫、排版、上傳包、文案、網站、Threads 自動發文。巴哈和 LINE WEBTOON 沒有 API，交給她電腦上的 Claude（桌面 app 或 `claude remote-control`）用 Chrome「Mocha」設定檔裡的 Claude in Chrome 上傳：上架資料夾在 `isekai-studio` 的 `publish/queue/`（`work/publish/make_queue.py` 產生，規則見 `publish/README.md`）。10/29 使用者同意小弟直接按「預約發表」（第一次試跑先確認預約能編輯或取消；沒有預約選項就不送出，巴哈小說類改用「限本人觀看」），送出後移到 `publish/done/`。進度表 bh／lw 打勾的時機：`done/` 有新的一篇，而且使用者說她檢查過預約內容；只有雲端 Claude 改進度表。第二話 10/29 試跑成功（`.trial-passed`），之後每週六 13:00 小弟自動上架（第一次正式：11/7 ep03-bh、ep03-lw）。**小弟定稿（10/29 架構師核對）**：`~/mocha-worker/` 放 CLAUDE.md、worker.py、.claude/settings.json，刻意不進 repo（避免改 repo 就能改小弟的規則；另有一個空的 .git 只是給 Remote Control 用，平常關著，要開由架構師先跟她說）；`box/` 是 isekai-studio 的 sparse checkout（只有 publish/）；`isekai-check/` 只抓公開 repo 的檔案清單比對 pack_blob；排程 `~/Library/LaunchAgents/com.mocha.worker.plist`。小弟讀 publish/、改 queue 裡指定那篇的 post.json，由腳本 git mv 到 done/ 並 push。Mocha Chrome 的外掛網站存取只開 *.gamer.com.tw、*.webtoons.com、*.royalroad.com、*.kakuyomu.jp（之後 pixiv 再加 *.pixiv.net；不要加 claude.ai、Gmail、GitHub）。小弟不讀留言。金鑰不放進任何 repo 或一般檔案：GitHub Actions 用 secrets、雲端用 Network secrets、Mac 用鑰匙圈（小弟的 GitHub fine-grained token 只開 isekai-studio Contents 讀寫，約 2027/1/27 到期）。她每週六：10:30 開機、開 Mocha Chrome 確認各平台登入；13:00 小弟自動跑；14:30 看通知、檢查預約、跟我說 OK（錯過就手動跑 `python3 ~/mocha-worker/worker.py weekly`）。數字：小弟 11/14 起每週六讀後台數字寫 `publish/stats/YYYY-MM-DD.json`（腳本檢查白名單後才 commit），Threads 由 main 的 threads.yml 每天 23:17 抓到 `stats/threads/`；我每週日統整進冷啟動數據紀錄表。
 
-**發文口氣（10/28 使用者：要更像她、像真人）**：照她平常講話的樣子：短句、少標點（常用空格斷句）、會用「～」「😂」「Ｘ＿Ｘ」、括號吐槽、「我覺得」、台味；不寫成文案腔、不說教；結尾丟一個問題給讀者。她有給自己寫過的貼文就以那個為準。
+**Threads／YouTube 的定位（10/29 使用者定，取代之前的發文口氣規則）**：Threads 是「作者本人」的帳號：第一人稱分享她的想法、做法、她在幹嘛（不寫本名），不是小隊的公告帳號；YouTube 是她這個人的短影音（Threads 也可以發）。之前 AI 寫的貼文她 10/29 全刪了（沒流量、太像 AI 廣告）。**貼文由 Claude 模仿她的口氣寫草稿**（10/29 改），放草稿本「貼文存稿」給她改、打勾才排：每週日 5～7 則，每則附一張圖（心情文配輕鬆可愛的摩卡，圖裡不放字，4:5，放 `promo/threads/`）；只談「她本人」即時的真實狀態，不談作品內容（劇情、角色、上線預告都不寫，作品交給各平台曝光），貼文不放作品連結（10/29 定）。留言她本人回；Claude 只在特殊情況幫忙：英日文留言幫翻、問到世界觀細節時幫她對設定集、遇到批評 AI 或酸言時幫她想怎麼回（要不要回由她決定）、每週把讀者留言裡的點子和疑問整理給她（劇情可以用的放設定集）、辦「留言送桌布」時幫她準備連結和回覆。自動排程照用，只是內容換成她寫的。
 
 **存稿分支**：第三話（小說＋漫畫頁、條漫、IG 單格、目錄）做好放在 `ep03-stock` 分支，使用者 10/28 說漫畫 OK。11/11 開跑時把它合併進 `site`（`git merge ep03-stock`），再推到 site 和 story-draft。之後每話照這個做法：做好先放 `epNN-stock`，上線日再合併。
 
@@ -35,7 +35,7 @@
 
 **翻譯版（10/29 使用者決定）**：英文、日文由 Claude 翻（英文她大概看過、日文她看不懂，先測架構）。每一回開頭標示原創構想＋AI 協作、AI 翻譯（日文寫明作者不懂日文），AI 標籤寧可標重。做法和用詞對照在 `isekai-studio` 的 `work/i18n/`（README、glossary）；`webtoon.py` 用 `ISEKAI_LANG`／`ISEKAI_TR` 排英日文版，中文版不受影響。平台（10/29 定）：WEBTOON 英文 → Royal Road → カクヨム → pixiv，一次上線一個，WEBTOON 英文 12/16（三）起（第一到三話同一天）。上架包 `epNN-wten`／`epNN-rr`／`epNN-kky`（pixiv 的 px 等確認有預約再做），用 `work/i18n/make_queue_i18n.py` 產生；作品資料和封面在 `publish/series/`；英文作品的 series_url 等使用者給網址再填。第一到三話已翻好、包好。英文 WEBTOON 作品 1182615（中文是 1182325），第一話 10/29 已預約 12/16 21:40。Royal Road 12/16 起每週三 22:10（rr 包已有日期，series_url 等作品建立後填）；カクヨム日期等 Royal Road 順了再定。英文 WEBTOON 和 Royal Road 第四話以後每週要翻（12/23 起）。LINE WEBTOON 上架包有「作家的話」`author_note.txt`（她的口吻，`work/publish/author_notes/`）。
 
-**等使用者**：10/29 看 Google Cloud 帳單，確認 Vertex 扣的是試用額度（10/28 中午抵免額頁：剩 NT$9,520.96／原 NT$9,534，已開始扣，但預算頁寫「No credits used」、Vertex 當天約 NT$76 只扣到 13，應是延遲；10/29 再看剩餘有沒有約少 NT$76）→ 確認後撤銷 Cloudflare Token、刪 Network secrets 那筆、把第 3 節「遊戲周邊用 Cloudflare」改成 Vertex、刪 `tools/cf_image.py`。
+**等使用者**：10/29 看 Google Cloud 帳單，確認 Vertex 扣的是試用額度（10/28 中午抵免額頁：剩 NT$9,520.96／原 NT$9,534，已開始扣，但預算頁寫「No credits used」、Vertex 當天約 NT$76 只扣到 13，應是延遲；10/29 再看剩餘有沒有約少 NT$76）→（10/30 改）Cloudflare 保留不撤銷：地圖、背景、遊戲小圖改用 FLUX.1 schnell（一天約 200 多張），`cf_image.py` 下次要用時加上 schnell 的格式。Stability 等真的需要再申請（她 10/30 說先不用）。
 
 **名字（10/29 使用者定）**：雲端 Claude＝「總編」，架構 Claude＝「架構師」，本機 Claude＝「小弟」（YouTube 幕後影片也這樣叫）。主角（使用者的替身）＝「摩卡」：網站和 YouTube 直接叫；小說裡等她需要自我介紹時才說「請叫我摩卡」。摩卡是使用者家另一隻貓的名字（不是魔王原型），使用者同意公開；魔王原型的名字仍然不公開（私人備註在 isekai-studio 的 notes/private.md）。
 
@@ -48,6 +48,7 @@
 | 網站（測驗＋連載） | 這個 repo 的 `site` 分支，push 後 GitHub Pages 自動更新；同時推一份到 `story-draft` |
 | 測驗設計稿 | `DESIGN.md`（第 12 章是插畫美術規範和各職業定稿紀錄） |
 | 職業插畫指令 | `PROMPTS.md` |
+| **工作室大門（所有連結的總頁，已釘選）** | https://claude.ai/artifact/M2y771X1vDynfwjXML627W（原始檔 `isekai-studio` 的 `work/hub/`；新的工作頁做好就加進去） |
 | 推廣計畫 | https://claude.ai/artifact/MZpjDvX1fNDdtxfv3eqyjT（Claude Docs） |
 | 進度表（待辦＋發文排程） | https://claude.ai/artifact/EbWR1U1Twg1p5f6trDkwDT（資料在 db 的 `tasks`） |
 | 連載草稿本（還沒上線的小說、分鏡、prompt） | https://claude.ai/artifact/N9vUVni1oPJ4f1FYmzQySi（Claude Docs；「總覽」分頁放打勾清單和各話連結，每一話一個分頁） |
@@ -55,6 +56,7 @@
 | 漫畫存稿閱讀器（還沒上線的條漫，使用者從這裡看） | https://claude.ai/artifact/Wduivnp7d8KyU2hjTQucaY（原始檔 `isekai-studio` 的 `work/comicview/`；每話排好條漫就把切片放 `c/`、改 `EPS` 再發布） |
 | 幕後筆記（一個人＋AI 做連載的幕後：改之前／改之後＋心得文案，那一話上線後才發） | https://claude.ai/artifact/M9EzdWhDTwafDtFX4JW4Yo（原始檔 `isekai-studio` 的 `work/behind/`；使用者 10/28：要有人性、像真人心得、分享；寫點子的由來，不寫修圖；［ ］留給她補真心話） |
 | 製作日誌（不公開：「我如何跟 Claude 打造一個 IP」的素材，里程碑到了再整理成系列貼文；10/28 使用者：主軸不變、同時收集素材，之後可做番外篇「幕後直擊」；YouTube 頻道「貓貓工作室」放影片版幕後：AI 小貓員工從製作到配音的過程，全部 5 分鐘以內：YouTuber 介紹感或旅遊影片風格（喵導員帶你逛月瞳國），另剪 Shorts，1 月中開始） | https://claude.ai/artifact/4pESS1ynTFvyQq7VYRH8ZH（Claude Docs；表格一列一件事：日期、發生什麼、誰的點子、她說的話。每週日準備下週時補一筆。記點子和決定，不記修圖細節——使用者 10/28 說修圖很無聊） |
+| 點子箱（她隨手丟點子，每週日收） | https://claude.ai/artifact/Jfdi6kb139wAvgnNSQPjVJ（db 集合 `ideas`；收了就把 status 改 taken、寫 note） |
 | 素材庫（沒用在連載、可單獨發的圖） | https://claude.ai/artifact/VpLeUwx1DQxYUz4pReewvp |
 | 預告片工作檯 | https://claude.ai/artifact/3UpfrfLTVP8vi9Lzvn2UYU |
 | 冷啟動數據紀錄表 | https://claude.ai/artifact/6BXsmJZF8TZYbUWAXTXD76 |
@@ -89,8 +91,11 @@
   - 畫完自己檢查：手臂和手的數量、頭的數量、大小比例、畫風、有沒有字或標誌、同一個人有沒有被畫兩次。不合格只重畫那一格。
   - 每話畫完把比較圖放進草稿本。
 - 職業插畫和其他新圖：先給使用者看英文 prompt 和中文構圖說明，使用者回「生成」才呼叫。一次最多 3 張。
+- 錢花在刀口上（10/30 使用者定，大前提）：付費生圖（AI Studio／Vertex）只用在「需要跟角色、畫風一致」的圖：漫畫、有摩卡和小隊角色的宣傳圖和配圖。地圖、背景、遊戲小圖、素材、花紋這類不需要一致的，用免費的：先用程式畫（SVG、canvas）或從現有圖裁切，再來是 Cloudflare FLUX（免費額度）；額度真的不夠再問她要不要 Stability 按量儲值（約 US$0.03 一張，不訂月費）。Leonardo 訂閱點數不能用在 API，不考慮。漫畫等 Vertex 申訴結果。
+- AI Studio（10/30 使用者定）：付費 AI Studio 主要畫各平台配圖（Threads、IG、Podcast、宣傳圖），漫畫進度可以放慢。她在帳戶設了預算上限（10/30），上限內有錢就可以用，不用每次問、也不用先給 prompt（新角色、新場景也一樣），直接做好給她挑；被上限擋住（錯誤）就停下來告訴她，不重試。
 - 省錢：全新構圖畫 2 張挑；修改只畫 1 張，想改的地方一次寫進同一個 prompt。同一張圖改太多次會被舊構圖綁住，改不動就用定稿參考圖重畫。
 - 失敗就停下來回報，不自動重試、不寫會自己重跑的迴圈。唯一例外（2026-10-28 使用者同意）：Vertex 回 429（新專案每分鐘上限很低，畫一兩張就被擋）時，用 `isekai-studio` 的 `work/comic3/slow.sh` 慢慢畫：每 3 分鐘 1 張，只有 429 才等 5／10／20 分鐘再試，最多 3 次，其他錯誤直接停。不用問使用者，在背景慢慢跑。連續畫多張用 `set -e` 或 `|| exit`，不要把輸出接 pipe（`| cut` 會吃掉錯誤碼）。
+- 生成過的圖和影片（包括沒選上的、重畫前的舊版）一律留在 `isekai-studio`，不刪（10/30 使用者說：誰知道什麼時候用得到）；整理時只標註可以怎麼用。
 - 圖片小問題優先用程式修（放大貓、去標誌、縮小人物、疊暖光），不用重畫。做法見 `isekai-studio` 的 `work/comic2/`。
 - 光影改不出來時，可以用程式在光源方向疊暖色（見 `DESIGN.md` 守護騎士的紀錄）。
 - 職業插畫選定後縮成 900 寬放進 `assets/illustrations/`。28 張已在 2026-10-27 全部換成新畫風，定稿紀錄在 `DESIGN.md` 第 12 章。
@@ -144,5 +149,6 @@
 
 - 任何事實、數字、日期、平台規定，先搜尋再說。
 - 不貼金鑰。筆名帳號（巴哈、LINE WEBTOON）跟使用者的個人身分分開。筆名＝「貓貓勇者小隊」（2026-10-28 定，Threads、巴哈、LINE WEBTOON 顯示名稱都已改好；巴哈和 LINE WEBTOON 帳號 10/28 建好；LINE WEBTOON 第一話 10/28 已發布，作者資訊網站填測驗首頁；作者主頁 https://www.webtoons.com/p/community/zh-hant/u/catheroparty ；巴哈第一話 10/28 已發）。LINE（10/28 過審上架）：表情貼 https://line.me/S/emoji/?id=6ae16b19a98c12374a15872f 、主題（霧藍）https://store.line.me/themeshop/product/0e7d3345-2a73-4932-b53a-3547ca36f928/zh-Hant ；薄荷、淡紫兩色主題可以接著送審。羊年貼圖／表情貼特輯排在進度表 ny1–ny4（全新圖、勾「使用 AI」、12/14 送審，截止 2027/1/8）。IG：https://www.instagram.com/mochachen12252026/ 。網址、IG、WEBTOON 帳號裡的「mocha chen」是使用者家的貓的名字、不是本名，使用者說沒差，不用再提。文案、簡介裡不寫使用者本名。
+- 標示的說法（10/29 使用者定）：她是想法提供者，作品是 AI 協作產出，兩者是合作；她的創作在點子。標語：「我無中生有，AI 有中生更多有。」網站頁尾、YouTube 說明、各平台簡介都照這個口徑。Threads 和 YouTube 用她的口吻（YouTube 由摩卡代言、先不配音，用字幕和對話框），字和剪接都是 AI 做，她審核。
 - AI 作品要誠實標示（巴哈勾「AI 創作」、LINE WEBTOON 簡介寫「AI 輔助作畫」、不參加禁止 AI 的比賽）。
 - 不畫任天堂、薩爾達等現有作品的官方角色。
