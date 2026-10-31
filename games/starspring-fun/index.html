@@ -749,7 +749,7 @@ function drawFlock() {
   for (const f of FLOCK) {
     if (f.slime && SPR.slime) {
       const k = U * f.s * 1.4, x = f.x * W, y = gy + f.y * U;
-      ell(x, y + 14 * k, 12 * k, 3 * k, 'rgba(40,60,20,.35)', 0, false);
+      ell(x, y + 14 * k, 15 * k, 3.8 * k, 'rgba(40,60,20,.45)', 0, false);
       drawSpr('slime', x, y + 14 * k - (f.wait > 0 ? 0 : Math.abs(Math.sin(T * 6 + f.x * 9)) * 4 * k), 26 * k, f.dir < 0);
     } else drawSheep(f.x * W, gy + f.y * U, f.dir, T + f.x * 9, false, f.wait > 0 ? (Math.sin(T * 3 + f.y) > 0 ? 1 : .7) : 0, f.s);
   }
@@ -1601,7 +1601,7 @@ function update(dt) {
   bgmWant = ['toGiant', 'giant'].includes(scene) ? 'boss' : scene === 'fail' ? null : scene === 'title' ? null : 'main';
   bgmTick();
   switch (scene) {
-    case 'sow': if (sceneT > .5) { scene = 'grow'; sceneT = 0; SFX.pop(); buzz(30); } break;
+    case 'sow': if (sceneT > .5) { scene = 'grow'; sceneT = 0; SFX.pop(); buzz(30); burst(W / 2, sy(0) - 4 * U, 22, ['#7a5236', '#9b6a45', '#b5835a', '#5f9a45'], 230, .9, 'dot', 5); } break;
     case 'grow': {
       const t = sceneT;
       if (t < .8) { grown = 3 * easeOut(t / .8); camH = 4; shakeT = .1; }
@@ -2020,6 +2020,7 @@ function drawMomInWorld() {
   const gy = sy(0) - 26 * U;
   if (scene === 'mom') {
     const u = clamp(sceneT / 1.1, 0, 1), x = lerp(W * HOUSE.door, W * .46, easeOut(u));
+    ell(x, sy(0) + 3 * U, 24 * U, 5.5 * U, 'rgba(40,50,20,.4)', 0, false);
     drawMom(x, gy, 1.1, T, 'run');
     if (G.bubble) bubble(x + 20 * U, gy - 48 * U, G.bubble);
   } else if (['climb', 'fail', 'toGiant'].includes(scene) && !G.inGiant) {
@@ -2031,6 +2032,7 @@ function drawMomInWorld() {
       else x = stalkX(G.momStalk, h);
     }
     if (y > H + 60) return;
+    if (mode === 'run') ell(x, sy(0) + 3 * U, 24 * U, 5.5 * U, 'rgba(40,50,20,.4)', 0, false);
     drawMom(x, y, 1.1, T, mode);
     if (G.momLineT > 0 && scene === 'climb' && G.momVis) bubble(clamp(x, 80, W - 80), y - 46 * U, G.momLine, 15);
   }
@@ -2038,6 +2040,7 @@ function drawMomInWorld() {
 function drawJackInWorld() {
   const gy = sy(0) - 28 * U;
   if (['title', 'plant', 'sow', 'grow'].includes(scene)) {
+    ell(W * .64, sy(0) + 3 * U, 20 * U, 5 * U, 'rgba(40,50,20,.4)', 0, false); // 10/31 Lulu：角色像浮著，加接地影子
     drawJack(W * .64, gy, 1.1, 'stand');
     if (scene === 'sow') { const u = clamp(sceneT / .45, 0, 1); circ(lerp(W * .64 - 20 * U, W / 2, u), lerp(gy, sy(0) - 4 * U, u) - Math.sin(u * Math.PI) * 60 * U, 5 * U, '#7a4a8a'); }
     return;
@@ -2249,7 +2252,7 @@ function drawBalloon(x, by, t, withJack, dir = 1) {
 }
 function drawSheep(x, y, dir, t, onCloud = true, graze = 0, sc = 1.4) {
   const k = U * sc; if (onCloud) cloud(2, x, y + 22 * k, 76 * k);
-  if (!onCloud) ell(x, y + 14 * k, 11 * k, 3 * k, 'rgba(40,60,20,.35)', 0, false);
+  if (!onCloud) ell(x, y + 14 * k, 14 * k, 3.6 * k, 'rgba(40,60,20,.45)', 0, false);
   if (SPR.bunny) { drawSpr('bunny', x, y + 14 * k - (graze ? 0 : Math.abs(Math.sin(t * 10)) * 3 * k), 30 * k, dir < 0); return; }
   ctx.save(); ctx.translate(x, y - (graze ? 0 : Math.abs(Math.sin(t * 10)) * 3 * k)); ctx.scale(dir * k, k);
   rr(-10, 6, 4, 9, 2, '#7a6a7a', false); rr(6, 6, 4, 9, 2, '#7a6a7a', false);
