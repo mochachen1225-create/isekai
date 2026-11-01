@@ -160,6 +160,18 @@
     ]
   },
   {
+    "id": "ideabox1",
+    "at": "2026-11-09T12:30:00+08:00",
+    "text": "我的想法真的很碎！！\n等電梯的時候冒一個、吃午餐冒一個、睡前又冒一個～～～\n以前就隨手丟在手機各個角落，\n過幾天要找……完全找不到 T_____T\n\n後來請 Claude 幫我做了一個點子箱，\n想到什麼就丟進去，一句話也好，\n每個週日總編會來收走、整理。\n\n我也還在試這樣好不好用。\n你的點子都放哪？\n（影片：AI 生成）",
+    "images": [],
+    "video": "https://mochachen1225-create.github.io/isekai/promo/threads/ideabox.mp4",
+    "tag": "AI",
+    "style": "short",
+    "approved": false,
+    "posted": false,
+    "note": "11/1 總編草稿，待她在草稿本打勾"
+  },
+  {
     "id": "team1",
     "at": "2026-11-10T12:30:00+08:00",
     "text": "我們工作室終於集合了！\n……誒誒誒～鏡頭還沒關？！！！😂\n（全部 AI 做的）",
@@ -194,6 +206,18 @@
     "posted": false
   },
   {
+    "id": "newbed1",
+    "at": "2026-11-12T12:30:00+08:00",
+    "text": "幫工作室的貓準備了三種貓窩～\n藤編公主床、雲朵絨布窩，\n還有一個……紙箱（免費）\n\n結果你猜😂\n有養貓的應該都懂吧！！\n（全部 AI 做的，貓也是）",
+    "images": [],
+    "video": "https://mochachen1225-create.github.io/isekai/promo/threads/newbed.mp4",
+    "tag": "貓",
+    "style": "short",
+    "approved": false,
+    "posted": false,
+    "note": "11/1 總編草稿，待她在草稿本打勾"
+  },
+  {
     "id": "aza1c",
     "at": "2026-11-12T20:30:00+08:00",
     "text": "畫圖這件事，還有另一個就比較莫名的事情發生…\n\n因為越畫越多，雖然一張圖也不過台幣2-3元，一個條漫畫下來應該也是要上千張，我想。\n\n而且條漫就不能像小遊戲的縮圖比較隨性，\n\n有時候還會遇到什麼三隻手的人類。\n\n貓也忽大忽小。\n\n所以針對這部分，我跟Claude討論後，決定用 Google Cloud 的 Vertex AI 這個工具來畫（用那 300 美元的免費點數）。\n\n畢竟他不用錢。\n\n結果開心的在一個晚上畫了兩百多張（我睡覺的時候，Claude可是很認真的工作中！！）\n早上起床，收到一封Google寄來的信：畫圖用的帳號，被停用了！\n\n登愣！\n\n登愣！\n\n登愣！\n\n原因我到現在還不太清楚，\n已經送了申訴，還在等結果 T_____T",
@@ -214,6 +238,18 @@
     "tag": "上班族",
     "approved": true,
     "posted": false
+  },
+  {
+    "id": "wrap1",
+    "at": "2026-11-13T12:30:00+08:00",
+    "text": "片場花絮來了～\n我喊「收工」的時候，\n總編第一句話是：「我的罐罐呢？」\n架構師還在數這是第幾次 NG……XD\n（全部 AI 做的）",
+    "images": [],
+    "video": "https://mochachen1225-create.github.io/isekai/promo/threads/wrap.mp4",
+    "tag": "AI",
+    "style": "short",
+    "approved": false,
+    "posted": false,
+    "note": "11/1 總編草稿，待她在草稿本打勾；用 wrap_v3（她 OK 的是 v2）；結尾梗跟 11/10 team1 相同"
   },
   {
     "id": "mayor3",
