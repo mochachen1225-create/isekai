@@ -1,0 +1,35 @@
+# 每日數字：每天台灣時間 23:37 抓網站（GoatCounter，昨天各頁瀏覽數）和 itch.io（遊戲累計瀏覽／下載），
+# 寫到 stats/web/、stats/itch/YYYY-MM-DD.json。Threads、IG 的數字在各自的 workflow 裡抓。
+# 需要的加密設定：GOATCOUNTER_TOKEN、ITCH_API_KEY（沒設就跳過，不算失敗）。
+name: 每日數字（網站、itch.io）
+on:
+  schedule:
+    - cron: '37 15 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: stats
+  cancel-in-progress: false
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 網站（GoatCounter）
+        continue-on-error: true
+        env:
+          GOATCOUNTER_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
+        run: python3 tools/site_stats.py web
+      - name: itch.io
+        continue-on-error: true
+        env:
+          ITCH_API_KEY: ${{ secrets.ITCH_API_KEY }}
+        run: python3 tools/site_stats.py itch
+      - name: 存起來
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          [ -d stats/web ] || [ -d stats/itch ] || exit 0
+          git add stats/web stats/itch 2>/dev/null || true
+          git diff --cached --quiet || { git commit -m "每日數字：網站、itch.io"; git pull -q --rebase; git push; }
