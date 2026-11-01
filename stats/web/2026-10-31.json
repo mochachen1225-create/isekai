@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-31",
+  "taken_at": "2026-11-01T11:31:22+08:00",
+  "total": 1,
+  "by_section": {
+    "home": 0,
+    "quiz": 0,
+    "games": 0,
+    "story": 0,
+    "other": 1
+  },
+  "more_pages": false,
+  "pages": [
+    {
+      "path": "/html/20180937/index.html?v=1793461068",
+      "title": "爬上星之泉｜貓貓勇者小隊",
+      "count": 1
+    }
+  ]
+}
