@@ -48,8 +48,10 @@
     ],
     "tag": "AI",
     "approved": true,
-    "posted": false,
-    "style": "link"
+    "posted": true,
+    "style": "link",
+    "thread_id": "18036152009666794",
+    "posted_at": "2026-11-01T13:19:12+00:00"
   },
   {
     "id": "before_ai",
