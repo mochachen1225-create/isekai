@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-01",
+  "taken_at": "2026-11-02T00:10:55+08:00",
+  "total": 0,
+  "by_section": {
+    "home": 0,
+    "quiz": 0,
+    "games": 0,
+    "itch_embed": 0,
+    "story": 0,
+    "other": 0
+  },
+  "more_pages": false,
+  "pages": []
+}
