@@ -180,6 +180,13 @@ def cmd_stats():
         out['followers'], out['media_count'] = me.get('followers_count'), me.get('media_count')
     except Exception as e:
         print('帳號數字抓不到：', e)
+    out['fb_page'] = None                   # IG 連結的 FB 粉專：追蹤數、按讚數（要 pages_read_engagement；未滿 100 讚 Meta 不給洞察，但這兩個是基本欄位）
+    try:
+        pages = call('GET', 'me/accounts', fields='id,name,followers_count,fan_count').get('data') or []
+        if pages:
+            out['fb_page'] = {'followers': pages[0].get('followers_count'), 'likes': pages[0].get('fan_count')}
+    except Exception as e:
+        print('FB 粉專數字抓不到：', e)
     since = now - datetime.timedelta(days=30)
     for p in json.loads(queue.read_text(encoding='utf-8')):
         if not p.get('ig_id') or datetime.datetime.fromisoformat(p['posted_at']) < since:
