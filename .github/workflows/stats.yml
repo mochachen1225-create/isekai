@@ -30,6 +30,5 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          [ -d stats/web ] || [ -d stats/itch ] || exit 0
-          git add stats/web stats/itch 2>/dev/null || true
+          for d in stats/web stats/itch; do if [ -d "$d" ]; then git add "$d"; fi; done
           git diff --cached --quiet || { git commit -m "每日數字：網站、itch.io"; git pull -q --rebase; git push; }

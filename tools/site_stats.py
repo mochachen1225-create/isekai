@@ -50,10 +50,17 @@ def cmd_web():
     token = os.environ.get('GOATCOUNTER_TOKEN', '')
     if not token:
         print('還沒設定 GOATCOUNTER_TOKEN，跳過'); return
-    day = (now - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
+    start = (now - datetime.timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
+    day = start.strftime('%Y-%m-%d')
     headers = {'Authorization': f'Bearer {token}', 'Content-Type': 'application/json'}
-    q = {'start': day, 'end': day, 'limit': 100}   # 一次最多 100 頁；網站還小，夠用（超過會在 more 標示）
-    r = get(f'{GOAT}/stats/hits?{urllib.parse.urlencode(q)}', headers)
+    # 時間要給到時分（API 收 datetime、整點），昨天 00:00 到今天 00:00（台灣時間）；一次最多 100 頁，網站還小，夠用
+    q = {'start': start.isoformat(), 'end': (start + datetime.timedelta(days=1)).isoformat(), 'limit': 100}
+    try:
+        r = get(f'{GOAT}/stats/hits?{urllib.parse.urlencode(q)}', headers)
+    except RuntimeError as e:
+        if not str(e).startswith('HTTP 404'):
+            raise
+        r = {'hits': [], 'more': False}   # 那段時間完全沒有瀏覽時 API 回 404，當成 0
     pages = [{'path': h.get('path'), 'title': h.get('title'), 'count': h.get('count')} for h in r.get('hits') or []]
     by = {'home': 0, 'quiz': 0, 'games': 0, 'story': 0, 'other': 0}
     for p in pages:
