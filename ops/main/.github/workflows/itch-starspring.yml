@@ -37,5 +37,5 @@ jobs:
       - name: 上傳到 itch.io（html5 頻道）
         run: |
           butler -V
-          butler push dist/starspring-itch.zip mocha-cat-team/climb-to-the-star-spring:html5 --userversion "$(git -C site log -1 --format=%cs-%h -- games/starspring)" --if-changed
+          butler push dist/starspring-itch.zip mocha-cat-team/climb-to-the-star-spring:html5 --userversion "$(git -C site log -1 --format=%cs-%h )" --if-changed
           butler status mocha-cat-team/climb-to-the-star-spring:html5
