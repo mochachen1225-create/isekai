@@ -1,0 +1,41 @@
+# 星之泉更新到 itch.io（用 itch 官方工具 butler），遊戲在 site 分支的 games/starspring。
+# 只在有人按「Run workflow」時才傳（11/1 作者選的：修好推上 site 不會馬上更新 itch，
+# 總編寫好開發日誌、確認要上線時才按）。Actions 頁 → 星之泉更新到 itch.io → Run workflow。
+# 需要 Settings → Secrets and variables → Actions 的 BUTLER_API_KEY（itch 帳號 API keys 頁、來源 wharf 的那把）。
+# 那把 key 等於整個 itch 帳號的鑰匙：不要印出來；外流就到 itch 的 API keys 頁撤銷。
+name: 星之泉更新到 itch.io
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: itch-starspring
+  cancel-in-progress: false
+jobs:
+  itch:
+    runs-on: ubuntu-latest
+    env:
+      BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+    steps:
+      - name: 還沒設 BUTLER_API_KEY 就停
+        run: |
+          if [ -z "$BUTLER_API_KEY" ]; then echo "還沒設定 BUTLER_API_KEY，沒有上傳"; exit 1; fi
+      - uses: actions/checkout@v4          # main：打包程式
+      - uses: actions/checkout@v4          # site：遊戲本體
+        with:
+          ref: site
+          path: site
+          sparse-checkout: |
+            games/starspring
+            assets/sprites
+      - name: 打包
+        run: bash tools/build_itch_starspring.sh site dist/starspring-itch.zip
+      - name: 安裝 butler（itch 官方下載點）
+        run: |
+          curl -sSfL -o butler.zip https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default
+          unzip -q butler.zip -d butler && chmod +x butler/butler && echo "$PWD/butler" >> "$GITHUB_PATH"
+      - name: 上傳到 itch.io（html5 頻道）
+        run: |
+          butler -V
+          butler push dist/starspring-itch.zip mocha-cat-team/climb-to-the-star-spring:html5 --userversion "$(git -C site log -1 --format=%cs-%h )" --if-changed
+          butler status mocha-cat-team/climb-to-the-star-spring:html5
