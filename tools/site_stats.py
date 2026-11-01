@@ -40,6 +40,8 @@ def section(path):
     p = p.lstrip('/')
     if p in ('', 'index.html'):
         return 'home'
+    if p.startswith('html/'):          # itch.io 內嵌的遊戲（iframe 網址是 /html/<編號>/index.html）
+        return 'itch_embed'
     for name, prefixes in SECTIONS:
         if p.startswith(prefixes):
             return name
@@ -60,9 +62,11 @@ def cmd_web():
     except RuntimeError as e:
         if not str(e).startswith('HTTP 404'):
             raise
-        r = {'hits': [], 'more': False}   # 那段時間完全沒有瀏覽時 API 回 404，當成 0
-    pages = [{'path': h.get('path'), 'title': h.get('title'), 'count': h.get('count')} for h in r.get('hits') or []]
-    by = {'home': 0, 'quiz': 0, 'games': 0, 'story': 0, 'other': 0}
+        print('GoatCounter 回 404，當成這段時間沒有瀏覽（0）；如果一直是 0，檢查網址和金鑰')
+        r = {'hits': [], 'more': False}
+    pages = [{'path': (h.get('path') or '').split('?')[0], 'title': h.get('title'), 'count': h.get('count')}
+             for h in r.get('hits') or []]   # 拿掉 ?v= 之類的參數
+    by = {'home': 0, 'quiz': 0, 'games': 0, 'itch_embed': 0, 'story': 0, 'other': 0}
     for p in pages:
         if isinstance(p['count'], int):
             by[section(p['path'])] += p['count']
