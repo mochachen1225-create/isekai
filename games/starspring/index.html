@@ -2047,7 +2047,7 @@ function drawWorld() {
   if (grown < 2) {
     const gy = sy(0);
     if (scene === 'plant') { sh(false); ctx.strokeStyle = `rgba(255,248,234,${.5 + .4 * Math.sin(T * 5)})`; ctx.lineWidth = 4 * U; ctx.beginPath(); ctx.ellipse(W / 2, gy, 44 * U + Math.sin(T * 5) * 5, 16 * U, 0, 0, 7); ctx.stroke(); }
-    // 10/31 Lulu 說種下的地方浮浮的、醜：改成貼地的土堆（影子＋深淺兩層土＋小土塊＋小芽），看起來種在草地裡
+    // 10/31 試玩的人說種下的地方浮浮的、醜：改成貼地的土堆（影子＋深淺兩層土＋小土塊＋小芽），看起來種在草地裡
     ell(W / 2, gy + 3 * U, 40 * U, 11 * U, 'rgba(60,40,20,.28)');
     ell(W / 2, gy, 34 * U, 11 * U, '#7a5236');
     ell(W / 2, gy - 3 * U, 28 * U, 8 * U, '#9b6a45');
@@ -2252,7 +2252,7 @@ function drawMomInWorld() {
 function drawJackInWorld() {
   const gy = sy(0) - 28 * U;
   if (['title', 'plant', 'sow', 'grow'].includes(scene)) {
-    ell(W * .64, sy(0) + 3 * U, 20 * U, 5 * U, 'rgba(40,50,20,.4)', 0, false); // 10/31 Lulu：角色像浮著，加接地影子
+    ell(W * .64, sy(0) + 3 * U, 20 * U, 5 * U, 'rgba(40,50,20,.4)', 0, false); // 10/31 試玩回饋：角色像浮著，加接地影子
     drawJack(W * .64, gy, 1.1, 'stand');
     if (scene === 'sow') { const u = clamp(sceneT / .45, 0, 1); circ(lerp(W * .64 - 20 * U, W / 2, u), lerp(gy, sy(0) - 4 * U, u) - Math.sin(u * Math.PI) * 60 * U, 5 * U, '#7a4a8a'); }
     return;
