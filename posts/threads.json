@@ -539,5 +539,19 @@
     "approved": true,
     "posted": false,
     "note": "11/2 她寫的全文，總編潤飾（內心畫→內心話等）"
+  },
+  {
+    "id": "zuiti2",
+    "at": "2026-11-26T12:30:00+08:00",
+    "text": "下班後的我，電量只剩 1%。\n訊息都有看到，只是……明天再說。\n\n你下班後還剩幾 %？\n\n（圖片：AI 協作）\n#今日嘴替",
+    "images": [
+      "https://mochachen1225-create.github.io/isekai/promo/zuiti/card2.jpg"
+    ],
+    "video": "",
+    "tag": "心情",
+    "style": "short",
+    "approved": true,
+    "note": "11/2 嘴替第二張，她同意 Threads 也發短版",
+    "posted": false
   }
 ]
