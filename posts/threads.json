@@ -513,5 +513,17 @@
     "approved": true,
     "posted": false,
     "note": "11/2 她寫的全文，總編潤飾；「把過去幾個有特色的候選人都納進來」改成「參考了各種常見的候選人類型」（遊戲鐵律：不對應真人原型）"
+  },
+  {
+    "id": "mayor_debate_full",
+    "at": "2026-11-15T20:30:00+08:00",
+    "text": "不知道有沒有人在玩《我推的市長》這個遊戲（笑）。\n我們改版囉！！！增加了電視辯論會。\n\n電視辯論，到底是要講選民在乎的？還是只是攻擊對手？\n目標是爭取更多人的支持？還是穩住基本盤？\n到底怎樣才算成功的電視辯論會？\n你的市長候選人，最怕被問到什麼？……\n\n《我推的市長》一起來玩玩看吧！\n\n（純屬虛構｜影片：AI 生成｜遊戲連結在主頁）\n#我推的市長 #電視辯論 #選舉 #小遊戲 #AI協作",
+    "images": [],
+    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/my-mayor-debate-zh.mp4",
+    "tag": "作品",
+    "style": "long",
+    "approved": false,
+    "posted": false,
+    "note": "11/2 她寫的全文，總編潤飾；影片修好才改 approved:true。（插畫→影片：這篇是影片）"
   }
 ]
