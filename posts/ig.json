@@ -97,13 +97,13 @@
   },
   {
     "id": "ig_team1",
-    "at": "2026-11-10T20:00:00+08:00",
+    "at": "2026-11-11T20:00:00+08:00",
     "text": "啊！忘了關鏡頭（總編！形象！）\n\n（影片：AI 生成）\n\n#貓貓工作室 #AI影片 #橘貓 #片場花絮 #AI協作",
     "images": [],
     "video": "https://mochachen1225-create.github.io/isekai/promo/ig/team1.mp4",
     "approved": true,
     "posted": false,
-    "note": "11/1 她改文案＝OK（AI 標示和 hashtag 照原則保留）"
+    "note": "11/1 她改文案＝OK（AI 標示和 hashtag 照原則保留）｜11/2 為了星之泉 Reel 從 11/10 移到 11/11"
   },
   {
     "id": "ig_ep1",
@@ -217,5 +217,15 @@
     ],
     "approved": true,
     "posted": false
+  },
+  {
+    "id": "ig_starspring",
+    "at": "2026-11-10T20:00:00+08:00",
+    "text": "我們在寫的異世界小說《貓貓勇者小隊》🐾\n上班族摩卡莫名其妙被召喚到異世界，滿腦子異世界知識，但是……\n\n有地下城，但不是要打怪搶寶箱。\n有魔王，但跟你想的有點不一樣。\n\n這次做了一個小遊戲：爬上星之泉\n爬上貓跳台，不要被橘貓抓去清貓砂，搶先拿到魔王的星星結晶吧！\n（遊戲連結在個人檔案）\n\n（AI 協作製作）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
+    "images": [],
+    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/starspring_reel.mp4",
+    "approved": true,
+    "posted": false,
+    "note": "11/2 她：11/10 改成星之泉 Reel；IG 用她全文的刪減版（她授權總編刪）"
   }
 ]
