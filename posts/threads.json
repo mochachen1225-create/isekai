@@ -489,9 +489,9 @@
     "video": "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_collapse.mp4",
     "tag": "作品",
     "style": "long",
-    "approved": false,
+    "approved": true,
     "posted": false,
-    "note": "11/2 她寫的全文，總編潤飾（「台北市長的選戰」改成「這次的選戰」：遊戲鐵律不連到真實地名）；影片修好才改 approved:true"
+    "note": "11/2 她寫的全文，總編潤飾（「台北市長的選戰」改成「這次的選戰」：遊戲鐵律不連到真實地名）；影片修好才改 approved:true｜11/2 影片修好（144ea63），她看截圖說 OK"
   },
   {
     "id": "mayor_bosses_full",
@@ -522,8 +522,8 @@
     "video": "https://mochachen1225-create.github.io/isekai/promo/ig/my-mayor-debate-zh.mp4",
     "tag": "作品",
     "style": "long",
-    "approved": false,
+    "approved": true,
     "posted": false,
-    "note": "11/2 她寫的全文，總編潤飾；影片修好才改 approved:true。（插畫→影片：這篇是影片）"
+    "note": "11/2 她寫的全文，總編潤飾；影片修好才改 approved:true。（插畫→影片：這篇是影片）｜11/2 影片修好（144ea63），她看截圖說 OK"
   }
 ]
