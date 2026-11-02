@@ -6,7 +6,7 @@
 
 最後更新：2026-10-29 晚上。**換 session 後先看私人 repo `isekai-studio` 的 `notes/handoff.md`（最新狀態和私人細節都寫那裡，不寫進這個公開檔）。**
 
-**換 session 的規則**：對話很長（上下文被壓縮過一兩次）、或開始一件獨立的大工作（例如畫一整話漫畫）時，就開新 session。新 session 要選同一個 repo（`mochachen1225-create/isekai`，分支 `site`）和同一個環境（Network secrets 才會在）。開好後把兩個排程任務（每天 18:47 提醒、每週日 19:41 準備下週）重新綁到新 session，舊的刪掉。這件事由 Claude 自己判斷、自己做（使用者 10/28 交代）：先更新這段交接並 push，用 create_session 開新 session（給它清楚的開場任務），搬排程任務，最後告訴使用者新 session 的名字。私人工作檔 repo `isekai-studio` 要用 add_repo 加進來再 clone。
+**換 session 的規則**：對話上下文被壓縮過一次（11/2 起，省 token）、或開始一件獨立的大工作（例如畫一整話漫畫）時，就開新 session。新 session 要選同一個 repo（`mochachen1225-create/isekai`，分支 `site`）和同一個環境（Network secrets 才會在）。開好後把綁在舊 session 的所有排程任務（list_triggers 看 persistent_session_id）重新建在新 session，舊的刪掉，並用 send_message 告訴各遊戲設計師新的總編 session id（架構師寫 to-architect.md）。大檔下載、批次處理、讀很多檔一律交給 subagent。這件事由 Claude 自己判斷、自己做（使用者 10/28 交代）：先更新這段交接並 push，用 create_session 開新 session（給它清楚的開場任務），搬排程任務，最後告訴使用者新 session 的名字。私人工作檔 repo `isekai-studio` 要用 add_repo 加進來再 clone。
 
 **現在最優先**（11/11 開跑，要存稿到第五話；10/28 晚上的狀態）：
 1. 第三話漫畫：使用者 OK，已在 `ep03-stock`。夜市參考圖 s5 已重畫（巨樹＋圓石＋銅管）。
