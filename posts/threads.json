@@ -492,5 +492,26 @@
     "approved": false,
     "posted": false,
     "note": "11/2 她寫的全文，總編潤飾（「台北市長的選戰」改成「這次的選戰」：遊戲鐵律不連到真實地名）；影片修好才改 approved:true"
+  },
+  {
+    "id": "mayor_bosses_full",
+    "at": "2026-11-13T20:30:00+08:00",
+    "text": "在設計遊戲的時候，我想說不能寫出城市名稱，也不能只有兩位候選人（笑），所以我參考了各種常見的候選人類型，然後讓系統隨機派一位候選人給玩家：\n打造一個～你沒辦法選老闆，這就是工作！\n\n每位老闆都有自己的個性跟背景，沒有一個一樣。\n有政治世家、有學者、有做過各種政治職務的、也有現任市長～\n\n對你來說：\n這就是一份工作！那你要盡力完成（把老闆送上市長寶座），還是乾脆趁機上下其手（世界也有可能是黑暗的……）？\n\n那麼，如果你是總幹事，會怎麼做呢？\n\n（純屬虛構｜插畫：AI 生成｜遊戲連結在主頁）\n#我推的市長 #選舉 #小遊戲 #總幹事 #AI協作",
+    "images": [
+      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/01.jpg",
+      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/02.jpg",
+      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/03.jpg",
+      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/04.jpg",
+      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/05.jpg",
+      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/06.jpg",
+      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/07.jpg",
+      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/08.jpg"
+    ],
+    "video": "",
+    "tag": "作品",
+    "style": "long",
+    "approved": true,
+    "posted": false,
+    "note": "11/2 她寫的全文，總編潤飾；「把過去幾個有特色的候選人都納進來」改成「參考了各種常見的候選人類型」（遊戲鐵律：不對應真人原型）"
   }
 ]
