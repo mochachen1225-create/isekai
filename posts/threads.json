@@ -89,7 +89,9 @@
     ],
     "tag": "AI",
     "approved": true,
-    "posted": false
+    "posted": true,
+    "thread_id": "18108056459461306",
+    "posted_at": "2026-11-03T13:03:58+00:00"
   },
   {
     "id": "no_blueprint",
