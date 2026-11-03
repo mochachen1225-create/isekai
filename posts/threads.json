@@ -75,8 +75,10 @@
     "tag": "AI",
     "style": "short",
     "approved": true,
-    "posted": false,
-    "note": "10/31 她 OK；第一則 Threads 影片自動發"
+    "posted": true,
+    "note": "10/31 她 OK；第一則 Threads 影片自動發",
+    "thread_id": "18147455104581305",
+    "posted_at": "2026-11-03T04:30:02+00:00"
   },
   {
     "id": "not_magic",
