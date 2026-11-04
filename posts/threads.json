@@ -524,10 +524,8 @@
   {
     "id": "scratch_launch",
     "at": "2026-11-20T20:30:00+08:00",
-    "text": "你就是貓貓，來抓抓的小遊戲，今天上架了。\n\n有三隻貓可以選（就是我們貓貓小隊的成員啦）。\n每隻抓法都不一樣：一隻很整齊、一隻很優雅、一隻很亂。\n抓完還可以拍「慘狀照」，貓會一臉無辜地說：「我只是在檢查品質。」\n\n手機就能玩，不用下載。連結放留言。\n做得還不成熟，玩了覺得哪裡怪，跟我說～\n\n（遊戲裡的插畫和音樂是 AI 做的）",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/threads/scratch_ruin.jpg"
-    ],
+    "text": "你就是貓貓，來抓抓的小遊戲，今天上架了。\n\n有三隻貓可以選（就是我們貓貓小隊的成員啦）。\n每隻抓法都不一樣：一隻很整齊、一隻很優雅、一隻很亂。\n抓完還可以拍「慘狀照」，貓會一臉無辜地說：「我只是在檢查品質。」\n\n手機就能玩，不用下載。連結放留言。\n做得還不成熟，玩了覺得哪裡怪，跟我說～\n\n（遊戲裡的插畫和音樂是 AI 做的，影片是遊戲實際畫面）",
+    "images": [],
     "replies": [
       "《抓爛它！》https://mochachen1225-create.github.io/scratch-it/"
     ],
@@ -535,7 +533,8 @@
     "style": "short",
     "approved": true,
     "posted": false,
-    "note": "11/4 她 OK；上架前一天總編確認連結（itch 頁建好可改 itch 網址）｜11/4 她定：有遊戲連結＋試玩片的才掛「獨立遊戲開發」；試玩片做好要換成 video"
+    "note": "11/4 她 OK；上架前一天總編確認連結（itch 頁建好可改 itch 網址）｜11/4 她定：有遊戲連結＋試玩片的才掛「獨立遊戲開發」；試玩片做好要換成 video",
+    "video": "https://mochachen1225-create.github.io/isekai/promo/threads/scratch_trailer.mp4"
   },
   {
     "id": "zuiti1_full",
