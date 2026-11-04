@@ -116,8 +116,10 @@
     "tag": "心情",
     "style": "short",
     "approved": true,
-    "posted": false,
-    "note": "11/4 她 OK（配圖 B）"
+    "posted": true,
+    "note": "11/4 她 OK（配圖 B）",
+    "thread_id": "18130898219494058",
+    "posted_at": "2026-11-04T14:29:32+00:00"
   },
   {
     "id": "quiz_full",
