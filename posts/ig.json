@@ -53,22 +53,12 @@
   {
     "id": "ig_quiz",
     "at": "2026-11-05T20:00:00+08:00",
-    "text": "我們故事的主角摩卡，是個莫名其妙被召喚到異世界的上班族，沒有職業、也沒有能力（笑）。\n\n那如果是你呢？\n是你選擇職業，還是職業選擇你？\n\n勇者、守護騎士、吟遊詩人，\n還是異世界咖啡館店長？\n\n做了一個簡單的心理測驗，找出你的異世界職業。\n連結在個人檔案，測完可以截圖給朋友看看準不準 :)\n\n（插畫：AI 協作）\n#貓貓勇者小隊 #異世界 #心理測驗 #原創插畫 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/carousel/01.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/carousel/02.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/carousel/03.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/carousel/04.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/carousel/05.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/carousel/06.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/carousel/07.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/carousel/08.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/carousel/09.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/carousel/10.jpg"
-    ],
-    "approved": false,
+    "text": "我們工作室的總編，今天也很認真在工作。\n……大概認真了五秒（笑）\n\n你也是這種上班族嗎？\n\n（影片：AI 生成）\n\n#貓貓勇者小隊 #橘貓 #上班族日常 #AI協作",
+    "images": [],
+    "approved": true,
     "posted": false,
-    "note": "11/2 她寫全文、圖用 1～10；IG 用總編刪減版｜11/4 她說測驗不好玩先不宣傳，暫停"
+    "note": "11/4 她 OK：測驗暫停，改發總編打字睡著（Flow，作者手動生成）",
+    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/office_nap.mp4"
   },
   {
     "id": "ig_office1",
@@ -180,12 +170,12 @@
   {
     "id": "ig_reel_cafe",
     "at": "2026-11-17T20:00:00+08:00",
-    "text": "如果我真的轉生到異世界，\n我希望可以開一間咖啡館。\n來來往往的旅客帶著各種有趣的故事，\n悠閒地、不是為了錢而上班？大概就是這種感覺 ☕\n\n不過……要先有本金吧？要住哪裡？\n結果又回到現實的考量了（笑）\n\n那你呢？會是哪一種職業？\n測驗連結在個人檔案\n\n（影片：AI 協作）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
+    "text": "如果我真的轉生到異世界，\n我希望可以開一間咖啡館。\n來來往往的旅客帶著各種有趣的故事，\n悠閒地、不是為了錢而上班？大概就是這種感覺 ☕\n\n不過……要先有本金吧？要住哪裡？\n結果又回到現實的考量了（笑）\n\n那你呢？到了異世界，會想做什麼工作？\n\n（影片：AI 協作）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
     "images": [],
     "video": "https://mochachen1225-create.github.io/isekai/promo/cafe_f.mp4",
     "approved": true,
     "posted": false,
-    "note": "11/2 她寫全文；IG 用總編刪減版"
+    "note": "11/2 她寫全文；IG 用總編刪減版｜11/4 拿掉測驗句"
   },
   {
     "id": "ig_ep2",
