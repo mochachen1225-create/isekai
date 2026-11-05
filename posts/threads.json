@@ -141,8 +141,10 @@
     "tag": "作品",
     "style": "long",
     "approved": true,
-    "posted": false,
-    "note": "11/4 她 OK：拿掉測驗段（測驗改版前不宣傳）"
+    "posted": true,
+    "note": "11/4 她 OK：拿掉測驗段（測驗改版前不宣傳）",
+    "thread_id": "17922007368245176",
+    "posted_at": "2026-11-05T00:33:46+00:00"
   },
   {
     "id": "mayor2",
