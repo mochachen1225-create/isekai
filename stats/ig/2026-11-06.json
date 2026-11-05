@@ -1,0 +1,59 @@
+{
+  "taken_at": "2026-11-06T00:27:11+08:00",
+  "followers": 0,
+  "media_count": 4,
+  "posts": [
+    {
+      "id": "18129854593867137",
+      "queue_id": "ig_game",
+      "posted_at": "2026-10-31T13:56:52+00:00",
+      "permalink": "https://www.instagram.com/reel/DfKUOE5iA4C/",
+      "likes": 0,
+      "comments": 0,
+      "reach": 13,
+      "saved": 0,
+      "shares": 0,
+      "views": 13
+    },
+    {
+      "id": "18141088957624983",
+      "queue_id": "ig_mayor1",
+      "posted_at": "2026-11-01T12:05:41+00:00",
+      "permalink": "https://www.instagram.com/reel/DfMsSd-jj1Z/",
+      "likes": 0,
+      "comments": 0,
+      "reach": 2,
+      "saved": 0,
+      "shares": 0,
+      "views": 2
+    },
+    {
+      "id": "17865395685693179",
+      "queue_id": "ig_ng1",
+      "posted_at": "2026-11-03T12:27:17+00:00",
+      "permalink": "https://www.instagram.com/reel/DfR4WjRCOhn/",
+      "likes": 0,
+      "comments": 0,
+      "reach": 5,
+      "saved": 0,
+      "shares": 0,
+      "views": 4
+    },
+    {
+      "id": "18239096605318440",
+      "queue_id": "ig_quiz",
+      "posted_at": "2026-11-05T12:42:34+00:00",
+      "permalink": "https://www.instagram.com/reel/DfXDr1RHNyl/",
+      "likes": 0,
+      "comments": 0,
+      "reach": 7,
+      "saved": 0,
+      "shares": 0,
+      "views": 9
+    }
+  ],
+  "fb_page": {
+    "followers": 1,
+    "likes": 1
+  }
+}
