@@ -188,7 +188,9 @@
     ],
     "tag": "上班族",
     "approved": true,
-    "posted": false
+    "posted": true,
+    "thread_id": "18396908263165642",
+    "posted_at": "2026-11-06T00:31:48+00:00"
   },
   {
     "id": "office_full",
