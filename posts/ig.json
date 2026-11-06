@@ -1,255 +1,265 @@
 [
-  {
-    "id": "ig_halloween",
-    "at": "2026-10-31T08:30:00+08:00",
-    "text": "萬聖節快樂🎃\n\n先自我介紹一下\n我們是「貓貓小隊」\n一個上班族（我）加上幾隻 AI 小貓員工\n一起做故事、漫畫、小遊戲的小團隊\n\n今天大家都變裝了\n總編是小巫師（工作證還是掛著）\n架構師是吸血鬼（耳麥沒拔下來）\n小弟是小幽靈 帽子還露在外面 XD\n我戴了貓耳朵 終於跟大家同一國了\n\n不給糖就搗蛋？\n他們說：不給罐罐就搗蛋。\n\n（圖片：AI 協作）\n\n#萬聖節 #HappyHalloween #貓貓勇者小隊 #貓貓工作室 #AI協作 #貓",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/threads/halloween_a.jpg"
-    ],
-    "approved": false,
-    "posted": false,
-    "error": "POST 17841416960586035/media：400 {\"error\":{\"message\":\"Cannot call API for app 2566471420522009 on behalf of user 122094287127541130\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"A5ezPe7nrhiqkMGcUka5CQb\"}}",
-    "note": "10/31 她說：自動發失敗的這則不補發"
-  },
-  {
-    "id": "ig_game",
-    "at": "2026-10-31T20:00:00+08:00",
-    "text": "爬上貓跳台，躲過橘貓，拿到魔王的星星結晶。\n這是我們《貓貓勇者小隊》的小遊戲「爬上星之泉」。\n你會先被橘貓抓到嗎？\n\n（遊戲和圖片：AI 協作）\n\n#貓貓勇者小隊 #異世界 #小遊戲 #橘貓 #AI協作",
-    "images": [],
-    "approved": true,
-    "posted": true,
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/starspring_reel.mp4",
-    "note": "10/31 她說設定做好了，提前到今晚當第一次 IG 自動發的測試（原本 11/10）",
-    "ig_id": "18129854593867137",
-    "permalink": "https://www.instagram.com/reel/DfKUOE5iA4C/",
-    "posted_at": "2026-10-31T13:56:52+00:00"
-  },
-  {
-    "id": "ig_mayor1",
-    "at": "2026-11-01T20:00:00+08:00",
-    "text": "這只是一個虛構的遊戲：\n你是總幹事，要努力把自己的候選人推上市長寶座。\n一局 10 分鐘，58 種結局，手機就能玩。\n11/28 記得去投票喔🗳️\n\n（純屬虛構｜插畫：AI 生成｜遊戲連結在主頁）\n\n#我推的市長 #選舉 #小遊戲 #台灣 #AI協作",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_hype.mp4",
-    "approved": true,
-    "posted": true,
-    "note": "11/1 她 OK",
-    "ig_id": "18141088957624983",
-    "permalink": "https://www.instagram.com/reel/DfMsSd-jj1Z/",
-    "posted_at": "2026-11-01T12:05:41+00:00"
-  },
-  {
-    "id": "ig_ng1",
-    "at": "2026-11-03T20:00:00+08:00",
-    "text": "用 Google Flow 生成影片，結果……\nAI 拍片的 NG 集，第 3 個最好笑。\n你覺得哪個最好笑？\n\n（影片：AI 生成）\n\n#貓貓工作室 #AI影片 #NG #橘貓 #AI協作",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/ng1.mp4",
-    "approved": true,
-    "posted": true,
-    "note": "10/31 她說 IG 可安排（真人版 NG 集 v3）",
-    "ig_id": "17865395685693179",
-    "permalink": "https://www.instagram.com/reel/DfR4WjRCOhn/",
-    "posted_at": "2026-11-03T12:27:17+00:00"
-  },
-  {
-    "id": "ig_quiz",
-    "at": "2026-11-05T20:00:00+08:00",
-    "text": "我們工作室的總編，今天也很認真在工作。\n……大概認真了五秒（笑）\n\n你也是這種上班族嗎？\n\n（影片：AI 生成）\n\n#貓貓勇者小隊 #橘貓 #上班族日常 #AI協作",
-    "images": [],
-    "approved": true,
-    "posted": true,
-    "note": "11/4 她 OK：測驗暫停，改發總編打字睡著（Flow，作者手動生成）",
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/office_nap.mp4",
-    "ig_id": "18239096605318440",
-    "permalink": "https://www.instagram.com/reel/DfXDr1RHNyl/",
-    "posted_at": "2026-11-05T12:42:34+00:00"
-  },
-  {
-    "id": "ig_office1",
-    "at": "2026-11-07T20:00:00+08:00",
-    "text": "貓貓小隊辦公室的一天 🐾\n總編在寫稿，架構師盯著一排綠勾勾，小弟出門送件，老闆只負責說 OK XD\n\n我負責想點子，貓貓小隊幫我做出來。\n這支短片是總編說：「用卡通介紹我們辦公室吧」，就有了。\n\n（圖片和動畫：AI 協作）\n#貓貓勇者小隊 #貓貓工作室 #AI協作 #貓 #上班族日常",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/office_day1.mp4",
-    "approved": true,
-    "posted": false,
-    "note": "11/2 她寫全文、打勾 OK；IG 用總編刪減版"
-  },
-  {
-    "id": "ig_kitten1",
-    "at": "2026-11-08T20:00:00+08:00",
-    "text": "問小弟這週的進度，他很認真地回答了。\n翻譯在最後。\n你上班也這樣回報過嗎？\n\n（影片：AI 生成）\n\n#貓貓工作室 #AI影片 #小貓 #上班族日常 #AI協作",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/kitten1.mp4",
-    "approved": true,
-    "posted": false,
-    "note": "11/1 她 OK"
-  },
-  {
-    "id": "ig_mayor_collapse",
-    "at": "2026-11-09T20:00:00+08:00",
-    "text": "如果當一個選舉團隊的總幹事，應該會忙到爆肝吧？？\n\n在《我推的市長》裡，總幹事到開票前都不能鬆懈，\n要小心不要爆肝，還要面對各種誘惑——\n你會正正當當，還是以自己的利益為優先呢？\n\n有超多種結局，都可以試試看喔。\n\n（純屬虛構｜影片：AI 生成｜遊戲連結在主頁）\n#我推的市長 #總幹事 #選舉 #AI影片 #AI協作",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_collapse.mp4",
-    "approved": true,
-    "posted": false,
-    "note": "11/2 她寫全文（IG 用總編刪減版），文字 OK；影片 0:11 有多一隻手、要加中英字幕，影片修好才改 approved:true｜11/2 影片修好（144ea63），她看截圖說 OK"
-  },
-  {
-    "id": "ig_team1",
-    "at": "2026-11-11T20:00:00+08:00",
-    "text": "啊！忘了關鏡頭（總編！形象！）\n\n（影片：AI 生成）\n\n#貓貓工作室 #AI影片 #橘貓 #片場花絮 #AI協作",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/team1.mp4",
-    "approved": true,
-    "posted": false,
-    "note": "11/1 她改文案＝OK（AI 標示和 hashtag 照原則保留）｜11/2 為了星之泉 Reel 從 11/10 移到 11/11"
-  },
-  {
-    "id": "ig_ep1",
-    "at": "2026-11-12T20:00:00+08:00",
-    "text": "我們的異世界故事要開始了 :D\n\n上班族摩卡工作超累，睡到半夜醒來——\n停電、手機沒網路，打開門，外面卻是一片森林……？？？\n\n《貓貓勇者小隊》11/11 開始連載\n第一話｜往右滑 →\n完整版在個人檔案的連結\n\n（原創構想＋AI 協作作畫）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/story/comic/01-1.jpg",
-      "https://mochachen1225-create.github.io/isekai/story/comic/01-2.jpg",
-      "https://mochachen1225-create.github.io/isekai/story/comic/01-3.jpg",
-      "https://mochachen1225-create.github.io/isekai/story/comic/01-5.jpg",
-      "https://mochachen1225-create.github.io/isekai/story/comic/01-6.jpg",
-      "https://mochachen1225-create.github.io/isekai/story/comic/01-7.jpg",
-      "https://mochachen1225-create.github.io/isekai/story/comic/01-8.jpg",
-      "https://mochachen1225-create.github.io/isekai/story/comic/01-10.jpg",
-      "https://mochachen1225-create.github.io/isekai/story/comic/01-11.jpg",
-      "https://mochachen1225-create.github.io/isekai/story/comic/01-12.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/2 她寫全文、指定 10 張圖；IG 用總編刪減版"
-  },
-  {
-    "id": "ig_mayor_bosses",
-    "at": "2026-11-13T20:00:00+08:00",
-    "text": "你沒辦法選老闆，這就是工作！\n\n政治世家、學者、做過各種政治職務的、現任市長……\n六位老闆，系統隨機派一位給你。\n\n你要盡力把老闆送上市長寶座，\n還是趁機上下其手（世界也有可能是黑暗的……）？\n\n如果你是總幹事，會怎麼做呢？\n\n（純屬虛構｜插畫：AI 生成｜遊戲連結在主頁）\n#我推的市長 #選舉 #小遊戲 #總幹事 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/01.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/02.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/03.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/04.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/05.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/06.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/07.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/08.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/2 她寫全文（IG 用總編刪減版）"
-  },
-  {
-    "id": "ig_afterwork1",
-    "at": "2026-11-14T20:00:00+08:00",
-    "text": "下班了～\n\n總編去泡澡看書，眼鏡一直起霧\n架構師的耳麥終於拿來打電動\n小弟吃飽就睡在紙箱裡\n\n然後我看進度表看到睡著……\n醒來身上多了一條被子 :)\n\n（圖片和動畫：AI 協作）\n\n#貓貓勇者小隊 #貓貓工作室 #AI協作 #貓 #下班後",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/after_work1.mp4",
-    "approved": true,
-    "posted": false
-  },
-  {
-    "id": "ig_mayor_debate",
-    "at": "2026-11-15T20:00:00+08:00",
-    "text": "《我推的市長》改版囉！增加了電視辯論會。\n\n要講選民在乎的？還是攻擊對手？\n要爭取更多支持？還是穩住基本盤？\n你的候選人，最怕被問到什麼？\n\n（純屬虛構｜影片：AI 生成｜遊戲連結在主頁）\n#我推的市長 #電視辯論 #選舉 #小遊戲 #AI協作",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/my-mayor-debate-zh.mp4",
-    "approved": true,
-    "posted": false,
-    "note": "11/2 她寫全文（IG 用總編刪減版），文字 OK；影片 0:14 有奇怪的手，修好才改 approved:true｜11/2 影片修好（144ea63），她看截圖說 OK"
-  },
-  {
-    "id": "ig_newbed",
-    "at": "2026-11-16T20:00:00+08:00",
-    "text": "因為有養貓，所以總是想買各種東西給貓貓們。\n貓窩，是一定要買的！！\n買了各式各樣的貓窩，一開始都很受歡迎。\n但是隔天，新貓窩就失寵了！！！\n永遠最受歡迎的，都是網購的紙箱？？？？！！！！\n\n所以在我們貓貓小隊的辦公室，也準備了各種貓窩，\n看看哪個最受小隊員們歡迎？\n有養貓的應該已經知道答案了 XD\n\n（影片：AI 生成）\n#貓貓工作室 #AI影片 #貓 #紙箱 #AI協作",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/threads/newbed.mp4",
-    "approved": true,
-    "posted": false,
-    "note": "11/2 她寫的文（總編潤飾錯字）；IG 用全文（夠短）；Threads 11/12 已用同一支影片，不重發。影片 0:05 轉場修改中（11/12 前完成）"
-  },
-  {
-    "id": "ig_reel_cafe",
-    "at": "2026-11-17T20:00:00+08:00",
-    "text": "如果我真的轉生到異世界，\n我希望可以開一間咖啡館。\n來來往往的旅客帶著各種有趣的故事，\n悠閒地、不是為了錢而上班？大概就是這種感覺 ☕\n\n不過……要先有本金吧？要住哪裡？\n結果又回到現實的考量了（笑）\n\n那你呢？到了異世界，會想做什麼工作？\n\n（影片：AI 協作）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/cafe_f.mp4",
-    "approved": true,
-    "posted": false,
-    "note": "11/2 她寫全文；IG 用總編刪減版｜11/4 拿掉測驗句"
-  },
-  {
-    "id": "ig_ep2",
-    "at": "2026-11-19T20:00:00+08:00",
-    "text": "打開門，外面是陌生的奇幻世界。她心裡的 OS：\n\n根據我看過的一百部異世界作品\n這種時候只有三種可能\n一、我死了\n二、我被召喚了\n三、我發燒了\n……拜託是三……\n\n那如果是你呢？\n\n《貓貓勇者小隊》第二話｜往右滑 →\n完整版在個人檔案的連結\n\n（原創構想＋AI 協作作畫）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/1.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/2.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/3.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/4.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/5.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/6.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/7.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/8.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/9.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/10.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/2 她寫全文；IG 用總編刪減版"
-  },
-  {
-    "id": "ig_vote",
-    "at": "2026-11-21T20:00:00+08:00",
-    "text": "我們辦公室今天也投票了\n題目是：午餐吃什麼\n\n小弟蓋章蓋到手都變藍色 XD\n架構師開票開到睡著\n結果全票通過：罐罐 ＝＝\n\n11/28 大家記得去投票喔\n投完去吃好料！\n\n（圖片和動畫：AI 協作）\n\n#貓貓勇者小隊 #貓貓工作室 #AI協作 #貓 #投票日",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/vote_day.mp4",
-    "approved": true,
-    "posted": false
-  },
-  {
-    "id": "ig_yawn",
-    "at": "2026-11-24T20:00:00+08:00",
-    "text": "我太喜歡貓咪了，\n如果可以到異世界，我第一個想遇到的就是巨大的橘貓。\n（絕對不會是哥布林！或巨魔！！）\n\n戴著郵差帽、背著郵差包，\n打個呵欠都很有份量（好想吸貓啊）ꉂ🤣𐤔\n不熟的時候話不多，熟了又貼心可愛～\n\n（AI 協作作畫）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/yawn.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/2 她寫全文；IG 用總編刪減版"
-  },
-  {
-    "id": "ig_starspring",
-    "at": "2026-11-10T20:00:00+08:00",
-    "text": "我們在寫的異世界小說《貓貓勇者小隊》🐾\n上班族摩卡莫名其妙被召喚到異世界，滿腦子異世界知識，但是……\n\n有地下城，但不是要打怪搶寶箱。\n有魔王，但跟你想的有點不一樣。\n\n這次做了一個小遊戲：爬上星之泉\n爬上貓跳台，不要被橘貓抓去清貓砂，搶先拿到魔王的星星結晶吧！\n（遊戲連結在個人檔案）\n\n（AI 協作製作）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/starspring_reel.mp4",
-    "approved": true,
-    "posted": false,
-    "note": "11/2 她：11/10 改成星之泉 Reel；IG 用她全文的刪減版（她授權總編刪）"
-  },
-  {
-    "id": "ig_zuiti1",
-    "at": "2026-11-22T20:00:00+08:00",
-    "text": "工作上得當個 E 人，但其實我是 I 人。\n心裡明明有一句，說出口的只剩「……」\n\n那就交給貓來說吧（笑）\n今日嘴替 #1：架構師\n\n你最想讓貓幫你說哪一句呢？\n\n（圖片：AI 協作）\n#貓貓勇者小隊 #今日嘴替 #貓 #上班族日常 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/zuiti/card1.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/2 今日嘴替 #1；IG 用總編刪減版（她的句子）"
-  },
-  {
-    "id": "ig_zuiti2",
-    "at": "2026-11-26T20:00:00+08:00",
-    "text": "下班後的我，電量只剩 1%。\n訊息都有看到，只是……明天再說（笑）\n\n今日嘴替 #2：總編\n\n你下班後的電量還剩多少？\n\n（圖片：AI 協作）\n#貓貓勇者小隊 #今日嘴替 #貓 #上班族日常 #AI協作 ",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/zuiti/card2.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/2 今日嘴替 #2；總編照她的口吻寫短文，她同意排法"
-  }
+ {
+  "id": "ig_halloween",
+  "at": "2026-10-31T08:30:00+08:00",
+  "text": "萬聖節快樂🎃\n\n先自我介紹一下\n我們是「貓貓小隊」\n一個上班族（我）加上幾隻 AI 小貓員工\n一起做故事、漫畫、小遊戲的小團隊\n\n今天大家都變裝了\n總編是小巫師（工作證還是掛著）\n架構師是吸血鬼（耳麥沒拔下來）\n小弟是小幽靈 帽子還露在外面 XD\n我戴了貓耳朵 終於跟大家同一國了\n\n不給糖就搗蛋？\n他們說：不給罐罐就搗蛋。\n\n（圖片：AI 協作）\n\n#萬聖節 #HappyHalloween #貓貓勇者小隊 #貓貓工作室 #AI協作 #貓",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/threads/halloween_a.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "error": "POST 17841416960586035/media：400 {\"error\":{\"message\":\"Cannot call API for app 2566471420522009 on behalf of user 122094287127541130\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"A5ezPe7nrhiqkMGcUka5CQb\"}}",
+  "note": "10/31 她說：自動發失敗的這則不補發"
+ },
+ {
+  "id": "ig_game",
+  "at": "2026-10-31T20:00:00+08:00",
+  "text": "爬上貓跳台，躲過橘貓，拿到魔王的星星結晶。\n這是我們《貓貓勇者小隊》的小遊戲「爬上星之泉」。\n你會先被橘貓抓到嗎？\n\n（遊戲和圖片：AI 協作）\n\n#貓貓勇者小隊 #異世界 #小遊戲 #橘貓 #AI協作",
+  "images": [],
+  "approved": true,
+  "posted": true,
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/starspring_reel.mp4",
+  "note": "10/31 她說設定做好了，提前到今晚當第一次 IG 自動發的測試（原本 11/10）",
+  "ig_id": "18129854593867137",
+  "permalink": "https://www.instagram.com/reel/DfKUOE5iA4C/",
+  "posted_at": "2026-10-31T13:56:52+00:00"
+ },
+ {
+  "id": "ig_mayor1",
+  "at": "2026-11-01T20:00:00+08:00",
+  "text": "這只是一個虛構的遊戲：\n你是總幹事，要努力把自己的候選人推上市長寶座。\n一局 10 分鐘，58 種結局，手機就能玩。\n11/28 記得去投票喔🗳️\n\n（純屬虛構｜插畫：AI 生成｜遊戲連結在主頁）\n\n#我推的市長 #選舉 #小遊戲 #台灣 #AI協作",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_hype.mp4",
+  "approved": true,
+  "posted": true,
+  "note": "11/1 她 OK",
+  "ig_id": "18141088957624983",
+  "permalink": "https://www.instagram.com/reel/DfMsSd-jj1Z/",
+  "posted_at": "2026-11-01T12:05:41+00:00"
+ },
+ {
+  "id": "ig_ng1",
+  "at": "2026-11-03T20:00:00+08:00",
+  "text": "用 Google Flow 生成影片，結果……\nAI 拍片的 NG 集，第 3 個最好笑。\n你覺得哪個最好笑？\n\n（影片：AI 生成）\n\n#貓貓工作室 #AI影片 #NG #橘貓 #AI協作",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/ng1.mp4",
+  "approved": true,
+  "posted": true,
+  "note": "10/31 她說 IG 可安排（真人版 NG 集 v3）",
+  "ig_id": "17865395685693179",
+  "permalink": "https://www.instagram.com/reel/DfR4WjRCOhn/",
+  "posted_at": "2026-11-03T12:27:17+00:00"
+ },
+ {
+  "id": "ig_quiz",
+  "at": "2026-11-05T20:00:00+08:00",
+  "text": "我們工作室的總編，今天也很認真在工作。\n……大概認真了五秒（笑）\n\n你也是這種上班族嗎？\n\n（影片：AI 生成）\n\n#貓貓勇者小隊 #橘貓 #上班族日常 #AI協作",
+  "images": [],
+  "approved": true,
+  "posted": true,
+  "note": "11/4 她 OK：測驗暫停，改發總編打字睡著（Flow，作者手動生成）",
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/office_nap.mp4",
+  "ig_id": "18239096605318440",
+  "permalink": "https://www.instagram.com/reel/DfXDr1RHNyl/",
+  "posted_at": "2026-11-05T12:42:34+00:00"
+ },
+ {
+  "id": "ig_office1",
+  "at": "2026-11-07T20:00:00+08:00",
+  "text": "貓貓小隊辦公室的一天 🐾\n總編在寫稿，架構師盯著一排綠勾勾，小弟出門送件，老闆只負責說 OK XD\n\n我負責想點子，貓貓小隊幫我做出來。\n這支短片是總編說：「用卡通介紹我們辦公室吧」，就有了。\n\n（圖片和動畫：AI 協作）\n#貓貓勇者小隊 #貓貓工作室 #AI協作 #貓 #上班族日常",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/office_day1.mp4",
+  "approved": true,
+  "posted": false,
+  "note": "11/2 她寫全文、打勾 OK；IG 用總編刪減版"
+ },
+ {
+  "id": "ig_kitten1",
+  "at": "2026-11-08T20:00:00+08:00",
+  "text": "問小弟這週的進度，他很認真地回答了。\n翻譯在最後。\n你上班也這樣回報過嗎？\n\n（影片：AI 生成）\n\n#貓貓工作室 #AI影片 #小貓 #上班族日常 #AI協作",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/kitten1.mp4",
+  "approved": true,
+  "posted": false,
+  "note": "11/1 她 OK"
+ },
+ {
+  "id": "ig_mayor_collapse",
+  "at": "2026-11-09T20:00:00+08:00",
+  "text": "如果當一個選舉團隊的總幹事，應該會忙到爆肝吧？？\n\n在《我推的市長》裡，總幹事到開票前都不能鬆懈，\n要小心不要爆肝，還要面對各種誘惑——\n你會正正當當，還是以自己的利益為優先呢？\n\n有超多種結局，都可以試試看喔。\n\n（純屬虛構｜影片：AI 生成｜遊戲連結在主頁）\n#我推的市長 #總幹事 #選舉 #AI影片 #AI協作",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_collapse.mp4",
+  "approved": true,
+  "posted": false,
+  "note": "11/2 她寫全文（IG 用總編刪減版），文字 OK；影片 0:11 有多一隻手、要加中英字幕，影片修好才改 approved:true｜11/2 影片修好（144ea63），她看截圖說 OK"
+ },
+ {
+  "id": "ig_team1",
+  "at": "2026-11-11T20:00:00+08:00",
+  "text": "啊！忘了關鏡頭（總編！形象！）\n\n（影片：AI 生成）\n\n#貓貓工作室 #AI影片 #橘貓 #片場花絮 #AI協作",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/team1.mp4",
+  "approved": true,
+  "posted": false,
+  "note": "11/1 她改文案＝OK（AI 標示和 hashtag 照原則保留）｜11/2 為了星之泉 Reel 從 11/10 移到 11/11"
+ },
+ {
+  "id": "ig_ep1",
+  "at": "2026-11-12T20:00:00+08:00",
+  "text": "我們的異世界故事要開始了 :D\n\n上班族摩卡工作超累，睡到半夜醒來——\n停電、手機沒網路，打開門，外面卻是一片森林……？？？\n\n《貓貓勇者小隊》11/11 開始連載\n第一話｜往右滑 →\n完整版在個人檔案的連結\n\n（原創構想＋AI 協作作畫）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/story/comic/01-1.jpg",
+   "https://mochachen1225-create.github.io/isekai/story/comic/01-2.jpg",
+   "https://mochachen1225-create.github.io/isekai/story/comic/01-3.jpg",
+   "https://mochachen1225-create.github.io/isekai/story/comic/01-5.jpg",
+   "https://mochachen1225-create.github.io/isekai/story/comic/01-6.jpg",
+   "https://mochachen1225-create.github.io/isekai/story/comic/01-7.jpg",
+   "https://mochachen1225-create.github.io/isekai/story/comic/01-8.jpg",
+   "https://mochachen1225-create.github.io/isekai/story/comic/01-10.jpg",
+   "https://mochachen1225-create.github.io/isekai/story/comic/01-11.jpg",
+   "https://mochachen1225-create.github.io/isekai/story/comic/01-12.jpg"
+  ],
+  "approved": true,
+  "posted": false,
+  "note": "11/2 她寫全文、指定 10 張圖；IG 用總編刪減版"
+ },
+ {
+  "id": "ig_mayor_bosses",
+  "at": "2026-11-13T20:00:00+08:00",
+  "text": "你沒辦法選老闆，這就是工作！\n\n政治世家、學者、做過各種政治職務的、現任市長……\n六位老闆，系統隨機派一位給你。\n\n你要盡力把老闆送上市長寶座，\n還是趁機上下其手（世界也有可能是黑暗的……）？\n\n如果你是總幹事，會怎麼做呢？\n\n（純屬虛構｜插畫：AI 生成｜遊戲連結在主頁）\n#我推的市長 #選舉 #小遊戲 #總幹事 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/01.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/02.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/03.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/04.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/05.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/06.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/07.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/08.jpg"
+  ],
+  "approved": true,
+  "posted": false,
+  "note": "11/2 她寫全文（IG 用總編刪減版）"
+ },
+ {
+  "id": "ig_afterwork1",
+  "at": "2026-11-14T20:00:00+08:00",
+  "text": "下班了～\n\n總編去泡澡看書，眼鏡一直起霧\n架構師的耳麥終於拿來打電動\n小弟吃飽就睡在紙箱裡\n\n然後我看進度表看到睡著……\n醒來身上多了一條被子 :)\n\n（圖片和動畫：AI 協作）\n\n#貓貓勇者小隊 #貓貓工作室 #AI協作 #貓 #下班後",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/after_work1.mp4",
+  "approved": true,
+  "posted": false
+ },
+ {
+  "id": "ig_mayor_debate",
+  "at": "2026-11-15T20:00:00+08:00",
+  "text": "《我推的市長》改版囉！增加了電視辯論會。\n\n要講選民在乎的？還是攻擊對手？\n要爭取更多支持？還是穩住基本盤？\n你的候選人，最怕被問到什麼？\n\n（純屬虛構｜影片：AI 生成｜遊戲連結在主頁）\n#我推的市長 #電視辯論 #選舉 #小遊戲 #AI協作",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/my-mayor-debate-zh.mp4",
+  "approved": true,
+  "posted": false,
+  "note": "11/2 她寫全文（IG 用總編刪減版），文字 OK；影片 0:14 有奇怪的手，修好才改 approved:true｜11/2 影片修好（144ea63），她看截圖說 OK"
+ },
+ {
+  "id": "ig_newbed",
+  "at": "2026-11-16T20:00:00+08:00",
+  "text": "因為有養貓，所以總是想買各種東西給貓貓們。\n貓窩，是一定要買的！！\n買了各式各樣的貓窩，一開始都很受歡迎。\n但是隔天，新貓窩就失寵了！！！\n永遠最受歡迎的，都是網購的紙箱？？？？！！！！\n\n所以在我們貓貓小隊的辦公室，也準備了各種貓窩，\n看看哪個最受小隊員們歡迎？\n有養貓的應該已經知道答案了 XD\n\n（影片：AI 生成）\n#貓貓工作室 #AI影片 #貓 #紙箱 #AI協作",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/threads/newbed.mp4",
+  "approved": true,
+  "posted": false,
+  "note": "11/2 她寫的文（總編潤飾錯字）；IG 用全文（夠短）；Threads 11/12 已用同一支影片，不重發。影片 0:05 轉場修改中（11/12 前完成）"
+ },
+ {
+  "id": "ig_reel_cafe",
+  "at": "2026-11-17T20:00:00+08:00",
+  "text": "如果我真的轉生到異世界，\n我希望可以開一間咖啡館。\n來來往往的旅客帶著各種有趣的故事，\n悠閒地、不是為了錢而上班？大概就是這種感覺 ☕\n\n不過……要先有本金吧？要住哪裡？\n結果又回到現實的考量了（笑）\n\n那你呢？到了異世界，會想做什麼工作？\n\n（影片：AI 協作）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/cafe_f.mp4",
+  "approved": true,
+  "posted": false,
+  "note": "11/2 她寫全文；IG 用總編刪減版｜11/4 拿掉測驗句"
+ },
+ {
+  "id": "ig_ep2",
+  "at": "2026-11-19T20:00:00+08:00",
+  "text": "打開門，外面是陌生的奇幻世界。她心裡的 OS：\n\n根據我看過的一百部異世界作品\n這種時候只有三種可能\n一、我死了\n二、我被召喚了\n三、我發燒了\n……拜託是三……\n\n那如果是你呢？\n\n《貓貓勇者小隊》第二話｜往右滑 →\n完整版在個人檔案的連結\n\n（原創構想＋AI 協作作畫）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/1.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/2.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/3.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/4.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/5.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/6.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/7.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/8.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/9.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/10.jpg"
+  ],
+  "approved": true,
+  "posted": false,
+  "note": "11/2 她寫全文；IG 用總編刪減版"
+ },
+ {
+  "id": "ig_vote",
+  "at": "2026-11-21T20:00:00+08:00",
+  "text": "我們辦公室今天也投票了\n題目是：午餐吃什麼\n\n小弟蓋章蓋到手都變藍色 XD\n架構師開票開到睡著\n結果全票通過：罐罐 ＝＝\n\n11/28 大家記得去投票喔\n投完去吃好料！\n\n（圖片和動畫：AI 協作）\n\n#貓貓勇者小隊 #貓貓工作室 #AI協作 #貓 #投票日",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/vote_day.mp4",
+  "approved": true,
+  "posted": false
+ },
+ {
+  "id": "ig_yawn",
+  "at": "2026-11-24T20:00:00+08:00",
+  "text": "我太喜歡貓咪了，\n如果可以到異世界，我第一個想遇到的就是巨大的橘貓。\n（絕對不會是哥布林！或巨魔！！）\n\n戴著郵差帽、背著郵差包，\n打個呵欠都很有份量（好想吸貓啊）ꉂ🤣𐤔\n不熟的時候話不多，熟了又貼心可愛～\n\n（AI 協作作畫）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/yawn.jpg"
+  ],
+  "approved": true,
+  "posted": false,
+  "note": "11/2 她寫全文；IG 用總編刪減版"
+ },
+ {
+  "id": "ig_starspring",
+  "at": "2026-11-10T20:00:00+08:00",
+  "text": "我們在寫的異世界小說《貓貓勇者小隊》🐾\n上班族摩卡莫名其妙被召喚到異世界，滿腦子異世界知識，但是……\n\n有地下城，但不是要打怪搶寶箱。\n有魔王，但跟你想的有點不一樣。\n\n這次做了一個小遊戲：爬上星之泉\n爬上貓跳台，不要被橘貓抓去清貓砂，搶先拿到魔王的星星結晶吧！\n（遊戲連結在個人檔案）\n\n（AI 協作製作）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/starspring_reel.mp4",
+  "approved": true,
+  "posted": false,
+  "note": "11/2 她：11/10 改成星之泉 Reel；IG 用她全文的刪減版（她授權總編刪）"
+ },
+ {
+  "id": "ig_zuiti1",
+  "at": "2026-11-22T20:00:00+08:00",
+  "text": "工作上得當個 E 人，但其實我是 I 人。\n心裡明明有一句，說出口的只剩「……」\n\n那就交給貓來說吧（笑）\n今日嘴替 #1：架構師\n\n你最想讓貓幫你說哪一句呢？\n\n（圖片：AI 協作）\n#貓貓勇者小隊 #今日嘴替 #貓 #上班族日常 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/zuiti/card1.jpg"
+  ],
+  "approved": true,
+  "posted": false,
+  "note": "11/2 今日嘴替 #1；IG 用總編刪減版（她的句子）"
+ },
+ {
+  "id": "ig_zuiti2",
+  "at": "2026-11-26T20:00:00+08:00",
+  "text": "下班後的我，電量只剩 1%。\n訊息都有看到，只是……明天再說（笑）\n\n今日嘴替 #2：總編\n\n你下班後的電量還剩多少？\n\n（圖片：AI 協作）\n#貓貓勇者小隊 #今日嘴替 #貓 #上班族日常 #AI協作 ",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/zuiti/card2.jpg"
+  ],
+  "approved": true,
+  "posted": false,
+  "note": "11/2 今日嘴替 #2；總編照她的口吻寫短文，她同意排法"
+ },
+ {
+  "id": "bear_pray",
+  "at": "2026-11-06T20:30:00+08:00",
+  "text": "昨晚美股那一根……\n工作室緊急召開祈福儀式。\n\n我先去找紙箱了。\n總編說，反正罐罐不會跌。\n\n你今天還好嗎？\n\n（影片：AI 生成）\n\n#貓貓勇者小隊 #貓 #上班族日常 #AI協作",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/threads/bear_market.mp4",
+  "approved": true,
+  "posted": false,
+  "note": "11/6 她改好 OK：美股大跌祈福儀式"
+ }
 ]
