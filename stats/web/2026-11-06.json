@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-06",
+  "taken_at": "2026-11-07T00:27:00+08:00",
+  "total": 4,
+  "by_section": {
+    "home": 1,
+    "quiz": 0,
+    "games": 0,
+    "itch_embed": 0,
+    "story": 0,
+    "other": 3
+  },
+  "more_pages": false,
+  "pages": [
+    {
+      "path": "/my-mayor-2",
+      "title": "我推的市長：上任篇",
+      "count": 3
+    },
+    {
+      "path": "/isekai",
+      "title": "異世界轉生職業測驗",
+      "count": 1
+    }
+  ]
+}
