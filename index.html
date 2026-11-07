@@ -2,122 +2,262 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
+<!-- ▼ 系統掛點（首頁版面可以整個換掉，但這幾段要留著；check_site.py 會檢查） -->
+<!-- 舊的分享網址「首頁#隊伍碼」轉到測驗（測驗 10/29 搬到 quiz/） -->
+<script>function toQuiz() { if (/^#v\d+\./.test(location.hash)) location.replace('quiz/' + location.hash); } toQuiz(); addEventListener('hashchange', toQuiz);</script>
+<!-- Google Search Console 驗證，不能刪 -->
 <meta name="google-site-verification" content="lOzagWclhqDXOwrHEeRQId8vveT2KbTRqUo31Rz1WQQ" />
+<link rel="alternate" hreflang="zh-Hant" href="https://mochachen1225-create.github.io/isekai/">
+<link rel="alternate" hreflang="x-default" href="https://mochachen1225-create.github.io/isekai/">
+<script type="module" src="js/home.js"></script>
+<!-- ▲ 系統掛點 -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#FFDDB8">
-<title>異世界轉生職業測驗</title>
-<meta name="description" content="三分鐘的異世界小冒險，找出你的轉生職業。純屬娛樂，不收集任何個人資料。">
-<meta property="og:title" content="異世界轉生職業測驗">
-<meta property="og:description" content="你會轉生成什麼職業？一起組一支隊伍吧！">
-<link rel="stylesheet" href="css/style.css">
+<meta name="theme-color" content="#FFF8EC">
+<title>貓貓勇者小隊</title>
+<meta name="description" content="累到忘了生活的上班族，掉進一個懶貓說了算的異世界。小說、漫畫每週三更新，免費看。">
+<meta property="og:title" content="貓貓勇者小隊">
+<meta property="og:description" content="累到忘了生活的上班族，掉進一個懶貓說了算的異世界。小說、漫畫每週三更新，免費看。">
+<meta property="og:image" content="https://mochachen1225-create.github.io/isekai/assets/home/hero.jpg">
+<link rel="alternate" type="application/rss+xml" title="貓貓勇者小隊" href="story/feed.xml">
 <script data-goatcounter="https://catheroparty.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+/* 作品大門（10/30 她選 A 貼紙風）：跑馬燈 → 主視覺 → 最新一話 → 實驗 → 貓貓工作室 → 角色 → 藏寶圖世界地圖 → 一起玩 → 在哪裡看得到 */
+@font-face{font-family:"Huninn";src:url("fonts/huninn.woff2") format("woff2");font-display:swap}
+:root{--bg:#FFF4E2;--paper:#FFFFFF;--ink:#1F1B2E;--soft:#5E5870;--line:#1F1B2E;--rose:#FF7A8A;--night:#1F1B2E;--lit:#FFC94A;--mint:#9FE3C8;--sky:#8EC5FF;--lav:#C9B8FF;--dim:#EDE4D3;
+--round:"Huninn","PingFang TC","Noto Sans TC",sans-serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#17141F;--paper:#24202F;--ink:#F4EFFF;--soft:#BDB5CF;--line:#F4EFFF;--night:#F4EFFF;--dim:#332D42;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17141F;--paper:#24202F;--ink:#F4EFFF;--soft:#BDB5CF;--line:#F4EFFF;--night:#F4EFFF;--dim:#332D42;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--round);font-size:16px;line-height:1.7;
+ background-image:radial-gradient(var(--dim) 1.2px,transparent 1.2px);background-size:18px 18px}
+a{color:inherit}a:focus-visible{outline:3px solid var(--rose);outline-offset:2px}
+.ticker{background:#1F1B2E;color:#FFF4E2;overflow:hidden;white-space:nowrap;font-size:14px;padding:6px 0;letter-spacing:.08em}
+.ticker div{display:inline-block;animation:tk 22s linear infinite}
+@keyframes tk{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker div{animation:none}}
+.wrap{max-width:760px;margin:0 auto;padding-block:0 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:40px}
+.top{padding-top:16px}
+.logo{font-size:22px;margin:0;letter-spacing:.04em}
+.logo::after{content:"✦";color:var(--rose);margin-left:6px}
+h2{font-size:26px;margin:0;line-height:1.2;letter-spacing:.02em}
+.sec{display:grid;gap:14px}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:10px;flex-wrap:wrap}
+.sec-head small{font-size:13px;background:var(--lit);color:#1F1B2E;border:2px solid var(--line);border-radius:999px;padding:0 10px;transform:rotate(-3deg)}
+.card,.hero img,.latest,.door,.map,.studio video{border:2.5px solid var(--line);border-radius:22px;box-shadow:5px 5px 0 var(--line)}
+.hero{display:grid;gap:18px;position:relative}
+.hero img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.hero::before{content:"EP.01〜 連載中";position:absolute;top:calc(min(100vw, 760px) - 32px - 56px);left:-6px;z-index:1;background:var(--rose);color:#fff;border:2.5px solid var(--line);border-radius:10px;padding:2px 12px;font-size:14px;transform:rotate(-5deg);box-shadow:3px 3px 0 var(--line)}
+.tag-line{font-size:clamp(24px,6.4vw,34px);line-height:1.35;margin:0;font-weight:700}
+.cta{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{display:flex;align-items:center;justify-content:center;text-align:center;min-height:56px;border-radius:16px;font-size:16px;text-decoration:none;padding:8px 12px;border:2.5px solid var(--line);box-shadow:4px 4px 0 var(--line);transition:transform .12s,box-shadow .12s}
+.btn:active,.mini:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--line)}
+.btn.main{background:var(--rose);color:#fff}
+.btn.sub{background:var(--mint);color:#1F1B2E}
+.meta{font-size:14px;color:var(--soft);margin:0}
+.latest{display:grid;grid-template-columns:120px 1fr;gap:14px;background:var(--paper);padding:12px;align-items:center}
+.latest img{width:120px;height:150px;object-fit:cover;border-radius:12px;border:2px solid var(--line)}
+.latest .body{min-width:0;display:grid;gap:6px}
+.pill{justify-self:start;font-size:12px;background:var(--lit);color:#1F1B2E;border:2px solid var(--line);border-radius:999px;padding:0 10px}
+.latest h3{margin:0;font-size:18px;line-height:1.45}
+.two{display:flex;gap:8px;flex-wrap:wrap}
+.mini{font-size:14px;border:2px solid var(--line);background:var(--paper);border-radius:999px;padding:3px 14px;text-decoration:none;box-shadow:2px 2px 0 var(--line)}
+.chars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.char{display:grid;justify-items:center;align-content:start;gap:4px;text-align:center;background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:10px 4px}
+.char:nth-child(1){background:#FFE1E6}.char:nth-child(2){background:#FFE9C2}.char:nth-child(3){background:#DDE9FF}
+.char img,.char .q{width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid var(--line)}
+.char b{font-size:14px;line-height:1.3;color:#1F1B2E}
+.char span{font-size:11px;color:#5E5870;line-height:1.4}
+.char .q{display:grid;place-items:center;background:var(--dim);color:var(--soft);font-size:24px}
+.map{background:#120c07;padding:0;overflow:hidden}
+.map svg{width:100%;height:auto;display:block}
+.map text{font-family:var(--round)}
+.map .hole,.map .name,.map .you{display:none}
+.map .reached .hole,.map .reached .name,.map .current .you{display:inline}
+.map .reached .unk{display:none}
+.map .unk{font-size:64px;fill:#8a6a44;opacity:.55}
+.map .name{font-size:46px;font-weight:700;fill:#4a2e12;paint-order:stroke;stroke:#F6E7C4;stroke-width:10;stroke-linejoin:round}
+.map .you path{stroke:#C0392B;stroke-width:9;stroke-linecap:round;paint-order:stroke}
+.studio video{border:2.5px solid var(--line);border-radius:22px;box-shadow:5px 5px 0 var(--line)}
+.hero{display:grid;gap:18px;position:relative}
+.hero img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.hero::before{content:"EP.01〜 連載中";position:absolute;top:calc(min(100vw, 760px) - 32px - 56px);left:-6px;z-index:1;background:var(--rose);color:#fff;border:2.5px solid var(--line);border-radius:10px;padding:2px 12px;font-size:14px;transform:rotate(-5deg);box-shadow:3px 3px 0 var(--line)}
+.tag-line{font-size:clamp(24px,6.4vw,34px);line-height:1.35;margin:0;font-weight:700}
+.cta{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{display:flex;align-items:center;justify-content:center;text-align:center;min-height:56px;border-radius:16px;font-size:16px;text-decoration:none;padding:8px 12px;border:2.5px solid var(--line);box-shadow:4px 4px 0 var(--line);transition:transform .12s,box-shadow .12s}
+.btn:active,.mini:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--line)}
+.btn.main{background:var(--rose);color:#fff}
+.btn.sub{background:var(--mint);color:#1F1B2E}
+.meta{font-size:14px;color:var(--soft);margin:0}
+.latest{display:grid;grid-template-columns:120px 1fr;gap:14px;background:var(--paper);padding:12px;align-items:center}
+.latest img{width:120px;height:150px;object-fit:cover;border-radius:12px;border:2px solid var(--line)}
+.latest .body{min-width:0;display:grid;gap:6px}
+.pill{justify-self:start;font-size:12px;background:var(--lit);color:#1F1B2E;border:2px solid var(--line);border-radius:999px;padding:0 10px}
+.latest h3{margin:0;font-size:18px;line-height:1.45}
+.two{display:flex;gap:8px;flex-wrap:wrap}
+.mini{font-size:14px;border:2px solid var(--line);background:var(--paper);border-radius:999px;padding:3px 14px;text-decoration:none;box-shadow:2px 2px 0 var(--line)}
+.chars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.char{display:grid;justify-items:center;align-content:start;gap:4px;text-align:center;background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:10px 4px}
+.char:nth-child(1){background:#FFE1E6}.char:nth-child(2){background:#FFE9C2}.char:nth-child(3){background:#DDE9FF}
+.char img,.char .q{width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid var(--line)}
+.char b{font-size:14px;line-height:1.3;color:#1F1B2E}
+.char span{font-size:11px;color:#5E5870;line-height:1.4}
+.char .q{display:grid;place-items:center;background:var(--dim);color:var(--soft);font-size:24px}
+.studio video{width:100%;max-width:360px;justify-self:center;aspect-ratio:9/16;object-fit:cover;display:block;background:#000}
+.doors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.door{background:var(--paper);padding:14px;display:grid;gap:8px;align-content:start}
+.door:nth-child(1){background:#E4F8EF}.door:nth-child(2){background:#EEE8FF}.door:nth-child(3){background:#FFF0D6}
+.door h3,.door p{color:#1F1B2E}.door p{opacity:.75}
+.door img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;border:2px solid var(--line)}
+.door h3{margin:0;font-size:18px}.door p{margin:0;font-size:14px}.door .mini{justify-self:start;color:#1F1B2E;background:#fff}
+@media (max-width:620px){.doors{grid-template-columns:1fr}}
+.where{display:flex;flex-wrap:wrap;gap:10px}
+.where a,.where span{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:6px 14px;font-size:14px;text-decoration:none;box-shadow:3px 3px 0 var(--line)}
+.where a:nth-child(3n+1){background:#FFE1E6;color:#1F1B2E}.where a:nth-child(3n+2){background:#DDF5EA;color:#1F1B2E}.where a:nth-child(3n){background:#E5E0FF;color:#1F1B2E}
+.where small{opacity:.7;margin-left:6px;font-size:12px}
+.toplinks{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:6px;font-size:14px}
+.toplinks a,.toplinks span{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;color:var(--ink);border-bottom:2px solid var(--rose);line-height:1.6}
+.toplinks span{border-bottom-color:transparent;color:var(--soft)}
+.toplinks small{display:none}
+.logos{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.logos a{width:42px;height:42px;display:grid;place-items:center;border:2.5px solid var(--line);border-radius:50%;background:var(--paper);color:var(--ink);box-shadow:3px 3px 0 var(--line)}
+.logos a:nth-child(3n+1){background:#FFE1E6;color:#1F1B2E}.logos a:nth-child(3n+2){background:#DDF5EA;color:#1F1B2E}.logos a:nth-child(3n){background:#E5E0FF;color:#1F1B2E}
+.logos a:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--line)}
+.logos svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+footer{font-size:13px;color:var(--soft);display:grid;gap:4px;border-top:2.5px dashed var(--line);padding-top:16px}
+</style>
 </head>
 <body>
-<div id="app">
-  <section id="screen-title" class="screen">
-    <div class="title-wrap">
-      <p class="eyebrow">貓貓勇者小隊・新手教學</p>
-      <h1>異世界<br>轉生職業測驗</h1>
-      <p class="sub">三分鐘的小冒險，<br>找出你的轉生職業。</p>
-      <div id="title-sprites" class="sprite-row"></div>
-      <button class="btn primary" data-action="start">開始轉生</button>
-      <a class="story-link" href="story/">線上小說《貓貓勇者小隊》開始連載中 →</a>
-      <a class="story-link" href="games/starspring/">小遊戲《爬上星之泉》：跟魔王玩一二三木頭人 →</a>
-      <p class="fine">不收集任何個人資料・純屬娛樂</p>
+
+<div class="ticker" aria-hidden="true"><div>NEW　每週三 21:00 更新　・　免費看　・　小說＋漫畫　・　一個人＋三隻 AI 小貓　・　NEW　每週三 21:00 更新　・　免費看　・　小說＋漫畫　・　一個人＋三隻 AI 小貓　・　</div></div>
+<div class="wrap">
+  <header class="top"><h1 class="logo">貓貓勇者小隊</h1>
+    <nav class="toplinks" data-links aria-label="在哪裡看得到我們">
+      <a href="https://home.gamer.com.tw/artwork.php?sn=6422200">巴哈姆特<small>小說</small></a>
+      <a href="https://www.webtoons.com/p/community/zh-hant/u/catheroparty">LINE WEBTOON<small>漫畫</small></a>
+      <a href="https://www.instagram.com/mochachen12252026/">Instagram</a>
+      <a href="https://www.threads.com/@mochachen12252026">Threads</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img src="assets/home/hero.jpg" alt="摩卡和戴郵差帽的橘貓，一起窩在巨大的貓窩裡">
+    <p class="tag-line">累到忘了生活的上班族，掉進一個懶貓說了算的異世界。</p>
+    <div class="cta">
+      <a class="btn main" href="story/01-comic.html">看第一話（漫畫）</a>
+      <a class="btn sub" href="quiz/">測我的轉生職業</a>
     </div>
+    <p class="meta">每週三 21:00 更新・免費　<a href="story/01.html">想看小說版 →</a></p>
   </section>
 
-  <section id="screen-invite" class="screen">
-    <div class="title-wrap">
-      <p class="eyebrow">隊伍邀請</p>
-      <h2 id="invite-title"></h2>
-      <div id="invite-members" class="member-row"></div>
-      <p class="sub">測完之後，你就會加入這支隊伍。<br>湊滿四人，隊名就會揭曉。</p>
-      <button class="btn primary" data-action="start">開始轉生</button>
-      <p class="fine">不收集任何個人資料・純屬娛樂</p>
-    </div>
-  </section>
-
-  <section id="screen-intro" class="screen">
-    <div class="title-wrap intro">
-      <p class="eyebrow">開始之前</p>
-      <h2>這是一場小小的異世界冒險，<br>也是一個個性測驗。</h2>
-      <div class="intro-steps">
-        <p>🗺️ 在村子裡四處逛逛，遇到事情時，<b>憑直覺選</b>就好</p>
-        <p>🔮 最後，異世界的神明會告訴你：<br>你轉生成了什麼職業、你是什麼樣的人</p>
-        <p>👥 把結果傳給朋友，四個人可以組成一支隊伍</p>
+  <section class="sec">
+    <div class="sec-head"><h2>最新一話</h2><a class="mini" href="story/">完整目錄</a></div>
+    <div class="latest" data-home-ready hidden>
+      <img data-home-src="latest.thumb" alt="最新一話的漫畫第一格">
+      <div class="body">
+        <span class="pill" data-home="latest.no"></span>
+        <h3 data-home="latest.title"></h3>
+        <div class="two"><a class="mini" data-home-href="latest.novel" href="story/">看小說</a><a class="mini" data-home-href="latest.comic" href="story/">看漫畫</a></div>
       </div>
-      <p class="intro-q">你想玩哪一個版本？</p>
-      <div class="tone-row">
-        <button class="tone-card light" data-tone="l"><span class="ico">☀️</span><b>光明版</b><span>溫柔正向，<br>像被好朋友抱抱</span></button>
-        <button class="tone-card dark" data-tone="d"><span class="ico">🌙</span><b>暗黑版</b><span>毒舌吐槽，<br>但其實還是很愛你</span></button>
-      </div>
-      <p class="fine">約 3 分鐘・不收集任何個人資料・純屬娛樂</p>
     </div>
   </section>
 
-  <section id="screen-avatar" class="screen">
-    <div class="title-wrap">
-      <p class="sys-box">【系統】請選擇你的轉生外觀。</p>
-      <div class="choice-row">
-        <button class="avatar-card" data-gender="m"><span class="avatar-sprite" data-look="m"></span><span>男生</span></button>
-        <button class="avatar-card" data-gender="f"><span class="avatar-sprite" data-look="f"></span><span>女生</span></button>
-      </div>
-      <p class="fine">只影響角色外觀，不影響結果。</p>
+  <section class="sec">
+    <div class="sec-head"><h2>這是一個實驗</h2></div>
+    <p class="meta" style="font-size:15px;color:var(--ink)">一個上班族出點子，三個 AI 員工負責做：總編寫故事、畫漫畫，架構師管系統，小弟幫忙上架。<br>我天馬行空，AI 幫我成真。會不會成功？一起看下去。</p>
+    <div class="two"><a class="mini" href="https://www.threads.com/@mochachen12252026">在 Threads 看實驗進度</a></div>
+  </section>
+
+
+  <section class="sec studio">
+    <div class="sec-head"><h2>貓貓工作室</h2><small>這個實驗的幕後</small></div>
+    <video poster="assets/home/studio.jpg" src="assets/home/studio.mp4" autoplay muted loop playsinline preload="metadata" aria-label="貓貓工作室：總編寫稿、架構師盯螢幕、小弟出門送件"></video>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>角色</h2><small>隨連載慢慢解鎖</small></div>
+    <div class="chars">
+      <div class="char"><img src="assets/home/f_her.jpg" alt="摩卡開心地笑"><b>摩卡</b><span>懂所有套路的上班族</span></div>
+      <div class="char"><img src="assets/home/f_cat.jpg" alt="戴郵差帽的橘貓"><b>胖橘</b><span>郵差，她的旅伴</span></div>
+      <div class="char"><img src="assets/home/f_maou.jpg" alt="魔王的臉"><b>魔王</b><span>只是覺得很帥</span></div>
+      <div class="char"><span class="q">？</span><b>？？？</b><span>連載後解鎖</span></div>
     </div>
   </section>
 
-  <section id="screen-situation" class="screen">
-    <div class="title-wrap">
-      <h2>今天是個天氣很好的日子，<br>你覺得你正在……？</h2>
-      <div id="situations" class="situation-list"></div>
+  <section class="sec">
+    <div class="sec-head"><h2>世界地圖</h2><small>連載走到哪，就亮到哪</small></div>
+    <div class="map">
+      <svg viewBox="0 0 1200 896" role="img" aria-label="世界地圖：只有已經去過的國家會亮起來">
+<defs><filter id="soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="28"/></filter>
+<filter id="smoke"><feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="4" seed="5"/><feColorMatrix values="0 0 0 0 .07  0 0 0 0 .05  0 0 0 0 .04  0 0 0 -.9 1.25"/></filter>
+<mask id="fogmask"><rect width="1200" height="896" fill="#fff"/>
+<g data-country="moonpupil"><ellipse class="hole" cx="585" cy="425" rx="175" ry="175" fill="#000" filter="url(#soft)"/></g>
+<g data-country="road"><ellipse class="hole" cx="855" cy="440" rx="150" ry="110" fill="#000" filter="url(#soft)"/></g>
+<g data-country="xiaoyuan"><ellipse class="hole" cx="1020" cy="330" rx="170" ry="150" fill="#000" filter="url(#soft)"/></g>
+</mask></defs>
+<image href="assets/home/map.jpg" width="1200" height="896"/>
+<g mask="url(#fogmask)"><rect width="1200" height="896" fill="#120c07" opacity=".9"/><rect width="1200" height="896" filter="url(#smoke)" opacity=".7"/></g>
+<g data-country="moonpupil">
+<text class="unk" x="585" y="443" text-anchor="middle">？</text>
+<text class="name" x="560" y="610" text-anchor="middle">月瞳國</text>
+<g class="you" transform="translate(655 385)"><path d="M-14 -14 L14 14 M14 -14 L-14 14"/></g>
+</g>
+<g data-country="road">
+
+<g class="you" transform="translate(925 400)"><path d="M-14 -14 L14 14 M14 -14 L-14 14"/></g>
+</g>
+<g data-country="xiaoyuan">
+<text class="unk" x="1020" y="348" text-anchor="middle">？</text>
+<text class="name" x="1010" y="330" text-anchor="middle">嘯原</text>
+<g class="you" transform="translate(1090 290)"><path d="M-14 -14 L14 14 M14 -14 L-14 14"/></g>
+</g>
+<g>
+<text class="unk" x="620" y="178" text-anchor="middle">？</text>
+</g>
+<g>
+<text class="unk" x="220" y="268" text-anchor="middle">？</text>
+</g>
+<g>
+<text class="unk" x="190" y="508" text-anchor="middle">？</text>
+</g>
+<g>
+<text class="unk" x="560" y="763" text-anchor="middle">？</text>
+</g>
+<g>
+<text class="unk" x="1000" y="708" text-anchor="middle">？</text>
+</g>
+</svg>
+
+
+
+
+
+
+    </div>
+    <p class="meta">每到一個新的國家，就會解鎖那一國的小遊戲和周邊。</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>一起玩</h2></div>
+    <div class="doors">
+      <div class="door"><img src="assets/home/guide.jpg" alt="點陣風的橘貓"><h3>轉生職業測驗</h3><p>三分鐘，看看你掉進異世界會是 28 種職業的哪一種。</p><a class="mini" href="quiz/">開始測驗</a></div>
+      <div class="door"><img src="assets/home/game.jpg" alt="小遊戲《爬上星之泉》封面"><h3>爬上星之泉</h3><p>跟午睡的魔王玩一二三木頭人。</p><a class="mini" href="games/starspring/">玩一場</a></div>
+      <div class="door"><img src="assets/home/line.jpg" alt="貓貓勇者小隊的 LINE 表情貼：橘貓、三花、黑貓"><h3>LINE 表情貼</h3><p>貓貓勇者小隊的表情貼和主題。</p><a class="mini" href="https://line.me/S/emoji/?id=6ae16b19a98c12374a15872f">去看看</a></div>
     </div>
   </section>
 
-  <section id="screen-scene" class="screen">
-    <div id="scene-art" class="scene-art"></div>
-    <div id="scene-text" class="scene-text"></div>
-    <p class="tap-hint">點一下繼續</p>
-  </section>
-
-  <section id="screen-game" class="screen">
-    <header id="topbar">
-      <span class="tb-label">新手教學</span>
-      <div id="stamps"></div>
-      <button id="status-btn" class="status-btn" aria-label="狀態視窗">狀態</button>
-    </header>
-    <div id="stage"><canvas id="map" aria-label="異世界村莊地圖"></canvas>
-      <div id="eyes" class="eyes" hidden><div class="lid top"></div><div class="lid bottom"></div><p id="eyes-text"></p></div></div>
-  </section>
-
-  <section id="screen-ritual" class="screen">
-    <div id="ritual-stamps"></div>
-    <div class="status-window ritual-window"><div id="ritual-lines"></div></div>
-    <div id="ritual-crystal"></div>
-    <p class="tap-hint">點一下跳過</p>
-  </section>
-
-  <section id="screen-result" class="screen scroll"></section>
-  <section id="screen-team" class="screen scroll"></section>
-  <section id="screen-analysis" class="screen scroll"></section>
-
-  <!-- 疊在畫面上的東西 -->
-  <div id="tapcatch" class="tapcatch" hidden></div>
-  <div id="dialog" class="dialog" hidden>
-    <div class="dialog-face" id="dialog-face"></div>
-    <div class="dialog-body">
-      <div class="dialog-name" id="dialog-name"></div>
-      <div class="dialog-text" id="dialog-text"></div>
+  <footer>
+    <div class="logos">
+      <a href="https://home.gamer.com.tw/artwork.php?sn=6422200" aria-label="巴哈姆特" title="巴哈姆特"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17" text-anchor="middle" font-size="14" fill="currentColor" stroke="none">巴</text></svg></a>
+      <a href="https://www.webtoons.com/p/community/zh-hant/u/catheroparty" aria-label="LINE WEBTOON" title="LINE WEBTOON"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H10l-4 4v-4H4z"/><path d="M7.5 8.5l1.5 5 1.5-4 1.5 4 1.5-5"/></svg></a>
+      <a href="https://www.instagram.com/mochachen12252026/" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.8" cy="7.2" r=".6" fill="currentColor"/></svg></a>
+      <a href="https://www.threads.com/@mochachen12252026" aria-label="Threads" title="Threads"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11.5c-.5-3-2.5-4-4.5-4-3 0-4.8 2.3-4.8 5s1.8 5 4.8 5c2.2 0 4-1.2 4-3.2 0-1.7-1.4-2.6-3.4-2.6-1.6 0-2.6.8-2.6 1.9 0 1 .9 1.6 2 1.6 2.3 0 3-1.8 3-4.2"/></svg></a>
+      <a href="https://open.spotify.com/show/6NLHeizsfRFcVBZ6MenN8x" aria-label="Podcast「摩卡與總編」" title="Podcast「摩卡與總編」"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3.5" width="6" height="10" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v3.5M9 20.5h6"/></svg></a>
+      <a href="https://www.youtube.com/@catheroparty" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10.5 9.5v5l4.2-2.5z" fill="currentColor"/></svg></a>
+      <a href="story/feed.xml" aria-label="RSS" title="RSS"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6.5" cy="17.5" r="1.4" fill="currentColor"/><path d="M5 11a8 8 0 0 1 8 8M5 5.5a13.5 13.5 0 0 1 13.5 13.5"/></svg></a>
     </div>
-    <span class="dialog-next">▼</span>
-  </div>
-  <div id="panel" class="panel" hidden></div>
-  <div id="legend" class="legend" hidden></div>
-  <div id="gut" class="gut" hidden></div>
-  <div id="status" class="modal" hidden></div>
-  <div id="toast" class="toast" hidden></div>
+    <span>貓貓勇者小隊｜點子是作者的，作品是 AI 協作產出的。</span>
+    <span>我天馬行空，AI 幫我成真。</span>
+  </footer>
 </div>
-<script src="js/vendor/qrcode.js"></script>
-<script type="module" src="js/main.js"></script>
 </body>
 </html>
