@@ -1,0 +1,36 @@
+{
+  "說明": "首頁「在哪裡看得到我們」的平台連結，照順序列。雲端 Claude 維護內容，js/home.js 負責顯示。url 空的＝還沒有網址或即將推出，顯示成不能點的標籤。lang 不寫＝只放中文首頁；英日文首頁用 [\"en\"]、[\"ja\"]。url 只能是 https:// 開頭或站內相對路徑。（10/30 起：首頁最上面的文字連結用這份；頁尾的圓形 logo 是寫死在 index.html 的 .logos，網址改了兩邊都要改。）",
+  "links": [
+    {
+      "name": "巴哈姆特",
+      "note": "小說",
+      "url": "https://home.gamer.com.tw/artwork.php?sn=6422200"
+    },
+    {
+      "name": "LINE WEBTOON",
+      "note": "漫畫",
+      "url": "https://www.webtoons.com/p/community/zh-hant/u/catheroparty"
+    },
+    {
+      "name": "Instagram",
+      "url": "https://www.instagram.com/mochachen12252026/"
+    },
+    {
+      "name": "Threads",
+      "url": "https://www.threads.com/@mochachen12252026"
+    },
+    {
+      "name": "Podcast",
+      "url": "https://open.spotify.com/show/6NLHeizsfRFcVBZ6MenN8x",
+      "note": "摩卡與總編"
+    },
+    {
+      "name": "YouTube",
+      "url": "https://www.youtube.com/@catheroparty"
+    },
+    {
+      "name": "RSS",
+      "url": "story/feed.xml"
+    }
+  ]
+}
