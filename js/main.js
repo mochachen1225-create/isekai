@@ -456,10 +456,11 @@ function illustration(job, gender, big = true) {
   return wrap;
 }
 
-// 分享連結指向 r/<職業>.html：那一頁有該職業的預覽圖（LINE、FB 會顯示），打開後自動轉回遊戲
+// 分享連結指向 r/<職業>.html：那一頁有該職業的預覽圖（LINE、FB 會顯示），打開後自動轉回測驗 quiz/
+// 網站根目錄用 document.baseURI 算（quiz/index.html 有 <base href="../">），舊的分享網址格式不變
 function shareLink(party, job) {
-  const base = `${location.origin}${location.pathname.replace(/[^/]*$/, '')}`;
-  return `${base}${job ? `r/${job}.html` : ''}#${encodeParty(party)}`;
+  const root = new URL('.', document.baseURI).href;
+  return `${root}${job ? `r/${job}.html` : 'quiz/'}#${encodeParty(party)}`;
 }
 
 async function share(url, text) {
