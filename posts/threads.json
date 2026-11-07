@@ -202,7 +202,8 @@
     "style": "long",
     "approved": true,
     "posted": false,
-    "note": "11/2 她寫的全文，總編潤飾；「我就負責思考就好」改成「我負責想點子、決定好不好，還有說 OK」（呼應 mission：AI 不是全部代勞）｜11/7 兩次 500：第一次 96kHz 音訊（已轉 48k），第二次可能 Pages 還沒更新；19:30 再清一次重發"
+    "note": "11/2 她寫的全文，總編潤飾；「我就負責思考就好」改成「我負責想點子、決定好不好，還有說 OK」（呼應 mission：AI 不是全部代勞）｜11/7 兩次 500：第一次 96kHz 音訊（已轉 48k），第二次可能 Pages 還沒更新；19:30 再清一次重發",
+    "error": "POST me/threads_publish：500 {\"error\":{\"message\":\"An unexpected error has occurred. Please retry your request later.\",\"type\":\"OAuthException\",\"is_transient\":true,\"code\":2,\"fbtrace_id\":\"AqH7DpHKsx_xwroX1fHCf2i\"}}"
   },
   {
     "id": "kitten1",
