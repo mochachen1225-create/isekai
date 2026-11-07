@@ -6,7 +6,7 @@
 API Token 由環境的 Network secrets 代理自動加上（Claude 看不到）；本機測試時才需要 CLOUDFLARE_API_TOKEN。
 
 用法：
-  python3 tools/cf_image.py prompt.txt out.png [ref1.jpg ref2.jpg ...] [--model=@cf/black-forest-labs/flux-2-dev] [--size=768x1024]
+  python3 tools/cf_image.py prompt.txt out.png [ref1.jpg ref2.jpg ...] [--model=@cf/black-forest-labs/flux-2-dev | --model=@cf/black-forest-labs/flux-1-schnell] [--size=768x1024]
 """
 import base64, io, json, os, sys, urllib.request, uuid
 from PIL import Image
@@ -48,9 +48,12 @@ def main(argv):
     if not account:
         sys.exit('缺少 CLOUDFLARE_ACCOUNT_ID')
 
-    # 直式 3:4
-    body, ctype = multipart({'prompt': prompt, 'width': w, 'height': h},
-                            {f'input_image_{i}': ref_bytes(p) for i, p in enumerate(refs)})
+    if 'schnell' in model:
+        # FLUX.1 schnell：只吃 JSON 文字（不吃參考圖、不能指定尺寸，固定約 1024 正方），很省額度
+        body, ctype = json.dumps({'prompt': prompt[:2048], 'steps': 8}).encode(), 'application/json'
+    else:
+        body, ctype = multipart({'prompt': prompt, 'width': w, 'height': h},
+                                {f'input_image_{i}': ref_bytes(p) for i, p in enumerate(refs)})
     req = urllib.request.Request(
         f'https://api.cloudflare.com/client/v4/accounts/{account}/ai/run/{model}',
         data=body, method='POST',
