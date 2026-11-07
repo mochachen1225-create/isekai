@@ -4,9 +4,9 @@
 
 ## 0. 交接（換 session 時先看這段，做完一件就改這段）
 
-最後更新：2026-10-29 晚上。**換 session 後先看私人 repo `isekai-studio` 的 `notes/handoff.md`（最新狀態和私人細節都寫那裡，不寫進這個公開檔）。**
+最後更新：2026-11-07（換 session）。**換 session 後先看私人 repo `isekai-studio` 的 `notes/handoff.md`（最新狀態和私人細節都寫那裡，不寫進這個公開檔）。**
 
-**換 session 的規則**：對話很長（上下文被壓縮過一兩次）、或開始一件獨立的大工作（例如畫一整話漫畫）時，就開新 session。新 session 要選同一個 repo（`mochachen1225-create/isekai`，分支 `site`）和同一個環境（Network secrets 才會在）。開好後把兩個排程任務（每天 18:47 提醒、每週日 19:41 準備下週）重新綁到新 session，舊的刪掉。這件事由 Claude 自己判斷、自己做（使用者 10/28 交代）：先更新這段交接並 push，用 create_session 開新 session（給它清楚的開場任務），搬排程任務，最後告訴使用者新 session 的名字。私人工作檔 repo `isekai-studio` 要用 add_repo 加進來再 clone。
+**換 session 的規則**：對話上下文被壓縮過一次（11/2 起，省 token）、或開始一件獨立的大工作（例如畫一整話漫畫）時，就開新 session。新 session 要選同一個 repo（`mochachen1225-create/isekai`，分支 `site`）和同一個環境（Network secrets 才會在）。開好後把綁在舊 session 的所有排程任務（list_triggers 看 persistent_session_id）重新建在新 session，舊的刪掉，並用 send_message 告訴各遊戲設計師新的總編 session id（架構師寫 to-architect.md）。大檔下載、批次處理、讀很多檔一律交給 subagent。這件事由 Claude 自己判斷、自己做（使用者 10/28 交代）：先更新這段交接並 push，用 create_session 開新 session（給它清楚的開場任務），搬排程任務，最後告訴使用者新 session 的名字。私人工作檔 repo `isekai-studio` 要用 add_repo 加進來再 clone。
 
 **現在最優先**（11/11 開跑，要存稿到第五話；10/28 晚上的狀態）：
 1. 第三話漫畫：使用者 OK，已在 `ep03-stock`。夜市參考圖 s5 已重畫（巨樹＋圓石＋銅管）。
@@ -31,7 +31,7 @@
 
 **存稿分支**：第三話（小說＋漫畫頁、條漫、IG 單格、目錄）做好放在 `ep03-stock` 分支，使用者 10/28 說漫畫 OK。11/11 開跑時把它合併進 `site`（`git merge ep03-stock`），再推到 site 和 story-draft。之後每話照這個做法：做好先放 `epNN-stock`，上線日再合併。
 
-**10/29 新增**：`isekai-studio` 有三個 skill（`.claude/skills/` 的 isekai-comic、isekai-trailer、isekai-story），畫漫畫、剪預告、寫小說照它們的步驟走。自動檢查工具在 `work/qc/`：`vision_check.py`（Gemini 3.8 Flash 量每格她和橘貓的比例、手腳數、有沒有字）、`media_check.py`（影片鏡頭、音樂段落）。設定集新增「角色尺寸表」，prompt 用 `comic3/shared.py` 的 `SIZE`。魔王畫像 10/29 照使用者家的貓的照片改白毛（`work/maou/portrait_v2.png`，`frames.py` 貼進各話空畫框）。**10/29 下午起 Vertex 每個請求都回 403「違反使用條款」**（生圖和看圖都是），原因是 Google Cloud Trust & Safety 認為專案違反 Gemini 服務條款，使用者 10/29 已送出申訴、收到確認信（論壇說可能要等 2–4 週）；不要另開專案繞過。AI Studio（`--api=studio`，預付真錢）還能用，要用先問她。第六話第 10 格橘貓放大還沒做完（程式放大有牆面接縫，等 Vertex 恢復重畫，prompt 在 `comic6/pr10b.txt`）。
+**10/29 新增**：`isekai-studio` 有三個 skill（`.claude/skills/` 的 isekai-comic、isekai-trailer、isekai-story），畫漫畫、剪預告、寫小說照它們的步驟走。自動檢查工具在 `work/qc/`：`vision_check.py`（Gemini 3.8 Flash 量每格她和橘貓的比例、手腳數、有沒有字）、`media_check.py`（影片鏡頭、音樂段落）。設定集新增「角色尺寸表」，prompt 用 `comic3/shared.py` 的 `SIZE`。魔王畫像 10/29 照使用者家的貓的照片改白毛（`work/maou/portrait_v2.png`，`frames.py` 貼進各話空畫框）。**Vertex 10/29 起被停權 403，11/3 申訴通過、專案已恢復（測試正常）**，照常用；花費上限照舊。第六話第 10 格橘貓放大還沒做完（程式放大有牆面接縫，等 Vertex 恢復重畫，prompt 在 `comic6/pr10b.txt`）。
 
 **翻譯版（10/29 使用者決定）**：英文、日文由 Claude 翻（英文她大概看過、日文她看不懂，先測架構）。每一回開頭標示原創構想＋AI 協作、AI 翻譯（日文寫明作者不懂日文），AI 標籤寧可標重。做法和用詞對照在 `isekai-studio` 的 `work/i18n/`（README、glossary）；`webtoon.py` 用 `ISEKAI_LANG`／`ISEKAI_TR` 排英日文版，中文版不受影響。平台（10/29 定）：WEBTOON 英文 → Royal Road → カクヨム → pixiv，一次上線一個，WEBTOON 英文 12/16（三）起（第一到三話同一天）。上架包 `epNN-wten`／`epNN-rr`／`epNN-kky`（pixiv 的 px 等確認有預約再做），用 `work/i18n/make_queue_i18n.py` 產生；作品資料和封面在 `publish/series/`；英文作品的 series_url 等使用者給網址再填。第一到三話已翻好、包好。英文 WEBTOON 作品 1182615（中文是 1182325），第一話 10/29 已預約 12/16 21:40。Royal Road 12/16 起每週三 22:10（rr 包已有日期，series_url 等作品建立後填）；カクヨム日期等 Royal Road 順了再定。英文 WEBTOON 和 Royal Road 第四話以後每週要翻（12/23 起）。LINE WEBTOON 上架包有「作家的話」`author_note.txt`（她的口吻，`work/publish/author_notes/`）。
 
