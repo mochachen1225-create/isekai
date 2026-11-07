@@ -1,4 +1,4 @@
-// 產生 r/<職業>.html：給 LINE、FB 抓預覽圖用的小頁面，打開後自動轉回遊戲（保留 # 後面的隊伍代碼）
+// 產生 r/<職業>.html：給 LINE、FB 抓預覽圖用的小頁面，打開後自動轉到測驗 quiz/（保留 # 後面的隊伍代碼）
 import fs from 'fs';
 import { JOBS } from '../js/data.js';
 
@@ -16,8 +16,8 @@ for (const [key, j] of Object.entries(JOBS)) {
 <meta property="og:image" content="${SITE}assets/illustrations/${key}_f.jpg">
 <meta property="og:url" content="${SITE}r/${key}.html">
 <meta name="twitter:card" content="summary_large_image">
-<script>location.replace('../index.html' + location.hash);</script>
-</head><body><a href="../index.html">開始轉生</a></body></html>
+<script>location.replace('../quiz/' + location.hash);</script>
+</head><body><a href="../quiz/">開始轉生</a></body></html>
 `);
 }
 console.log('done', Object.keys(JOBS).length);
