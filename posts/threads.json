@@ -202,7 +202,8 @@
     "style": "long",
     "approved": true,
     "posted": false,
-    "note": "11/2 她寫的全文，總編潤飾；「我就負責思考就好」改成「我負責想點子、決定好不好，還有說 OK」（呼應 mission：AI 不是全部代勞）"
+    "note": "11/2 她寫的全文，總編潤飾；「我就負責思考就好」改成「我負責想點子、決定好不好，還有說 OK」（呼應 mission：AI 不是全部代勞）",
+    "error": "POST me/threads_publish：500 {\"error\":{\"message\":\"An unexpected error has occurred. Please retry your request later.\",\"type\":\"OAuthException\",\"is_transient\":true,\"code\":2,\"fbtrace_id\":\"AuFc9_UXUVWbmH8TWJwIwf2\"}}"
   },
   {
     "id": "kitten1",
