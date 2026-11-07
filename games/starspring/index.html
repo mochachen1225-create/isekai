@@ -91,6 +91,7 @@ h2{margin:0 0 6px;font-size:26px;color:var(--ink)}
 .diff{font-size:15px;font-weight:900;color:#2f8f8a;margin:2px 0}
 .tags span.new:after{content:" NEW";font-size:10px;color:#d64f45}
 @media (max-width:420px){#bestc{display:none!important}}
+.howbox{margin:10px 0 0;text-align:left}.howbox summary{cursor:pointer;font-weight:700;padding:8px 10px;border-radius:8px;background:rgba(255,248,232,.6);list-style:none;text-align:center}.howbox summary::-webkit-details-marker{display:none}.howbox[open] summary{margin-bottom:6px}
 @media (max-height:700px){.how{font-size:12px;line-height:1.5}.card{padding:20px 14px 12px}.btn{padding:9px;margin-top:7px;font-size:17px}.mlist{font-size:12px;line-height:1.45}h1{font-size:26px}}
 @media (max-height:800px){.how{font-size:13px;line-height:1.6}.card{padding:24px 16px 14px}.btn{padding:11px;margin-top:9px;font-size:18px}.mlist{font-size:13px;line-height:1.55;padding:6px 10px}h1{font-size:30px}.big{font-size:50px}.quote{font-size:20px;padding:10px}}
 #toast{position:absolute;left:50%;bottom:calc(env(safe-area-inset-bottom) + 30px);transform:translateX(-50%);background:var(--grain),#3d2b1f;color:#fff;padding:10px 18px;border-radius:6px;font-weight:800;opacity:0;transition:opacity .25s;pointer-events:none;width:max-content;max-width:90%;box-shadow:0 8px 20px rgba(0,0,0,.35)}
@@ -131,7 +132,8 @@ h2{margin:0 0 6px;font-size:26px;color:var(--ink)}
   <div class="panel on" id="pTitle"><div class="card">
     <h1>爬上星之泉</h1>
     <p class="sub">爬上怪貓跳台、躲過橘貓，拿到魔王的星星結晶！</p>
-    <div class="how">
+    <button class="btn green" id="bStart">開始</button>
+    <details class="howbox" id="howbox"><summary>怎麼玩（第一次玩先看）</summary><div class="how">
       ① 點土地，種下夜市買的怪種子<br>
       ② <b>點妳那一根</b>往上爬、<b>點別根</b>跳過去、<b>點她腳下</b>往下退一步<br>
       ③ 閃開烏鴉、黑貓掃把、兔子、毛線球，繞過斷柱、史萊姆、螢光蘑菇<br>
@@ -140,12 +142,11 @@ h2{margin:0 0 6px;font-size:26px;color:var(--ink)}
       ⑥ 鵜鶘飛來時<b>跳向牠</b>；大風來時<b>按住不要動</b><br>
       ⑦ 魔王摀住眼睛時<b>按住前進</b>，肉球放下就<b>放開</b>！<br>
       <span class="pc">電腦：↑／空白鍵爬（按住＝按住螢幕）、↓ 往下退、← → 換柱子</span>
-    </div>
+    </div></details>
     <div class="best" id="tBest"></div>
     <ul class="mlist" id="tMis"></ul>
     <div class="coll" id="tColl"></div>
     <div class="cos" id="tCos"></div>
-    <button class="btn green" id="bStart">開始</button>
     <button class="btn ghost" id="bGame2">分享遊戲給朋友</button>
     <div class="ver">貓貓勇者小隊・小遊戲<br><a href="../../story/" style="color:inherit">看連載漫畫</a></div>
   </div></div>
@@ -1187,6 +1188,7 @@ function collText() {
   const t = LSJ('ssf_titles', []), st = parseInt(LS.get('ssf_stamps', '0')) || 0, ms = LSJ('ssf_mset', []);
   return `貓掌印章 ×${st}　任務圖鑑 ${ms.length}/${MISSIONS.length}　稱號圖鑑 ${t.length}/${ALL_MAIN.length + ALL_TAGS.length}`;
 }
+try { if (!localStorage.getItem('ss_seen_how')) { document.getElementById('howbox').open = true; localStorage.setItem('ss_seen_how','1'); } } catch (e) {}
 function refreshTitle() { misList($('tMis'), nextMissions, null, '這局的任務'); $('tColl').textContent = collText(); refreshCos(); }
 // ---------- 歡樂版：季節小裝扮（全部用 canvas 程式畫成小點陣貼紙，跟著主角的頭／脖子走） ----------
 // 每張主角貼紙的頭頂（hx, hy）、頭寬 hw、脖子（nx, ny），單位是原圖的像素；back＝背面
