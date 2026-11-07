@@ -1,7 +1,7 @@
 {
-  "taken_at": "2026-11-07T00:12:30+08:00",
+  "taken_at": "2026-11-07T23:58:40+08:00",
   "followers": 0,
-  "media_count": 5,
+  "media_count": 6,
   "posts": [
     {
       "id": "18129854593867137",
@@ -22,10 +22,10 @@
       "permalink": "https://www.instagram.com/reel/DfMsSd-jj1Z/",
       "likes": 0,
       "comments": 0,
-      "reach": 2,
+      "reach": 3,
       "saved": 0,
       "shares": 0,
-      "views": 2
+      "views": 4
     },
     {
       "id": "17865395685693179",
@@ -52,16 +52,28 @@
       "views": 21
     },
     {
+      "id": "17967606957246739",
+      "queue_id": "ig_office1",
+      "posted_at": "2026-11-07T12:14:25+00:00",
+      "permalink": "https://www.instagram.com/reel/DfcKD1Tk-T8/",
+      "likes": 0,
+      "comments": 0,
+      "reach": 5,
+      "saved": 0,
+      "shares": 0,
+      "views": 4
+    },
+    {
       "id": "18138907018654163",
       "queue_id": "bear_pray",
       "posted_at": "2026-11-06T13:44:22+00:00",
       "permalink": "https://www.instagram.com/reel/DfZvoXkE9t7/",
       "likes": 0,
       "comments": 0,
-      "reach": 31,
+      "reach": 43,
       "saved": 0,
       "shares": 0,
-      "views": 34
+      "views": 47
     }
   ],
   "fb_page": {
