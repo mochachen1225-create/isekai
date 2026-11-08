@@ -214,8 +214,10 @@
     "tag": "AI",
     "style": "short",
     "approved": true,
-    "posted": false,
-    "note": "11/1 她 OK"
+    "posted": true,
+    "note": "11/1 她 OK",
+    "thread_id": "18166350259429791",
+    "posted_at": "2026-11-08T05:15:01+00:00"
   },
   {
     "id": "scratch_idea",
