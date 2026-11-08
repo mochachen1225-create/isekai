@@ -229,8 +229,10 @@
     "tag": "小遊戲",
     "style": "long",
     "approved": true,
-    "posted": false,
-    "note": "11/4 她改好 OK；12:30 已有 kitten1 所以排 20:30"
+    "posted": true,
+    "note": "11/4 她改好 OK；12:30 已有 kitten1 所以排 20:30",
+    "thread_id": "17928038493200005",
+    "posted_at": "2026-11-08T12:38:13+00:00"
   },
   {
     "id": "aza1a",
