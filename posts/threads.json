@@ -286,7 +286,8 @@
     "style": "long",
     "approved": true,
     "posted": false,
-    "note": "11/2 她寫的全文（Threads 放全文、IG 放刪減版）；（AI 協作製作）那行是總編照原則加的｜11/2 總編潤飾：他→她、刪節號、超大支持→最大靠山、貓貓國→貓咪國"
+    "note": "11/2 她寫的全文（Threads 放全文、IG 放刪減版）；（AI 協作製作）那行是總編照原則加的｜11/2 總編潤飾：他→她、刪節號、超大支持→最大靠山、貓貓國→貓咪國",
+    "error": "POST me/threads_publish：500 {\"error\":{\"message\":\"An unexpected error has occurred. Please retry your request later.\",\"type\":\"OAuthException\",\"is_transient\":true,\"code\":2,\"fbtrace_id\":\"AEi91t181YJsZTuhWM4qb3D\"}}"
   },
   {
     "id": "team1",
