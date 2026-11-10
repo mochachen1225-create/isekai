@@ -298,8 +298,10 @@
     "tag": "AI",
     "style": "short",
     "approved": true,
-    "posted": false,
-    "note": "11/1 她改文案＝OK（AI 標示那行照原則保留）"
+    "posted": true,
+    "note": "11/1 她改文案＝OK（AI 標示那行照原則保留）",
+    "thread_id": "18078408959584602",
+    "posted_at": "2026-11-10T05:24:17+00:00"
   },
   {
     "id": "aza1b",
