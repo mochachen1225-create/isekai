@@ -347,8 +347,10 @@
     "tag": "作品",
     "style": "long",
     "approved": true,
-    "posted": false,
-    "note": "11/2 她寫的全文，總編潤飾；同天 IG 20:00 是刪減版"
+    "posted": true,
+    "note": "11/2 她寫的全文，總編潤飾；同天 IG 20:00 是刪減版",
+    "thread_id": "18003303638814376",
+    "posted_at": "2026-11-12T01:24:13+00:00"
   },
   {
     "id": "newbed1",
