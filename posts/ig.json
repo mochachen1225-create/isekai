@@ -133,7 +133,8 @@
     ],
     "approved": true,
     "posted": false,
-    "note": "11/2 她寫全文、指定 10 張圖；IG 用總編刪減版"
+    "note": "11/2 她寫全文、指定 10 張圖；IG 用總編刪減版",
+    "error": "比例 1080×1500 超出 4:5～1.91:1：https://mochachen1225-create.github.io/isekai/story/comic/01-3.jpg；比例 1080×1440 超出 4:5～1.91:1：https://mochachen1225-create.github.io/isekai/story/comic/01-6.jpg；比例 1080×1636 超出 4:5～1.91:1：https://mochachen1225-create.github.io/isekai/story/comic/01-8.jpg；比例 1080×1588 超出 4:5～1.91:1：https://mochachen1225-create.github.io/isekai/story/comic/01-10.jpg"
   },
   {
     "id": "ig_mayor_bosses",
