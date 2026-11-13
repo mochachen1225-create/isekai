@@ -1,0 +1,32 @@
+{
+  "taken_at": "2026-11-14T00:29:15+08:00",
+  "games": [
+    {
+      "id": 5277953,
+      "title": "Begone, Petty People!",
+      "url": "https://mocha-cat-team.itch.io/begone-petty-people",
+      "views": 0,
+      "downloads": 0,
+      "purchases": 0,
+      "published": false
+    },
+    {
+      "id": 5272536,
+      "title": "climb-to-the-star-spring",
+      "url": "https://mocha-cat-team.itch.io/climb-to-the-star-spring",
+      "views": 6,
+      "downloads": 0,
+      "purchases": 0,
+      "published": true
+    },
+    {
+      "id": 5272932,
+      "title": "My Mayor-to-Be（我推的市長）",
+      "url": "https://mocha-cat-team.itch.io/my-mayor",
+      "views": 562,
+      "downloads": 0,
+      "purchases": 0,
+      "published": true
+    }
+  ]
+}
