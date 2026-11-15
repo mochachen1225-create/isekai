@@ -176,8 +176,11 @@
     "images": [],
     "video": "https://mochachen1225-create.github.io/isekai/promo/ig/my-mayor-debate-zh.mp4",
     "approved": true,
-    "posted": false,
-    "note": "11/2 她寫全文（IG 用總編刪減版），文字 OK；影片 0:14 有奇怪的手，修好才改 approved:true｜11/2 影片修好（144ea63），她看截圖說 OK"
+    "posted": true,
+    "note": "11/2 她寫全文（IG 用總編刪減版），文字 OK；影片 0:14 有奇怪的手，修好才改 approved:true｜11/2 影片修好（144ea63），她看截圖說 OK",
+    "ig_id": "17925643506220782",
+    "permalink": "https://www.instagram.com/reel/DfwwZErD9-2/",
+    "posted_at": "2026-11-15T12:14:03+00:00"
   },
   {
     "id": "ig_newbed",
@@ -308,8 +311,11 @@
     "images": [],
     "video": "https://mochachen1225-create.github.io/isekai/promo/ig/taiyaki.mp4",
     "approved": true,
-    "posted": false,
-    "note": "11/8 她 OK：真貓版鯛魚燒「裡面請」；Shorts 同日 20:30（sh09-yt）"
+    "posted": true,
+    "note": "11/8 她 OK：真貓版鯛魚燒「裡面請」；Shorts 同日 20:30（sh09-yt）",
+    "ig_id": "17965879401251766",
+    "permalink": "https://www.instagram.com/reel/Dfwwkz_HPuV/",
+    "posted_at": "2026-11-15T12:14:03+00:00"
   },
   {
     "id": "ig_passive",
