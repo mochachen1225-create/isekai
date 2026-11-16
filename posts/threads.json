@@ -481,8 +481,10 @@
     "tag": "小遊戲",
     "style": "short",
     "approved": true,
-    "posted": false,
-    "note": "11/4 她 OK；影片先用 v1，總編那段重做好再換"
+    "posted": true,
+    "note": "11/4 她 OK；影片先用 v1，總編那段重做好再換",
+    "thread_id": "18116018321118968",
+    "posted_at": "2026-11-16T05:05:48+00:00"
   },
   {
     "id": "cafe_full",
