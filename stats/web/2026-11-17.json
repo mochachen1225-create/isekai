@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-17",
+  "taken_at": "2026-11-18T00:36:55+08:00",
+  "total": 1,
+  "by_section": {
+    "home": 1,
+    "quiz": 0,
+    "games": 0,
+    "itch_embed": 0,
+    "story": 0,
+    "other": 0
+  },
+  "more_pages": false,
+  "pages": [
+    {
+      "path": "/isekai",
+      "title": "異世界轉生職業測驗",
+      "count": 1
+    }
+  ]
+}
