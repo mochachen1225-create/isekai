@@ -781,5 +781,49 @@
   "approved": true,
   "posted": false,
   "note": "11/18 她授權四格由總編往後排。"
+ },
+ {
+  "id": "ig_4koma_shop_goose",
+  "at": "2027-02-07T20:00:00+08:00",
+  "text": "買東西・衝動型｜看到「限時 3 分鐘！」立刻下單。拆開：「是雪花冰機耶！」\n然後拿著製冰盒愣住：「……我家沒有冰箱。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #衝動購物 #網購 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/shop_goose.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。 待修：倒數計時顯示 00:04:57，跟「限時 3 分鐘」對不上，要改成 3 分鐘以內。修好換圖再放行。"
+ },
+ {
+  "id": "ig_4koma_shop_onigiri",
+  "at": "2027-02-09T20:00:00+08:00",
+  "text": "買東西・比價型｜開 12 個分頁，做比價表，研究了三週。「決定了。」按下購買——特價已結束。\n\n「……」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #比價 #網購 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/shop_onigiri.jpg"
+  ],
+  "approved": true,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。"
+ },
+ {
+  "id": "ig_4koma_shop_bunny",
+  "at": "2027-02-11T20:00:00+08:00",
+  "text": "買東西・好惡分明型｜喜歡的店：「這家的我全包了❤」店員對它哼一聲的那家，記仇本打勾。\n朋友問要不要進去看看：「這家，不存在唷❤」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #逛街 #記仇本 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/shop_bunny.jpg"
+  ],
+  "approved": true,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。"
+ },
+ {
+  "id": "ig_4koma_shop_seaslug",
+  "at": "2027-02-13T20:00:00+08:00",
+  "text": "買東西・豪爽型｜「今天要買自己的東西！」結果買了兔子的圍巾、飯糰的筆記本、鵝的小鴨玩偶。\n「那你自己買了什麼？」「一杯珍奶！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #逛街 #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/shop_seaslug.jpg"
+  ],
+  "approved": true,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。"
  }
 ]
