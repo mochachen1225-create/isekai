@@ -789,9 +789,9 @@
   "images": [
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/shop_goose.jpg"
   ],
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。 待修：倒數計時顯示 00:04:57，跟「限時 3 分鐘」對不上，要改成 3 分鐘以內。修好換圖再放行。"
+  "note": "11/18 她授權四格由總編往後排。11/18 修正版已換圖、總編確認後放行。"
  },
  {
   "id": "ig_4koma_shop_onigiri",
