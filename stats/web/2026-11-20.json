@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-20",
+  "taken_at": "2026-11-21T00:32:17+08:00",
+  "total": 2,
+  "by_section": {
+    "home": 0,
+    "quiz": 0,
+    "games": 0,
+    "itch_embed": 0,
+    "story": 0,
+    "other": 2
+  },
+  "more_pages": false,
+  "pages": [
+    {
+      "path": "scratch-replay",
+      "title": "scratch-replay",
+      "count": 1
+    },
+    {
+      "path": "scratch-end",
+      "title": "scratch-end",
+      "count": 1
+    }
+  ]
+}
