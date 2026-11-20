@@ -573,8 +573,10 @@
     "video": "https://mochachen1225-create.github.io/isekai/promo/threads/mayor4.mp4",
     "tag": "小遊戲",
     "approved": true,
-    "posted": false,
-    "note": "選前市長三則之三；11/21–11/28 不排選舉相關；11/1 她改稿並打勾 OK"
+    "posted": true,
+    "note": "選前市長三則之三；11/21–11/28 不排選舉相關；11/1 她改稿並打勾 OK",
+    "thread_id": "17894306595453005",
+    "posted_at": "2026-11-20T05:29:46+00:00"
   },
   {
     "id": "scratch_launch",
