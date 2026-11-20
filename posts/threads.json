@@ -589,9 +589,12 @@
     "tag": "獨立遊戲開發",
     "style": "short",
     "approved": true,
-    "posted": false,
+    "posted": true,
     "note": "11/4 她 OK；上架前一天總編確認連結（itch 頁建好可改 itch 網址）｜11/4 她定：有遊戲連結＋試玩片的才掛「獨立遊戲開發」；試玩片做好要換成 video",
-    "video": "https://mochachen1225-create.github.io/isekai/promo/threads/scratch_trailer.mp4"
+    "video": "https://mochachen1225-create.github.io/isekai/promo/threads/scratch_trailer.mp4",
+    "thread_id": "18110535281358855",
+    "posted_at": "2026-11-20T12:48:52+00:00",
+    "error": "POST me/threads_publish：400 {\"error\":{\"message\":\"Fatal\",\"code\":-1,\"type\":\"OAuthException\",\"error_subcode\":4279047,\"is_transient\":false,\"error_user_msg\":\"The post you're trying to publish has an invalid link attachment.\",\"error_user_title\":\"Invalid Link Attachment\",\"fbtrace_id\":\"A-Uh5mFiDSS_R9ij7jvd0jq\"}}"
   },
   {
     "id": "zuiti1_full",
