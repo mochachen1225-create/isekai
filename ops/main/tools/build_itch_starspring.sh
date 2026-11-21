@@ -23,4 +23,4 @@ open(p, 'w', encoding='utf-8').write(s)
 PY
 mkdir -p "$(dirname "$ZIP")"; ZIP=$(cd "$(dirname "$ZIP")" && pwd)/$(basename "$ZIP"); rm -f "$ZIP"
 (cd "$OUT" && zip -qr "$ZIP" .)
-echo "$ZIP（$(du -h "$ZIP" | cut -f1)）"
+echo "${ZIP}（$(du -h "${ZIP}" | cut -f1)）"
