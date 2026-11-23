@@ -1702,8 +1702,10 @@
     "tag": "AI",
     "style": "short",
     "approved": true,
-    "posted": false,
-    "note": "11/21 她說排上去。"
+    "posted": true,
+    "note": "11/21 她說排上去。",
+    "thread_id": "17914466262483992",
+    "posted_at": "2026-11-23T20:11:43+00:00"
   },
   {
     "id": "wfh_day",
