@@ -636,8 +636,10 @@
     "tag": "心情",
     "style": "long",
     "approved": true,
-    "posted": false,
-    "note": "11/2 她寫的全文，總編潤飾（標點、語序）；同天 IG 20:00 是刪減版"
+    "posted": true,
+    "note": "11/2 她寫的全文，總編潤飾（標點、語序）；同天 IG 20:00 是刪減版",
+    "thread_id": "17917067634472069",
+    "posted_at": "2026-11-24T04:45:09+00:00"
   },
   {
     "id": "one_minute",
