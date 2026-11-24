@@ -650,7 +650,9 @@
     ],
     "tag": "上班族",
     "approved": true,
-    "posted": false
+    "posted": true,
+    "thread_id": "17869280910676766",
+    "posted_at": "2026-11-24T15:24:44+00:00"
   },
   {
     "id": "where_now",
