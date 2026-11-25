@@ -663,7 +663,9 @@
     ],
     "tag": "AI",
     "approved": true,
-    "posted": false
+    "posted": true,
+    "thread_id": "18013884023990378",
+    "posted_at": "2026-11-25T17:50:03+00:00"
   },
   {
     "id": "zuiti2",
