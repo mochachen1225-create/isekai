@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-24",
+  "taken_at": "2026-11-25T08:04:34+08:00",
+  "total": 2,
+  "by_section": {
+    "home": 0,
+    "quiz": 0,
+    "games": 0,
+    "itch_embed": 0,
+    "story": 0,
+    "other": 2
+  },
+  "more_pages": false,
+  "pages": [
+    {
+      "path": "scratch-end",
+      "title": "scratch-end",
+      "count": 2
+    }
+  ]
+}
