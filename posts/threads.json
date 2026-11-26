@@ -200,11 +200,10 @@
   "video": "https://mochachen1225-create.github.io/isekai/promo/ig/office_day1.mp4",
   "tag": "AI",
   "style": "long",
-  "approved": false,
+  "approved": true,
   "posted": false,
   "note": "11/2 她寫的全文，總編潤飾；「我就負責思考就好」改成「我負責想點子、決定好不好，還有說 OK」（呼應 mission：AI 不是全部代勞）｜11/7 兩次 500：第一次 96kHz 音訊（已轉 48k），第二次可能 Pages 還沒更新；19:30 再清一次重發",
-  "error": "POST me/threads_publish：500 {\"error\":{\"message\":\"An unexpected error has occurred. Please retry your request later.\",\"type\":\"OAuthException\",\"is_transient\":true,\"code\":2,\"fbtrace_id\":\"AqH7DpHKsx_xwroX1fHCf2i\"}}",
-  "paused": "2026-11-26"
+  "error": "POST me/threads_publish：500 {\"error\":{\"message\":\"An unexpected error has occurred. Please retry your request later.\",\"type\":\"OAuthException\",\"is_transient\":true,\"code\":2,\"fbtrace_id\":\"AqH7DpHKsx_xwroX1fHCf2i\"}}"
  },
  {
   "id": "kitten1",
@@ -243,13 +242,12 @@
    "https://mochachen1225-create.github.io/isekai/promo/threads/aza1a_v2.jpg"
   ],
   "tag": "AI",
-  "approved": false,
+  "approved": true,
   "posted": false,
   "replies": [
    "所以就開始，Claude寫好各種的指令，叫我拿去另一個 Gemini畫，\n我就從Claude複製prompt、貼上prompt去Gemini、等Gemini畫好、下載轉傳回去Claude，複製、貼上、等它畫好、下載轉傳回....複製、貼上、等它畫好、下載轉傳回....複製、貼上、等它畫好、下載轉傳回....複製、貼上、等它畫好、下載轉傳回....複製、貼上、等它畫好、下載轉傳回....複製、貼上、等它畫好、下載轉傳回.........\n\n靠杯勒。\n\n一張還好，\n十張、二十張之後，\n我開始覺得哪裡怪怪的……\n\n不是說好 AI 幫我做事嗎？\n怎麼變成我在幫 AI當 搬運工.....\n\n這也太煩人了吧。\n有沒有辦法，讓它自己畫？\n\n「我覺得很煩耶。」我忍不住抱怨。「有沒有不要花太多錢，但我可以不要這麼浪費時間的方法。」\n（待續）"
   ],
-  "error": "超過 500 字：主文 718 字",
-  "paused": "2026-11-26"
+  "error": "超過 500 字：主文 718 字"
  },
  {
   "id": "ideabox1",
@@ -273,11 +271,10 @@
   "video": "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_collapse.mp4",
   "tag": "作品",
   "style": "long",
-  "approved": false,
+  "approved": true,
   "posted": false,
   "note": "11/2 她寫的全文，總編潤飾（「台北市長的選戰」改成「這次的選戰」：遊戲鐵律不連到真實地名）；影片修好才改 approved:true｜11/2 影片修好（144ea63），她看截圖說 OK",
-  "error": "POST me/threads_publish：500 {\"error\":{\"message\":\"An unexpected error has occurred. Please retry your request later.\",\"type\":\"OAuthException\",\"is_transient\":true,\"code\":2,\"fbtrace_id\":\"AmE2jIvW3MB4Z2aFclO30VB\"}}",
-  "paused": "2026-11-26"
+  "error": "POST me/threads_publish：500 {\"error\":{\"message\":\"An unexpected error has occurred. Please retry your request later.\",\"type\":\"OAuthException\",\"is_transient\":true,\"code\":2,\"fbtrace_id\":\"AmE2jIvW3MB4Z2aFclO30VB\"}}"
  },
  {
   "id": "starspring_full",
@@ -287,11 +284,10 @@
   "video": "https://mochachen1225-create.github.io/isekai/promo/ig/starspring_reel.mp4",
   "tag": "作品",
   "style": "long",
-  "approved": false,
+  "approved": true,
   "posted": false,
   "note": "11/2 她寫的全文（Threads 放全文、IG 放刪減版）；（AI 協作製作）那行是總編照原則加的｜11/2 總編潤飾：他→她、刪節號、超大支持→最大靠山、貓貓國→貓咪國",
-  "error": "POST me/threads_publish：500 {\"error\":{\"message\":\"An unexpected error has occurred. Please retry your request later.\",\"type\":\"OAuthException\",\"is_transient\":true,\"code\":2,\"fbtrace_id\":\"AEi91t181YJsZTuhWM4qb3D\"}}",
-  "paused": "2026-11-26"
+  "error": "POST me/threads_publish：500 {\"error\":{\"message\":\"An unexpected error has occurred. Please retry your request later.\",\"type\":\"OAuthException\",\"is_transient\":true,\"code\":2,\"fbtrace_id\":\"AEi91t181YJsZTuhWM4qb3D\"}}"
  },
  {
   "id": "team1",
@@ -455,11 +451,10 @@
   "video": "https://mochachen1225-create.github.io/isekai/promo/ig/my-mayor-debate-zh.mp4",
   "tag": "作品",
   "style": "long",
-  "approved": false,
+  "approved": true,
   "posted": false,
   "note": "11/2 她寫的全文，總編潤飾；影片修好才改 approved:true。（插畫→影片：這篇是影片）｜11/2 影片修好（144ea63），她看截圖說 OK",
-  "error": "POST me/threads_publish：500 {\"error\":{\"message\":\"An unexpected error has occurred. Please retry your request later.\",\"type\":\"OAuthException\",\"is_transient\":true,\"code\":2,\"fbtrace_id\":\"ACnpsPYhbnFNPKqsvcQgyk5\"}}",
-  "paused": "2026-11-26"
+  "error": "POST me/threads_publish：500 {\"error\":{\"message\":\"An unexpected error has occurred. Please retry your request later.\",\"type\":\"OAuthException\",\"is_transient\":true,\"code\":2,\"fbtrace_id\":\"ACnpsPYhbnFNPKqsvcQgyk5\"}}"
  },
  {
   "id": "aza2",
@@ -469,14 +464,13 @@
    "https://mochachen1225-create.github.io/isekai/promo/threads/aza2.jpg"
   ],
   "tag": "AI",
-  "approved": false,
+  "approved": true,
   "posted": false,
   "replies": [
    "again，搬運工人地獄再現！！！Claude寫好各種的指令，叫我拿去另一個 Gemini畫，\n我就從Claude複製prompt、貼上prompt去Gemini、等Gemini畫好、下載轉傳回去Claude，複製、貼上、等它畫好、下載轉傳回....複製、貼上、等它畫好、下載轉傳回....複製、貼上、等它畫好、下載轉傳回....複製、貼上、等它畫好、下載轉傳回....複製、貼上、等它畫好、下載轉傳回....複製、貼上、等它畫好、下載轉傳回.........\n\n本來想說，\n一天做三支短片，應該還好吧？\n\n結果每一支都要等，\n我就一直坐在電腦前面，\n盯著那個轉圈圈 ＝＝\n\n下班已經很累了，\n還要守在電腦前面等 AI，\n到底誰才是老闆啦！！\n\n後來想通了，這個時間的浪費，不如讓他去Call API吧。\n\n「但我怕我花太多錢耶。」\n\n『那你去設定Cap啊，就不會花超過。』\n\n好喔。我是更想要找到免費的啦。\n\n『但是，你要求很多，那些免費額度的都不適合吧，而且也有數量限制。』\n\n好吧。\n\n「那網路上的那些厲害的影片是怎麼刻出來的？」我貼了好幾個給他看。",
    "『有很多工具喔，不過都要錢就是了。』\n\n介紹了一堆，我想，我也不是要做什麼大片。\n\n現在這樣就好了。"
   ],
-  "error": "超過 500 字：主文 936 字",
-  "paused": "2026-11-26"
+  "error": "超過 500 字：主文 936 字"
  },
  {
   "id": "scratch_twotypes",
@@ -500,11 +494,10 @@
   "video": "https://mochachen1225-create.github.io/isekai/promo/cafe_f.mp4",
   "tag": "心情",
   "style": "long",
-  "approved": false,
+  "approved": true,
   "posted": false,
   "note": "11/2 她寫的全文，總編潤飾；同天 IG 20:00 是刪減版｜11/4 拿掉測驗句",
-  "error": "POST me/threads_publish：500 {\"error\":{\"message\":\"An unexpected error has occurred. Please retry your request later.\",\"type\":\"OAuthException\",\"is_transient\":true,\"code\":2,\"fbtrace_id\":\"AYfBz8WaZJXP_UCQ-lAlwzj\"}}",
-  "paused": "2026-11-26"
+  "error": "POST me/threads_publish：500 {\"error\":{\"message\":\"An unexpected error has occurred. Please retry your request later.\",\"type\":\"OAuthException\",\"is_transient\":true,\"code\":2,\"fbtrace_id\":\"AYfBz8WaZJXP_UCQ-lAlwzj\"}}"
  },
  {
   "id": "aza3",
@@ -514,13 +507,12 @@
    "https://mochachen1225-create.github.io/isekai/promo/threads/aza3.jpg"
   ],
   "tag": "上班族",
-  "approved": false,
+  "approved": true,
   "posted": false,
   "replies": [
    "因為他在電腦上跑，所以我可以透過chrome的Claude外掛去存取某些網站。\n\n不過，電腦要開機。\n\n所以我決定安排在，每個禮拜六下午，讓他自己打開瀏覽器，幫我把東西預約上傳好。\n\n我都事先看好，所以等他要上傳的時候都是ＯＫ的東西了！！\n\n不過我有點擔心，如果他被別人用指令控制呢？\n\n所以我又開始跟Claude討論了........"
   ],
-  "error": "超過 500 字：主文 646 字",
-  "paused": "2026-11-26"
+  "error": "超過 500 字：主文 646 字"
  },
  {
   "id": "aza4",
@@ -685,10 +677,9 @@
   "video": "",
   "tag": "心情",
   "style": "short",
-  "approved": false,
+  "approved": true,
   "note": "11/2 嘴替第二張，她同意 Threads 也發短版",
-  "posted": false,
-  "paused": "2026-11-26"
+  "posted": false
  },
  {
   "id": "bear_pray",
@@ -744,10 +735,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solo_goose_short_attention.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 四格漫畫（獨立新線）；她說排上架，文字等她 OK。 11/18 她 OK。",
-  "paused": "2026-11-26"
+  "note": "11/18 四格漫畫（獨立新線）；她說排上架，文字等她 OK。 11/18 她 OK。"
  },
  {
   "id": "th_4koma_onigiri",
@@ -757,10 +747,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solo_onigiri_leave_it_to_me.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 四格漫畫（獨立新線）；她說排上架，文字等她 OK。 11/18 她 OK。",
-  "paused": "2026-11-26"
+  "note": "11/18 四格漫畫（獨立新線）；她說排上架，文字等她 OK。 11/18 她 OK。"
  },
  {
   "id": "th_4koma_bunny",
@@ -770,10 +759,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solo_bunny_only_i_can_tease.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 四格漫畫（獨立新線）；她說排上架，文字等她 OK。 11/18 她 OK。",
-  "paused": "2026-11-26"
+  "note": "11/18 四格漫畫（獨立新線）；她說排上架，文字等她 OK。 11/18 她 OK。"
  },
  {
   "id": "th_4koma_seaslug",
@@ -783,10 +771,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solo_seaslug_ask_me.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 四格漫畫（獨立新線）；她說排上架，文字等她 OK。 11/18 她 OK。",
-  "paused": "2026-11-26"
+  "note": "11/18 四格漫畫（獨立新線）；她說排上架，文字等她 OK。 11/18 她 OK。"
  },
  {
   "id": "th_4koma_goose2",
@@ -796,10 +783,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/other_goose_first_to_arrive.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 四格（暖心篇）；文字等她 OK。 11/18 她 OK。",
-  "paused": "2026-11-26"
+  "note": "11/18 四格（暖心篇）；文字等她 OK。 11/18 她 OK。"
  },
  {
   "id": "th_4koma_onigiri2",
@@ -809,10 +795,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/other_onigiri_remembers.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 四格（暖心篇）；文字等她 OK。 11/18 她 OK。 11/18 依漫畫 session 劇情更正（生病的是海蛞蝓、兔子送禮盒）。",
-  "paused": "2026-11-26"
+  "note": "11/18 四格（暖心篇）；文字等她 OK。 11/18 她 OK。 11/18 依漫畫 session 劇情更正（生病的是海蛞蝓、兔子送禮盒）。"
  },
  {
   "id": "th_4koma_bunny2",
@@ -822,10 +807,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/other_bunny_calmest.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 四格（暖心篇）；文字等她 OK。 11/18 她 OK。",
-  "paused": "2026-11-26"
+  "note": "11/18 四格（暖心篇）；文字等她 OK。 11/18 她 OK。"
  },
  {
   "id": "th_4koma_seaslug2",
@@ -835,10 +819,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/other_seaslug_eat_first.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 四格（暖心篇）；文字等她 OK。 11/18 她 OK。",
-  "paused": "2026-11-26"
+  "note": "11/18 四格（暖心篇）；文字等她 OK。 11/18 她 OK。"
  },
  {
   "id": "th_4koma_gift",
@@ -848,10 +831,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/group_gift_exchange.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排、文案簡單寫直接發。聖誕檔期排 12/20。 11/18 依漫畫 session 劇情更正（生病的是海蛞蝓、兔子送禮盒）。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排、文案簡單寫直接發。聖誕檔期排 12/20。 11/18 依漫畫 session 劇情更正（生病的是海蛞蝓、兔子送禮盒）。"
  },
  {
   "id": "th_4koma_movie",
@@ -861,10 +843,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/group_movie.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排、文案簡單寫直接發。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排、文案簡單寫直接發。"
  },
  {
   "id": "th_4koma_haunted",
@@ -874,10 +855,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/group_haunted_house.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排、文案簡單寫直接發。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排、文案簡單寫直接發。"
  },
  {
   "id": "th_4koma_cat",
@@ -887,10 +867,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/group_cat_again.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排、文案簡單寫直接發。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排、文案簡單寫直接發。"
  },
  {
   "id": "th_4koma_mem1",
@@ -900,10 +879,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/memories_01_first_friend.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。系列「那年的我們」①～④，④排跨年夜。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。系列「那年的我們」①～④，④排跨年夜。"
  },
  {
   "id": "th_4koma_mem2",
@@ -913,10 +891,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/memories_02_group_project.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。系列「那年的我們」①～④，④排跨年夜。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。系列「那年的我們」①～④，④排跨年夜。"
  },
  {
   "id": "th_4koma_mem3",
@@ -926,10 +903,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/memories_03_our_people.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。系列「那年的我們」①～④，④排跨年夜。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。系列「那年的我們」①～④，④排跨年夜。"
  },
  {
   "id": "th_4koma_mem4",
@@ -939,10 +915,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/memories_04_graduation_trip.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。系列「那年的我們」①～④，④排跨年夜。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。系列「那年的我們」①～④，④排跨年夜。"
  },
  {
   "id": "th_4koma_dating",
@@ -952,10 +927,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/group_dating_show.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_strategy",
@@ -965,10 +939,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/group_strategy_show.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_notworth",
@@ -978,10 +951,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/group_not_worth_it.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。 11/18 移到 1/12 當「遇到渣男渣女」系列收尾。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。 11/18 移到 1/12 當「遇到渣男渣女」系列收尾。"
  },
  {
   "id": "th_4koma_jerk_goose",
@@ -991,10 +963,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/jerk_goose_easy_come.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。系列「遇到渣男渣女」。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。系列「遇到渣男渣女」。"
  },
  {
   "id": "th_4koma_jerk_onigiri",
@@ -1004,10 +975,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/jerk_onigiri_evidence.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。系列「遇到渣男渣女」。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。系列「遇到渣男渣女」。"
  },
  {
   "id": "th_4koma_jerk_bunny",
@@ -1017,10 +987,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/jerk_bunny_who_are_you.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。系列「遇到渣男渣女」。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。系列「遇到渣男渣女」。"
  },
  {
   "id": "th_4koma_ny_young",
@@ -1030,10 +999,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/newyear_young.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。11/18 修正版已換圖、總編確認後放行。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。11/18 修正版已換圖、總編確認後放行。"
  },
  {
   "id": "th_4koma_ny_old",
@@ -1043,10 +1011,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/newyear_old.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_sch_goose",
@@ -1056,10 +1023,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/scholar_goose.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_sch_onigiri",
@@ -1069,10 +1035,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/scholar_onigiri.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_sch_bunny",
@@ -1082,10 +1047,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/scholar_bunny.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_sch_seaslug",
@@ -1095,10 +1059,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/scholar_seaslug.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。11/18 修正版已換圖、總編確認後放行。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。11/18 修正版已換圖、總編確認後放行。"
  },
  {
   "id": "th_4koma_boss_goose",
@@ -1108,10 +1071,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/boss_goose.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_boss_onigiri",
@@ -1121,10 +1083,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/boss_onigiri.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_boss_bunny",
@@ -1134,10 +1095,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/boss_bunny.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_boss_seaslug",
@@ -1147,10 +1107,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/boss_seaslug.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_par_goose",
@@ -1160,10 +1119,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/parent_goose.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_par_onigiri",
@@ -1173,10 +1131,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/parent_onigiri.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_par_bunny",
@@ -1186,10 +1143,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/parent_bunny.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。11/18 她確認小兔拿球棒 OK。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。11/18 她確認小兔拿球棒 OK。"
  },
  {
   "id": "th_4koma_par_seaslug",
@@ -1199,10 +1155,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/parent_seaslug.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_shop_goose",
@@ -1212,10 +1167,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/shop_goose.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。11/18 修正版已換圖、總編確認後放行。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。11/18 修正版已換圖、總編確認後放行。"
  },
  {
   "id": "th_4koma_shop_onigiri",
@@ -1225,10 +1179,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/shop_onigiri.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_shop_bunny",
@@ -1238,10 +1191,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/shop_bunny.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_shop_seaslug",
@@ -1251,10 +1203,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/shop_seaslug.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_anc_goose",
@@ -1264,10 +1215,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ancient_goose.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_anc_onigiri",
@@ -1277,10 +1227,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ancient_onigiri.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_anc_bunny",
@@ -1290,10 +1239,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ancient_bunny.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_anc_seaslug",
@@ -1303,10 +1251,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ancient_seaslug.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_anc_reunion",
@@ -1316,10 +1263,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ancient_reunion.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_fan_goose",
@@ -1329,10 +1275,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/fan_goose.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_fan_onigiri",
@@ -1342,10 +1287,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/fan_onigiri.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_fan_seaslug",
@@ -1355,10 +1299,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/fan_seaslug.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_fan_bunny",
@@ -1368,10 +1311,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/fan_bunny.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。11/18 修正版（本命）已換圖、總編確認後放行。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。11/18 修正版（本命）已換圖、總編確認後放行。"
  },
  {
   "id": "th_4koma_solo_goose",
@@ -1381,10 +1323,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solotrip_goose.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
  },
  {
   "id": "th_4koma_solo_onigiri",
@@ -1394,10 +1335,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solotrip_onigiri.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_solo_bunny",
@@ -1407,10 +1347,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solotrip_bunny.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_solo_seaslug",
@@ -1420,10 +1359,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solotrip_seaslug.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_kid_goose",
@@ -1433,10 +1371,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/kid_goose.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_kid_onigiri",
@@ -1446,10 +1383,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/kid_onigiri.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
  },
  {
   "id": "th_4koma_kid_bunny",
@@ -1459,10 +1395,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/kid_bunny.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_kid_seaslug",
@@ -1472,10 +1407,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/kid_seaslug.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_st_goose",
@@ -1485,10 +1419,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/streamer_goose.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_st_onigiri",
@@ -1498,10 +1431,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/streamer_onigiri.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
  },
  {
   "id": "th_4koma_st_bunny",
@@ -1511,10 +1443,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/streamer_bunny.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_st_seaslug",
@@ -1524,10 +1455,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/streamer_seaslug.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_mar_goose",
@@ -1537,10 +1467,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/marathon_goose.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_mar_onigiri",
@@ -1550,10 +1479,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/marathon_onigiri.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_mar_bunny",
@@ -1563,10 +1491,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/marathon_bunny.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_mar_seaslug",
@@ -1576,10 +1503,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/marathon_seaslug.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_ai_goose",
@@ -1589,10 +1515,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ai_goose.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
  },
  {
   "id": "th_4koma_ai_onigiri",
@@ -1602,10 +1527,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ai_onigiri.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_ai_bunny",
@@ -1615,10 +1539,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ai_bunny.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
  },
  {
   "id": "th_4koma_ai_seaslug",
@@ -1628,10 +1551,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ai_seaslug.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
  },
  {
   "id": "th_4koma_idol_goose",
@@ -1641,10 +1563,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/idol_goose.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_idol_onigiri",
@@ -1654,10 +1575,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/idol_onigiri.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_idol_bunny",
@@ -1667,10 +1587,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/idol_bunny.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_idol_seaslug",
@@ -1680,10 +1599,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/idol_seaslug.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_pop_goose",
@@ -1693,10 +1611,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/popular_goose.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
  },
  {
   "id": "th_4koma_pop_onigiri",
@@ -1706,10 +1623,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/popular_onigiri.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
  },
  {
   "id": "th_4koma_pop_bunny",
@@ -1719,10 +1635,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/popular_bunny.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
  },
  {
   "id": "th_4koma_pop_seaslug",
@@ -1732,10 +1647,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/popular_seaslug.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
  },
  {
   "id": "th_4koma_hero_goose",
@@ -1745,10 +1659,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/hero_goose.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
  },
  {
   "id": "th_4koma_hero_onigiri",
@@ -1758,10 +1671,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/hero_onigiri.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_hero_bunny",
@@ -1771,10 +1683,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/hero_bunny.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "th_4koma_hero_seaslug",
@@ -1784,10 +1695,9 @@
    "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/hero_seaslug.jpg"
   ],
   "tag": "四格",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/18 她授權四格由總編往後排。",
-  "paused": "2026-11-26"
+  "note": "11/18 她授權四格由總編往後排。"
  },
  {
   "id": "ai_resort",
@@ -1811,10 +1721,9 @@
   "video": "https://mochachen1225-create.github.io/isekai/promo/ig/wfh_day.mp4",
   "tag": "上班族",
   "style": "short",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/21 她說可以。",
-  "paused": "2026-11-26"
+  "note": "11/21 她說可以。"
  },
  {
   "id": "xiaoren_fake_trailer",
@@ -1847,9 +1756,8 @@
   ],
   "tag": "AI",
   "style": "short",
-  "approved": false,
+  "approved": true,
   "posted": false,
-  "note": "11/22 她說排；《不信》直式短版（浴室鏡子段）。",
-  "paused": "2026-11-26"
+  "note": "11/22 她說排；《不信》直式短版（浴室鏡子段）。"
  }
 ]
