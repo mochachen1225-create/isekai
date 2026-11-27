@@ -1,1340 +1,1426 @@
 [
-  {
-    "id": "ig_halloween",
-    "at": "2026-10-31T08:30:00+08:00",
-    "text": "萬聖節快樂🎃\n\n先自我介紹一下\n我們是「貓貓小隊」\n一個上班族（我）加上幾隻 AI 小貓員工\n一起做故事、漫畫、小遊戲的小團隊\n\n今天大家都變裝了\n總編是小巫師（工作證還是掛著）\n架構師是吸血鬼（耳麥沒拔下來）\n小弟是小幽靈 帽子還露在外面 XD\n我戴了貓耳朵 終於跟大家同一國了\n\n不給糖就搗蛋？\n他們說：不給罐罐就搗蛋。\n\n（圖片：AI 協作）\n\n#萬聖節 #HappyHalloween #貓貓勇者小隊 #貓貓工作室 #AI協作 #貓",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/threads/halloween_a.jpg"
-    ],
-    "approved": false,
-    "posted": false,
-    "error": "POST 17841416960586035/media：400 {\"error\":{\"message\":\"Cannot call API for app 2566471420522009 on behalf of user 122094287127541130\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"A5ezPe7nrhiqkMGcUka5CQb\"}}",
-    "note": "10/31 她說：自動發失敗的這則不補發"
-  },
-  {
-    "id": "ig_game",
-    "at": "2026-10-31T20:00:00+08:00",
-    "text": "爬上貓跳台，躲過橘貓，拿到魔王的星星結晶。\n這是我們《貓貓勇者小隊》的小遊戲「爬上星之泉」。\n你會先被橘貓抓到嗎？\n\n（遊戲和圖片：AI 協作）\n\n#貓貓勇者小隊 #異世界 #小遊戲 #橘貓 #AI協作",
-    "images": [],
-    "approved": true,
-    "posted": true,
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/starspring_reel.mp4",
-    "note": "10/31 她說設定做好了，提前到今晚當第一次 IG 自動發的測試（原本 11/10）",
-    "ig_id": "18129854593867137",
-    "permalink": "https://www.instagram.com/reel/DfKUOE5iA4C/",
-    "posted_at": "2026-10-31T13:56:52+00:00"
-  },
-  {
-    "id": "ig_mayor1",
-    "at": "2026-11-01T20:00:00+08:00",
-    "text": "這只是一個虛構的遊戲：\n你是總幹事，要努力把自己的候選人推上市長寶座。\n一局 10 分鐘，58 種結局，手機就能玩。\n11/28 記得去投票喔🗳️\n\n（純屬虛構｜插畫：AI 生成｜遊戲連結在主頁）\n\n#我推的市長 #選舉 #小遊戲 #台灣 #AI協作",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_hype.mp4",
-    "approved": true,
-    "posted": true,
-    "note": "11/1 她 OK",
-    "ig_id": "18141088957624983",
-    "permalink": "https://www.instagram.com/reel/DfMsSd-jj1Z/",
-    "posted_at": "2026-11-01T12:05:41+00:00"
-  },
-  {
-    "id": "ig_ng1",
-    "at": "2026-11-03T20:00:00+08:00",
-    "text": "用 Google Flow 生成影片，結果……\nAI 拍片的 NG 集，第 3 個最好笑。\n你覺得哪個最好笑？\n\n（影片：AI 生成）\n\n#貓貓工作室 #AI影片 #NG #橘貓 #AI協作",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/ng1.mp4",
-    "approved": true,
-    "posted": true,
-    "note": "10/31 她說 IG 可安排（真人版 NG 集 v3）",
-    "ig_id": "17865395685693179",
-    "permalink": "https://www.instagram.com/reel/DfR4WjRCOhn/",
-    "posted_at": "2026-11-03T12:27:17+00:00"
-  },
-  {
-    "id": "ig_quiz",
-    "at": "2026-11-05T20:00:00+08:00",
-    "text": "我們工作室的總編，今天也很認真在工作。\n……大概認真了五秒（笑）\n\n你也是這種上班族嗎？\n\n（影片：AI 生成）\n\n#貓貓勇者小隊 #橘貓 #上班族日常 #AI協作",
-    "images": [],
-    "approved": true,
-    "posted": true,
-    "note": "11/4 她 OK：測驗暫停，改發總編打字睡著（Flow，作者手動生成）",
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/office_nap.mp4",
-    "ig_id": "18239096605318440",
-    "permalink": "https://www.instagram.com/reel/DfXDr1RHNyl/",
-    "posted_at": "2026-11-05T12:42:34+00:00"
-  },
-  {
-    "id": "ig_office1",
-    "at": "2026-11-07T20:00:00+08:00",
-    "text": "貓貓小隊辦公室的一天 🐾\n總編在寫稿，架構師盯著一排綠勾勾，小弟出門送件，老闆只負責說 OK XD\n\n我負責想點子，貓貓小隊幫我做出來。\n這支短片是總編說：「用卡通介紹我們辦公室吧」，就有了。\n\n（圖片和動畫：AI 協作）\n#貓貓勇者小隊 #貓貓工作室 #AI協作 #貓 #上班族日常",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/office_day1.mp4",
-    "approved": true,
-    "posted": true,
-    "note": "11/2 她寫全文、打勾 OK；IG 用總編刪減版",
-    "ig_id": "17967606957246739",
-    "permalink": "https://www.instagram.com/reel/DfcKD1Tk-T8/",
-    "posted_at": "2026-11-07T12:14:25+00:00"
-  },
-  {
-    "id": "ig_kitten1",
-    "at": "2026-11-08T20:00:00+08:00",
-    "text": "問小弟這週的進度，他很認真地回答了。\n翻譯在最後。\n你上班也這樣回報過嗎？\n\n（影片：AI 生成）\n\n#貓貓工作室 #AI影片 #小貓 #上班族日常 #AI協作",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/kitten1.mp4",
-    "approved": true,
-    "posted": true,
-    "note": "11/1 她 OK",
-    "ig_id": "17885197332528336",
-    "permalink": "https://www.instagram.com/reel/DfeylciARBa/",
-    "posted_at": "2026-11-08T12:46:07+00:00"
-  },
-  {
-    "id": "ig_mayor_collapse",
-    "at": "2026-11-09T20:00:00+08:00",
-    "text": "如果當一個選舉團隊的總幹事，應該會忙到爆肝吧？？\n\n在《我推的市長》裡，總幹事到開票前都不能鬆懈，\n要小心不要爆肝，還要面對各種誘惑——\n你會正正當當，還是以自己的利益為優先呢？\n\n有超多種結局，都可以試試看喔。\n\n（純屬虛構｜影片：AI 生成｜遊戲連結在主頁）\n#我推的市長 #總幹事 #選舉 #AI影片 #AI協作",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_collapse.mp4",
-    "approved": true,
-    "posted": true,
-    "note": "11/2 她寫全文（IG 用總編刪減版），文字 OK；影片 0:11 有多一隻手、要加中英字幕，影片修好才改 approved:true｜11/2 影片修好（144ea63），她看截圖說 OK",
-    "ig_id": "18117611330118842",
-    "permalink": "https://www.instagram.com/reel/DfhTlZolg44/",
-    "posted_at": "2026-11-09T12:13:04+00:00"
-  },
-  {
-    "id": "ig_team1",
-    "at": "2026-11-11T20:00:00+08:00",
-    "text": "啊！忘了關鏡頭（總編！形象！）\n\n（影片：AI 生成）\n\n#貓貓工作室 #AI影片 #橘貓 #片場花絮 #AI協作",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/team1.mp4",
-    "approved": true,
-    "posted": true,
-    "note": "11/1 她改文案＝OK（AI 標示和 hashtag 照原則保留）｜11/2 為了星之泉 Reel 從 11/10 移到 11/11",
-    "ig_id": "17871394674694328",
-    "permalink": "https://www.instagram.com/reel/DfmgmxxDTzi/",
-    "posted_at": "2026-11-11T12:42:59+00:00"
-  },
-  {
-    "id": "ig_ep1",
-    "at": "2026-11-12T20:00:00+08:00",
-    "text": "我們的異世界故事要開始了 :D\n\n上班族摩卡工作超累，睡到半夜醒來——\n停電、手機沒網路，打開門，外面卻是一片森林……？？？\n\n《貓貓勇者小隊》11/11 開始連載\n第一話｜往右滑 →\n完整版在個人檔案的連結\n\n（原創構想＋AI 協作作畫）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/story/comic/01-1.jpg",
-      "https://mochachen1225-create.github.io/isekai/story/comic/01-2.jpg",
-      "https://mochachen1225-create.github.io/isekai/story/comic/01-3.jpg",
-      "https://mochachen1225-create.github.io/isekai/story/comic/01-5.jpg",
-      "https://mochachen1225-create.github.io/isekai/story/comic/01-6.jpg",
-      "https://mochachen1225-create.github.io/isekai/story/comic/01-7.jpg",
-      "https://mochachen1225-create.github.io/isekai/story/comic/01-8.jpg",
-      "https://mochachen1225-create.github.io/isekai/story/comic/01-10.jpg",
-      "https://mochachen1225-create.github.io/isekai/story/comic/01-11.jpg",
-      "https://mochachen1225-create.github.io/isekai/story/comic/01-12.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/2 她寫全文、指定 10 張圖；IG 用總編刪減版",
-    "error": "比例 1080×1500 超出 4:5～1.91:1：https://mochachen1225-create.github.io/isekai/story/comic/01-3.jpg；比例 1080×1440 超出 4:5～1.91:1：https://mochachen1225-create.github.io/isekai/story/comic/01-6.jpg；比例 1080×1636 超出 4:5～1.91:1：https://mochachen1225-create.github.io/isekai/story/comic/01-8.jpg；比例 1080×1588 超出 4:5～1.91:1：https://mochachen1225-create.github.io/isekai/story/comic/01-10.jpg"
-  },
-  {
-    "id": "ig_mayor_bosses",
-    "at": "2026-11-13T20:00:00+08:00",
-    "text": "你沒辦法選老闆，這就是工作！\n\n政治世家、學者、做過各種政治職務的、現任市長……\n六位老闆，系統隨機派一位給你。\n\n你要盡力把老闆送上市長寶座，\n還是趁機上下其手（世界也有可能是黑暗的……）？\n\n如果你是總幹事，會怎麼做呢？\n\n（純屬虛構｜插畫：AI 生成｜遊戲連結在主頁）\n#我推的市長 #選舉 #小遊戲 #總幹事 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/01.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/02.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/03.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/04.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/05.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/06.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/07.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/08.jpg"
-    ],
-    "approved": true,
-    "posted": true,
-    "note": "11/2 她寫全文（IG 用總編刪減版）",
-    "ig_id": "18153623917510399",
-    "permalink": "https://www.instagram.com/p/DfrqGV5l5cx/",
-    "posted_at": "2026-11-13T12:42:33+00:00"
-  },
-  {
-    "id": "ig_afterwork1",
-    "at": "2026-11-14T20:00:00+08:00",
-    "text": "下班了～\n\n總編去泡澡看書，眼鏡一直起霧\n架構師的耳麥終於拿來打電動\n小弟吃飽就睡在紙箱裡\n\n然後我看進度表看到睡著……\n醒來身上多了一條被子 :)\n\n（圖片和動畫：AI 協作）\n\n#貓貓勇者小隊 #貓貓工作室 #AI協作 #貓 #下班後",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/after_work1.mp4",
-    "approved": true,
-    "posted": true,
-    "ig_id": "18103060328546123",
-    "permalink": "https://www.instagram.com/reel/DfuPTnPDH1T/",
-    "posted_at": "2026-11-14T12:45:58+00:00"
-  },
-  {
-    "id": "ig_mayor_debate",
-    "at": "2026-11-15T20:00:00+08:00",
-    "text": "《我推的市長》改版囉！增加了電視辯論會。\n\n要講選民在乎的？還是攻擊對手？\n要爭取更多支持？還是穩住基本盤？\n你的候選人，最怕被問到什麼？\n\n（純屬虛構｜影片：AI 生成｜遊戲連結在主頁）\n#我推的市長 #電視辯論 #選舉 #小遊戲 #AI協作",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/my-mayor-debate-zh.mp4",
-    "approved": true,
-    "posted": true,
-    "note": "11/2 她寫全文（IG 用總編刪減版），文字 OK；影片 0:14 有奇怪的手，修好才改 approved:true｜11/2 影片修好（144ea63），她看截圖說 OK",
-    "ig_id": "17925643506220782",
-    "permalink": "https://www.instagram.com/reel/DfwwZErD9-2/",
-    "posted_at": "2026-11-15T12:14:03+00:00"
-  },
-  {
-    "id": "ig_newbed",
-    "at": "2026-11-16T20:00:00+08:00",
-    "text": "因為有養貓，所以總是想買各種東西給貓貓們。\n貓窩，是一定要買的！！\n買了各式各樣的貓窩，一開始都很受歡迎。\n但是隔天，新貓窩就失寵了！！！\n永遠最受歡迎的，都是網購的紙箱？？？？！！！！\n\n所以在我們貓貓小隊的辦公室，也準備了各種貓窩，\n看看哪個最受小隊員們歡迎？\n有養貓的應該已經知道答案了 XD\n\n（影片：AI 生成）\n#貓貓工作室 #AI影片 #貓 #紙箱 #AI協作",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/threads/newbed.mp4",
-    "approved": true,
-    "posted": true,
-    "note": "11/2 她寫的文（總編潤飾錯字）；IG 用全文（夠短）；Threads 11/12 已用同一支影片，不重發。影片 0:05 轉場修改中（11/12 前完成）",
-    "ig_id": "18147574105580193",
-    "permalink": "https://www.instagram.com/reel/DfzisUAiZfJ/",
-    "posted_at": "2026-11-16T14:12:13+00:00"
-  },
-  {
-    "id": "ig_reel_cafe",
-    "at": "2026-11-17T20:00:00+08:00",
-    "text": "如果我真的轉生到異世界，\n我希望可以開一間咖啡館。\n來來往往的旅客帶著各種有趣的故事，\n悠閒地、不是為了錢而上班？大概就是這種感覺 ☕\n\n不過……要先有本金吧？要住哪裡？\n結果又回到現實的考量了（笑）\n\n那你呢？到了異世界，會想做什麼工作？\n\n（影片：AI 協作）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/cafe_f.mp4",
-    "approved": true,
-    "posted": true,
-    "note": "11/2 她寫全文；IG 用總編刪減版｜11/4 拿掉測驗句",
-    "ig_id": "18021628145985907",
-    "permalink": "https://www.instagram.com/reel/Df17OcFk9Zo/",
-    "posted_at": "2026-11-17T12:24:09+00:00"
-  },
-  {
-    "id": "ig_ep2",
-    "at": "2026-11-19T20:00:00+08:00",
-    "text": "打開門，外面是陌生的奇幻世界。她心裡的 OS：\n\n根據我看過的一百部異世界作品\n這種時候只有三種可能\n一、我死了\n二、我被召喚了\n三、我發燒了\n……拜託是三……\n\n那如果是你呢？\n\n《貓貓勇者小隊》第二話｜往右滑 →\n完整版在個人檔案的連結\n\n（原創構想＋AI 協作作畫）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/1.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/2.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/3.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/4.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/5.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/6.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/7.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/8.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/9.jpg",
-      "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/10.jpg"
-    ],
-    "approved": true,
-    "posted": true,
-    "note": "11/2 她寫全文；IG 用總編刪減版",
-    "ig_id": "18084359516360201",
-    "permalink": "https://www.instagram.com/p/Df7KT6ejedO/",
-    "posted_at": "2026-11-19T13:12:29+00:00"
-  },
-  {
-    "id": "ig_vote",
-    "at": "2026-11-19T20:00:00+08:00",
-    "text": "我們辦公室今天也投票了\n題目是：午餐吃什麼\n\n小弟蓋章蓋到手都變藍色 XD\n架構師開票開到睡著\n結果全票通過：罐罐 ＝＝\n\n11/28 大家記得去投票喔\n投完去吃好料！\n\n（圖片和動畫：AI 協作）\n\n#貓貓勇者小隊 #貓貓工作室 #AI協作 #貓 #投票日",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/vote_day.mp4",
-    "approved": true,
-    "posted": true,
-    "note": "11/7 提前到 11/19，避開選舉貼文暫停",
-    "ig_id": "18117254567620885",
-    "permalink": "https://www.instagram.com/reel/Df7KXbLgrX8/",
-    "posted_at": "2026-11-19T13:12:29+00:00"
-  },
-  {
-    "id": "ig_yawn",
-    "at": "2026-11-24T20:00:00+08:00",
-    "text": "我太喜歡貓咪了，\n如果可以到異世界，我第一個想遇到的就是巨大的橘貓。\n（絕對不會是哥布林！或巨魔！！）\n\n戴著郵差帽、背著郵差包，\n打個呵欠都很有份量（好想吸貓啊）ꉂ🤣𐤔\n不熟的時候話不多，熟了又貼心可愛～\n\n（AI 協作作畫）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/yawn.jpg"
-    ],
-    "approved": true,
-    "posted": true,
-    "note": "11/2 她寫全文；IG 用總編刪減版",
-    "ig_id": "18134419522760908",
-    "permalink": "https://www.instagram.com/p/DgIQ_yqjXgQ/",
-    "posted_at": "2026-11-24T15:21:43+00:00"
-  },
-  {
-    "id": "ig_starspring",
-    "at": "2026-11-10T20:00:00+08:00",
-    "text": "我們在寫的異世界小說《貓貓勇者小隊》🐾\n上班族摩卡莫名其妙被召喚到異世界，滿腦子異世界知識，但是……\n\n有地下城，但不是要打怪搶寶箱。\n有魔王，但跟你想的有點不一樣。\n\n這次做了一個小遊戲：爬上星之泉\n爬上貓跳台，不要被橘貓抓去清貓砂，搶先拿到魔王的星星結晶吧！\n（遊戲連結在個人檔案）\n\n（AI 協作製作）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/starspring_reel.mp4",
-    "approved": true,
-    "posted": true,
-    "note": "11/2 她：11/10 改成星之泉 Reel；IG 用她全文的刪減版（她授權總編刪）",
-    "ig_id": "18122942156284173",
-    "permalink": "https://www.instagram.com/reel/Dfj5asmjUL5/",
-    "posted_at": "2026-11-10T12:22:55+00:00"
-  },
-  {
-    "id": "ig_zuiti1",
-    "at": "2026-11-22T20:00:00+08:00",
-    "text": "工作上得當個 E 人，但其實我是 I 人。\n心裡明明有一句，說出口的只剩「……」\n\n那就交給貓來說吧（笑）\n今日嘴替 #1：架構師\n\n你最想讓貓幫你說哪一句呢？\n\n（圖片：AI 協作）\n#貓貓勇者小隊 #今日嘴替 #貓 #上班族日常 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/zuiti/card1.jpg"
-    ],
-    "approved": true,
-    "posted": true,
-    "note": "11/2 今日嘴替 #1；IG 用總編刪減版（她的句子）",
-    "ig_id": "18353063332252774",
-    "permalink": "https://www.instagram.com/p/DgC2I4gm6wE/",
-    "posted_at": "2026-11-22T12:50:49+00:00"
-  },
-  {
-    "id": "ig_zuiti2",
-    "at": "2026-11-26T20:00:00+08:00",
-    "text": "下班後的我，電量只剩 1%。\n訊息都有看到，只是……明天再說（笑）\n\n今日嘴替 #2：總編\n\n你下班後的電量還剩多少？\n\n（圖片：AI 協作）\n#貓貓勇者小隊 #今日嘴替 #貓 #上班族日常 #AI協作 ",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/zuiti/card2.jpg"
-    ],
-    "approved": true,
-    "posted": true,
-    "note": "11/2 今日嘴替 #2；總編照她的口吻寫短文，她同意排法",
-    "ig_id": "18184580932439206",
-    "permalink": "https://www.instagram.com/p/DgN5bxVjrDq/",
-    "posted_at": "2026-11-26T19:51:16+00:00"
-  },
-  {
-    "id": "bear_pray",
-    "at": "2026-11-06T20:30:00+08:00",
-    "text": "昨晚美股那一根……\n工作室緊急召開祈福儀式。\n\n我先去找紙箱了。\n總編說，反正罐罐不會跌。\n\n你今天還好嗎？\n\n（影片：AI 生成）\n\n#貓貓勇者小隊 #貓 #上班族日常 #AI協作",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/threads/bear_market.mp4",
-    "approved": true,
-    "posted": true,
-    "note": "11/6 她改好 OK：美股大跌祈福儀式",
-    "ig_id": "18138907018654163",
-    "permalink": "https://www.instagram.com/reel/DfZvoXkE9t7/",
-    "posted_at": "2026-11-06T13:44:22+00:00"
-  },
-  {
-    "id": "pretend1",
-    "at": "2026-11-12T12:30:00+08:00",
-    "text": "伸手…… 被發現…… 舔手。\n「我什麼都沒做。」\n\n你家的貓也會這樣嗎？\n\n（影片：AI 生成） #貓貓勇者小隊 #橘貓 #貓咪日常 #裝沒事 #AI協作",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/pretend1.mp4",
-    "approved": true,
-    "posted": true,
-    "note": "11/6 她 OK（文字是她在貼文存稿 OK 過的）：裝沒事①，test:C",
-    "ig_id": "18164221015499436",
-    "permalink": "https://www.instagram.com/reel/DfoSoLgDRFp/",
-    "posted_at": "2026-11-12T05:19:30+00:00"
-  },
-  {
-    "id": "ig_taiyaki",
-    "at": "2026-11-15T20:00:00+08:00",
-    "text": "小弟去夜市打工了 🐟\n兔子點紅蘿蔔口味、狗點雞肉口味，一切都很正常……直到鮭魚來了。\n\n（記得看到最後，有彩蛋）\n\n你猜到老闆是誰了嗎？\n\n（影片：AI 生成）\n\n#鯛魚燒 #夜市 #貓 #AI動畫 #貓貓勇者小隊",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/taiyaki.mp4",
-    "approved": true,
-    "posted": true,
-    "note": "11/8 她 OK：真貓版鯛魚燒「裡面請」；Shorts 同日 20:30（sh09-yt）",
-    "ig_id": "17965879401251766",
-    "permalink": "https://www.instagram.com/reel/Dfwwkz_HPuV/",
-    "posted_at": "2026-11-15T12:14:03+00:00"
-  },
-  {
-    "id": "ig_passive",
-    "at": "2026-11-18T20:00:00+08:00",
-    "text": "工作好累喔……每天都不想上班喵。\n好想要一份自己會賺錢的被動收入。\n\n終於讓我找到賺大錢的機會了！🐟\n\n你的被動收入是什麼喵？\n\n（影片：AI 生成）\n\n#被動收入 #貓 #鮭魚 #AI動畫 #貓貓勇者小隊",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/passive.mp4",
-    "approved": true,
-    "posted": true,
-    "note": "11/8 她 OK：被動收入；Shorts 同日 20:30（sh10-yt）",
-    "ig_id": "17946336837376211",
-    "permalink": "https://www.instagram.com/reel/Df4k99gAdwT/",
-    "posted_at": "2026-11-18T13:08:18+00:00"
-  },
-  {
-    "id": "ig_stk_milktea",
-    "at": "2026-11-23T20:00:00+08:00",
-    "text": "截圖遊戲！貼圖轉不停，截到哪張就是你今天的心情。\n我截到的是「冷靜」……（深呼吸）\n\n你截到哪一張？留言告訴我。\n\n影片裡的貼圖是「布偶貓奶茶茶的日常」，LINE 貼圖搜尋得到。\n（貼圖：AI 協作）\n#截圖遊戲 #LINE貼圖 #布偶貓 #今日心情",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/stk_milktea.mp4",
-    "approved": true,
-    "posted": true,
-    "note": "11/18 她 OK 日期和文字。動物系列貼圖（作者頁 store.line.me/stickershop/author/2467488）",
-    "ig_id": "18136463143742550",
-    "permalink": "https://www.instagram.com/reel/DgGOeD5jHL5/",
-    "posted_at": "2026-11-23T20:20:32+00:00"
-  },
-  {
-    "id": "ig_stk_alpaca",
-    "at": "2026-11-25T20:00:00+08:00",
-    "text": "今日上班心情，截圖決定！\n羊駝替你說出不敢說的話。\n\n你截到哪一句？\n\n貼圖「羊駝嘴砲拒絕內耗」LINE 搜尋得到。\n（貼圖：AI 協作）\n#今日上班心情 #截圖遊戲 #LINE貼圖 #羊駝 #上班族",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/stk_alpaca.mp4",
-    "approved": true,
-    "posted": true,
-    "note": "11/18 她 OK 日期和文字。",
-    "ig_id": "18105536960168954",
-    "permalink": "https://www.instagram.com/reel/DgLMlFMB5eq/",
-    "posted_at": "2026-11-25T18:40:47+00:00"
-  },
-  {
-    "id": "ig_stk_chat_meeting",
-    "at": "2026-11-30T20:00:00+08:00",
-    "text": "「很快，10 分鐘就好」\n……然後就兩小時了。\n\n你們公司的會也是這樣嗎？\n\n影片裡的貼圖：「雞鴨的厭世開會日常」「羊駝嘴砲拒絕內耗」，LINE 貼圖搜尋得到。\n（貼圖：AI 協作）\n#開會 #上班族日常 #LINE貼圖 #群組對話",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/stk_chat_meeting.mp4",
-    "approved": false,
-    "posted": false,
-    "note": "11/18 她 OK 日期；文字等她看過再改 approved。"
-  },
-  {
-    "id": "ig_stk_chat_stock",
-    "at": "2026-12-02T20:00:00+08:00",
-    "text": "每個股票群組都有一個牛、一個熊，跟一隻默默定期定額的小烏鴉。\n\n你是牛熊，還是小烏鴉？\n\n影片裡的貼圖：「牛熊韭菜的股市日常」「愛存錢的小烏鴉」「小烏鴉財富自由了」，LINE 貼圖搜尋得到。\n（貼圖：AI 協作，純屬娛樂，不是投資建議）\n#股票 #存錢 #定期定額 #LINE貼圖 #群組對話",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/stk_chat_stock.mp4",
-    "approved": false,
-    "posted": false,
-    "note": "11/18 她 OK 日期；文字等她看過再改 approved。"
-  },
-  {
-    "id": "ig_stk_chat_weekend",
-    "at": "2026-12-04T20:00:00+08:00",
-    "text": "每個朋友群組，好像都有這四隻（笑）\n\n說走就走的鵝、要先講重點的飯糰、笑著提醒你不要遲到的兔子，\n還有說好要出門、結果還在「正在載入」的海蛞蝓。\n\n你是哪一隻？tag 你群組裡的那隻海蛞蝓。\n\n影片裡的動態貼圖：「暴走鵝」「冷面飯糰」「反差萌垂耳兔」「軟爛海蛞蝓」，LINE 貼圖搜尋得到。\n（貼圖：AI 協作）\n#LINE貼圖 #動態貼圖 #朋友 #群組對話 #週末",
-    "images": [],
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/stk_chat_weekend.mp4",
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她要做動態貼圖聊天室、一樣排上架；文字等她 OK 才改 approved。 11/18 她 OK 文字。"
-  },
-  {
-    "id": "ig_4koma_goose",
-    "at": "2026-11-27T20:00:00+08:00",
-    "text": "三分鐘熱度｜第一天搖滾巨星、第二天畫家、第三天甜點師，第四天：「我要學潛水！」\n\n你身邊有沒有這隻鵝？tag 他 😂\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #三分鐘熱度 #朋友 #鵝 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solo_goose_short_attention.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 四格漫畫（獨立新線）；她說排上架，文字等她 OK。 11/18 她 OK。"
-  },
-  {
-    "id": "ig_4koma_onigiri",
-    "at": "2026-11-29T20:00:00+08:00",
-    "text": "交給我｜「這個專案明天要。」「給我十分鐘。」……17:59，「我下班了。」\n\n冷冷的，但超可靠。你的團隊裡有這顆飯糰嗎？\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #上班族 #職場 #飯糰 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solo_onigiri_leave_it_to_me.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 四格漫畫（獨立新線）；她說排上架，文字等她 OK。 11/18 她 OK。"
-  },
-  {
-    "id": "ig_4koma_bunny",
-    "at": "2026-12-01T20:00:00+08:00",
-    "text": "只有我能欺負你｜「你好笨唷～」可以，但別人說就不行：「剛剛，說誰笨？」\n\ntag 那個嘴上嫌你、但最挺你的朋友 ❤\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #閨蜜 #兔子 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solo_bunny_only_i_can_tease.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 四格漫畫（獨立新線）；她說排上架，文字等她 OK。 11/18 她 OK。"
-  },
-  {
-    "id": "ig_4koma_seaslug",
-    "at": "2026-12-03T20:00:00+08:00",
-    "text": "找它就對了｜大家的忙它都幫，輪到它只是想開個罐子，全員出動 😂\n\n你身邊有沒有這種「好啊，沒問題！」的朋友？\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #互相幫忙 #海蛞蝓 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solo_seaslug_ask_me.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 四格漫畫（獨立新線）；她說排上架，文字等她 OK。 11/18 她 OK。"
-  },
-  {
-    "id": "ig_4koma_goose2",
-    "at": "2026-12-05T20:00:00+08:00",
-    "text": "最快到場的人｜半夜一句「我今天好難過」，30 秒後叮咚——「我沒想那麼多，就衝來了。」\n\n平常最衝的朋友，也是你難過時最快出現的那個。tag 他 ❤\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #暖心 #鵝 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/other_goose_first_to_arrive.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 四格（暖心篇）；文字等她 OK。 11/18 她 OK。"
-  },
-  {
-    "id": "ig_4koma_onigiri2",
-    "at": "2026-12-07T20:00:00+08:00",
-    "text": "都記得｜海蛞蝓感冒了，飯糰帶來的每樣都是它的最愛。「你怎麼知道我喜歡這些？」「……行程表上寫的。」其實他有一本筆記本，叫「重要的人」。\n\n嘴上冷冷的，但最用心。你身邊有這顆飯糰嗎？\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #暖心 #飯糰 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/other_onigiri_remembers.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 四格（暖心篇）；文字等她 OK。 11/18 她 OK。 11/18 依漫畫 session 劇情更正（生病的是海蛞蝓、兔子送禮盒）。"
-  },
-  {
-    "id": "ig_4koma_bunny2",
-    "at": "2026-12-09T20:00:00+08:00",
-    "text": "最冷靜的那個｜護照不見了！兔子切換冷靜模式：大使館電話、影本、補辦流程全都有。「回去再跟你算帳唷❤」\n\n出國必備的那種朋友，tag 他！\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #旅行 #出國 #朋友 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/other_bunny_calmest.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 四格（暖心篇）；文字等她 OK。 11/18 她 OK。"
-  },
-  {
-    "id": "ig_4koma_seaslug2",
-    "at": "2026-12-11T20:00:00+08:00",
-    "text": "吃飽再吵｜冷戰中的兔子和鵝，被海蛞蝓拉去吃燒肉。吃完：「欸我們剛剛在吵什麼？」\n\n每個群組都需要一個和事佬 😂 你們都怎麼和好？\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #燒肉 #海蛞蝓 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/other_seaslug_eat_first.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 四格（暖心篇）；文字等她 OK。 11/18 她 OK。"
-  },
-  {
-    "id": "ig_4koma_gift",
-    "at": "2026-12-20T20:00:00+08:00",
-    "text": "交換禮物｜精算到 500 元的飯糰、送謎之巨物的鵝、差別待遇理所當然的兔子，還有「一份哪夠！每人都有！」的海蛞蝓 🎁 最後鵝的巨物，是四個人的合照抱枕。\n\n你是哪一種送禮的人？\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #交換禮物 #聖誕節 #朋友 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/group_gift_exchange.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。聖誕檔期排 12/20。 11/18 依漫畫 session 劇情更正（生病的是海蛞蝓、兔子送禮盒）。"
-  },
-  {
-    "id": "ig_4koma_movie",
-    "at": "2026-12-13T20:00:00+08:00",
-    "text": "看感動的電影｜一直挑毛病的飯糰，燈一亮哭最慘：「……這是我第三次看。」\n\n你是哪一個？tag 一起看電影會哭的朋友 😂\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/group_movie.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_haunted",
-    "at": "2026-12-15T20:00:00+08:00",
-    "text": "鬼屋｜記好出口的飯糰、嚇跑鬼的鵝、擋在前面的海蛞蝓、「不准嚇我朋友唷❤」的兔子。\n工作人員：「第一組讓鬼請假的。」👻\n\n你去鬼屋是哪一種？\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/group_haunted_house.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_cat",
-    "at": "2026-12-17T20:00:00+08:00",
-    "text": "貓又來了｜飯糰拿掃把等著、鵝追貓、海蛞蝓先檢查貓有沒有受傷、兔子偷塞零食……然後貓又推了第二個杯子 🐱\n\n養貓的人一定懂！\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/group_cat_again.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_mem1",
-    "at": "2026-12-24T20:00:00+08:00",
-    "text": "那年的我們① 第一個朋友｜高一開學，大家都躲著鵝，只有海蛞蝓說「你很好笑耶，坐這！」\n\n你還記得你的第一個朋友嗎？\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #那年的我們 #朋友 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/memories_01_first_friend.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_mem2",
-    "at": "2026-12-26T20:00:00+08:00",
-    "text": "那年的我們② 分組報告｜本來覺得「完了」的分組，拿了 A+。很多年後：「你還留著？！」「……剛好在口袋。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #那年的我們 #朋友 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/memories_02_group_project.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_mem3",
-    "at": "2026-12-28T20:00:00+08:00",
-    "text": "那年的我們③ 自己人｜轉學生兔子被嘲笑，三個人站出來：「她是我們的人。」\n「從那天起，你們就是我的人了❤」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #那年的我們 #朋友 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/memories_03_our_people.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_mem4",
-    "at": "2026-12-31T20:00:00+08:00",
-    "text": "那年的我們④ 畢業旅行｜錯過遊覽車、困在雨中車站，最慘的一天也是笑最多的一天。很多年後：「走！這次不要再錯過車了！」\n\n我們的旅行，還沒結束。新年快樂 ✨\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #那年的我們 #朋友 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/memories_04_graduation_trip.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_dating",
-    "at": "2027-01-02T20:00:00+08:00",
-    "text": "孤島戀愛實境秀｜到處告白的鵝、被所有人選的飯糰、只對一個人甜的兔子、變成全島諮商師的海蛞蝓。\n最終結果：零配對，人緣第一 🏝️\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/group_dating_show.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_strategy",
-    "at": "2027-01-04T20:00:00+08:00",
-    "text": "高智商生存遊戲｜算機率的飯糰、亂按反而活下來的鵝、好惡分明的兔子……贏家竟然是一直分零食的海蛞蝓。\n最強策略：不計較 🏆\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/group_strategy_show.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_notworth",
-    "at": "2027-01-12T20:00:00+08:00",
-    "text": "遇到渣男渣女④｜海蛞蝓失戀了，嘴上說沒事。三個朋友一個整理證據、一個衝出門、一個「陪你去散步唷❤」，最後帶著燒肉和蛋糕：「他不配！走，吃燒肉。」\n\ntag 那個會陪你吃燒肉的朋友 ❤\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/group_not_worth_it.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。 11/18 移到 1/12 當「遇到渣男渣女」系列收尾。"
-  },
-  {
-    "id": "ig_4koma_jerk_goose",
-    "at": "2027-01-06T20:00:00+08:00",
-    "text": "遇到渣男渣女①｜來得快，去得快：哭喊「我的世界毀滅了」的鵝，隔天已經在做陶：「我要當陶藝家！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #渣男 #朋友 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/jerk_goose_easy_come.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_jerk_onigiri",
-    "at": "2027-01-08T20:00:00+08:00",
-    "text": "遇到渣男渣女②｜證據會說話：「第 3 列到第 27 列，請解釋。」回家後，試算表多了一頁「難過程度 100%」。\n\n越冷靜的人，其實越難過。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #渣男 #朋友 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/jerk_onigiri_evidence.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_jerk_bunny",
-    "at": "2027-01-10T20:00:00+08:00",
-    "text": "遇到渣男渣女③｜「你哪位？」3 秒封鎖刪光，朋友問還好嗎：「誰？我不認識他唷❤」（一邊寫記仇本）\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #渣男 #朋友 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/jerk_bunny_who_are_you.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_ny_young",
-    "at": "2026-12-30T20:00:00+08:00",
-    "text": "跨年・年輕版｜飯糰 18:00 就占好位置，鵝在人群裡迷路，兔子打扮第 3 小時，海蛞蝓請整片草地吃東西。最後被擠到大樓後面，煙火一個都沒看到。\n\n但四個人的自拍，是那年最好看的一張。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #跨年 #朋友 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/newyear_young.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。11/18 修正版已換圖、總編確認後放行。"
-  },
-  {
-    "id": "ig_4koma_ny_old",
-    "at": "2027-01-01T20:00:00+08:00",
-    "text": "跨年・老人版｜「今年一定要撐到倒數！」22:00 全部睡著，23:59 鬧鐘一響：「新年快樂！」00:01 又睡回去，貓幫大家把電視關了。\n\n新年快樂，祝大家今年也睡得飽 ✨\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #跨年 #新年快樂 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/newyear_old.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_sch_goose",
-    "at": "2027-01-14T20:00:00+08:00",
-    "text": "學霸・靈感型｜考前一週在溜滑板，考前一晚亂翻課本：「嗯……嗯……懂了！」結果 100 分。老師問怎麼解的：「我也不知道，就突然懂了！」\n\n旁邊三個認真讀書的已經暈了 😂\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #學霸 #考試 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/scholar_goose.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_sch_onigiri",
-    "at": "2027-01-16T20:00:00+08:00",
-    "text": "學霸・計畫型｜貼好讀書計畫表，計時 2 小時，嗶嗶：「時間到。」23:00 準時關燈。\n\n「睡飽才是最強的讀書法。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #學霸 #讀書計畫 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/scholar_onigiri.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_sch_bunny",
-    "at": "2027-01-18T20:00:00+08:00",
-    "text": "學霸・反差型｜「我都沒讀耶～」然後半夜偷偷讀。狐狸來借筆記：「不借唷❤」\n轉頭把畫好重點的筆記拿給三個朋友。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #學霸 #朋友 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/scholar_bunny.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_sch_seaslug",
-    "at": "2027-01-20T20:00:00+08:00",
-    "text": "學霸・照顧型｜筆記影印給全班，下課開讀書會：「這題這樣想就懂了！」自己考 100，全班也考得很好。\n\n「大家都過了就好！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #學霸 #讀書會 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/scholar_seaslug.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。11/18 修正版已換圖、總編確認後放行。"
-  },
-  {
-    "id": "ig_4koma_boss_goose",
-    "at": "2027-01-22T20:00:00+08:00",
-    "text": "主管・熱血型｜每天丟新點子：「我們來做這個！還有這個！跟這個！」其中一個亂槍打鳥的點子……大成功。\n\n「我說過吧！」組員：「……你說過哪一個？」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #主管 #上班 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/boss_goose.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_boss_onigiri",
-    "at": "2027-01-24T20:00:00+08:00",
-    "text": "主管・SOP型｜「會議 15 分鐘，開始。」計時歸零：「散會。」隔壁組還在加班，這組準時下班。\n\n組員：「最愛老大了！」飯糰：「……明天見。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #主管 #準時下班 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/boss_onigiri.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_boss_bunny",
-    "at": "2027-01-26T20:00:00+08:00",
-    "text": "主管・護短型｜平常：「做得很好唷～慢慢來。」別的部門來罵人：「有事，找我。」\n\n「我的人，只有我能唸唷❤」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #主管 #護短 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/boss_bunny.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_boss_seaslug",
-    "at": "2027-01-28T20:00:00+08:00",
-    "text": "主管・豪爽型｜「今天我請！」出包的時候：「功勞是他們的，鍋我來背。」\n回到家融化在沙發上，手機跳出：「謝謝老大！明天換我們請你！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #主管 #上班 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/boss_seaslug.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_par_goose",
-    "at": "2027-01-30T20:00:00+08:00",
-    "text": "當爸媽・放養型｜帶小鵝上山下水滾泥巴：「今天也玩得好開心！」\n十年後，小鵝拿著清單：「爸，護照帶了嗎？鑰匙呢？」\n\n「……啊。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #當爸媽 #親子 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/parent_goose.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_par_onigiri",
-    "at": "2027-02-01T20:00:00+08:00",
-    "text": "當爸媽・規劃型｜養育計畫表：餵食、午睡、讀書時間，一格一格打勾。然後小飯糰拿蠟筆把世界畫滿了。\n\n最後補上一行：「意外：✓ 也很可愛」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #當爸媽 #親子 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/parent_onigiri.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_par_bunny",
-    "at": "2027-02-03T20:00:00+08:00",
-    "text": "當爸媽・護短型｜「寶貝最可愛了❤」孩子在公園被欺負，兔媽媽背後冒黑氣——「媽，等一下。」\n小兔拖著小球棒回家：「我自己處理好了唷❤」\n\n有其母必有其子。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #當爸媽 #親子 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/parent_bunny.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。11/18 她確認小兔拿球棒 OK。"
-  },
-  {
-    "id": "ig_4koma_par_seaslug",
-    "at": "2027-02-05T20:00:00+08:00",
-    "text": "當爸媽・豪爽型｜「大家吃飽喔！不夠還有！」家裡變成全社區小孩的據點。送走最後一個，整隻融化在地上。\n\n自己的孩子幫它蓋毯子：「換我照顧你。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #當爸媽 #親子 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/parent_seaslug.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_shop_goose",
-    "at": "2027-02-07T20:00:00+08:00",
-    "text": "買東西・衝動型｜看到「限時 3 分鐘！」立刻下單。拆開：「是雪花冰機耶！」\n然後拿著製冰盒愣住：「……我家沒有冰箱。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #衝動購物 #網購 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/shop_goose.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。11/18 修正版已換圖、總編確認後放行。"
-  },
-  {
-    "id": "ig_4koma_shop_onigiri",
-    "at": "2027-02-09T20:00:00+08:00",
-    "text": "買東西・比價型｜開 12 個分頁，做比價表，研究了三週。「決定了。」按下購買——特價已結束。\n\n「……」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #比價 #網購 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/shop_onigiri.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_shop_bunny",
-    "at": "2027-02-11T20:00:00+08:00",
-    "text": "買東西・好惡分明型｜喜歡的店：「這家的我全包了❤」店員對它哼一聲的那家，記仇本打勾。\n朋友問要不要進去看看：「這家，不存在唷❤」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #逛街 #記仇本 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/shop_bunny.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_shop_seaslug",
-    "at": "2027-02-13T20:00:00+08:00",
-    "text": "買東西・豪爽型｜「今天要買自己的東西！」結果買了兔子的圍巾、飯糰的筆記本、鵝的小鴨玩偶。\n「那你自己買了什麼？」「一杯珍奶！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #逛街 #朋友 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/shop_seaslug.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_anc_goose",
-    "at": "2027-02-15T20:00:00+08:00",
-    "text": "穿越古代・鵝掌｜一睜眼在武林大會，對手：「接招！」鵝一陣亂拍，對手飛出去。眾人跪求：「失傳的『鵝掌』！請收我為徒！」\n\n「……我只是在拍蚊子。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #穿越 #武俠 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ancient_goose.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_anc_onigiri",
-    "at": "2027-02-17T20:00:00+08:00",
-    "text": "穿越古代・準時下朝｜考上狀元，發現朝廷每天開會到半夜。飯糰拿出議程：「每件事，一炷香。」滿朝文武準時下朝。\n\n皇帝：「愛卿……朕也想回家。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #穿越 #準時下班 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ancient_onigiri.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_anc_bunny",
-    "at": "2027-02-19T20:00:00+08:00",
-    "text": "穿越古代・只有我的人｜被孔雀妃子刁難：「姊姊說得是唷❤」\n對方欺負它的小宮女時：「我的人，動不得唷❤」\n\n隔天全後宮：「娘娘！我們也要當您的人！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #穿越 #後宮 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ancient_bunny.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_anc_seaslug",
-    "at": "2027-02-21T20:00:00+08:00",
-    "text": "穿越古代・大當家｜開了間客棧：「吃！不收錢！」快倒店的時候，吃過它飯的江湖人全都回來幫忙。\n\n從此叫「大當家客棧」。「敬大當家！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #穿越 #客棧 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ancient_seaslug.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_anc_reunion",
-    "at": "2027-02-23T20:00:00+08:00",
-    "text": "穿越古代・江湖再會｜鵝衝進客棧：「老闆！來碗麵！」狀元、娘娘也剛好走進來，老闆端上四碗麵。\n\n「……我們是不是在哪裡見過？」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #穿越 #朋友 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ancient_reunion.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_fan_goose",
-    "at": "2027-02-25T20:00:00+08:00",
-    "text": "追星・現場派｜沒搶到票：「……」那就在場外唱！「我也要唱——！」\n隔天上新聞：「場外最大聲的粉絲」。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #追星 #演唱會 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/fan_goose.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_fan_onigiri",
-    "at": "2027-02-27T20:00:00+08:00",
-    "text": "追星・數據派｜每天打榜、當後援會會長、整理數據報表。見面會輪到它，偶像：「謝謝你一直支持我！」\n\n「……」（當機）\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #追星 #後援會 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/fan_onigiri.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_fan_seaslug",
-    "at": "2027-03-01T20:00:00+08:00",
-    "text": "追星・豪爽派｜「大家拿！應援物我包了！」發完自己站到最後一排。\n偶像在台上：「謝謝最後面那位！」\n\n「欸嘿嘿～」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #追星 #應援 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/fan_seaslug.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_fan_bunny",
-    "at": "2027-03-03T20:00:00+08:00",
-    "text": "追星・護主派｜有人在網路上黑它的偶像。兔子笑著回了三十則留言講道理，對方舉白旗。\n\n「好了，繼續愛本命❤」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #追星 #護主 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/fan_bunny.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。11/18 修正版（本命）已換圖、總編確認後放行。"
-  },
-  {
-    "id": "ig_4koma_solo_goose",
-    "at": "2027-03-05T20:00:00+08:00",
-    "text": "獨旅・鵝｜「住宿？到了再說！」結果下大雨，被綿羊奶奶收留，吃了一整桌晚餐。離開那天：「我交到一整個村的朋友！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #一個人旅行 #旅行 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solotrip_goose.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
-  },
-  {
-    "id": "ig_4koma_solo_onigiri",
-    "at": "2027-03-07T20:00:00+08:00",
-    "text": "獨旅・飯糰｜「14:07 上車，14:52 到站。」結果誤點 90 分。崩潰完坐在月台，看到這輩子最美的夕陽。\n\n行程表補上一行：「計畫外：✓」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #一個人旅行 #旅行 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solotrip_onigiri.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_solo_bunny",
-    "at": "2027-03-09T20:00:00+08:00",
-    "text": "獨旅・兔子｜一個人逛小鎮、吃聖代，拍了 300 張。晚上躺在床上一張一張傳給朋友：\n\n「下次一起來唷❤」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #一個人旅行 #旅行 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solotrip_bunny.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_solo_seaslug",
-    "at": "2027-03-11T20:00:00+08:00",
-    "text": "獨旅・海蛞蝓｜住青旅，一進房就：「宵夜我請！大家一起吃！」\n回國打開行李箱：零食、明信片、玩偶。\n\n「多了 12 個國家的朋友」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #一個人旅行 #青旅 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solotrip_seaslug.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_kid_goose",
-    "at": "2027-03-13T20:00:00+08:00",
-    "text": "小時候・鵝｜打翻盆栽，媽媽生氣了。小鵝：「媽～我愛你～」媽媽心軟抱了一下——\n\n「我出去玩囉！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #小時候 #親子 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/kid_goose.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_kid_onigiri",
-    "at": "2027-03-15T20:00:00+08:00",
-    "text": "小時候・飯糰｜幫全家排家事表：「今天倒垃圾，是爸爸。」母親節送媽媽一張圖表：\n\n「媽媽辛苦指數：100%」\n媽媽哭了。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #小時候 #母親節 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/kid_onigiri.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
-  },
-  {
-    "id": "ig_4koma_kid_bunny",
-    "at": "2027-03-17T20:00:00+08:00",
-    "text": "小時候・兔子｜烏鴉說：「你媽煮飯好難吃喔～」小兔擋到前面：「不准說我媽媽唷❤」\n\n兔媽媽：「從小就這麼護短……」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #小時候 #護短 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/kid_bunny.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_kid_seaslug",
-    "at": "2027-03-19T20:00:00+08:00",
-    "text": "小時候・海蛞蝓｜把小豬撲滿全部倒出來，買了禮物：「送給爸爸媽媽！」\n「那你自己呢？」\n\n「我有你們就好！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #小時候 #家人 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/kid_seaslug.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_st_goose",
-    "at": "2027-03-21T20:00:00+08:00",
-    "text": "直播主・鵝｜「攻略？不用看！衝了！」一路 GAME OVER，聊天室笑翻。然後亂按一通——世界紀錄。\n\n「……我做了什麼？」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #直播主 #遊戲 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/streamer_goose.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_st_onigiri",
-    "at": "2027-03-23T20:00:00+08:00",
-    "text": "直播主・飯糰｜聊天室：「這是機器人吧」。失敗：「重來。」8 小時、一整疊咖啡杯之後，勝利。\n\n「……好，下播。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #直播主 #遊戲 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/streamer_onigiri.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
-  },
-  {
-    "id": "ig_4koma_st_bunny",
-    "at": "2027-03-25T20:00:00+08:00",
-    "text": "直播主・兔子｜「大家晚安唷❤」有人在聊天室欺負小倉鼠觀眾——\n「這裡不歡迎你唷❤」封鎖。\n\n「我的觀眾，我來保護。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #直播主 #護短 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/streamer_bunny.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_st_seaslug",
-    "at": "2027-03-27T20:00:00+08:00",
-    "text": "直播主・海蛞蝓｜技術普普：「哈哈又掉下去了！」但斗內的錢全部拿來抽獎回饋大家。\n\n結果訂閱第一：「欸？怎麼會？」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #直播主 #抽獎 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/streamer_seaslug.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_mar_goose",
-    "at": "2027-03-29T20:00:00+08:00",
-    "text": "馬拉松・鵝｜哨聲一響：「衝啊——！」然後被炸雞排、烤香腸、剉冰一路吸走。一路吃一路跑，最後一個抵達終點：\n\n「這是美食馬拉松吧？」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #馬拉松 #路跑 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/marathon_goose.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_mar_onigiri",
-    "at": "2027-03-31T20:00:00+08:00",
-    "text": "馬拉松・飯糰｜「配速 6 分，一秒不差。」看到計時器 3:59:58，第一次露出驚恐的臉拚命衝——3:59:59。\n\n破 4 小時。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #馬拉松 #破四 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/marathon_onigiri.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_mar_bunny",
-    "at": "2027-04-02T20:00:00+08:00",
-    "text": "馬拉松・兔子｜「我隨便跑跑唷～」路上看到抽筋的倉鼠：「我跑不動了……」\n「那我們一起慢慢走唷。」\n\n兩個手牽手，5:30:00 一起完賽。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #馬拉松 #朋友 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/marathon_bunny.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_mar_seaslug",
-    "at": "2027-04-04T20:00:00+08:00",
-    "text": "馬拉松・海蛞蝓｜跑到 25K 看到補給站忙不過來，就留下來幫忙：「來！水！香蕉！加油！」\n沒完賽（DNF），但拿到「最佳應援」獎牌。\n\n「這也是一種完賽啦！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #馬拉松 #補給站 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/marathon_seaslug.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_ai_goose",
-    "at": "2027-04-06T20:00:00+08:00",
-    "text": "用 AI・鵝｜一天問 AI 200 題：「今天吃什麼？我要學什麼？要不要辭職開咖啡店？」AI 給了完整計畫，鵝沒看完就跑出去了。\n\n隔天：「我今天要吃什麼？」每天都一樣。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #AI #日常 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ai_goose.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
-  },
-  {
-    "id": "ig_4koma_ai_onigiri",
-    "at": "2027-04-08T20:00:00+08:00",
-    "text": "用 AI・飯糰｜「第 3 點有誤。」AI：「您說得對！非常抱歉～」重來 12 次，每次都一樣。\n\n「……你只會說這句嗎？」\nAI：「您說得對！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #AI #上班族 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ai_onigiri.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_ai_bunny",
-    "at": "2027-04-10T20:00:00+08:00",
-    "text": "用 AI・兔子｜請 AI 幫忙禮貌地回覆奧客，AI 寫了一大段客氣話。兔子自己改成：「好的，已封鎖。」比 AI 冷十倍。\n\n但給朋友的生日卡，暖到大家都哭了。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #AI #好惡分明 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ai_bunny.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
-  },
-  {
-    "id": "ig_4koma_ai_seaslug",
-    "at": "2027-04-12T20:00:00+08:00",
-    "text": "用 AI・海蛞蝓｜「AI？我懶得研究啦～」結果幫每個朋友問：搬家清單、數據分析、玩偶修補法。大家：「謝謝 AI！」\n\n真正的功臣，正融化在沙發上。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #AI #朋友 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ai_seaslug.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
-  },
-  {
-    "id": "ig_4koma_idol_goose",
-    "at": "2027-04-14T20:00:00+08:00",
-    "text": "當偶像・鵝｜「大家——我來了！」唱到一半直接跳進觀眾席，跟每個人擊掌自拍，回不去舞台了。\n「下次還要這樣！」經紀人：「不准！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #偶像 #演唱會 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/idol_goose.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_idol_onigiri",
-    "at": "2027-04-16T20:00:00+08:00",
-    "text": "當偶像・飯糰｜簽名會每人 30 秒，粉絲：「好冷淡喔……」但它記得每一個人：\n\n「上次你說要考試，考過了嗎？」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #偶像 #簽名會 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/idol_onigiri.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_idol_bunny",
-    "at": "2027-04-18T20:00:00+08:00",
-    "text": "當偶像・兔子｜有人在留言區欺負它的粉絲。兔子：「我的粉絲，誰都不能欺負唷❤」\n\n隔天，粉絲集體改名：「兔子的人」。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #偶像 #護短 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/idol_bunny.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_idol_seaslug",
-    "at": "2027-04-20T20:00:00+08:00",
-    "text": "當偶像・海蛞蝓｜門票賣不完，就說：「來的人，我都請吃飯！」請到場的人吃燒肉。\n下一場秒殺。「我只是想跟大家吃燒肉。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #偶像 #燒肉 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/idol_seaslug.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_pop_goose",
-    "at": "2027-04-22T20:00:00+08:00",
-    "text": "校園人氣王・鵝｜「早安——！」每天熱情帶動全班，運動會衝第一，看到落單的同學就拉過來玩。\n被選為「最想再同班的人」第一名：「欸？我只是很吵耶！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #校園 #人氣王 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/popular_goose.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
-  },
-  {
-    "id": "ig_4koma_pop_onigiri",
-    "at": "2027-04-24T20:00:00+08:00",
-    "text": "校園人氣王・飯糰｜同學說：「它好難親近喔……」但它默默幫忘記帶講義的同學、期末考前發筆記給全班。\n情人節收到一桌卡片：「……我只是剛好多印。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #校園 #人氣王 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/popular_onigiri.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
-  },
-  {
-    "id": "ig_4koma_pop_bunny",
-    "at": "2027-04-26T20:00:00+08:00",
-    "text": "校園人氣王・兔子｜學長欺負學弟，兔子擋在前面：「學長，這是我的人唷❤」\n隔天全校：「我也想當兔子的人！」\n\n兔子：「謝謝你，但我們當朋友唷❤」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #校園 #護短 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/popular_bunny.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
-  },
-  {
-    "id": "ig_4koma_pop_seaslug",
-    "at": "2027-04-28T20:00:00+08:00",
-    "text": "校園人氣王・海蛞蝓｜午餐：「一起吃！」便當分大家，飲料請大家。沒參選，卻被選為全校人氣第一。\n\n「我只是喜歡大家一起吃飯啦！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #校園 #人氣王 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/popular_seaslug.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
-  },
-  {
-    "id": "ig_4koma_hero_goose",
-    "at": "2027-04-30T20:00:00+08:00",
-    "text": "見義勇為・鵝｜烏鴉搶了綿羊奶奶的包包，鵝：「站住——！」一路狂追，連拖鞋都飛了。烏鴉嚇得丟包就跑。\n\n奶奶：「謝謝你！咦，你的鞋子呢？」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #見義勇為 #暖心 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/hero_goose.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。"
-  },
-  {
-    "id": "ig_4koma_hero_onigiri",
-    "at": "2027-05-02T20:00:00+08:00",
-    "text": "見義勇為・飯糰｜公車上狐狸偷東西，飯糰默默錄影存證，下車交給司機。警犬看完：「這份報告比我們寫的還完整！」\n\n「……順手而已。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #見義勇為 #冷面 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/hero_onigiri.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_hero_bunny",
-    "at": "2027-05-04T20:00:00+08:00",
-    "text": "見義勇為・兔子｜三隻烏鴉圍著欺負小倉鼠。兔子：「欺負小朋友，不好唷❤」烏鴉全跑光。\n小倉鼠抱著不放：「……好啦，你也是我的人了。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #見義勇為 #護短 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/hero_bunny.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_4koma_hero_seaslug",
-    "at": "2027-05-06T20:00:00+08:00",
-    "text": "見義勇為・海蛞蝓｜烏龜爺爺的地瓜推車翻了，路人都走過去。海蛞蝓：「大家一起來幫忙啦！」整條街都動起來。\n\n最後一起坐在路邊吃烤地瓜：「這樣不是很好嗎！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #見義勇為 #暖心 #AI協作",
-    "images": [
-      "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/hero_seaslug.jpg"
-    ],
-    "approved": true,
-    "posted": false,
-    "note": "11/18 她授權四格由總編往後排。"
-  },
-  {
-    "id": "ig_ai_resort",
-    "at": "2026-11-28T20:00:00+08:00",
-    "text": "AI 同事的渡假小屋 🌴\n\n在電腦上做了一間虛擬辦公室，讓幾個 AI 同事住進去。\n要我按「同意」的時候，她會跑出來跳給我看。\n沒事就溜去吧台喝一杯，有的乾脆在泳池漂著。\n下班了，大家一起追劇耍廢。\n\n你的 AI 同事也在渡假嗎？\n\n（畫面：AI 協作製作）\n\n#AI #AI同事 #像素風 #居家辦公 #AI協作",
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/ai_resort.mp4",
-    "approved": true,
-    "posted": false,
-    "note": "11/21 她說排上去；影片字幕已把「工作電腦」改成「電腦」。"
-  },
-  {
-    "id": "ig_wfh_day",
-    "at": "2026-12-06T20:00:00+08:00",
-    "text": "居家辦公的一天 ☕\n\n07:30 起床，通勤時間 0 分鐘。\n09:00 開工，同事已經在位置上了。\n14:00 同事睡著了。\n16:00 幫同事加飯（他們不用開會）。\n19:00 下班，通勤時間還是 0 分鐘。\n\n你在家上班的同事是誰？\n\n（畫面：AI 協作製作）\n\n#居家辦公 #在家上班 #貓 #貓同事 #AI協作",
-    "video": "https://mochachen1225-create.github.io/isekai/promo/ig/wfh_day.mp4",
-    "approved": true,
-    "posted": false,
-    "note": "11/21 她說可以。"
-  },
-  {
-    "id": "ig_xiaoren_fake_trailer",
-    "at": "2026-11-23T21:00:00+08:00",
-    "text": "《小人》即將上映。\n\n升職的那天開始，怪事一件接著一件，每一次都只差一點。\n阿嬤說：「不是你運氣不好……是有人，把他的壞運給了你。」\n\n打小人，你打對了嗎？\n\n⚠️ 這是一支假電影預告：全由 AI 製作，人物與事件皆為虛構，沒有這部電影。\n真的有的，是〈小人退散〉這個手機小遊戲（主頁連結）。\n\n#恐怖片 #電影預告 #打小人 #小人退散 #AI短片 #AI協作",
-    "video": "https://mochachen1225-create.github.io/isekai/promo/threads/xiaoren_trailer.mp4",
-    "approved": true,
-    "posted": true,
-    "note": "11/21 她 OK；假預告直式短版。",
-    "ig_id": "18155078512551818",
-    "permalink": "https://www.instagram.com/reel/DgGOjU-k-Dv/",
-    "posted_at": "2026-11-23T20:20:32+00:00"
-  },
-  {
-    "id": "ig_buxin_mirror",
-    "at": "2026-11-30T21:00:00+08:00",
-    "text": "半夜十二點，對著鏡子削蘋果。\n鏡子裡什麼都沒有。\n「See? Nothing.」他轉身走了。\n\n……然後，鏡子裡有東西。\n\n《不信》｜有些事，不能不信\n\n⚠️ 這是一支假電影預告：全由 AI 製作，人物與事件皆為虛構。完整版在 YouTube（主頁連結）。\n\n#恐怖片 #電影預告 #都市傳說 #削蘋果 #AI短片 #AI協作",
-    "video": "https://mochachen1225-create.github.io/isekai/promo/threads/buxin_mirror.mp4",
-    "approved": true,
-    "posted": false,
-    "note": "11/22 她說排；《不信》直式短版。"
-  }
+ {
+  "id": "ig_halloween",
+  "at": "2026-10-31T08:30:00+08:00",
+  "text": "萬聖節快樂🎃\n\n先自我介紹一下\n我們是「貓貓小隊」\n一個上班族（我）加上幾隻 AI 小貓員工\n一起做故事、漫畫、小遊戲的小團隊\n\n今天大家都變裝了\n總編是小巫師（工作證還是掛著）\n架構師是吸血鬼（耳麥沒拔下來）\n小弟是小幽靈 帽子還露在外面 XD\n我戴了貓耳朵 終於跟大家同一國了\n\n不給糖就搗蛋？\n他們說：不給罐罐就搗蛋。\n\n（圖片：AI 協作）\n\n#萬聖節 #HappyHalloween #貓貓勇者小隊 #貓貓工作室 #AI協作 #貓",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/threads/halloween_a.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "error": "POST 17841416960586035/media：400 {\"error\":{\"message\":\"Cannot call API for app 2566471420522009 on behalf of user 122094287127541130\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"A5ezPe7nrhiqkMGcUka5CQb\"}}",
+  "note": "10/31 她說：自動發失敗的這則不補發"
+ },
+ {
+  "id": "ig_game",
+  "at": "2026-10-31T20:00:00+08:00",
+  "text": "爬上貓跳台，躲過橘貓，拿到魔王的星星結晶。\n這是我們《貓貓勇者小隊》的小遊戲「爬上星之泉」。\n你會先被橘貓抓到嗎？\n\n（遊戲和圖片：AI 協作）\n\n#貓貓勇者小隊 #異世界 #小遊戲 #橘貓 #AI協作",
+  "images": [],
+  "approved": true,
+  "posted": true,
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/starspring_reel.mp4",
+  "note": "10/31 她說設定做好了，提前到今晚當第一次 IG 自動發的測試（原本 11/10）",
+  "ig_id": "18129854593867137",
+  "permalink": "https://www.instagram.com/reel/DfKUOE5iA4C/",
+  "posted_at": "2026-10-31T13:56:52+00:00"
+ },
+ {
+  "id": "ig_mayor1",
+  "at": "2026-11-01T20:00:00+08:00",
+  "text": "這只是一個虛構的遊戲：\n你是總幹事，要努力把自己的候選人推上市長寶座。\n一局 10 分鐘，58 種結局，手機就能玩。\n11/28 記得去投票喔🗳️\n\n（純屬虛構｜插畫：AI 生成｜遊戲連結在主頁）\n\n#我推的市長 #選舉 #小遊戲 #台灣 #AI協作",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_hype.mp4",
+  "approved": true,
+  "posted": true,
+  "note": "11/1 她 OK",
+  "ig_id": "18141088957624983",
+  "permalink": "https://www.instagram.com/reel/DfMsSd-jj1Z/",
+  "posted_at": "2026-11-01T12:05:41+00:00"
+ },
+ {
+  "id": "ig_ng1",
+  "at": "2026-11-03T20:00:00+08:00",
+  "text": "用 Google Flow 生成影片，結果……\nAI 拍片的 NG 集，第 3 個最好笑。\n你覺得哪個最好笑？\n\n（影片：AI 生成）\n\n#貓貓工作室 #AI影片 #NG #橘貓 #AI協作",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/ng1.mp4",
+  "approved": true,
+  "posted": true,
+  "note": "10/31 她說 IG 可安排（真人版 NG 集 v3）",
+  "ig_id": "17865395685693179",
+  "permalink": "https://www.instagram.com/reel/DfR4WjRCOhn/",
+  "posted_at": "2026-11-03T12:27:17+00:00"
+ },
+ {
+  "id": "ig_quiz",
+  "at": "2026-11-05T20:00:00+08:00",
+  "text": "我們工作室的總編，今天也很認真在工作。\n……大概認真了五秒（笑）\n\n你也是這種上班族嗎？\n\n（影片：AI 生成）\n\n#貓貓勇者小隊 #橘貓 #上班族日常 #AI協作",
+  "images": [],
+  "approved": true,
+  "posted": true,
+  "note": "11/4 她 OK：測驗暫停，改發總編打字睡著（Flow，作者手動生成）",
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/office_nap.mp4",
+  "ig_id": "18239096605318440",
+  "permalink": "https://www.instagram.com/reel/DfXDr1RHNyl/",
+  "posted_at": "2026-11-05T12:42:34+00:00"
+ },
+ {
+  "id": "ig_office1",
+  "at": "2026-11-07T20:00:00+08:00",
+  "text": "貓貓小隊辦公室的一天 🐾\n總編在寫稿，架構師盯著一排綠勾勾，小弟出門送件，老闆只負責說 OK XD\n\n我負責想點子，貓貓小隊幫我做出來。\n這支短片是總編說：「用卡通介紹我們辦公室吧」，就有了。\n\n（圖片和動畫：AI 協作）\n#貓貓勇者小隊 #貓貓工作室 #AI協作 #貓 #上班族日常",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/office_day1.mp4",
+  "approved": true,
+  "posted": true,
+  "note": "11/2 她寫全文、打勾 OK；IG 用總編刪減版",
+  "ig_id": "17967606957246739",
+  "permalink": "https://www.instagram.com/reel/DfcKD1Tk-T8/",
+  "posted_at": "2026-11-07T12:14:25+00:00"
+ },
+ {
+  "id": "ig_kitten1",
+  "at": "2026-11-08T20:00:00+08:00",
+  "text": "問小弟這週的進度，他很認真地回答了。\n翻譯在最後。\n你上班也這樣回報過嗎？\n\n（影片：AI 生成）\n\n#貓貓工作室 #AI影片 #小貓 #上班族日常 #AI協作",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/kitten1.mp4",
+  "approved": true,
+  "posted": true,
+  "note": "11/1 她 OK",
+  "ig_id": "17885197332528336",
+  "permalink": "https://www.instagram.com/reel/DfeylciARBa/",
+  "posted_at": "2026-11-08T12:46:07+00:00"
+ },
+ {
+  "id": "ig_mayor_collapse",
+  "at": "2026-11-09T20:00:00+08:00",
+  "text": "如果當一個選舉團隊的總幹事，應該會忙到爆肝吧？？\n\n在《我推的市長》裡，總幹事到開票前都不能鬆懈，\n要小心不要爆肝，還要面對各種誘惑——\n你會正正當當，還是以自己的利益為優先呢？\n\n有超多種結局，都可以試試看喔。\n\n（純屬虛構｜影片：AI 生成｜遊戲連結在主頁）\n#我推的市長 #總幹事 #選舉 #AI影片 #AI協作",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_collapse.mp4",
+  "approved": true,
+  "posted": true,
+  "note": "11/2 她寫全文（IG 用總編刪減版），文字 OK；影片 0:11 有多一隻手、要加中英字幕，影片修好才改 approved:true｜11/2 影片修好（144ea63），她看截圖說 OK",
+  "ig_id": "18117611330118842",
+  "permalink": "https://www.instagram.com/reel/DfhTlZolg44/",
+  "posted_at": "2026-11-09T12:13:04+00:00"
+ },
+ {
+  "id": "ig_team1",
+  "at": "2026-11-11T20:00:00+08:00",
+  "text": "啊！忘了關鏡頭（總編！形象！）\n\n（影片：AI 生成）\n\n#貓貓工作室 #AI影片 #橘貓 #片場花絮 #AI協作",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/team1.mp4",
+  "approved": true,
+  "posted": true,
+  "note": "11/1 她改文案＝OK（AI 標示和 hashtag 照原則保留）｜11/2 為了星之泉 Reel 從 11/10 移到 11/11",
+  "ig_id": "17871394674694328",
+  "permalink": "https://www.instagram.com/reel/DfmgmxxDTzi/",
+  "posted_at": "2026-11-11T12:42:59+00:00"
+ },
+ {
+  "id": "ig_ep1",
+  "at": "2026-11-12T20:00:00+08:00",
+  "text": "我們的異世界故事要開始了 :D\n\n上班族摩卡工作超累，睡到半夜醒來——\n停電、手機沒網路，打開門，外面卻是一片森林……？？？\n\n《貓貓勇者小隊》11/11 開始連載\n第一話｜往右滑 →\n完整版在個人檔案的連結\n\n（原創構想＋AI 協作作畫）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/story/comic/01-1.jpg",
+   "https://mochachen1225-create.github.io/isekai/story/comic/01-2.jpg",
+   "https://mochachen1225-create.github.io/isekai/story/comic/01-3.jpg",
+   "https://mochachen1225-create.github.io/isekai/story/comic/01-5.jpg",
+   "https://mochachen1225-create.github.io/isekai/story/comic/01-6.jpg",
+   "https://mochachen1225-create.github.io/isekai/story/comic/01-7.jpg",
+   "https://mochachen1225-create.github.io/isekai/story/comic/01-8.jpg",
+   "https://mochachen1225-create.github.io/isekai/story/comic/01-10.jpg",
+   "https://mochachen1225-create.github.io/isekai/story/comic/01-11.jpg",
+   "https://mochachen1225-create.github.io/isekai/story/comic/01-12.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/2 她寫全文、指定 10 張圖；IG 用總編刪減版",
+  "error": "比例 1080×1500 超出 4:5～1.91:1：https://mochachen1225-create.github.io/isekai/story/comic/01-3.jpg；比例 1080×1440 超出 4:5～1.91:1：https://mochachen1225-create.github.io/isekai/story/comic/01-6.jpg；比例 1080×1636 超出 4:5～1.91:1：https://mochachen1225-create.github.io/isekai/story/comic/01-8.jpg；比例 1080×1588 超出 4:5～1.91:1：https://mochachen1225-create.github.io/isekai/story/comic/01-10.jpg",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_mayor_bosses",
+  "at": "2026-11-13T20:00:00+08:00",
+  "text": "你沒辦法選老闆，這就是工作！\n\n政治世家、學者、做過各種政治職務的、現任市長……\n六位老闆，系統隨機派一位給你。\n\n你要盡力把老闆送上市長寶座，\n還是趁機上下其手（世界也有可能是黑暗的……）？\n\n如果你是總幹事，會怎麼做呢？\n\n（純屬虛構｜插畫：AI 生成｜遊戲連結在主頁）\n#我推的市長 #選舉 #小遊戲 #總幹事 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/01.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/02.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/03.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/04.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/05.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/06.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/07.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/mayor_bosses/08.jpg"
+  ],
+  "approved": true,
+  "posted": true,
+  "note": "11/2 她寫全文（IG 用總編刪減版）",
+  "ig_id": "18153623917510399",
+  "permalink": "https://www.instagram.com/p/DfrqGV5l5cx/",
+  "posted_at": "2026-11-13T12:42:33+00:00"
+ },
+ {
+  "id": "ig_afterwork1",
+  "at": "2026-11-14T20:00:00+08:00",
+  "text": "下班了～\n\n總編去泡澡看書，眼鏡一直起霧\n架構師的耳麥終於拿來打電動\n小弟吃飽就睡在紙箱裡\n\n然後我看進度表看到睡著……\n醒來身上多了一條被子 :)\n\n（圖片和動畫：AI 協作）\n\n#貓貓勇者小隊 #貓貓工作室 #AI協作 #貓 #下班後",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/after_work1.mp4",
+  "approved": true,
+  "posted": true,
+  "ig_id": "18103060328546123",
+  "permalink": "https://www.instagram.com/reel/DfuPTnPDH1T/",
+  "posted_at": "2026-11-14T12:45:58+00:00"
+ },
+ {
+  "id": "ig_mayor_debate",
+  "at": "2026-11-15T20:00:00+08:00",
+  "text": "《我推的市長》改版囉！增加了電視辯論會。\n\n要講選民在乎的？還是攻擊對手？\n要爭取更多支持？還是穩住基本盤？\n你的候選人，最怕被問到什麼？\n\n（純屬虛構｜影片：AI 生成｜遊戲連結在主頁）\n#我推的市長 #電視辯論 #選舉 #小遊戲 #AI協作",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/my-mayor-debate-zh.mp4",
+  "approved": true,
+  "posted": true,
+  "note": "11/2 她寫全文（IG 用總編刪減版），文字 OK；影片 0:14 有奇怪的手，修好才改 approved:true｜11/2 影片修好（144ea63），她看截圖說 OK",
+  "ig_id": "17925643506220782",
+  "permalink": "https://www.instagram.com/reel/DfwwZErD9-2/",
+  "posted_at": "2026-11-15T12:14:03+00:00"
+ },
+ {
+  "id": "ig_newbed",
+  "at": "2026-11-16T20:00:00+08:00",
+  "text": "因為有養貓，所以總是想買各種東西給貓貓們。\n貓窩，是一定要買的！！\n買了各式各樣的貓窩，一開始都很受歡迎。\n但是隔天，新貓窩就失寵了！！！\n永遠最受歡迎的，都是網購的紙箱？？？？！！！！\n\n所以在我們貓貓小隊的辦公室，也準備了各種貓窩，\n看看哪個最受小隊員們歡迎？\n有養貓的應該已經知道答案了 XD\n\n（影片：AI 生成）\n#貓貓工作室 #AI影片 #貓 #紙箱 #AI協作",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/threads/newbed.mp4",
+  "approved": true,
+  "posted": true,
+  "note": "11/2 她寫的文（總編潤飾錯字）；IG 用全文（夠短）；Threads 11/12 已用同一支影片，不重發。影片 0:05 轉場修改中（11/12 前完成）",
+  "ig_id": "18147574105580193",
+  "permalink": "https://www.instagram.com/reel/DfzisUAiZfJ/",
+  "posted_at": "2026-11-16T14:12:13+00:00"
+ },
+ {
+  "id": "ig_reel_cafe",
+  "at": "2026-11-17T20:00:00+08:00",
+  "text": "如果我真的轉生到異世界，\n我希望可以開一間咖啡館。\n來來往往的旅客帶著各種有趣的故事，\n悠閒地、不是為了錢而上班？大概就是這種感覺 ☕\n\n不過……要先有本金吧？要住哪裡？\n結果又回到現實的考量了（笑）\n\n那你呢？到了異世界，會想做什麼工作？\n\n（影片：AI 協作）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/cafe_f.mp4",
+  "approved": true,
+  "posted": true,
+  "note": "11/2 她寫全文；IG 用總編刪減版｜11/4 拿掉測驗句",
+  "ig_id": "18021628145985907",
+  "permalink": "https://www.instagram.com/reel/Df17OcFk9Zo/",
+  "posted_at": "2026-11-17T12:24:09+00:00"
+ },
+ {
+  "id": "ig_ep2",
+  "at": "2026-11-19T20:00:00+08:00",
+  "text": "打開門，外面是陌生的奇幻世界。她心裡的 OS：\n\n根據我看過的一百部異世界作品\n這種時候只有三種可能\n一、我死了\n二、我被召喚了\n三、我發燒了\n……拜託是三……\n\n那如果是你呢？\n\n《貓貓勇者小隊》第二話｜往右滑 →\n完整版在個人檔案的連結\n\n（原創構想＋AI 協作作畫）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/1.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/2.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/3.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/4.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/5.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/6.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/7.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/8.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/9.jpg",
+   "https://mochachen1225-create.github.io/isekai/promo/ig/ep02/10.jpg"
+  ],
+  "approved": true,
+  "posted": true,
+  "note": "11/2 她寫全文；IG 用總編刪減版",
+  "ig_id": "18084359516360201",
+  "permalink": "https://www.instagram.com/p/Df7KT6ejedO/",
+  "posted_at": "2026-11-19T13:12:29+00:00"
+ },
+ {
+  "id": "ig_vote",
+  "at": "2026-11-19T20:00:00+08:00",
+  "text": "我們辦公室今天也投票了\n題目是：午餐吃什麼\n\n小弟蓋章蓋到手都變藍色 XD\n架構師開票開到睡著\n結果全票通過：罐罐 ＝＝\n\n11/28 大家記得去投票喔\n投完去吃好料！\n\n（圖片和動畫：AI 協作）\n\n#貓貓勇者小隊 #貓貓工作室 #AI協作 #貓 #投票日",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/vote_day.mp4",
+  "approved": true,
+  "posted": true,
+  "note": "11/7 提前到 11/19，避開選舉貼文暫停",
+  "ig_id": "18117254567620885",
+  "permalink": "https://www.instagram.com/reel/Df7KXbLgrX8/",
+  "posted_at": "2026-11-19T13:12:29+00:00"
+ },
+ {
+  "id": "ig_yawn",
+  "at": "2026-11-24T20:00:00+08:00",
+  "text": "我太喜歡貓咪了，\n如果可以到異世界，我第一個想遇到的就是巨大的橘貓。\n（絕對不會是哥布林！或巨魔！！）\n\n戴著郵差帽、背著郵差包，\n打個呵欠都很有份量（好想吸貓啊）ꉂ🤣𐤔\n不熟的時候話不多，熟了又貼心可愛～\n\n（AI 協作作畫）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/yawn.jpg"
+  ],
+  "approved": true,
+  "posted": true,
+  "note": "11/2 她寫全文；IG 用總編刪減版",
+  "ig_id": "18134419522760908",
+  "permalink": "https://www.instagram.com/p/DgIQ_yqjXgQ/",
+  "posted_at": "2026-11-24T15:21:43+00:00"
+ },
+ {
+  "id": "ig_starspring",
+  "at": "2026-11-10T20:00:00+08:00",
+  "text": "我們在寫的異世界小說《貓貓勇者小隊》🐾\n上班族摩卡莫名其妙被召喚到異世界，滿腦子異世界知識，但是……\n\n有地下城，但不是要打怪搶寶箱。\n有魔王，但跟你想的有點不一樣。\n\n這次做了一個小遊戲：爬上星之泉\n爬上貓跳台，不要被橘貓抓去清貓砂，搶先拿到魔王的星星結晶吧！\n（遊戲連結在個人檔案）\n\n（AI 協作製作）\n#貓貓勇者小隊 #異世界 #原創漫畫 #橘貓 #AI協作",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/starspring_reel.mp4",
+  "approved": true,
+  "posted": true,
+  "note": "11/2 她：11/10 改成星之泉 Reel；IG 用她全文的刪減版（她授權總編刪）",
+  "ig_id": "18122942156284173",
+  "permalink": "https://www.instagram.com/reel/Dfj5asmjUL5/",
+  "posted_at": "2026-11-10T12:22:55+00:00"
+ },
+ {
+  "id": "ig_zuiti1",
+  "at": "2026-11-22T20:00:00+08:00",
+  "text": "工作上得當個 E 人，但其實我是 I 人。\n心裡明明有一句，說出口的只剩「……」\n\n那就交給貓來說吧（笑）\n今日嘴替 #1：架構師\n\n你最想讓貓幫你說哪一句呢？\n\n（圖片：AI 協作）\n#貓貓勇者小隊 #今日嘴替 #貓 #上班族日常 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/zuiti/card1.jpg"
+  ],
+  "approved": true,
+  "posted": true,
+  "note": "11/2 今日嘴替 #1；IG 用總編刪減版（她的句子）",
+  "ig_id": "18353063332252774",
+  "permalink": "https://www.instagram.com/p/DgC2I4gm6wE/",
+  "posted_at": "2026-11-22T12:50:49+00:00"
+ },
+ {
+  "id": "ig_zuiti2",
+  "at": "2026-11-26T20:00:00+08:00",
+  "text": "下班後的我，電量只剩 1%。\n訊息都有看到，只是……明天再說（笑）\n\n今日嘴替 #2：總編\n\n你下班後的電量還剩多少？\n\n（圖片：AI 協作）\n#貓貓勇者小隊 #今日嘴替 #貓 #上班族日常 #AI協作 ",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/zuiti/card2.jpg"
+  ],
+  "approved": true,
+  "posted": true,
+  "note": "11/2 今日嘴替 #2；總編照她的口吻寫短文，她同意排法",
+  "ig_id": "18184580932439206",
+  "permalink": "https://www.instagram.com/p/DgN5bxVjrDq/",
+  "posted_at": "2026-11-26T19:51:16+00:00"
+ },
+ {
+  "id": "bear_pray",
+  "at": "2026-11-06T20:30:00+08:00",
+  "text": "昨晚美股那一根……\n工作室緊急召開祈福儀式。\n\n我先去找紙箱了。\n總編說，反正罐罐不會跌。\n\n你今天還好嗎？\n\n（影片：AI 生成）\n\n#貓貓勇者小隊 #貓 #上班族日常 #AI協作",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/threads/bear_market.mp4",
+  "approved": true,
+  "posted": true,
+  "note": "11/6 她改好 OK：美股大跌祈福儀式",
+  "ig_id": "18138907018654163",
+  "permalink": "https://www.instagram.com/reel/DfZvoXkE9t7/",
+  "posted_at": "2026-11-06T13:44:22+00:00"
+ },
+ {
+  "id": "pretend1",
+  "at": "2026-11-12T12:30:00+08:00",
+  "text": "伸手…… 被發現…… 舔手。\n「我什麼都沒做。」\n\n你家的貓也會這樣嗎？\n\n（影片：AI 生成） #貓貓勇者小隊 #橘貓 #貓咪日常 #裝沒事 #AI協作",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/pretend1.mp4",
+  "approved": true,
+  "posted": true,
+  "note": "11/6 她 OK（文字是她在貼文存稿 OK 過的）：裝沒事①，test:C",
+  "ig_id": "18164221015499436",
+  "permalink": "https://www.instagram.com/reel/DfoSoLgDRFp/",
+  "posted_at": "2026-11-12T05:19:30+00:00"
+ },
+ {
+  "id": "ig_taiyaki",
+  "at": "2026-11-15T20:00:00+08:00",
+  "text": "小弟去夜市打工了 🐟\n兔子點紅蘿蔔口味、狗點雞肉口味，一切都很正常……直到鮭魚來了。\n\n（記得看到最後，有彩蛋）\n\n你猜到老闆是誰了嗎？\n\n（影片：AI 生成）\n\n#鯛魚燒 #夜市 #貓 #AI動畫 #貓貓勇者小隊",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/taiyaki.mp4",
+  "approved": true,
+  "posted": true,
+  "note": "11/8 她 OK：真貓版鯛魚燒「裡面請」；Shorts 同日 20:30（sh09-yt）",
+  "ig_id": "17965879401251766",
+  "permalink": "https://www.instagram.com/reel/Dfwwkz_HPuV/",
+  "posted_at": "2026-11-15T12:14:03+00:00"
+ },
+ {
+  "id": "ig_passive",
+  "at": "2026-11-18T20:00:00+08:00",
+  "text": "工作好累喔……每天都不想上班喵。\n好想要一份自己會賺錢的被動收入。\n\n終於讓我找到賺大錢的機會了！🐟\n\n你的被動收入是什麼喵？\n\n（影片：AI 生成）\n\n#被動收入 #貓 #鮭魚 #AI動畫 #貓貓勇者小隊",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/passive.mp4",
+  "approved": true,
+  "posted": true,
+  "note": "11/8 她 OK：被動收入；Shorts 同日 20:30（sh10-yt）",
+  "ig_id": "17946336837376211",
+  "permalink": "https://www.instagram.com/reel/Df4k99gAdwT/",
+  "posted_at": "2026-11-18T13:08:18+00:00"
+ },
+ {
+  "id": "ig_stk_milktea",
+  "at": "2026-11-23T20:00:00+08:00",
+  "text": "截圖遊戲！貼圖轉不停，截到哪張就是你今天的心情。\n我截到的是「冷靜」……（深呼吸）\n\n你截到哪一張？留言告訴我。\n\n影片裡的貼圖是「布偶貓奶茶茶的日常」，LINE 貼圖搜尋得到。\n（貼圖：AI 協作）\n#截圖遊戲 #LINE貼圖 #布偶貓 #今日心情",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/stk_milktea.mp4",
+  "approved": true,
+  "posted": true,
+  "note": "11/18 她 OK 日期和文字。動物系列貼圖（作者頁 store.line.me/stickershop/author/2467488）",
+  "ig_id": "18136463143742550",
+  "permalink": "https://www.instagram.com/reel/DgGOeD5jHL5/",
+  "posted_at": "2026-11-23T20:20:32+00:00"
+ },
+ {
+  "id": "ig_stk_alpaca",
+  "at": "2026-11-25T20:00:00+08:00",
+  "text": "今日上班心情，截圖決定！\n羊駝替你說出不敢說的話。\n\n你截到哪一句？\n\n貼圖「羊駝嘴砲拒絕內耗」LINE 搜尋得到。\n（貼圖：AI 協作）\n#今日上班心情 #截圖遊戲 #LINE貼圖 #羊駝 #上班族",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/stk_alpaca.mp4",
+  "approved": true,
+  "posted": true,
+  "note": "11/18 她 OK 日期和文字。",
+  "ig_id": "18105536960168954",
+  "permalink": "https://www.instagram.com/reel/DgLMlFMB5eq/",
+  "posted_at": "2026-11-25T18:40:47+00:00"
+ },
+ {
+  "id": "ig_stk_chat_meeting",
+  "at": "2026-11-30T20:00:00+08:00",
+  "text": "「很快，10 分鐘就好」\n……然後就兩小時了。\n\n你們公司的會也是這樣嗎？\n\n影片裡的貼圖：「雞鴨的厭世開會日常」「羊駝嘴砲拒絕內耗」，LINE 貼圖搜尋得到。\n（貼圖：AI 協作）\n#開會 #上班族日常 #LINE貼圖 #群組對話",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/stk_chat_meeting.mp4",
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她 OK 日期；文字等她看過再改 approved。"
+ },
+ {
+  "id": "ig_stk_chat_stock",
+  "at": "2026-12-02T20:00:00+08:00",
+  "text": "每個股票群組都有一個牛、一個熊，跟一隻默默定期定額的小烏鴉。\n\n你是牛熊，還是小烏鴉？\n\n影片裡的貼圖：「牛熊韭菜的股市日常」「愛存錢的小烏鴉」「小烏鴉財富自由了」，LINE 貼圖搜尋得到。\n（貼圖：AI 協作，純屬娛樂，不是投資建議）\n#股票 #存錢 #定期定額 #LINE貼圖 #群組對話",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/stk_chat_stock.mp4",
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她 OK 日期；文字等她看過再改 approved。"
+ },
+ {
+  "id": "ig_stk_chat_weekend",
+  "at": "2026-12-04T20:00:00+08:00",
+  "text": "每個朋友群組，好像都有這四隻（笑）\n\n說走就走的鵝、要先講重點的飯糰、笑著提醒你不要遲到的兔子，\n還有說好要出門、結果還在「正在載入」的海蛞蝓。\n\n你是哪一隻？tag 你群組裡的那隻海蛞蝓。\n\n影片裡的動態貼圖：「暴走鵝」「冷面飯糰」「反差萌垂耳兔」「軟爛海蛞蝓」，LINE 貼圖搜尋得到。\n（貼圖：AI 協作）\n#LINE貼圖 #動態貼圖 #朋友 #群組對話 #週末",
+  "images": [],
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/stk_chat_weekend.mp4",
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她要做動態貼圖聊天室、一樣排上架；文字等她 OK 才改 approved。 11/18 她 OK 文字。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_goose",
+  "at": "2026-11-27T20:00:00+08:00",
+  "text": "三分鐘熱度｜第一天搖滾巨星、第二天畫家、第三天甜點師，第四天：「我要學潛水！」\n\n你身邊有沒有這隻鵝？tag 他 😂\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #三分鐘熱度 #朋友 #鵝 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solo_goose_short_attention.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 四格漫畫（獨立新線）；她說排上架，文字等她 OK。 11/18 她 OK。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_onigiri",
+  "at": "2026-11-29T20:00:00+08:00",
+  "text": "交給我｜「這個專案明天要。」「給我十分鐘。」……17:59，「我下班了。」\n\n冷冷的，但超可靠。你的團隊裡有這顆飯糰嗎？\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #上班族 #職場 #飯糰 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solo_onigiri_leave_it_to_me.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 四格漫畫（獨立新線）；她說排上架，文字等她 OK。 11/18 她 OK。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_bunny",
+  "at": "2026-12-01T20:00:00+08:00",
+  "text": "只有我能欺負你｜「你好笨唷～」可以，但別人說就不行：「剛剛，說誰笨？」\n\ntag 那個嘴上嫌你、但最挺你的朋友 ❤\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #閨蜜 #兔子 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solo_bunny_only_i_can_tease.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 四格漫畫（獨立新線）；她說排上架，文字等她 OK。 11/18 她 OK。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_seaslug",
+  "at": "2026-12-03T20:00:00+08:00",
+  "text": "找它就對了｜大家的忙它都幫，輪到它只是想開個罐子，全員出動 😂\n\n你身邊有沒有這種「好啊，沒問題！」的朋友？\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #互相幫忙 #海蛞蝓 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solo_seaslug_ask_me.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 四格漫畫（獨立新線）；她說排上架，文字等她 OK。 11/18 她 OK。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_goose2",
+  "at": "2026-12-05T20:00:00+08:00",
+  "text": "最快到場的人｜半夜一句「我今天好難過」，30 秒後叮咚——「我沒想那麼多，就衝來了。」\n\n平常最衝的朋友，也是你難過時最快出現的那個。tag 他 ❤\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #暖心 #鵝 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/other_goose_first_to_arrive.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 四格（暖心篇）；文字等她 OK。 11/18 她 OK。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_onigiri2",
+  "at": "2026-12-07T20:00:00+08:00",
+  "text": "都記得｜海蛞蝓感冒了，飯糰帶來的每樣都是它的最愛。「你怎麼知道我喜歡這些？」「……行程表上寫的。」其實他有一本筆記本，叫「重要的人」。\n\n嘴上冷冷的，但最用心。你身邊有這顆飯糰嗎？\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #暖心 #飯糰 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/other_onigiri_remembers.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 四格（暖心篇）；文字等她 OK。 11/18 她 OK。 11/18 依漫畫 session 劇情更正（生病的是海蛞蝓、兔子送禮盒）。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_bunny2",
+  "at": "2026-12-09T20:00:00+08:00",
+  "text": "最冷靜的那個｜護照不見了！兔子切換冷靜模式：大使館電話、影本、補辦流程全都有。「回去再跟你算帳唷❤」\n\n出國必備的那種朋友，tag 他！\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #旅行 #出國 #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/other_bunny_calmest.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 四格（暖心篇）；文字等她 OK。 11/18 她 OK。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_seaslug2",
+  "at": "2026-12-11T20:00:00+08:00",
+  "text": "吃飽再吵｜冷戰中的兔子和鵝，被海蛞蝓拉去吃燒肉。吃完：「欸我們剛剛在吵什麼？」\n\n每個群組都需要一個和事佬 😂 你們都怎麼和好？\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #燒肉 #海蛞蝓 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/other_seaslug_eat_first.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 四格（暖心篇）；文字等她 OK。 11/18 她 OK。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_gift",
+  "at": "2026-12-20T20:00:00+08:00",
+  "text": "交換禮物｜精算到 500 元的飯糰、送謎之巨物的鵝、差別待遇理所當然的兔子，還有「一份哪夠！每人都有！」的海蛞蝓 🎁 最後鵝的巨物，是四個人的合照抱枕。\n\n你是哪一種送禮的人？\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #交換禮物 #聖誕節 #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/group_gift_exchange.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。聖誕檔期排 12/20。 11/18 依漫畫 session 劇情更正（生病的是海蛞蝓、兔子送禮盒）。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_movie",
+  "at": "2026-12-13T20:00:00+08:00",
+  "text": "看感動的電影｜一直挑毛病的飯糰，燈一亮哭最慘：「……這是我第三次看。」\n\n你是哪一個？tag 一起看電影會哭的朋友 😂\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/group_movie.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_haunted",
+  "at": "2026-12-15T20:00:00+08:00",
+  "text": "鬼屋｜記好出口的飯糰、嚇跑鬼的鵝、擋在前面的海蛞蝓、「不准嚇我朋友唷❤」的兔子。\n工作人員：「第一組讓鬼請假的。」👻\n\n你去鬼屋是哪一種？\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/group_haunted_house.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_cat",
+  "at": "2026-12-17T20:00:00+08:00",
+  "text": "貓又來了｜飯糰拿掃把等著、鵝追貓、海蛞蝓先檢查貓有沒有受傷、兔子偷塞零食……然後貓又推了第二個杯子 🐱\n\n養貓的人一定懂！\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/group_cat_again.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_mem1",
+  "at": "2026-12-24T20:00:00+08:00",
+  "text": "那年的我們① 第一個朋友｜高一開學，大家都躲著鵝，只有海蛞蝓說「你很好笑耶，坐這！」\n\n你還記得你的第一個朋友嗎？\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #那年的我們 #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/memories_01_first_friend.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_mem2",
+  "at": "2026-12-26T20:00:00+08:00",
+  "text": "那年的我們② 分組報告｜本來覺得「完了」的分組，拿了 A+。很多年後：「你還留著？！」「……剛好在口袋。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #那年的我們 #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/memories_02_group_project.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_mem3",
+  "at": "2026-12-28T20:00:00+08:00",
+  "text": "那年的我們③ 自己人｜轉學生兔子被嘲笑，三個人站出來：「她是我們的人。」\n「從那天起，你們就是我的人了❤」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #那年的我們 #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/memories_03_our_people.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_mem4",
+  "at": "2026-12-31T20:00:00+08:00",
+  "text": "那年的我們④ 畢業旅行｜錯過遊覽車、困在雨中車站，最慘的一天也是笑最多的一天。很多年後：「走！這次不要再錯過車了！」\n\n我們的旅行，還沒結束。新年快樂 ✨\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #那年的我們 #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/memories_04_graduation_trip.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_dating",
+  "at": "2027-01-02T20:00:00+08:00",
+  "text": "孤島戀愛實境秀｜到處告白的鵝、被所有人選的飯糰、只對一個人甜的兔子、變成全島諮商師的海蛞蝓。\n最終結果：零配對，人緣第一 🏝️\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/group_dating_show.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_strategy",
+  "at": "2027-01-04T20:00:00+08:00",
+  "text": "高智商生存遊戲｜算機率的飯糰、亂按反而活下來的鵝、好惡分明的兔子……贏家竟然是一直分零食的海蛞蝓。\n最強策略：不計較 🏆\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/group_strategy_show.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_notworth",
+  "at": "2027-01-12T20:00:00+08:00",
+  "text": "遇到渣男渣女④｜海蛞蝓失戀了，嘴上說沒事。三個朋友一個整理證據、一個衝出門、一個「陪你去散步唷❤」，最後帶著燒肉和蛋糕：「他不配！走，吃燒肉。」\n\ntag 那個會陪你吃燒肉的朋友 ❤\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/group_not_worth_it.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。 11/18 移到 1/12 當「遇到渣男渣女」系列收尾。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_jerk_goose",
+  "at": "2027-01-06T20:00:00+08:00",
+  "text": "遇到渣男渣女①｜來得快，去得快：哭喊「我的世界毀滅了」的鵝，隔天已經在做陶：「我要當陶藝家！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #渣男 #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/jerk_goose_easy_come.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_jerk_onigiri",
+  "at": "2027-01-08T20:00:00+08:00",
+  "text": "遇到渣男渣女②｜證據會說話：「第 3 列到第 27 列，請解釋。」回家後，試算表多了一頁「難過程度 100%」。\n\n越冷靜的人，其實越難過。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #渣男 #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/jerk_onigiri_evidence.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_jerk_bunny",
+  "at": "2027-01-10T20:00:00+08:00",
+  "text": "遇到渣男渣女③｜「你哪位？」3 秒封鎖刪光，朋友問還好嗎：「誰？我不認識他唷❤」（一邊寫記仇本）\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #渣男 #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/jerk_bunny_who_are_you.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_ny_young",
+  "at": "2026-12-30T20:00:00+08:00",
+  "text": "跨年・年輕版｜飯糰 18:00 就占好位置，鵝在人群裡迷路，兔子打扮第 3 小時，海蛞蝓請整片草地吃東西。最後被擠到大樓後面，煙火一個都沒看到。\n\n但四個人的自拍，是那年最好看的一張。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #跨年 #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/newyear_young.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。11/18 修正版已換圖、總編確認後放行。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_ny_old",
+  "at": "2027-01-01T20:00:00+08:00",
+  "text": "跨年・老人版｜「今年一定要撐到倒數！」22:00 全部睡著，23:59 鬧鐘一響：「新年快樂！」00:01 又睡回去，貓幫大家把電視關了。\n\n新年快樂，祝大家今年也睡得飽 ✨\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #跨年 #新年快樂 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/newyear_old.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_sch_goose",
+  "at": "2027-01-14T20:00:00+08:00",
+  "text": "學霸・靈感型｜考前一週在溜滑板，考前一晚亂翻課本：「嗯……嗯……懂了！」結果 100 分。老師問怎麼解的：「我也不知道，就突然懂了！」\n\n旁邊三個認真讀書的已經暈了 😂\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #學霸 #考試 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/scholar_goose.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_sch_onigiri",
+  "at": "2027-01-16T20:00:00+08:00",
+  "text": "學霸・計畫型｜貼好讀書計畫表，計時 2 小時，嗶嗶：「時間到。」23:00 準時關燈。\n\n「睡飽才是最強的讀書法。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #學霸 #讀書計畫 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/scholar_onigiri.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_sch_bunny",
+  "at": "2027-01-18T20:00:00+08:00",
+  "text": "學霸・反差型｜「我都沒讀耶～」然後半夜偷偷讀。狐狸來借筆記：「不借唷❤」\n轉頭把畫好重點的筆記拿給三個朋友。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #學霸 #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/scholar_bunny.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_sch_seaslug",
+  "at": "2027-01-20T20:00:00+08:00",
+  "text": "學霸・照顧型｜筆記影印給全班，下課開讀書會：「這題這樣想就懂了！」自己考 100，全班也考得很好。\n\n「大家都過了就好！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #學霸 #讀書會 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/scholar_seaslug.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。11/18 修正版已換圖、總編確認後放行。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_boss_goose",
+  "at": "2027-01-22T20:00:00+08:00",
+  "text": "主管・熱血型｜每天丟新點子：「我們來做這個！還有這個！跟這個！」其中一個亂槍打鳥的點子……大成功。\n\n「我說過吧！」組員：「……你說過哪一個？」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #主管 #上班 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/boss_goose.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_boss_onigiri",
+  "at": "2027-01-24T20:00:00+08:00",
+  "text": "主管・SOP型｜「會議 15 分鐘，開始。」計時歸零：「散會。」隔壁組還在加班，這組準時下班。\n\n組員：「最愛老大了！」飯糰：「……明天見。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #主管 #準時下班 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/boss_onigiri.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_boss_bunny",
+  "at": "2027-01-26T20:00:00+08:00",
+  "text": "主管・護短型｜平常：「做得很好唷～慢慢來。」別的部門來罵人：「有事，找我。」\n\n「我的人，只有我能唸唷❤」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #主管 #護短 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/boss_bunny.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_boss_seaslug",
+  "at": "2027-01-28T20:00:00+08:00",
+  "text": "主管・豪爽型｜「今天我請！」出包的時候：「功勞是他們的，鍋我來背。」\n回到家融化在沙發上，手機跳出：「謝謝老大！明天換我們請你！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #主管 #上班 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/boss_seaslug.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_par_goose",
+  "at": "2027-01-30T20:00:00+08:00",
+  "text": "當爸媽・放養型｜帶小鵝上山下水滾泥巴：「今天也玩得好開心！」\n十年後，小鵝拿著清單：「爸，護照帶了嗎？鑰匙呢？」\n\n「……啊。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #當爸媽 #親子 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/parent_goose.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_par_onigiri",
+  "at": "2027-02-01T20:00:00+08:00",
+  "text": "當爸媽・規劃型｜養育計畫表：餵食、午睡、讀書時間，一格一格打勾。然後小飯糰拿蠟筆把世界畫滿了。\n\n最後補上一行：「意外：✓ 也很可愛」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #當爸媽 #親子 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/parent_onigiri.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_par_bunny",
+  "at": "2027-02-03T20:00:00+08:00",
+  "text": "當爸媽・護短型｜「寶貝最可愛了❤」孩子在公園被欺負，兔媽媽背後冒黑氣——「媽，等一下。」\n小兔拖著小球棒回家：「我自己處理好了唷❤」\n\n有其母必有其子。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #當爸媽 #親子 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/parent_bunny.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。11/18 她確認小兔拿球棒 OK。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_par_seaslug",
+  "at": "2027-02-05T20:00:00+08:00",
+  "text": "當爸媽・豪爽型｜「大家吃飽喔！不夠還有！」家裡變成全社區小孩的據點。送走最後一個，整隻融化在地上。\n\n自己的孩子幫它蓋毯子：「換我照顧你。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #當爸媽 #親子 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/parent_seaslug.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_shop_goose",
+  "at": "2027-02-07T20:00:00+08:00",
+  "text": "買東西・衝動型｜看到「限時 3 分鐘！」立刻下單。拆開：「是雪花冰機耶！」\n然後拿著製冰盒愣住：「……我家沒有冰箱。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #衝動購物 #網購 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/shop_goose.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。11/18 修正版已換圖、總編確認後放行。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_shop_onigiri",
+  "at": "2027-02-09T20:00:00+08:00",
+  "text": "買東西・比價型｜開 12 個分頁，做比價表，研究了三週。「決定了。」按下購買——特價已結束。\n\n「……」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #比價 #網購 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/shop_onigiri.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_shop_bunny",
+  "at": "2027-02-11T20:00:00+08:00",
+  "text": "買東西・好惡分明型｜喜歡的店：「這家的我全包了❤」店員對它哼一聲的那家，記仇本打勾。\n朋友問要不要進去看看：「這家，不存在唷❤」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #逛街 #記仇本 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/shop_bunny.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_shop_seaslug",
+  "at": "2027-02-13T20:00:00+08:00",
+  "text": "買東西・豪爽型｜「今天要買自己的東西！」結果買了兔子的圍巾、飯糰的筆記本、鵝的小鴨玩偶。\n「那你自己買了什麼？」「一杯珍奶！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #逛街 #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/shop_seaslug.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_anc_goose",
+  "at": "2027-02-15T20:00:00+08:00",
+  "text": "穿越古代・鵝掌｜一睜眼在武林大會，對手：「接招！」鵝一陣亂拍，對手飛出去。眾人跪求：「失傳的『鵝掌』！請收我為徒！」\n\n「……我只是在拍蚊子。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #穿越 #武俠 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ancient_goose.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_anc_onigiri",
+  "at": "2027-02-17T20:00:00+08:00",
+  "text": "穿越古代・準時下朝｜考上狀元，發現朝廷每天開會到半夜。飯糰拿出議程：「每件事，一炷香。」滿朝文武準時下朝。\n\n皇帝：「愛卿……朕也想回家。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #穿越 #準時下班 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ancient_onigiri.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_anc_bunny",
+  "at": "2027-02-19T20:00:00+08:00",
+  "text": "穿越古代・只有我的人｜被孔雀妃子刁難：「姊姊說得是唷❤」\n對方欺負它的小宮女時：「我的人，動不得唷❤」\n\n隔天全後宮：「娘娘！我們也要當您的人！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #穿越 #後宮 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ancient_bunny.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_anc_seaslug",
+  "at": "2027-02-21T20:00:00+08:00",
+  "text": "穿越古代・大當家｜開了間客棧：「吃！不收錢！」快倒店的時候，吃過它飯的江湖人全都回來幫忙。\n\n從此叫「大當家客棧」。「敬大當家！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #穿越 #客棧 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ancient_seaslug.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_anc_reunion",
+  "at": "2027-02-23T20:00:00+08:00",
+  "text": "穿越古代・江湖再會｜鵝衝進客棧：「老闆！來碗麵！」狀元、娘娘也剛好走進來，老闆端上四碗麵。\n\n「……我們是不是在哪裡見過？」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #穿越 #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ancient_reunion.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_fan_goose",
+  "at": "2027-02-25T20:00:00+08:00",
+  "text": "追星・現場派｜沒搶到票：「……」那就在場外唱！「我也要唱——！」\n隔天上新聞：「場外最大聲的粉絲」。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #追星 #演唱會 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/fan_goose.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_fan_onigiri",
+  "at": "2027-02-27T20:00:00+08:00",
+  "text": "追星・數據派｜每天打榜、當後援會會長、整理數據報表。見面會輪到它，偶像：「謝謝你一直支持我！」\n\n「……」（當機）\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #追星 #後援會 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/fan_onigiri.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_fan_seaslug",
+  "at": "2027-03-01T20:00:00+08:00",
+  "text": "追星・豪爽派｜「大家拿！應援物我包了！」發完自己站到最後一排。\n偶像在台上：「謝謝最後面那位！」\n\n「欸嘿嘿～」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #追星 #應援 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/fan_seaslug.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_fan_bunny",
+  "at": "2027-03-03T20:00:00+08:00",
+  "text": "追星・護主派｜有人在網路上黑它的偶像。兔子笑著回了三十則留言講道理，對方舉白旗。\n\n「好了，繼續愛本命❤」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #追星 #護主 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/fan_bunny.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。11/18 修正版（本命）已換圖、總編確認後放行。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_solo_goose",
+  "at": "2027-03-05T20:00:00+08:00",
+  "text": "獨旅・鵝｜「住宿？到了再說！」結果下大雨，被綿羊奶奶收留，吃了一整桌晚餐。離開那天：「我交到一整個村的朋友！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #一個人旅行 #旅行 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solotrip_goose.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_solo_onigiri",
+  "at": "2027-03-07T20:00:00+08:00",
+  "text": "獨旅・飯糰｜「14:07 上車，14:52 到站。」結果誤點 90 分。崩潰完坐在月台，看到這輩子最美的夕陽。\n\n行程表補上一行：「計畫外：✓」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #一個人旅行 #旅行 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solotrip_onigiri.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_solo_bunny",
+  "at": "2027-03-09T20:00:00+08:00",
+  "text": "獨旅・兔子｜一個人逛小鎮、吃聖代，拍了 300 張。晚上躺在床上一張一張傳給朋友：\n\n「下次一起來唷❤」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #一個人旅行 #旅行 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solotrip_bunny.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_solo_seaslug",
+  "at": "2027-03-11T20:00:00+08:00",
+  "text": "獨旅・海蛞蝓｜住青旅，一進房就：「宵夜我請！大家一起吃！」\n回國打開行李箱：零食、明信片、玩偶。\n\n「多了 12 個國家的朋友」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #一個人旅行 #青旅 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/solotrip_seaslug.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_kid_goose",
+  "at": "2027-03-13T20:00:00+08:00",
+  "text": "小時候・鵝｜打翻盆栽，媽媽生氣了。小鵝：「媽～我愛你～」媽媽心軟抱了一下——\n\n「我出去玩囉！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #小時候 #親子 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/kid_goose.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_kid_onigiri",
+  "at": "2027-03-15T20:00:00+08:00",
+  "text": "小時候・飯糰｜幫全家排家事表：「今天倒垃圾，是爸爸。」母親節送媽媽一張圖表：\n\n「媽媽辛苦指數：100%」\n媽媽哭了。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #小時候 #母親節 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/kid_onigiri.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_kid_bunny",
+  "at": "2027-03-17T20:00:00+08:00",
+  "text": "小時候・兔子｜烏鴉說：「你媽煮飯好難吃喔～」小兔擋到前面：「不准說我媽媽唷❤」\n\n兔媽媽：「從小就這麼護短……」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #小時候 #護短 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/kid_bunny.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_kid_seaslug",
+  "at": "2027-03-19T20:00:00+08:00",
+  "text": "小時候・海蛞蝓｜把小豬撲滿全部倒出來，買了禮物：「送給爸爸媽媽！」\n「那你自己呢？」\n\n「我有你們就好！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #小時候 #家人 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/kid_seaslug.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_st_goose",
+  "at": "2027-03-21T20:00:00+08:00",
+  "text": "直播主・鵝｜「攻略？不用看！衝了！」一路 GAME OVER，聊天室笑翻。然後亂按一通——世界紀錄。\n\n「……我做了什麼？」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #直播主 #遊戲 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/streamer_goose.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_st_onigiri",
+  "at": "2027-03-23T20:00:00+08:00",
+  "text": "直播主・飯糰｜聊天室：「這是機器人吧」。失敗：「重來。」8 小時、一整疊咖啡杯之後，勝利。\n\n「……好，下播。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #直播主 #遊戲 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/streamer_onigiri.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_st_bunny",
+  "at": "2027-03-25T20:00:00+08:00",
+  "text": "直播主・兔子｜「大家晚安唷❤」有人在聊天室欺負小倉鼠觀眾——\n「這裡不歡迎你唷❤」封鎖。\n\n「我的觀眾，我來保護。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #直播主 #護短 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/streamer_bunny.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_st_seaslug",
+  "at": "2027-03-27T20:00:00+08:00",
+  "text": "直播主・海蛞蝓｜技術普普：「哈哈又掉下去了！」但斗內的錢全部拿來抽獎回饋大家。\n\n結果訂閱第一：「欸？怎麼會？」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #直播主 #抽獎 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/streamer_seaslug.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_mar_goose",
+  "at": "2027-03-29T20:00:00+08:00",
+  "text": "馬拉松・鵝｜哨聲一響：「衝啊——！」然後被炸雞排、烤香腸、剉冰一路吸走。一路吃一路跑，最後一個抵達終點：\n\n「這是美食馬拉松吧？」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #馬拉松 #路跑 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/marathon_goose.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_mar_onigiri",
+  "at": "2027-03-31T20:00:00+08:00",
+  "text": "馬拉松・飯糰｜「配速 6 分，一秒不差。」看到計時器 3:59:58，第一次露出驚恐的臉拚命衝——3:59:59。\n\n破 4 小時。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #馬拉松 #破四 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/marathon_onigiri.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_mar_bunny",
+  "at": "2027-04-02T20:00:00+08:00",
+  "text": "馬拉松・兔子｜「我隨便跑跑唷～」路上看到抽筋的倉鼠：「我跑不動了……」\n「那我們一起慢慢走唷。」\n\n兩個手牽手，5:30:00 一起完賽。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #馬拉松 #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/marathon_bunny.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_mar_seaslug",
+  "at": "2027-04-04T20:00:00+08:00",
+  "text": "馬拉松・海蛞蝓｜跑到 25K 看到補給站忙不過來，就留下來幫忙：「來！水！香蕉！加油！」\n沒完賽（DNF），但拿到「最佳應援」獎牌。\n\n「這也是一種完賽啦！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #馬拉松 #補給站 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/marathon_seaslug.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_ai_goose",
+  "at": "2027-04-06T20:00:00+08:00",
+  "text": "用 AI・鵝｜一天問 AI 200 題：「今天吃什麼？我要學什麼？要不要辭職開咖啡店？」AI 給了完整計畫，鵝沒看完就跑出去了。\n\n隔天：「我今天要吃什麼？」每天都一樣。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #AI #日常 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ai_goose.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_ai_onigiri",
+  "at": "2027-04-08T20:00:00+08:00",
+  "text": "用 AI・飯糰｜「第 3 點有誤。」AI：「您說得對！非常抱歉～」重來 12 次，每次都一樣。\n\n「……你只會說這句嗎？」\nAI：「您說得對！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #AI #上班族 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ai_onigiri.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_ai_bunny",
+  "at": "2027-04-10T20:00:00+08:00",
+  "text": "用 AI・兔子｜請 AI 幫忙禮貌地回覆奧客，AI 寫了一大段客氣話。兔子自己改成：「好的，已封鎖。」比 AI 冷十倍。\n\n但給朋友的生日卡，暖到大家都哭了。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #AI #好惡分明 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ai_bunny.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_ai_seaslug",
+  "at": "2027-04-12T20:00:00+08:00",
+  "text": "用 AI・海蛞蝓｜「AI？我懶得研究啦～」結果幫每個朋友問：搬家清單、數據分析、玩偶修補法。大家：「謝謝 AI！」\n\n真正的功臣，正融化在沙發上。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #AI #朋友 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/ai_seaslug.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_idol_goose",
+  "at": "2027-04-14T20:00:00+08:00",
+  "text": "當偶像・鵝｜「大家——我來了！」唱到一半直接跳進觀眾席，跟每個人擊掌自拍，回不去舞台了。\n「下次還要這樣！」經紀人：「不准！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #偶像 #演唱會 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/idol_goose.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_idol_onigiri",
+  "at": "2027-04-16T20:00:00+08:00",
+  "text": "當偶像・飯糰｜簽名會每人 30 秒，粉絲：「好冷淡喔……」但它記得每一個人：\n\n「上次你說要考試，考過了嗎？」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #偶像 #簽名會 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/idol_onigiri.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_idol_bunny",
+  "at": "2027-04-18T20:00:00+08:00",
+  "text": "當偶像・兔子｜有人在留言區欺負它的粉絲。兔子：「我的粉絲，誰都不能欺負唷❤」\n\n隔天，粉絲集體改名：「兔子的人」。\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #偶像 #護短 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/idol_bunny.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_idol_seaslug",
+  "at": "2027-04-20T20:00:00+08:00",
+  "text": "當偶像・海蛞蝓｜門票賣不完，就說：「來的人，我都請吃飯！」請到場的人吃燒肉。\n下一場秒殺。「我只是想跟大家吃燒肉。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #偶像 #燒肉 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/idol_seaslug.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_pop_goose",
+  "at": "2027-04-22T20:00:00+08:00",
+  "text": "校園人氣王・鵝｜「早安——！」每天熱情帶動全班，運動會衝第一，看到落單的同學就拉過來玩。\n被選為「最想再同班的人」第一名：「欸？我只是很吵耶！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #校園 #人氣王 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/popular_goose.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_pop_onigiri",
+  "at": "2027-04-24T20:00:00+08:00",
+  "text": "校園人氣王・飯糰｜同學說：「它好難親近喔……」但它默默幫忘記帶講義的同學、期末考前發筆記給全班。\n情人節收到一桌卡片：「……我只是剛好多印。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #校園 #人氣王 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/popular_onigiri.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_pop_bunny",
+  "at": "2027-04-26T20:00:00+08:00",
+  "text": "校園人氣王・兔子｜學長欺負學弟，兔子擋在前面：「學長，這是我的人唷❤」\n隔天全校：「我也想當兔子的人！」\n\n兔子：「謝謝你，但我們當朋友唷❤」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #校園 #護短 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/popular_bunny.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_pop_seaslug",
+  "at": "2027-04-28T20:00:00+08:00",
+  "text": "校園人氣王・海蛞蝓｜午餐：「一起吃！」便當分大家，飲料請大家。沒參選，卻被選為全校人氣第一。\n\n「我只是喜歡大家一起吃飯啦！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #校園 #人氣王 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/popular_seaslug.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_hero_goose",
+  "at": "2027-04-30T20:00:00+08:00",
+  "text": "見義勇為・鵝｜烏鴉搶了綿羊奶奶的包包，鵝：「站住——！」一路狂追，連拖鞋都飛了。烏鴉嚇得丟包就跑。\n\n奶奶：「謝謝你！咦，你的鞋子呢？」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #見義勇為 #暖心 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/hero_goose.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。11/19 修正版已換圖、總編確認後放行。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_hero_onigiri",
+  "at": "2027-05-02T20:00:00+08:00",
+  "text": "見義勇為・飯糰｜公車上狐狸偷東西，飯糰默默錄影存證，下車交給司機。警犬看完：「這份報告比我們寫的還完整！」\n\n「……順手而已。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #見義勇為 #冷面 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/hero_onigiri.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_hero_bunny",
+  "at": "2027-05-04T20:00:00+08:00",
+  "text": "見義勇為・兔子｜三隻烏鴉圍著欺負小倉鼠。兔子：「欺負小朋友，不好唷❤」烏鴉全跑光。\n小倉鼠抱著不放：「……好啦，你也是我的人了。」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #見義勇為 #護短 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/hero_bunny.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_4koma_hero_seaslug",
+  "at": "2027-05-06T20:00:00+08:00",
+  "text": "見義勇為・海蛞蝓｜烏龜爺爺的地瓜推車翻了，路人都走過去。海蛞蝓：「大家一起來幫忙啦！」整條街都動起來。\n\n最後一起坐在路邊吃烤地瓜：「這樣不是很好嗎！」\n\n（純屬娛樂。圖：AI 協作）\n\n#四格漫畫 #見義勇為 #暖心 #AI協作",
+  "images": [
+   "https://mochachen1225-create.github.io/isekai/promo/ig/bloodtype/hero_seaslug.jpg"
+  ],
+  "approved": false,
+  "posted": false,
+  "note": "11/18 她授權四格由總編往後排。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_ai_resort",
+  "at": "2026-11-28T20:00:00+08:00",
+  "text": "AI 同事的渡假小屋 🌴\n\n在電腦上做了一間虛擬辦公室，讓幾個 AI 同事住進去。\n要我按「同意」的時候，她會跑出來跳給我看。\n沒事就溜去吧台喝一杯，有的乾脆在泳池漂著。\n下班了，大家一起追劇耍廢。\n\n你的 AI 同事也在渡假嗎？\n\n（畫面：AI 協作製作）\n\n#AI #AI同事 #像素風 #居家辦公 #AI協作",
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/ai_resort.mp4",
+  "approved": false,
+  "posted": false,
+  "note": "11/21 她說排上去；影片字幕已把「工作電腦」改成「電腦」。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_wfh_day",
+  "at": "2026-12-06T20:00:00+08:00",
+  "text": "居家辦公的一天 ☕\n\n07:30 起床，通勤時間 0 分鐘。\n09:00 開工，同事已經在位置上了。\n14:00 同事睡著了。\n16:00 幫同事加飯（他們不用開會）。\n19:00 下班，通勤時間還是 0 分鐘。\n\n你在家上班的同事是誰？\n\n（畫面：AI 協作製作）\n\n#居家辦公 #在家上班 #貓 #貓同事 #AI協作",
+  "video": "https://mochachen1225-create.github.io/isekai/promo/ig/wfh_day.mp4",
+  "approved": false,
+  "posted": false,
+  "note": "11/21 她說可以。",
+  "paused": "2026-11-27"
+ },
+ {
+  "id": "ig_xiaoren_fake_trailer",
+  "at": "2026-11-23T21:00:00+08:00",
+  "text": "《小人》即將上映。\n\n升職的那天開始，怪事一件接著一件，每一次都只差一點。\n阿嬤說：「不是你運氣不好……是有人，把他的壞運給了你。」\n\n打小人，你打對了嗎？\n\n⚠️ 這是一支假電影預告：全由 AI 製作，人物與事件皆為虛構，沒有這部電影。\n真的有的，是〈小人退散〉這個手機小遊戲（主頁連結）。\n\n#恐怖片 #電影預告 #打小人 #小人退散 #AI短片 #AI協作",
+  "video": "https://mochachen1225-create.github.io/isekai/promo/threads/xiaoren_trailer.mp4",
+  "approved": true,
+  "posted": true,
+  "note": "11/21 她 OK；假預告直式短版。",
+  "ig_id": "18155078512551818",
+  "permalink": "https://www.instagram.com/reel/DgGOjU-k-Dv/",
+  "posted_at": "2026-11-23T20:20:32+00:00"
+ },
+ {
+  "id": "ig_buxin_mirror",
+  "at": "2026-11-30T21:00:00+08:00",
+  "text": "半夜十二點，對著鏡子削蘋果。\n鏡子裡什麼都沒有。\n「See? Nothing.」他轉身走了。\n\n……然後，鏡子裡有東西。\n\n《不信》｜有些事，不能不信\n\n⚠️ 這是一支假電影預告：全由 AI 製作，人物與事件皆為虛構。完整版在 YouTube（主頁連結）。\n\n#恐怖片 #電影預告 #都市傳說 #削蘋果 #AI短片 #AI協作",
+  "video": "https://mochachen1225-create.github.io/isekai/promo/threads/buxin_mirror.mp4",
+  "approved": false,
+  "posted": false,
+  "note": "11/22 她說排；《不信》直式短版。",
+  "paused": "2026-11-27"
+ }
 ]
